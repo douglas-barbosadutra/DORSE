@@ -1,18 +1,26 @@
 package it.contrader.model;
 
+import java.util.*;
+
 public class User {
 	private int userId;
+	private String nome;
+	private String cognome;
 	private String username;
 	private String password;
-	private String usertype;
-
+	private Date birthdate;
+	private String telnumber;
+	
 	public User() {
 	}
 
-	public User(String username, String password, String usertype) {
+	public User (String nome, String cognome, String username, String password, Date birthdate, String telnumber) {
+		this.nome = nome;
+		this.cognome = cognome;
 		this.username = username;
 		this.password = password;
-		this.usertype = usertype;
+		this.birthdate = birthdate;
+		this.telnumber = telnumber;
 	}
 
 	public int getUserId() {
@@ -38,32 +46,90 @@ public class User {
 		return username;
 	}
 
-	public String getUsertype() {
-		return usertype;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setUsertype(String usertype) {
-		this.usertype = usertype;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
+	public String getCognome() {
+		return cognome;
+	}
+
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
+	}
+
+	public Date getBirthdate() {
+		return birthdate;
+	}
+
+	public void setBirthdate(Date birthdate) {
+		this.birthdate = birthdate;
+	}
+
+	public String getTelnumber() {
+		return telnumber;
+	}
+
+	public void setTelnumber(String telnumber) {
+		this.telnumber = telnumber;
+	}
+
+	
 	@Override
 	public String toString() {
-		return this.getUserId() + "\t" + this.getUsername() + "\t" + this.getPassword() + "\t" + this.getUsertype();
+		return "User [userId=" + userId + ", nome=" + nome + ", cognome=" + cognome + ", username=" + username
+				+ ", password=" + password + ", birthdate=" + birthdate + ", telnumber=" + telnumber + "]";
 	}
 
-	public boolean equals(User userCompare) {
-		if (!this.getUsername().equals(userCompare.getUsername())) {
-			return false;
-		}
 
-		if (!this.getUsertype().equals(userCompare.getUsertype())) {
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
 			return false;
-		}
-		if (!this.getUsertype().equals(userCompare.getUsertype())) {
+		if (getClass() != obj.getClass())
 			return false;
-		}
+		User other = (User) obj;
+		if (birthdate == null) {
+			if (other.birthdate != null)
+				return false;
+		} else if (!birthdate.equals(other.birthdate))
+			return false;
+		if (cognome == null) {
+			if (other.cognome != null)
+				return false;
+		} else if (!cognome.equals(other.cognome))
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		if (telnumber == null) {
+			if (other.telnumber != null)
+				return false;
+		} else if (!telnumber.equals(other.telnumber))
+			return false;
+		if (userId != other.userId)
+			return false;
+		if (username == null) {
+			if (other.username != null)
+				return false;
+		} else if (!username.equals(other.username))
+			return false;
 		return true;
-
 	}
+	
+
+	
 
 }
