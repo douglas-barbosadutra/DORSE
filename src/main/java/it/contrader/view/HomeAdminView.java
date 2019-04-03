@@ -14,7 +14,7 @@ public class HomeAdminView implements View {
     private String choice;
 
     public void showResults(Request request) {
-    	System.out.println("Benvenuto in DORSE "+request.get("nomeUtente").toString());
+    	System.out.println("Benvenuto in DORSE "+request.get("username").toString());
     }
 
 
@@ -27,6 +27,7 @@ public class HomeAdminView implements View {
 
     public void submit() {
         if (choice.equalsIgnoreCase("U")) {
+        	System.out.println("stocazzo");
         	MainDispatcher.getInstance().callView("Admin", null);
         }
         

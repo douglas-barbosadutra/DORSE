@@ -13,16 +13,19 @@ public class HomeController implements Controller {
 
     public void doControl(Request request) {
         if (request != null) {
-            String nomeUtente = request.get("nomeUtente").toString();
+            String username = request.get("username").toString();
             String password = request.get("password").toString();
             
+            System.out.println(username);
+            System.out.println(password);
+            
             //Change view according userType
-            String userType= loginService.login(nomeUtente, password);
+            String userType= loginService.login(username, password);
             if(userType==null)
                 MainDispatcher.getInstance().callAction("Login", "doControl", request);
             
-            if (userType.equals("superuser"))
-                MainDispatcher.getInstance().callView("HomeAdmin", request);
+            if (userType.equals("admin"))
+            	MainDispatcher.getInstance().callView("HomeAdmin", request);
             
             if (userType.equals("user"))
             	MainDispatcher.getInstance().callView("HomeBO", request);
