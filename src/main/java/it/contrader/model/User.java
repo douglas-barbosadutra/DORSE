@@ -4,6 +4,8 @@ import java.util.*;
 
 public class User {
 	protected int id;
+
+	protected String usertype;
 	protected String nome;
 	protected String cognome;
 	protected String username;
@@ -29,6 +31,15 @@ public class User {
 	public void setUserId(int userId) {
 		this.id = userId;
 	}
+	
+	public String getUsertype() {
+		return usertype;
+	}
+
+	public void setUsertype(String usertype) {
+		this.usertype = usertype;
+	}
+
 
 	public String getPassword() {
 		return password;
@@ -79,12 +90,13 @@ public class User {
 	}
 
 	
+	
 	@Override
 	public String toString() {
-		return "User [userId=" + id + ", nome=" + nome + ", cognome=" + cognome + ", username=" + username
-				+ ", password=" + password + ", birthdate=" + birthdate + ", telnumber=" + telnumber + "]";
+		return "User [id=" + id + ", usertype=" + usertype + ", nome=" + nome + ", cognome=" + cognome + ", username="
+				+ username + ", password=" + password + ", birthdate=" + birthdate + ", telnumber=" + telnumber + "]";
 	}
-
+	
 
 	public boolean equals(Object obj) {
 		if (this == obj)

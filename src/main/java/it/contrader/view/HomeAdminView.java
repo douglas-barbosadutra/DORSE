@@ -14,7 +14,7 @@ public class HomeAdminView implements View {
     private String choice;
 
     public void showResults(Request request) {
-    	System.out.println("Benvenuto in WMES "+request.get("nomeUtente").toString());
+    	System.out.println("Benvenuto in DORSE "+request.get("nomeUtente").toString());
     }
 
 
@@ -27,7 +27,7 @@ public class HomeAdminView implements View {
 
     public void submit() {
         if (choice.equalsIgnoreCase("U")) {
-        	MainDispatcher.getInstance().callView("User", null);
+        	MainDispatcher.getInstance().callView("Admin", null);
         }
         
         if (choice.equalsIgnoreCase("L"))
