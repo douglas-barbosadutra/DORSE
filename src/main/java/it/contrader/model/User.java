@@ -3,13 +3,13 @@ package it.contrader.model;
 import java.util.*;
 
 public class User {
-	private int userId;
-	private String nome;
-	private String cognome;
-	private String username;
-	private String password;
-	private Date birthdate;
-	private String telnumber;
+	protected int userId;
+	protected String nome;
+	protected String cognome;
+	protected String username;
+	protected String password;
+	protected Date birthdate;
+	protected String telnumber;
 	
 	public User() {
 	}

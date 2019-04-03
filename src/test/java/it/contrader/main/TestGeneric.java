@@ -1,23 +1,38 @@
 package it.contrader.main;
 
-import java.util.Date;
+import java.util.*;
 
-import it.contrader.model.User;
+import it.contrader.model.*;
 
-import it.contrader.model.Item;
+
+
 
 public class TestGeneric{
-
+	
+	
 	public static void main (String[] args) {
 		
-		Item interruttore = new Item (1234, "accende e spegne");
+		
+	
+	Utente tizio = new Utente();
+	Operatore caio = new Operatore();
+	Building nowhere = new Building ();
+	
+	List <Utente> listautenti = new ArrayList<Utente> ();
+	List <Operatore> listaoperatori = new ArrayList<Operatore> ();
+	List <Building> listabuilding = new ArrayList<Building> ();
+	
+	listautenti.add(tizio);
+	listaoperatori.add(caio);
+	listabuilding.add(nowhere);
+	
+		Admin sabatino = new Admin ( listautenti, listaoperatori, listabuilding);
 		
 		
-		System.out.println(interruttore);
-		interruttore.setCodice(4321);
-		int codice = interruttore.getCodice();
-		System.out.println(codice);
-		System.out.println(interruttore);
+		System.out.println(sabatino);
+		
 	}
+	
+	
 	
 }
