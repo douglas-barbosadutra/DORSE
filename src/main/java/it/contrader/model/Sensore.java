@@ -5,6 +5,6 @@ import java.util.*;
 public class Sensore extends Item {
 
 	public Sensore() {
-		
+	super();	
 	}
 }

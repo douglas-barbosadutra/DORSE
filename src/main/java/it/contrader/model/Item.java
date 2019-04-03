@@ -1,7 +1,7 @@
 package it.contrader.model;
 
 public class Item {
-	int itemId;
+	int id;
 	boolean stato;
 	int codice;
     String descrizione;
@@ -16,11 +16,11 @@ public class Item {
 	}
 	
 	public int getItemId() {
-		return itemId;
+		return id;
 	}
 
 	public void setItemId(int itemId) {
-		this.itemId = itemId;
+		this.id = itemId;
 	}
 
 	public boolean getStato() {
@@ -50,7 +50,7 @@ public class Item {
 
 	@Override
 	public String toString() {
-		return "Item [itemId=" + itemId + ", stato=" + stato + ", codice=" + codice + ", descrizione=" + descrizione
+		return "Item [itemId=" + id + ", stato=" + stato + ", codice=" + codice + ", descrizione=" + descrizione
 				+ "]";
 	}
 
@@ -69,7 +69,7 @@ public class Item {
 				return false;
 		} else if (!descrizione.equals(other.descrizione))
 			return false;
-		if (itemId != other.itemId)
+		if (id != other.id)
 			return false;
 		if (stato != other.stato)
 			return false;

@@ -3,19 +3,38 @@ package it.contrader.model;
 import java.util.*;
 
 public class Ambiente {
-	private List <Item> items;
+	private int id;
+	private String descrizione;
+	private List<Item> items;
 	
     public Ambiente() {
 		
 	}
 	
-	public Ambiente(List <Item> items) {
+	public Ambiente(String descrizione, List <Item> items) {
+		super ();
+		this.descrizione = descrizione;
 		this.items = items;
 		
 	}
 	
 	
-	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getDescrizione() {
+		return descrizione;
+	}
+
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
+	}
 
 	public List <Item> getItems() {
 		return items;
@@ -24,13 +43,14 @@ public class Ambiente {
 	public void setItems(List <Item> items) {
 		this.items = items;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Ambiente [items=" + items + "]";
+		return "Ambiente [id=" + id + ", descrizione=" + descrizione + ", items=" + items + "]";
 	}
 
-	
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -39,6 +59,13 @@ public class Ambiente {
 		if (getClass() != obj.getClass())
 			return false;
 		Ambiente other = (Ambiente) obj;
+		if (descrizione == null) {
+			if (other.descrizione != null)
+				return false;
+		} else if (!descrizione.equals(other.descrizione))
+			return false;
+		if (id != other.id)
+			return false;
 		if (items == null) {
 			if (other.items != null)
 				return false;
@@ -47,5 +74,6 @@ public class Ambiente {
 		return true;
 	}
 	
+
 	
 }

@@ -4,10 +4,10 @@ import java.util.*;
 
 public class Building {
 
-	private int buildingId;
+	private int id;
 	private String indirizzo;
 	private Utente utente;
-	private List <Ambiente> ambienti;
+	private List<Ambiente> ambienti;
 	
 	
 	public Building() {
@@ -15,18 +15,17 @@ public class Building {
 	}
 	
 	public Building(String indirizzo, Utente utente, List<Ambiente> ambienti) {
-		super();
 		this.indirizzo = indirizzo;
 		this.utente = utente;
 		this.ambienti = ambienti;
 	}
 
 	public int getBuildingId() {
-		return buildingId;
+		return id;
 	}
 
 	public void setBuildingId(int buildingId) {
-		this.buildingId = buildingId;
+		this.id = buildingId;
 	}
 
 	public String getIndirizzo() {
@@ -57,7 +56,7 @@ public class Building {
 	
 	@Override
 	public String toString() {
-		return "Building [buildingId=" + buildingId + ", indirizzo=" + indirizzo + ", utente=" + utente + ", ambienti="
+		return "Building [buildingId=" + id + ", indirizzo=" + indirizzo + ", utente=" + utente + ", ambienti="
 				+ ambienti + "]";
 	}
 
@@ -75,7 +74,7 @@ public class Building {
 				return false;
 		} else if (!ambienti.equals(other.ambienti))
 			return false;
-		if (buildingId != other.buildingId)
+		if (id != other.id)
 			return false;
 		if (indirizzo == null) {
 			if (other.indirizzo != null)

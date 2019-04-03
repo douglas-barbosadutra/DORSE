@@ -6,7 +6,7 @@ public class Attuatore extends Item{
 
 	
 	public Attuatore() {
-		
+	super();	
 	}
 	
 }

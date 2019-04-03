@@ -4,16 +4,16 @@ import java.util.*;
 
 public class Admin extends User{
 	int id;
-	List <Utente> utenti;
-	List <Operatore> operatori;
-	List <Building> buildings;
+	List<Utente> utenti;
+	List<Operatore> operatori;
+	List<Building> buildings;
 	
 	public Admin () {
 		
 	}
 
-	public Admin(List<Utente> utenti, List<Operatore> operatori, List<Building> buildings) {
-	   
+	public Admin(String nome, String cognome, String username, String password, Date birthdate, String telnumber, List<Utente> utenti, List<Operatore> operatori, List<Building> buildings) {
+	    super();
 		this.utenti = utenti;
 		this.operatori = operatori;
 		this.buildings = buildings;

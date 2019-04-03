@@ -2,10 +2,10 @@ package it.contrader.model;
 
 import java.util.*;
 
-public class Operatore {
+public class Operatore extends User{
 	private String  contatto;
-	private List <Utente> utenti;
-	private List <Building> buildings;
+	private List<Utente> utenti;
+	private List<Building> buildings;
 	private boolean disponibile;
 	
 public Operatore() {
