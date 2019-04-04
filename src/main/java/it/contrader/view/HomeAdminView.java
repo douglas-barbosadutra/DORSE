@@ -28,7 +28,7 @@ public class HomeAdminView implements View {
     public void submit() {
         if (choice.equalsIgnoreCase("U")) {
         	System.out.println("stocazzo");
-        	MainDispatcher.getInstance().callView("Admin", null);
+        	MainDispatcher.getInstance().callView("User", null);
         }
         
         if (choice.equalsIgnoreCase("L"))

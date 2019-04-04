@@ -23,7 +23,7 @@ public class ConnectionSingleton {
         if (connection == null) {
             try {
                 Properties properties = new Properties();
-                InputStream inputStream = new FileInputStream("config.properties");
+                InputStream inputStream = new FileInputStream("DORSE/config.properties");
                 properties.load(inputStream);
                 String vendor = properties.getProperty("db.vendor");
                 String driver = properties.getProperty("db.driver");

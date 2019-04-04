@@ -16,8 +16,6 @@ public class HomeController implements Controller {
             String username = request.get("username").toString();
             String password = request.get("password").toString();
             
-            System.out.println(username);
-            System.out.println(password);
             
             //Change view according userType
             String userType= loginService.login(username, password);

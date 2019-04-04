@@ -16,13 +16,10 @@ public class User {
 	public User() {
 	}
 
-	public User (String nome, String cognome, String username, String password, Date birthdate, String telnumber) {
-		this.nome = nome;
-		this.cognome = cognome;
+	public User (String username, String password, String usertype) {
 		this.username = username;
 		this.password = password;
-		this.birthdate = birthdate;
-		this.telnumber = telnumber;
+		this.usertype = usertype;
 	}
 
 	public int getUserId() {
