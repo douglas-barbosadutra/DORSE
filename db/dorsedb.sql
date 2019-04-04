@@ -38,7 +38,7 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-LOCK TABLES `user` WRITE;
+/*LOCK TABLES `user` WRITE;*/
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` VALUES (1,'admin1','admin1','admin');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
