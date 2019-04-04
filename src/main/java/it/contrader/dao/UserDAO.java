@@ -11,26 +11,26 @@ import it.contrader.model.User;
 
 public class UserDAO {
 
-	private final String QUERY_ALL = "SELECT * FROM tab_user";
-	private final String QUERY_INSERT = "INSERT INTO tab_user (username, password, usertype) VALUES (?,?,?)";
-	private final String QUERY_READ = "SELECT * FROM tab_user WHERE userId=?";
+	private final String QUERY_ALL = "SELECT * FROM user";
+	private final String QUERY_INSERT = "INSERT INTO user (username, password, usertype) VALUES (?,?,?)";
+	private final String QUERY_READ = "SELECT * FROM user WHERE iduser=?";
 
-	private final String QUERY_UPDATE = "UPDATE tab_user SET username=?, password=?, usertype=? WHERE userId=?";
-	private final String QUERY_DELETE = "DELETE FROM tab_user WHERE userId=?";
+	private final String QUERY_UPDATE = "UPDATE user SET username=?, password=?, usertype=? WHERE iduser=?";
+	private final String QUERY_DELETE = "DELETE FROM user WHERE iduser=?";
 
 	public UserDAO() {
 
 	}
 
 	public List<User> getAllUser() {
-		List<User> usersList = new ArrayList<>();
+		List<User> usersList = new ArrayList<User>();
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(QUERY_ALL);
 			User user;
 			while (resultSet.next()) {
-				int userId = resultSet.getInt("userId");
+				int userId = resultSet.getInt("iduser");
 				String username = resultSet.getString("username");
 				String password = resultSet.getString("password");
 				String usertype = resultSet.getString("usertype");
@@ -44,7 +44,7 @@ public class UserDAO {
 		return usersList;
 	}
 
-	public boolean insertUser(User user) {
+	public  boolean insertUser(User user) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_INSERT);
@@ -73,7 +73,7 @@ public class UserDAO {
 			password = resultSet.getString("password");
 			usertype = resultSet.getString("usertype");
 			User user = new User(username, password, usertype);
-			user.setUserId(resultSet.getInt("userId"));
+			user.setUserId(resultSet.getInt("iduser"));
 
 			return user;
 		} catch (SQLException e) {

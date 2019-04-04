@@ -27,6 +27,7 @@ public class LoginView implements View {
 		request.put("username", username);
 		request.put("password", password);
 		MainDispatcher.getInstance().callAction("Home", "doControl", request);
+		System.out.println(" login view, fin qui tutto bene...");
 	}
 
 	public String getInput() {

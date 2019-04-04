@@ -13,7 +13,7 @@ public class HomeController implements Controller {
 
     public void doControl(Request request) {
         if (request != null) {
-            String nomeUtente = request.get("nomeUtente").toString();
+            String nomeUtente = request.get("username").toString();
             String password = request.get("password").toString();
             
             //Change view according userType
@@ -21,11 +21,11 @@ public class HomeController implements Controller {
             if(userType==null)
                 MainDispatcher.getInstance().callAction("Login", "doControl", request);
             
-            if (userType.equals("superuser"))
+            if (userType.equals("admin"))
                 MainDispatcher.getInstance().callView("HomeAdmin", request);
             
             if (userType.equals("user"))
-            	MainDispatcher.getInstance().callView("HomeBO", request);
+            	MainDispatcher.getInstance().callView("HomeUser", request);
            
         }
         else MainDispatcher.getInstance().callView("Login", null);

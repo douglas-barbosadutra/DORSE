@@ -1,12 +1,12 @@
 package it.contrader.view.user;
 
-import java.sql.SQLException;
-import java.util.List;
-import java.util.Scanner;
+//import java.sql.SQLException;
+import java.util.*;
+
 
 import it.contrader.controller.Request;
 import it.contrader.controller.UserController;
-import it.contrader.dto.UserDTO;
+import it.contrader.dao.UserDAO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.model.User;
 import it.contrader.view.View;
@@ -32,7 +32,7 @@ public class UserReadView implements View {
 
 		try {
 			userIdToRead = Integer.parseInt(getInput());
-			UserDTO userDB = usersController.readUser(userIdToRead);
+			 User userDB = readUser(userIdToRead);
 
 			System.out.println("Id: " + userDB.getUserId());
 			System.out.println("Username: " + userDB.getUsername());
@@ -51,6 +51,12 @@ public class UserReadView implements View {
 			System.out.println("Valore inserito errato.");
 		}
 
+	}
+
+	public User readUser(int userIdToRead) {
+		UserDAO user = new UserDAO();
+		User temp=user.readUser(userIdToRead);	
+		return temp;
 	}
 
 	@Override

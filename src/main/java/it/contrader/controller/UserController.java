@@ -1,8 +1,8 @@
 package it.contrader.controller;
 
-import java.util.List;
+import java.util.*;
 
-import it.contrader.dto.UserDTO;
+
 import it.contrader.main.MainDispatcher;
 import it.contrader.model.User;
 import it.contrader.service.UserService;
@@ -22,17 +22,6 @@ public class UserController implements Controller {
 		return this.usersService.getAllUser();
 	}
 
-	public UserDTO readUser(int userId) {
-		return this.usersService.readUser(userId);
-	}
-
-	public boolean insertUser(UserDTO usersDTO) {
-		return this.usersService.insertUser(usersDTO);
-	}
-
-	public boolean updateUser(UserDTO usersDTO) {
-		return this.usersService.updateUser(usersDTO);
-	}
 
 	public boolean deleteUser(Integer usersId) {
 		return this.usersService.deleteUser(usersId);
@@ -48,10 +37,10 @@ public class UserController implements Controller {
 		} else {
 			switch (choice.toUpperCase()) {
 			case "L":
-				MainDispatcher.getInstance().callView(sub_package + "UserRead", null);
+				MainDispatcher.getInstance().callView(sub_package + "UserRead", request);
 				break;
 			case "I":
-				MainDispatcher.getInstance().callView(sub_package + "UserInsert", null);
+				MainDispatcher.getInstance().callView(sub_package + "UserInsert", request);
 				break;
 			case "M":
 				MainDispatcher.getInstance().callView(sub_package + "UserUpdate", null);

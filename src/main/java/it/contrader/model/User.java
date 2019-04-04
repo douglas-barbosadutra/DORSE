@@ -3,8 +3,7 @@ package it.contrader.model;
 import java.util.*;
 
 public class User {
-	protected int id;
-
+	protected int iduser;
 	protected String usertype;
 	protected String nome;
 	protected String cognome;
@@ -16,20 +15,18 @@ public class User {
 	public User() {
 	}
 
-	public User (String nome, String cognome, String username, String password, Date birthdate, String telnumber) {
-		this.nome = nome;
-		this.cognome = cognome;
+	public User ( String username, String password,String usertype) {
+	
 		this.username = username;
 		this.password = password;
-		this.birthdate = birthdate;
-		this.telnumber = telnumber;
+		this.usertype = usertype;
 	}
 
 	public int getUserId() {
-		return id;
+		return iduser;
 	}
 	public void setUserId(int userId) {
-		this.id = userId;
+		this.iduser = userId;
 	}
 	
 	public String getUsertype() {
@@ -89,14 +86,11 @@ public class User {
 		this.telnumber = telnumber;
 	}
 
-	
-	
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", usertype=" + usertype + ", nome=" + nome + ", cognome=" + cognome + ", username="
-				+ username + ", password=" + password + ", birthdate=" + birthdate + ", telnumber=" + telnumber + "]";
+		return  iduser +"\t"+usertype+ "\t"+username+"\t"+password;
 	}
-	
 
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -131,7 +125,7 @@ public class User {
 				return false;
 		} else if (!telnumber.equals(other.telnumber))
 			return false;
-		if (id != other.id)
+		if (iduser != other.iduser)
 			return false;
 		if (username == null) {
 			if (other.username != null)

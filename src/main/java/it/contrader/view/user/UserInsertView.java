@@ -1,11 +1,12 @@
 package it.contrader.view.user;
 
-import java.util.Scanner;
+import java.util.*;
 
 import it.contrader.controller.Request;
 import it.contrader.controller.UserController;
-import it.contrader.dto.UserDTO;
+import it.contrader.dao.UserDAO;
 import it.contrader.main.MainDispatcher;
+import it.contrader.model.User;
 import it.contrader.view.View;
 
 public class UserInsertView implements View {
@@ -32,9 +33,11 @@ public class UserInsertView implements View {
 		password = getInput();
 		System.out.println("Inserisci la tipologia utente");
 		usertype=getInput();
-		if (!username.equals("") && !password.equals("") && !usertype.equals("")) {
-			
-			usersController.insertUser(new UserDTO(username, password, usertype));
+		User user= new User(username, password, usertype);
+		UserDAO temp = new UserDAO();
+		boolean temp2 = temp.insertUser(user);
+		if (temp2 == true) {
+			System.out.println("La richiesta di inserimento è andata a buon fine.");
 		}
 	}
 

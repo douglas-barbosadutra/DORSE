@@ -12,11 +12,9 @@ public class Admin extends User{
 		
 	}
 
-	public Admin(String nome, String cognome, String username, String password, Date birthdate, String telnumber, List<Utente> utenti, List<Operatore> operatori, List<Building> buildings) {
+	public Admin( String username, String password, String usertype) {
 	    super();
-		this.utenti = utenti;
-		this.operatori = operatori;
-		this.buildings = buildings;
+		
 	}
 
 
