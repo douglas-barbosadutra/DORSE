@@ -6,15 +6,13 @@ import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
 import it.contrader.view.View;
 
-public class UserInsertView implements View {
+public class UserDeleteView implements View {
 	private Request request;
 	
-	private String username;
-	private String password;
-	private String usertype;
-	private final String mode = "INSERT";
+	private int id;
+	private final String mode = "DELETE";
 
-	public UserInsertView() {
+	public UserDeleteView() {
 	}
 	
 	@Override
@@ -24,12 +22,8 @@ public class UserInsertView implements View {
 	@Override
 	public void showOptions() {
 		try {
-			System.out.println("Inserisci username dell'utente:");
-			username = getInput();
-			System.out.println("Inserisci password dell'utente:");
-			password = getInput();
-			System.out.println("Inserisci tipo dell'utente:");
-			usertype = getInput();
+			System.out.println("Inserisci id dell'utente:");
+			id = Integer.parseInt(getInput());
 		} catch (Exception e) {
 			
 		}
@@ -38,9 +32,7 @@ public class UserInsertView implements View {
 	@Override
 	public void submit() {
 		request = new Request();
-		request.put("username", username);
-		request.put("password", password);
-		request.put("usertype", usertype);
+		request.put("id", id);
 		request.put("mode", mode);
 		MainDispatcher.getInstance().callAction("User", "doControl", request);
 	}

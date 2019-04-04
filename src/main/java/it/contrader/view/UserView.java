@@ -8,7 +8,7 @@ import it.contrader.controller.UserController;
 import it.contrader.main.MainDispatcher;
 import it.contrader.model.User;
 
-public class UserView implements View {
+public class UserView extends AbstractView {
 
 	private UserController usersController;
 	private Request request;
@@ -20,20 +20,19 @@ public class UserView implements View {
 
 	@Override
 	public void showResults(Request request) {
+		if (request != null) {
+			System.out.println("\n------ Gestione utenti -------\n");
+			System.out.println("ID\tUsername\tPassword\tTipoUtente");
+			System.out.print("------------------------------------------------------");
+			List<User> users = (List<User>) request.get("users");
+			for (User u: users)
+				System.out.println(u);
+			System.out.println();
+		}
 	}
 
 	@Override
 	public void showOptions() {
-		
-		System.out.println("\n------ Gestione utenti -------\n");
-		
-		System.out.println("ID\tUsername\tPassword\tTipoUtente");
-		System.out.print("------------------------------------------------------");
-		List<User> users = usersController.getAllUser();
-		System.out.println();
-		users.forEach(user -> System.out.println(user.toString()));
-		System.out.println();
-		
 		System.out.println("Scegli l'operazione da effettuare:");
 		System.out.println("[L]eggi [I]nserisci [M]odifica [C]ancella [E]sci");
 		try {
@@ -43,13 +42,7 @@ public class UserView implements View {
 		}
 		request = new Request();
 		request.put("choice", choice);
-		request.put("mode", "");
-	}
-
-	@Override
-	public String getInput() {
-		Scanner scanner = new Scanner(System.in);
-		return scanner.nextLine();
+		request.put("mode", "GETCHOICE");
 	}
 
 	@Override

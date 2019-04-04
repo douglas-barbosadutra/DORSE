@@ -9,9 +9,10 @@ import java.util.Scanner;
 import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
 
-public class HomeAdminView implements View {
+public class HomeAdminView extends AbstractView {
 
     private String choice;
+	private Request request;
 
     public void showResults(Request request) {
     	System.out.println("Benvenuto in DORSE "+request.get("username").toString());
@@ -21,30 +22,28 @@ public class HomeAdminView implements View {
     public void showOptions() {
         System.out.println("-------MENU-------\n");
         System.out.println("Seleziona cosa vuoi gestire:");
-        System.out.println("[U]tenti [E]sci");
+        System.out.println("[U]tenti, [B]uildings, [E]sci");
         this.choice = this.getInput();
     }
 
-    public void submit() {
-        if (choice.equalsIgnoreCase("U")) {
-        	System.out.println("stocazzo");
-        	MainDispatcher.getInstance().callView("User", null);
-        }
-        
-        if (choice.equalsIgnoreCase("L"))
-            MainDispatcher.getInstance().callAction("Login", "doControl", null);
-        else {
-            Request request = new Request();
+    public void submit() {    
+    	request = new Request();
+        switch (choice) {
+        case "u":
+        	//MainDispatcher.getInstance().callView("User", null);
+        	request.put("mode", "USERLIST");
+        	MainDispatcher.getInstance().callAction("User", "doControl", request);
+        	break;
+        case "b":
+        	MainDispatcher.getInstance().callView("Building", null);
+        	break;
+        case "l":
+        	MainDispatcher.getInstance().callAction("Login", "doControl", null);
+        	break;
+        default:
+        	Request request = new Request();
             request.put("choice", choice);
-            MainDispatcher.getInstance().callAction("Login", "doControl", request);
+        	MainDispatcher.getInstance().callAction("Login", "doControl", request);
         }
     }
-
-
-    public String getInput() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
-    }
-
-
 }

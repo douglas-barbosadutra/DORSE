@@ -6,15 +6,16 @@ import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
 import it.contrader.view.View;
 
-public class UserInsertView implements View {
+public class UserUpdateView implements View {
 	private Request request;
 	
+	private int id;
 	private String username;
 	private String password;
 	private String usertype;
-	private final String mode = "INSERT";
+	private final String mode = "UPDATE";
 
-	public UserInsertView() {
+	public UserUpdateView() {
 	}
 	
 	@Override
@@ -24,6 +25,8 @@ public class UserInsertView implements View {
 	@Override
 	public void showOptions() {
 		try {
+			System.out.println("Inserisci id dell'utente:");
+			id = Integer.parseInt(getInput());
 			System.out.println("Inserisci username dell'utente:");
 			username = getInput();
 			System.out.println("Inserisci password dell'utente:");
@@ -38,6 +41,7 @@ public class UserInsertView implements View {
 	@Override
 	public void submit() {
 		request = new Request();
+		request.put("id", id);
 		request.put("username", username);
 		request.put("password", password);
 		request.put("usertype", usertype);
