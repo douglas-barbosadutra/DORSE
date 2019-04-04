@@ -22,6 +22,9 @@ public class UserController implements Controller {
 		return this.usersService.getAllUser();
 	}
 
+	public boolean updateUser(User user, int idtoupdate) {
+		return this.usersService.updateUser(user, idtoupdate);
+	}
 
 	public boolean deleteUser(Integer usersId) {
 		return this.usersService.deleteUser(usersId);
@@ -57,5 +60,7 @@ public class UserController implements Controller {
 			}
 		}
 	}
+
+
 
 }

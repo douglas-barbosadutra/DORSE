@@ -83,48 +83,31 @@ public class UserDAO {
 
 	}
 
-	public boolean updateUser(User userToUpdate) {
+	public boolean updateUser(User user,int idtoupdate) {
 		Connection connection = ConnectionSingleton.getInstance();
 
 		// Check if id is present
-		if (userToUpdate.getUserId() == 0)
+		if (idtoupdate== 0)
 			return false;
-
-		User userRead = readUser(userToUpdate.getUserId());
-		if (!userRead.equals(userToUpdate)) {
-			try {
-				// Fill the userToUpdate object
-				if (userToUpdate.getUsername() == null || userToUpdate.getUsername().equals("")) {
-					userToUpdate.setUsername(userRead.getUsername());
-				}
-				
-				if (userToUpdate.getPassword() == null || userToUpdate.getPassword().equals("")) {
-					userToUpdate.setPassword(userRead.getPassword());
-				}
-				
-				if (userToUpdate.getUsertype() == null || userToUpdate.getUsertype().equals("")) {
-					userToUpdate.setUsertype(userRead.getUsertype());
-				}
-				
-				// Update the user
-				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
-				preparedStatement.setString(1, userToUpdate.getUsername());
-				preparedStatement.setString(2, userToUpdate.getPassword());
-				preparedStatement.setString(3, userToUpdate.getUsertype());
-				preparedStatement.setInt(4, userToUpdate.getUserId());
-				int a = preparedStatement.executeUpdate();
-				if (a > 0)
-					return true;
-				else
-					return false;
-
-			} catch (SQLException e) {
-				return false;
-			}
-		}
-
-		return false;
+	 
+		 
+		    user.setUserId(idtoupdate);
 		
+			try {
+				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
+				preparedStatement.setString(1, user.getUsername());
+				preparedStatement.setString(2, user.getPassword());
+				preparedStatement.setString(3, user.getUsertype());
+				preparedStatement.setInt(4, user.getUserId());
+				int a = preparedStatement.executeUpdate();
+			
+					return true;
+					}
+		
+		
+			 catch (SQLException e) {
+				return false;
+			 }	
 	}
 
 	public boolean deleteUser(Integer id) {
