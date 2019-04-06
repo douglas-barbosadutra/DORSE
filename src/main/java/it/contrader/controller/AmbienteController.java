@@ -17,6 +17,8 @@ public class AmbienteController implements Controller {
 	
 	private  AmbienteService ambienteService;
 	private Request request;
+
+	private int buildingid;
 	
 	
 	
@@ -28,10 +30,8 @@ public class AmbienteController implements Controller {
 	
 	@Override
 	public void doControl(Request request) {
-		int building;
 		String mode = (String) request.get("mode");
 		String choice = (String) request.get("choice");
-		building = Integer.parseInt(request.get("buildingid").toString());
 	
 		
 		switch(mode.toUpperCase()) {
@@ -75,10 +75,10 @@ public class AmbienteController implements Controller {
 		break;
 		*/
 	case "LISTAMBIENTE":
-		int buildingid=Integer.parseInt(request.get("buildingid").toString());
+		buildingid=Integer.parseInt(request.get("buildingid").toString());
 		List<Ambiente> listambiente =  ambienteService.showAllAmbiente(buildingid);
 		request.put("listambiente", listambiente);
-		request.put("mode", "show");
+		request.put("mode", "ok");
 		MainDispatcher.getInstance().callView("Ambiente", request);
 		break;
 		

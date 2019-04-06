@@ -1,19 +1,16 @@
 package it.contrader.view;
 
-import java.util.List;
+import java.util.*;
 
 import it.contrader.controller.BuildingController;
 import it.contrader.controller.Request;
-import it.contrader.controller.UserController;
 import it.contrader.main.MainDispatcher;
 import it.contrader.model.Building;
-import it.contrader.model.User;
 
 public class BuildingView extends AbstractView {
-
-	private BuildingController buildingController;
 	private Request request;
 	private String choice;
+	private BuildingController buildingController;
 	
 	public BuildingView() {
 		this.buildingController = new BuildingController();

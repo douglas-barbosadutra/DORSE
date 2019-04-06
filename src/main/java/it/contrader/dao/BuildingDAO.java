@@ -30,7 +30,6 @@ public class BuildingDAO {
 			ResultSet resultSet = statement.executeQuery(QUERY_ALL);
 			Building building;
 			while (resultSet.next()) {
-				building = new Building();
 				int id = resultSet.getInt("id");
 				String indirizzo = resultSet.getString("indirizzo");
 				int userid = resultSet.getInt("user");

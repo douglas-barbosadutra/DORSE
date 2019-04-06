@@ -1,25 +1,27 @@
 package it.contrader.dao;
 
 import java.sql.*;
+
 import java.util.ArrayList;
 import java.util.List;
-
-
-import it.contrader.controller.GestoreEccezioni;
 import it.contrader.main.ConnectionSingleton;
 import it.contrader.model.Ambiente;
-import it.contrader.model.Building;
+
 
 
 public class AmbienteDAO {
 
 	private final String QUERY_ALL = "SELECT * FROM ambiente WHERE building=?";
-	private final String QUERY_INSERT = "INSERT INTO ambiente (indirizzo, user) VALUES (?,?)";
-	private final String QUERY_READ = "SELECT * FROM ambiente WHERE id=?";
-
-	private final String QUERY_UPDATE = "UPDATE ambiente SET indirizzo=?, user=? WHERE id=?";
-	private final String QUERY_DELETE = "DELETE FROM ambiente WHERE id=?";
 	
+	//private final String QUERY_INSERT = "INSERT INTO ambiente (indirizzo, user) VALUES (?,?)";
+	//private final String QUERY_READ = "SELECT * FROM ambiente WHERE id=?";
+	//private final String QUERY_UPDATE = "UPDATE ambiente SET indirizzo=?, user=? WHERE id=?";
+	//private final String QUERY_DELETE = "DELETE FROM ambiente WHERE id=?";
+	
+	
+	private int building;
+	private int id;
+	private String descrizione;
 	
 
 	public AmbienteDAO() {
@@ -33,18 +35,14 @@ public class AmbienteDAO {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_ALL);
 			preparedStatement.setInt(1, buildingid);
 			ResultSet resultSet = preparedStatement.executeQuery();
-			
-			
-			
+			Ambiente ambiente;
 			while (resultSet.next()) {
-				int id = resultSet.getInt("id");
-				buildingid = resultSet.getInt("building");
-				String descrizione = resultSet.getString("tipo");
-
-				Ambiente ambiente = new Ambiente();
+				id = resultSet.getInt("id");
+				descrizione = resultSet.getString("tipo");
+				building = resultSet.getInt("building");
+				ambiente = new Ambiente(descrizione, building);
 				ambiente.setId(id);
-				ambiente.setDescrizione(descrizione);
-				ambiente.setBuilding(buildingid);
+				ambienti.add(ambiente);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -53,7 +51,7 @@ public class AmbienteDAO {
 		return ambienti;
 	}
 
-	public boolean insertBuilding(Building building,int id) {
+/*	public boolean insertBuilding(Building building,int id) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_INSERT);
@@ -134,5 +132,5 @@ public class AmbienteDAO {
 		} catch (SQLException e) {
 		}
 		return false;
-	}
+	}*/
 }
