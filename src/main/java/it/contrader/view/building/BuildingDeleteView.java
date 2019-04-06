@@ -10,7 +10,10 @@ public class BuildingDeleteView implements View {
 int id;
 	@Override
 	public void showResults(Request request) {
-		
+		if (request!=null) {
+			System.out.println("La cancellazione è andata a buon fine.");
+			MainDispatcher.getInstance().callView("User", null);
+			}
 
 	}
 

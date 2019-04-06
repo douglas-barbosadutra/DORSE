@@ -13,8 +13,10 @@ public class BuildingUpdateView extends AbstractView{
 	
 	@Override
 	public void showResults(Request request) {
-		
-		
+		if (request!=null) {
+			System.out.println("La modifica è andata a buon fine.");
+			MainDispatcher.getInstance().callView("Building", null);
+			}
 		
 	}
 
@@ -32,9 +34,9 @@ public class BuildingUpdateView extends AbstractView{
 	public void submit() {
 		
 		request = new Request();
-		request.put("idtoupdate", idtoupdate);
-		request.put("indirizzotoupdate", indirizzotoupdate);
-		request.put("useridtoupdate", useridtoupdate);
+		request.put("id", idtoupdate);
+		request.put("indirizzo", indirizzotoupdate);
+		request.put("userid", useridtoupdate);
 		request.put("mode", "UPDATE");
 		MainDispatcher.getInstance().callAction("Building", "doControl", request);
 		

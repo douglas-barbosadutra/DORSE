@@ -29,4 +29,16 @@ public BuildingService() {
 		return this.buildingDAO.insertBuilding(building);
 		
 	}
+
+
+	public boolean deleteBuilding(int id) {
+		return this.buildingDAO.deleteBuilding(id);
+		
+	}
+
+
+	public boolean updateBuilding(Building building) {
+		return this.buildingDAO.updateBuilding(building);
+		
+	}
 }

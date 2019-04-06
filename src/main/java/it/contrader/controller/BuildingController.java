@@ -44,23 +44,24 @@ public class BuildingController implements Controller {
 			request.put("result", result);
 			MainDispatcher.getInstance().callView(sub_package + "BuildingInsert", request);
 			break;
-		/*case "DELETE":
+		case "DELETE":
 			id = Integer.parseInt(request.get("id").toString());
-			userService.deleteUser(id);
+			buildingService.deleteBuilding(id);
 			request = new Request();
-			request.put("mode", "mode");
-			MainDispatcher.getInstance().callView(sub_package + "UserDelete", request);
+			request.put("mode", "ok");
+			MainDispatcher.getInstance().callView(sub_package + "BuildingDelete", request);
 			break;
 		case "UPDATE":
 			id = Integer.parseInt(request.get("id").toString());
-			username = request.get("username").toString();
-	        password = request.get("password").toString();
-	        usertype = request.get("usertype").toString();
-			userService.updateUser(id, username, password, usertype);
+			indirizzo = request.get("indirizzo").toString();
+			userid = Integer.parseInt(request.get("userid").toString());
+			building = new Building(indirizzo,userid);
+			building.setBuildingId(id);
+			buildingService.updateBuilding(building);
 			request = new Request();
 			request.put("mode", "mode");
-			MainDispatcher.getInstance().callView(sub_package + "UserUpdate", request);
-			break;*/
+			MainDispatcher.getInstance().callView(sub_package + "BuildingUpdate", request);
+			break;
 		case "BUILDINGLIST":
 			List<Building> buildings =buildingService.getAllBuilding();
 			request = new Request();
