@@ -8,7 +8,5 @@ public interface View {
 
     public void showOptions ();
 
-    public String getInput ();
-
     public void submit();
 }

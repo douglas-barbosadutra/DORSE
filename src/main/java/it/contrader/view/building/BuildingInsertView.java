@@ -18,6 +18,10 @@ public class BuildingInsertView implements View {
 		
 		@Override
 		public void showResults(Request request) {
+			if (request!=null) {
+				System.out.println("L'inserimento è andato a buon fine.");
+				MainDispatcher.getInstance().callView("Building", null);
+				}
 			
 		}
 
@@ -27,7 +31,7 @@ public class BuildingInsertView implements View {
 				System.out.println("Inserisci l'indirizzo del building:");
 				 indirizzo= getInput();
 				System.out.println("Inserisci l'id dell'utente del building");
-				 id = Integer.parseInt(getInput());
+				id = Integer.parseInt(getInput());
 			} catch (Exception e) {
 				
 			}
@@ -38,7 +42,7 @@ public class BuildingInsertView implements View {
 			request = new Request();
 			request.put("indirizzo", indirizzo);
 			request.put("id", id);
-			request.put("mode", "INSERT");
+			request.put("mode", mode);
 			MainDispatcher.getInstance().callAction("Building", "doControl", request);
 		}
 		

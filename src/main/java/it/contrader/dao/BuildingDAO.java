@@ -7,50 +7,50 @@ import java.util.List;
 
 import it.contrader.controller.GestoreEccezioni;
 import it.contrader.main.ConnectionSingleton;
-import it.contrader.model.User;
+import it.contrader.model.Building;
 
-public class UserDAO {
+public class BuildingDAO {
 
-	private final String QUERY_ALL = "SELECT * FROM user";
-	private final String QUERY_INSERT = "INSERT INTO user (username, password, usertype) VALUES (?,?,?)";
-	private final String QUERY_READ = "SELECT * FROM user WHERE idUser=?";
+	private final String QUERY_ALL = "SELECT * FROM building";
+	private final String QUERY_INSERT = "INSERT INTO building (indirizzo, user) VALUES (?,?)";
+	private final String QUERY_READ = "SELECT * FROM building WHERE id=?";
 
-	private final String QUERY_UPDATE = "UPDATE user SET username=?, password=?, usertype=? WHERE idUser=?";
-	private final String QUERY_DELETE = "DELETE FROM user WHERE idUser=?";
+	//private final String QUERY_UPDATE = "UPDATE building SET username=?, password=?, usertype=? WHERE id=?";
+	//private final String QUERY_DELETE = "DELETE FROM building WHERE id=?";
 
-	public UserDAO() {
+	public BuildingDAO() {
 
 	}
 
-	public List<User> getAllUser() {
-		List<User> usersList = new ArrayList<>();
+	public List<Building> getAllBuilding() {
+		List<Building> buildings = new ArrayList<>();
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(QUERY_ALL);
-			User user;
+			Building building;
 			while (resultSet.next()) {
-				int userId = resultSet.getInt("idUser");
-				String username = resultSet.getString("username");
-				String password = resultSet.getString("password");
-				String usertype = resultSet.getString("usertype");
-				user = new User(username, password, usertype);
-				user.setUserId(userId);
-				usersList.add(user);
+				building = new Building();
+				int id = resultSet.getInt("id");
+				String indirizzo = resultSet.getString("indirizzo");
+				int userid = resultSet.getInt("user");
+				building = new Building(indirizzo, userid);
+				building.setBuildingId(id);
+				
+				buildings.add(building);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return usersList;
+		return buildings;
 	}
 
-	public boolean insertUser(User userToInsert) {
+	public boolean insertBuilding(Building building) {
 		Connection connection = ConnectionSingleton.getInstance();
-		try {	
+		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_INSERT);
-			preparedStatement.setString(1, userToInsert.getUsername());
-			preparedStatement.setString(2, userToInsert.getPassword());
-			preparedStatement.setString(3, userToInsert.getUsertype());
+			preparedStatement.setString(1, building.getIndirizzo());
+			preparedStatement.setInt(2, building.getUserid());
 			preparedStatement.execute();
 			return true;
 		} catch (SQLException e) {
@@ -60,24 +60,22 @@ public class UserDAO {
 
 	}
 
-	public User readUser(int userId) {
+	public Building readBuilding(int id) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
-
-			
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_READ);
-			preparedStatement.setInt(1, userId);
+			preparedStatement.setInt(1, id);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			resultSet.next();
-			String username, password, usertype;
+			int userid;
+			String indirizzo;
 
-			username = resultSet.getString("username");
-			password = resultSet.getString("password");
-			usertype = resultSet.getString("usertype");
-			User user = new User(username, password, usertype);
-			user.setUserId(resultSet.getInt("idUser"));
+			indirizzo = resultSet.getString("indirizzo");
+			userid = resultSet.getInt("user");
+			Building building = new Building(indirizzo, userid);
+			building.setBuildingId(resultSet.getInt("id"));
 
-			return user;
+			return building;
 		} catch (SQLException e) {
 			GestoreEccezioni.getInstance().gestisciEccezione(e);
 			return null;
@@ -85,14 +83,14 @@ public class UserDAO {
 
 	}
 
-	public boolean updateUser(User userToUpdate) {
+	/*public boolean updateUser(User userToUpdate) {
 		Connection connection = ConnectionSingleton.getInstance();
 
 		// Check if id is present
 		if (userToUpdate.getUserId() == 0)
 			return false;
 
-		User userRead = readUser(userToUpdate.getUserId());
+		User userRead = readBuilding(userToUpdate.getUserId());
 		if (!userRead.equals(userToUpdate)) {
 			try {
 				// Fill the userToUpdate object
@@ -129,19 +127,16 @@ public class UserDAO {
 		
 	}
 
-	public boolean deleteUser (int id) {
+	public boolean deleteUser(Integer id) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
-		    PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETE);
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETE);
 			preparedStatement.setInt(1, id);
 			int n = preparedStatement.executeUpdate();
 			if (n != 0)
 				return true;
-			
 		} catch (SQLException e) {
 		}
 		return false;
-   }
-
-	
+	}*/
 }

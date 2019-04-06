@@ -26,13 +26,12 @@ public class LoginDAO {
             statement.setString(1, username);
             statement.setString(2, password);
             
-            String userType = null;
+            String userType=null;
             ResultSet rs;
             if(statement.executeQuery().next()) {
             	rs = statement.executeQuery();
             	rs.next();
             	userType = rs.getString("usertype");
-     
             }
             
             return userType;

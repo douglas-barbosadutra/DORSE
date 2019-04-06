@@ -9,7 +9,7 @@ public class BuildingReadView  extends AbstractView{
 	
 	private int id;
 	private Request request;
-	private String mode = "READ";
+	private final String mode = "READ";
 
 	@Override
 	public void showResults(Request request) {
