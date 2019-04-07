@@ -3,6 +3,7 @@ package it.contrader.view;
 import java.util.List;
 
 
+
 import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
 import it.contrader.model.Ambiente;
@@ -15,14 +16,12 @@ public class AmbienteView extends AbstractView {
 	
 	@Override
 	public void showResults(Request request) {
-		mode = (String) request.get("mode").toString();
 		
-		switch (mode) {
-		
-		case "ok":
+		if (request != null) {
+			mode = (String) request.get("mode").toString();
 			int building = (int) request.get("buildingid");
 			System.out.println("\n------ Gestione Ambienti del building  " + building + "  -------\n");
-			System.out.println("ID\tDescrizione\t");
+			System.out.println("ID\tDescrizione\tBuilding ID");
 			System.out.print("------------------------------------------------------\n");
 			
 			List<Ambiente> list = (List<Ambiente>) request.get("listambiente");
@@ -30,13 +29,8 @@ public class AmbienteView extends AbstractView {
 			for (Ambiente a : list) {
 				System.out.println(a);
 			    System.out.println();
-			    }
-		break;
-		
-		default: break;
+			}
 		}
-		
-		
 	}
 
 	@Override
@@ -55,7 +49,7 @@ public class AmbienteView extends AbstractView {
 		request = new Request();
 		request.put("choice", choice);
 		request.put("mode", "GETCHOICE");
-		MainDispatcher.getInstance().callAction("Building", "doControl", this.request);
+		MainDispatcher.getInstance().callAction("Ambiente", "doControl", this.request);
 		
 	}
 

@@ -2,13 +2,14 @@ package it.contrader.controller;
 
 import java.util.List;
 
+
 import it.contrader.controller.Controller;
 import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
 import it.contrader.model.Ambiente;
-import it.contrader.model.Building;
 import it.contrader.service.AmbienteService;
-import it.contrader.service.BuildingService;
+import javafx.beans.property.IntegerProperty;
+
 
 public class AmbienteController implements Controller {
 	
@@ -16,11 +17,15 @@ public class AmbienteController implements Controller {
 	private static String sub_package = "ambiente.";
 	
 	private  AmbienteService ambienteService;
-	private Request request;
+
 
 	private int buildingid;
+
+	private int ambienteid;
+
+	private String descrizione;
 	
-	
+	int id;
 	
 	
 	public AmbienteController() {
@@ -34,46 +39,48 @@ public class AmbienteController implements Controller {
 		String choice = (String) request.get("choice");
 	
 		
+		
+
 		switch(mode.toUpperCase()) {
-	/*case "READ":
-		buildingid = Integer.parseInt(request.get("id").toString());
-		Building building = buildingService.readBuilding(buildingid);
-		request.put("building", building);
+	case "READ":
+		buildingid = Integer.parseInt(request.get("buildingid").toString());
+		ambienteid =Integer.parseInt(request.get("ambienteid").toString());
+		Ambiente ambiente = ambienteService.readAmbiente(buildingid,ambienteid);
 		request = new Request();
-		request.put("building", building);
-		MainDispatcher.getInstance().callView(sub_package + "BuildingRead", request);
+		request.put("ambiente", ambiente);
+		MainDispatcher.getInstance().callView(sub_package + "AmbienteRead", request);
 	
 		break;
 	case "INSERT":
-		String indirizzo = request.get("indirizzo").toString();
-		int id = (int) request.get("id");
-        buildingService.insertBuilding(indirizzo, id);
+		buildingid = Integer.parseInt(request.get("buildingid").toString());
+		descrizione = request.get("descrizione").toString();
+		Ambiente ambienteToInsert = new Ambiente(descrizione,buildingid);
+        ambienteService.insertAmbiente(ambienteToInsert);
         request = new Request();
-        request = null;
-        MainDispatcher.getInstance().callView("Building", request);
+		request.put("mode", "ok");
+        MainDispatcher.getInstance().callView(sub_package + "AmbienteInsert", request);
      
 		break;
 	case "DELETE":
-		id = Integer.parseInt(request.get("id").toString());
-		buildingService.deleteUser(id);
+		ambienteid = Integer.parseInt(request.get("ambienteid").toString());
+		ambienteService.deleteAmbiente(ambienteid);
 		request = new Request();
-        request = null;
-        MainDispatcher.getInstance().callView("Building", request);
+		request.put("mode", "ok");
+		MainDispatcher.getInstance().callView(sub_package + "AmbienteDelete", request);
 		break;
-	case "UPDATE":
-		userid = Integer.parseInt(request.get("useridtoupdate").toString());
-		id = Integer.parseInt(request.get("idtoupdate").toString());
-		indirizzo = (String) request.get("indirizzotoupdate");
 		
-		Building buildingToUpdate = new Building(indirizzo,userid);
-		buildingToUpdate.setBuildingId(id);
-        
-        buildingService.updateBuilding(buildingToUpdate);
-        
-        request = null;
-        MainDispatcher.getInstance().callView("Building", request);
+	case "UPDATE":
+		buildingid = Integer.parseInt(request.get("buildingid").toString());
+		id = Integer.parseInt(request.get("id").toString());
+		descrizione = (String) request.get("descrizione");
+		Ambiente ambienteToUpdate = new Ambiente(descrizione,buildingid);
+		ambienteToUpdate.setId(id);
+        ambienteService.updateAmbiente(ambienteToUpdate);
+        request = new Request();
+		request.put("mode", "ok");
+        MainDispatcher.getInstance().callView(sub_package +  "AmbienteUpdate", request);
 		break;
-		*/
+		
 	case "LISTAMBIENTE":
 		buildingid=Integer.parseInt(request.get("buildingid").toString());
 		List<Ambiente> listambiente =  ambienteService.showAllAmbiente(buildingid);
@@ -82,28 +89,31 @@ public class AmbienteController implements Controller {
 		MainDispatcher.getInstance().callView("Ambiente", request);
 		break;
 		
-	/*case "GETCHOICE":
+	case "GETCHOICE":
 		switch (choice.toUpperCase()) {
 		case "L":
-			MainDispatcher.getInstance().callView(sub_package + "BuildingRead", null);
+			MainDispatcher.getInstance().callView(sub_package + "AmbienteRead", null);
 			break;
 		case "I":
-			MainDispatcher.getInstance().callView(sub_package + "BuildingInsert", null);
+			MainDispatcher.getInstance().callView(sub_package + "AmbienteInsert", null);
 			break;
 		case "M":
-			MainDispatcher.getInstance().callView(sub_package + "BuildingUpdate", null);
+			MainDispatcher.getInstance().callView(sub_package + "AmbienteUpdate", null);
 			break;
 		case "C":
-			MainDispatcher.getInstance().callView(sub_package + "BuildingDelete", null);
+			MainDispatcher.getInstance().callView(sub_package + "AmbienteDelete", null);
 			break;
 		case "E":
 			MainDispatcher.getInstance().callView("Login", null);
+			break;
+		case "B":
+			MainDispatcher.getInstance().callView("HomeOperatore", null);
 			break;
 		default:
 			MainDispatcher.getInstance().callView("Login", null);
 		}
 	default:
-		MainDispatcher.getInstance().callView("Login", null);*/
+		MainDispatcher.getInstance().callView("Login", null);
 		}
 	}
 

@@ -4,6 +4,8 @@ import java.sql.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import it.contrader.controller.GestoreEccezioni;
 import it.contrader.main.ConnectionSingleton;
 import it.contrader.model.Ambiente;
 
@@ -12,16 +14,11 @@ import it.contrader.model.Ambiente;
 public class AmbienteDAO {
 
 	private final String QUERY_ALL = "SELECT * FROM ambiente WHERE building=?";
+	private final String QUERY_INSERT = "INSERT INTO ambiente (tipo, building) VALUES (?,?)";
+	private final String QUERY_READ = "SELECT * FROM ambiente WHERE building=? AND  id=?";
+	private final String QUERY_UPDATE = "UPDATE ambiente SET tipo=?, building=? WHERE id=?";
+	private final String QUERY_DELETE = "DELETE FROM ambiente WHERE id=?";
 	
-	//private final String QUERY_INSERT = "INSERT INTO ambiente (indirizzo, user) VALUES (?,?)";
-	//private final String QUERY_READ = "SELECT * FROM ambiente WHERE id=?";
-	//private final String QUERY_UPDATE = "UPDATE ambiente SET indirizzo=?, user=? WHERE id=?";
-	//private final String QUERY_DELETE = "DELETE FROM ambiente WHERE id=?";
-	
-	
-	private int building;
-	private int id;
-	private String descrizione;
 	
 
 	public AmbienteDAO() {
@@ -37,9 +34,9 @@ public class AmbienteDAO {
 			ResultSet resultSet = preparedStatement.executeQuery();
 			Ambiente ambiente;
 			while (resultSet.next()) {
-				id = resultSet.getInt("id");
-				descrizione = resultSet.getString("tipo");
-				building = resultSet.getInt("building");
+				int id = resultSet.getInt("id");
+				String descrizione = resultSet.getString("tipo");
+				int building = resultSet.getInt("building");
 				ambiente = new Ambiente(descrizione, building);
 				ambiente.setId(id);
 				ambienti.add(ambiente);
@@ -51,12 +48,12 @@ public class AmbienteDAO {
 		return ambienti;
 	}
 
-/*	public boolean insertBuilding(Building building,int id) {
+public boolean insertAmbiente(Ambiente ambiente) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_INSERT);
-			preparedStatement.setString(1, building.getIndirizzo());
-			preparedStatement.setInt(2, id);
+			preparedStatement.setString(1, ambiente.getDescrizione());
+			preparedStatement.setInt(2, ambiente.getBuildingid());
 			preparedStatement.execute();
 			
 			return true;
@@ -68,25 +65,23 @@ public class AmbienteDAO {
 
 	}
 
-	public Building readBuilding(int buildingid) {
+	public Ambiente readAmbiente(int buildingid, int ambienteid) {
 		Connection connection = ConnectionSingleton.getInstance();
 		
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_READ);
 			preparedStatement.setInt(1,buildingid);
+			preparedStatement.setInt(2,ambienteid);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			resultSet.next();
 			
-			String indirizzo;
-			int userid;
+			String descrizione= resultSet.getString("tipo");
+			buildingid = resultSet.getInt("building");
 			
-			indirizzo = resultSet.getString("indirizzo");
-			userid = resultSet.getInt("user");
-			
-			Building building = new Building (indirizzo,userid);
-			building.setBuildingId(resultSet.getInt("id"));
+			Ambiente ambiente = new Ambiente (descrizione,buildingid);
+			ambiente.setId(resultSet.getInt("id"));
 		
-			return building;
+			return ambiente;
 	
 		} 
 		
@@ -98,30 +93,30 @@ public class AmbienteDAO {
 
 	}
 
-	public boolean updateBuilding(Building buildingToUpdate) {
+	public boolean updateAmbiente(Ambiente ambienteToUpdate) {
 		Connection connection = ConnectionSingleton.getInstance();
-       
 			try {
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
-				preparedStatement.setString(1, buildingToUpdate.getIndirizzo());
-				preparedStatement.setInt(2, buildingToUpdate.getIduser());
-				preparedStatement.setInt(3, buildingToUpdate.getBuildingId());
-				
+				preparedStatement.setString(1, ambienteToUpdate.getDescrizione());
+				preparedStatement.setInt(2, ambienteToUpdate.getBuildingid());
+				preparedStatement.setInt(3, ambienteToUpdate.getId());
 				preparedStatement.executeUpdate();
-				} 
+			} 
+			
 			catch (SQLException e) {
+				System.out.println("qualcosa è andato storto...\n");
 				return false;
+				
 			}
 			
 					return true;
 			
 	}		
-			
-	
 
 
 
-	public boolean deleteBuilding(Integer id) {
+
+	public boolean deleteAmbiente(int id) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETE);
@@ -132,5 +127,5 @@ public class AmbienteDAO {
 		} catch (SQLException e) {
 		}
 		return false;
-	}*/
+	}
 }

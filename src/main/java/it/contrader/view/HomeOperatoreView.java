@@ -12,9 +12,9 @@ public class HomeOperatoreView extends AbstractView {
 	
 	@Override
 	public void showResults(Request request) {
-		
+		if(request != null) {
 		System.out.println("Benvenuto in DORSE "+request.get("username").toString());
-	
+		}
 	}
 
 	@Override
@@ -28,6 +28,13 @@ public class HomeOperatoreView extends AbstractView {
 	        case "a":
 	        	System.out.println("Seleziona il building:");
 	        this.buildingid = Integer.parseInt(getInput());
+	        break;
+	        case "e":
+	        	MainDispatcher.getInstance().callAction("Login", "doControl", null);
+	        	break;
+	        	
+	        default : MainDispatcher.getInstance().callAction("Login", "doControl", null);
+        		break;
 	        }
 		
 
@@ -42,6 +49,11 @@ public class HomeOperatoreView extends AbstractView {
             request.put("mode", "LISTAMBIENTE");
             request.put("buildingid", buildingid);
         	MainDispatcher.getInstance().callAction("Ambiente", "doControl", request);
+        break;
+        
+        case "e":
+        	MainDispatcher.getInstance().callAction("Login", "doControl", null);
+        	break;
         	
         default:
         	MainDispatcher.getInstance().callAction("Login", "doControl", null);

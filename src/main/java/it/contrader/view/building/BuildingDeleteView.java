@@ -1,18 +1,21 @@
 package it.contrader.view.building;
 
-import java.util.Scanner;
+
 
 import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
-import it.contrader.view.View;
+import it.contrader.view.AbstractView;
 
-public class BuildingDeleteView implements View {
+
+public class BuildingDeleteView extends AbstractView {
+	
 int id;
+
 	@Override
 	public void showResults(Request request) {
 		if (request!=null) {
 			System.out.println("La cancellazione è andata a buon fine.");
-			MainDispatcher.getInstance().callView("User", null);
+			MainDispatcher.getInstance().callView("Building", null);
 			}
 
 	}
@@ -33,8 +36,5 @@ int id;
 		MainDispatcher.getInstance().callAction("Building", "doControl", request);
 
 	}
-	public String getInput() {
-		Scanner scanner = new Scanner(System.in);
-		return scanner.nextLine().trim();
-	}
+
 }

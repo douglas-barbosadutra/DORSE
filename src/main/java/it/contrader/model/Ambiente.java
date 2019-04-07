@@ -15,7 +15,7 @@ public class Ambiente {
 	public Ambiente(String descrizione, int buildingid) {
 		super ();
 		this.descrizione = descrizione;
-		this.setBuildingid(buildingid);
+		this.buildingid = buildingid;
 		
 	}
 	

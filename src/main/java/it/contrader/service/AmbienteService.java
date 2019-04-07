@@ -20,6 +20,29 @@ public class AmbienteService {
 		return this.ambienteDAO.showAllAmbiente(id);
 		
 	}
+	
+	public Ambiente readAmbiente(int buildingid, int ambienteid) {
+		
+		return this.ambienteDAO.readAmbiente(buildingid, ambienteid);
+	}
+
+
+	public boolean insertAmbiente(Ambiente ambiente) {
+		return this.ambienteDAO.insertAmbiente(ambiente);
+		
+	}
+
+
+	public boolean deleteAmbiente(int ambienteid) {
+		return this.ambienteDAO.deleteAmbiente(ambienteid);
+		
+	}
+
+
+	public boolean updateAmbiente(Ambiente ambienteToUpdate) {
+		return this.ambienteDAO.updateAmbiente(ambienteToUpdate);
+		
+	}
 
 	
 	

@@ -1,11 +1,11 @@
 package it.contrader.view.building;
-import java.util.Scanner;
 import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
-import it.contrader.view.View;
+import it.contrader.view.AbstractView;
 
 
-public class BuildingInsertView implements View {
+
+public class BuildingInsertView extends AbstractView{
 
 		private Request request;
 		private String indirizzo;
@@ -46,9 +46,6 @@ public class BuildingInsertView implements View {
 			MainDispatcher.getInstance().callAction("Building", "doControl", request);
 		}
 		
-		public String getInput() {
-			Scanner scanner = new Scanner(System.in);
-			return scanner.nextLine().trim();
-		}
+
 
 }
