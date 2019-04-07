@@ -4,8 +4,10 @@ import java.util.Scanner;
 
 public abstract class AbstractView implements View {
 
+	private Scanner scanner;
+
 	public String getInput() {
-		Scanner scanner = new Scanner(System.in);
+		scanner = new Scanner(System.in);
 		return scanner.nextLine();
 	}
 }

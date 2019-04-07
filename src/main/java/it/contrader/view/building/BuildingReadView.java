@@ -6,7 +6,7 @@ import it.contrader.model.Building;
 import it.contrader.view.AbstractView;
 
 public class BuildingReadView  extends AbstractView{
-	
+
 	private int id;
 	private Request request;
 	private final String mode = "READ";
@@ -16,7 +16,7 @@ public class BuildingReadView  extends AbstractView{
 		if (request != null) {
 			Building building = (Building) request.get("building");
 			System.out.println(building);
-			
+
 			MainDispatcher.getInstance().callView("Building", null);
 		}
 	}
@@ -33,6 +33,6 @@ public class BuildingReadView  extends AbstractView{
 		request.put("id", id);
 		request.put("mode", mode);
 		MainDispatcher.getInstance().callAction("Building", "doControl", request);
-		
+
 	}
 }

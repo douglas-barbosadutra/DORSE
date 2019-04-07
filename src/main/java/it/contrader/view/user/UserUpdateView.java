@@ -1,14 +1,14 @@
 package it.contrader.view.user;
 
-import java.util.Scanner;
 
 import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
-import it.contrader.view.View;
+import it.contrader.view.AbstractView;
 
-public class UserUpdateView implements View {
+
+public class UserUpdateView extends AbstractView {
 	private Request request;
-	
+
 	private int id;
 	private String username;
 	private String password;
@@ -17,12 +17,12 @@ public class UserUpdateView implements View {
 
 	public UserUpdateView() {
 	}
-	
+
 	@Override
 	public void showResults(Request request) {
 		if (request!=null) {
-		System.out.println("La modifica è andata a buon fine.");
-		MainDispatcher.getInstance().callView("User", null);
+			System.out.println("La modifica è andata a buon fine.\n");
+			MainDispatcher.getInstance().callView("User", null);
 		}
 	}
 
@@ -38,10 +38,10 @@ public class UserUpdateView implements View {
 			System.out.println("Inserisci tipo dell'utente:");
 			usertype = getInput();
 		} catch (Exception e) {
-			
+
 		}
 	}
-	
+
 	@Override
 	public void submit() {
 		request = new Request();
@@ -52,9 +52,5 @@ public class UserUpdateView implements View {
 		request.put("mode", mode);
 		MainDispatcher.getInstance().callAction("User", "doControl", request);
 	}
-	
-	public String getInput() {
-		Scanner scanner = new Scanner(System.in);
-		return scanner.nextLine().trim();
-	}
+
 }

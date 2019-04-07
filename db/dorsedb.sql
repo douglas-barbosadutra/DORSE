@@ -29,9 +29,8 @@ CREATE TABLE `ambiente` (
   `tipo` varchar(45) DEFAULT 'stanza generica',
   `building` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `building_idx` (`building`),
-  CONSTRAINT `building` FOREIGN KEY (`building`) REFERENCES `building` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `building_idx` (`building`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +39,7 @@ CREATE TABLE `ambiente` (
 
 LOCK TABLES `ambiente` WRITE;
 /*!40000 ALTER TABLE `ambiente` DISABLE KEYS */;
-INSERT INTO `ambiente` VALUES (1,'cucina',1),(2,'bagno',1),(3,'cucina',2),(4,'bagno',2);
+INSERT INTO `ambiente` VALUES (1,'camera da letto',1),(2,'bagno',1),(3,'cucina',2),(4,'bagno',2),(6,'cucina',1),(7,'camera da letto',2),(8,'stanza del sesso',2);
 /*!40000 ALTER TABLE `ambiente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -56,9 +55,8 @@ CREATE TABLE `building` (
   `indirizzo` varchar(45) NOT NULL,
   `user` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `user_idx` (`user`),
-  CONSTRAINT `user` FOREIGN KEY (`user`) REFERENCES `user` (`iduser`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `user_idx` (`user`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +65,7 @@ CREATE TABLE `building` (
 
 LOCK TABLES `building` WRITE;
 /*!40000 ALTER TABLE `building` DISABLE KEYS */;
-INSERT INTO `building` VALUES (1,'via dei matti',1),(2,'via di prova',2);
+INSERT INTO `building` VALUES (1,'Via dei Matti 0',1),(2,'Via dalle Palle 2',2),(3,'Vicolo Corto 5',9),(4,'Parco della vittoria',10);
 /*!40000 ALTER TABLE `building` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -85,7 +83,7 @@ CREATE TABLE `user` (
   `usertype` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`iduser`),
   UNIQUE KEY `username_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,7 +92,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'admin1','admin1','admin'),(2,'user1','user1','user'),(5,'admin2','admin2','admin'),(6,'user2','user2','user'),(7,'Vittorio','Valent','admin'),(8,'Katia','Katia','admin'),(9,'Girolamo','Girolamo','admin'),(10,'op1','op1','operatore'),(11,'op2','op2','operatore'),(14,'op4','op4','admin');
+INSERT INTO `user` VALUES (1,'admin1','admin1','admin'),(2,'user1','user1','user'),(3,'admin2','admin2','admin'),(4,'user2','user2','user'),(5,'Vittorio','Vittorio','admin'),(6,'Katia','Katia','admin'),(7,'Girolamo','Girolamo','admin'),(8,'op1','op1','operatore'),(9,'op2','op2','operatore'),(10,'user3','user3','user');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -107,4 +105,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-06 16:26:13
+-- Dump completed on 2019-04-07 14:44:37

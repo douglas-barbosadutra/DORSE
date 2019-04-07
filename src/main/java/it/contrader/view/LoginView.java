@@ -1,6 +1,6 @@
 package it.contrader.view;
 
-import java.util.Scanner;
+
 
 import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
@@ -11,14 +11,14 @@ public class LoginView extends AbstractView {
 	private String password;
 
 	public void showResults(Request request) {
-		
+
 	}
 
 	public void showOptions() {
 		System.out.println("----- .:LOGIN:. ----");
-		System.out.println("Nome utente:");
+		System.out.println(" Nome utente:");
 		this.username = getInput();
-		System.out.println("Password:");
+		System.out.println(" Password:");
 		this.password = getInput();
 	}
 

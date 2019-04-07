@@ -8,15 +8,15 @@ import it.contrader.view.AbstractView;
 
 
 public class BuildingDeleteView extends AbstractView {
-	
-int id;
+
+	int id;
 
 	@Override
 	public void showResults(Request request) {
 		if (request!=null) {
-			System.out.println("La cancellazione è andata a buon fine.");
+			System.out.println("La cancellazione è andata a buon fine.\n");
 			MainDispatcher.getInstance().callView("Building", null);
-			}
+		}
 
 	}
 
@@ -24,7 +24,7 @@ int id;
 	public void showOptions() {
 		System.out.print("Inserire l'ID del building da eliminare:\n");
 		id=Integer.parseInt(getInput());
-		
+
 
 	}
 

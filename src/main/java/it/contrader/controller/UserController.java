@@ -9,7 +9,7 @@ import it.contrader.service.UserService;
 
 public class UserController implements Controller {
 
-	
+
 	private static String sub_package = "user.";
 	private UserService userService;
 
@@ -22,12 +22,12 @@ public class UserController implements Controller {
 	public void doControl(Request request) {
 		String mode = (String) request.get("mode");
 		String choice = (String) request.get("choice");
-		
+
 		int id;
 		String username;
 		String password;
 		String usertype;
-		
+
 		switch (mode) {
 		case "READ":
 			id = Integer.parseInt(request.get("id").toString());
@@ -37,8 +37,8 @@ public class UserController implements Controller {
 			break;
 		case "INSERT":
 			username = request.get("username").toString();
-	        password = request.get("password").toString();
-	        usertype = request.get("usertype").toString();
+			password = request.get("password").toString();
+			usertype = request.get("usertype").toString();
 			userService.insertUser(username, password, usertype);
 			request = new Request();
 			request.put("mode", "mode");
@@ -54,8 +54,8 @@ public class UserController implements Controller {
 		case "UPDATE":
 			id = Integer.parseInt(request.get("id").toString());
 			username = request.get("username").toString();
-	        password = request.get("password").toString();
-	        usertype = request.get("usertype").toString();
+			password = request.get("password").toString();
+			usertype = request.get("usertype").toString();
 			userService.updateUser(id, username, password, usertype);
 			request = new Request();
 			request.put("mode", "mode");
@@ -67,9 +67,9 @@ public class UserController implements Controller {
 			request.put("users", users);
 			MainDispatcher.getInstance().callView("User", request);
 			break;
-			
+
 		case "GETCHOICE":
-		
+
 			switch (choice.toUpperCase()) {
 			case "L":
 				MainDispatcher.getInstance().callView(sub_package + "UserRead", null);
@@ -86,7 +86,7 @@ public class UserController implements Controller {
 			case "E":
 				MainDispatcher.getInstance().callView("Login", null);
 				break;
-				
+
 			case "B":
 				MainDispatcher.getInstance().callView("HomeAdmin", null);
 				break;

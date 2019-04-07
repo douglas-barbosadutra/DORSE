@@ -4,17 +4,17 @@ public class Item {
 	int id;
 	boolean stato;
 	int codice;
-    String descrizione;
+	String descrizione;
 
-    public Item() {
-		
+	public Item() {
+
 	}
-	
+
 	public Item(int codice, String descrizione) {
 		this.codice = codice;
 		this.descrizione = descrizione;		
 	}
-	
+
 	public int getItemId() {
 		return id;
 	}
@@ -76,8 +76,8 @@ public class Item {
 		return true;
 	}
 
-	
-	
+
+
 
 }
 

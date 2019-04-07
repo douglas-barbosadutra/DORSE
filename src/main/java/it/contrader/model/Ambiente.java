@@ -7,19 +7,19 @@ public class Ambiente {
 	private String descrizione;
 	private List<Item> items;
 	private int buildingid;
-	
-    public Ambiente() {
-		
+
+	public Ambiente() {
+
 	}
-	
+
 	public Ambiente(String descrizione, int buildingid) {
 		super ();
 		this.descrizione = descrizione;
 		this.buildingid = buildingid;
-		
+
 	}
-	
-	
+
+
 
 	public int getId() {
 		return id;
@@ -47,7 +47,7 @@ public class Ambiente {
 
 	@Override
 	public String toString() {
-		return "Ambiente [id=" + id + ", descrizione=" + descrizione + ", ID building=" + buildingid + "]";
+		return   id + "\t\t" + descrizione + "\t\t\t" + buildingid ;
 	}
 
 
@@ -82,7 +82,7 @@ public class Ambiente {
 	public void setBuildingid(int buildingid) {
 		this.buildingid = buildingid;
 	}
-	
 
-	
+
+
 }

@@ -37,7 +37,7 @@ public class AmbienteReadView extends AbstractView  {
 		request.put("ambienteid", ambienteid);
 		request.put("mode", "READ");
 		MainDispatcher.getInstance().callAction("Ambiente", "doControl", request);
-		
+
 	}
 
 }

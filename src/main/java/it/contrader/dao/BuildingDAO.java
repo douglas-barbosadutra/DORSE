@@ -35,7 +35,7 @@ public class BuildingDAO {
 				int userid = resultSet.getInt("user");
 				building = new Building(indirizzo, userid);
 				building.setBuildingId(id);
-				
+
 				buildings.add(building);
 			}
 		} catch (SQLException e) {
@@ -96,12 +96,12 @@ public class BuildingDAO {
 				if (buildingToUpdate.getIndirizzo() == null || buildingToUpdate.getIndirizzo().equals("")) {
 					buildingToUpdate.setIndirizzo(userRead.getIndirizzo());
 				}
-				
-				
+
+
 				if (buildingToUpdate.getUserid() == 0 ) {
 					buildingToUpdate.setUserid(userRead.getUserid());
 				}
-				
+
 				// Update the user
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
 				preparedStatement.setString(1, buildingToUpdate.getIndirizzo());
@@ -119,7 +119,7 @@ public class BuildingDAO {
 		}
 
 		return false;
-		
+
 	}
 
 	public boolean deleteBuilding(int id) {

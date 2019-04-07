@@ -4,9 +4,9 @@ import it.contrader.controller.Request;
 
 public interface View {
 
-    public void showResults (Request request);
+	public void showResults (Request request);
 
-    public void showOptions ();
+	public void showOptions ();
 
-    public void submit();
+	public void submit();
 }

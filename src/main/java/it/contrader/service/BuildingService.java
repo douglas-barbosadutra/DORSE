@@ -8,11 +8,11 @@ import it.contrader.model.Building;
 
 public class BuildingService {
 
-public BuildingDAO buildingDAO;
+	public BuildingDAO buildingDAO;
 
-public BuildingService() {
-	this.buildingDAO= new BuildingDAO();
-}
+	public BuildingService() {
+		this.buildingDAO= new BuildingDAO();
+	}
 
 
 	public List<Building> getAllBuilding() {
@@ -27,18 +27,18 @@ public BuildingService() {
 
 	public boolean insertBuilding(Building building) {
 		return this.buildingDAO.insertBuilding(building);
-		
+
 	}
 
 
 	public boolean deleteBuilding(int id) {
 		return this.buildingDAO.deleteBuilding(id);
-		
+
 	}
 
 
 	public boolean updateBuilding(Building building) {
 		return this.buildingDAO.updateBuilding(building);
-		
+
 	}
 }

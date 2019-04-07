@@ -7,20 +7,20 @@ public class Admin extends User{
 	List<Utente> utenti;
 	List<Operatore> operatori;
 	List<Building> buildings;
-	
+
 	public Admin () {
-		
+
 	}
 
 	public Admin(String nome, String cognome, String username, String password, Date birthdate, String telnumber, List<Utente> utenti, List<Operatore> operatori, List<Building> buildings) {
-	    super();
+		super();
 		this.utenti = utenti;
 		this.operatori = operatori;
 		this.buildings = buildings;
 	}
 
 
-	
+
 	public int getAdminId() {
 		return id;
 	}
@@ -32,20 +32,20 @@ public class Admin extends User{
 	public List<Utente> getUtenti() {
 		return utenti;
 	}
-	
+
 	public void setUtenti(List<Utente> utenti) {
 		this.utenti = utenti;
 	}
-	
+
 	public List<Building> getBuildings() {
 		return buildings;
 	}
 	public void setBuildings(List<Building> buildings) {
 		this.buildings = buildings;
 	}
-	
-	
-	
+
+
+
 
 	@Override
 	public String toString() {
@@ -86,6 +86,6 @@ public class Admin extends User{
 		return true;
 	}
 
-	
-	
+
+
 }

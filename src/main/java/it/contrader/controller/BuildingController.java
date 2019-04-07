@@ -8,9 +8,9 @@ import it.contrader.service.BuildingService;
 
 
 public class BuildingController implements Controller {
-	
+
 	private static String sub_package = "building.";
-	
+
 	private BuildingService buildingService;
 
 	public BuildingController() {
@@ -20,15 +20,15 @@ public class BuildingController implements Controller {
 
 	@Override
 	public void doControl(Request request) {
-		
+
 		String mode = (String) request.get("mode");
 		String choice = (String) request.get("choice");
-		
+
 		int id;
 		String indirizzo;
 		int userid;
 		Building building;
-		
+
 		switch (mode) {
 		case "READ":
 			id = Integer.parseInt(request.get("id").toString());
@@ -38,8 +38,8 @@ public class BuildingController implements Controller {
 			break;
 		case "INSERT":
 			indirizzo = request.get("indirizzo").toString();
-	        userid = Integer.parseInt(request.get("id").toString());
-	        building = new Building(indirizzo, userid);
+			userid = Integer.parseInt(request.get("id").toString());
+			building = new Building(indirizzo, userid);
 			boolean result=buildingService.insertBuilding(building);
 			request.put("result", result);
 			MainDispatcher.getInstance().callView(sub_package + "BuildingInsert", request);
@@ -67,10 +67,12 @@ public class BuildingController implements Controller {
 			request = new Request();
 			request.put("buildings", buildings);
 			MainDispatcher.getInstance().callView("Building", request);
+
+
 			break;
-			
+
 		case "GETCHOICE":
-		
+
 			switch (choice.toUpperCase()) {
 			case "L":
 				MainDispatcher.getInstance().callView(sub_package + "BuildingRead", null);
@@ -87,7 +89,7 @@ public class BuildingController implements Controller {
 			case "E":
 				MainDispatcher.getInstance().callView("Login", null);
 				break;
-				
+
 			case "B":
 				MainDispatcher.getInstance().callView("HomeAdmin", null);
 				break;
@@ -98,7 +100,7 @@ public class BuildingController implements Controller {
 			System.out.println("controller default \n");
 			MainDispatcher.getInstance().callView("Login", request);
 		}
-		
+
 	}
 
 

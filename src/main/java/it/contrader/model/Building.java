@@ -10,15 +10,15 @@ public class Building {
 	private List<Ambiente> ambienti;
 	private String user;
 	private int userid;
-	
+
 	public Building() {
-		
+
 	}
-	
+
 	public Building(String indirizzo, int userid) {
 		this.indirizzo = indirizzo;
 		this.userid = userid;
-		
+
 	}
 
 	public int getBuildingId() {
@@ -53,11 +53,11 @@ public class Building {
 		this.ambienti = ambienti;
 	}
 
-	
-	
+
+
 	@Override
 	public String toString() {
-		return "Building [buildingId=" + id + ", indirizzo=" + indirizzo + ", utente=" + userid + "]";
+		return  id + "\t\t" + indirizzo + "\t\t" + userid ;
 	}
 
 
@@ -104,9 +104,9 @@ public class Building {
 	public void setUserid(int userid) {
 		this.userid = userid;
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 }

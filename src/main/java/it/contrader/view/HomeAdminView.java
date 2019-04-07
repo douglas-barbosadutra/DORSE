@@ -16,15 +16,15 @@ public class HomeAdminView extends AbstractView {
 
     public void showResults(Request request) {
     	if(request!=null) {
-    	System.out.println("Benvenuto in DORSE "+request.get("username").toString());
+    	System.out.println("\n Benvenuto in DORSE "+request.get("username").toString() + "\n");
     	}
     }
 
 
     public void showOptions() {
-        System.out.println("-------MENU-------\n");
-        System.out.println("Seleziona cosa vuoi gestire:");
-        System.out.println("[U]tenti, [B]uildings, [E]sci");
+        System.out.println("-------------MENU------------\n");
+        System.out.println(" Seleziona cosa vuoi gestire:");
+        System.out.println("[U]tenti   [B]uildings   [E]sci");
         choice = this.getInput();
     }
 

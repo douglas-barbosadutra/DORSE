@@ -13,22 +13,22 @@ public class AmbienteUpdateView extends AbstractView {
 
 	@Override
 	public void showResults(Request request) {
-	
+
 		if (request!=null) {
-			System.out.println("La modifica è andata a buon fine.");
+			System.out.println("La modifica è andata a buon fine.\n");
 			MainDispatcher.getInstance().callView("Ambiente", null);
-			}
+		}
 	}
 
 	@Override
 	public void showOptions() {
 		System.out.println("Inserire l'ID dell'ambiente da modificare:");
-	    idtoupdate=Integer.parseInt(getInput().toString());
-	    System.out.println("Inserire la nuova decrizione:");
-	    descrizionetoupdate=getInput().toString();
-	    System.out.println("Inserire il nuovo building ID");
-	    buildingidtoupdate=Integer.parseInt(getInput().toString());
-		
+		idtoupdate=Integer.parseInt(getInput().toString());
+		System.out.println("Inserire la nuova decrizione:");
+		descrizionetoupdate=getInput().toString();
+		System.out.println("Inserire il nuovo building ID");
+		buildingidtoupdate=Integer.parseInt(getInput().toString());
+
 	}
 
 	@Override
@@ -39,8 +39,8 @@ public class AmbienteUpdateView extends AbstractView {
 		request.put("buildingid", buildingidtoupdate);
 		request.put("mode", "UPDATE");
 		MainDispatcher.getInstance().callAction("Ambiente", "doControl", request);
-		
-		
+
+
 	}
 
 }
