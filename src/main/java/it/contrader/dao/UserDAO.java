@@ -3,7 +3,7 @@ package it.contrader.dao;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
+
 
 import it.contrader.controller.GestoreEccezioni;
 import it.contrader.main.ConnectionSingleton;
@@ -44,13 +44,13 @@ public class UserDAO {
 		return usersList;
 	}
 
-	public boolean insertUser(User user) {
+	public boolean insertUser(User userToInsert) {
 		Connection connection = ConnectionSingleton.getInstance();
-		try {
+		try {	
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_INSERT);
-			preparedStatement.setString(1, user.getUsername());
-			preparedStatement.setString(2, user.getPassword());
-			preparedStatement.setString(3, user.getUsertype());
+			preparedStatement.setString(1, userToInsert.getUsername());
+			preparedStatement.setString(2, userToInsert.getPassword());
+			preparedStatement.setString(3, userToInsert.getUsertype());
 			preparedStatement.execute();
 			return true;
 		} catch (SQLException e) {
@@ -63,6 +63,8 @@ public class UserDAO {
 	public User readUser(int userId) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
+
+
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_READ);
 			preparedStatement.setInt(1, userId);
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -97,15 +99,15 @@ public class UserDAO {
 				if (userToUpdate.getUsername() == null || userToUpdate.getUsername().equals("")) {
 					userToUpdate.setUsername(userRead.getUsername());
 				}
-				
+
 				if (userToUpdate.getPassword() == null || userToUpdate.getPassword().equals("")) {
 					userToUpdate.setPassword(userRead.getPassword());
 				}
-				
+
 				if (userToUpdate.getUsertype() == null || userToUpdate.getUsertype().equals("")) {
 					userToUpdate.setUsertype(userRead.getUsertype());
 				}
-				
+
 				// Update the user
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
 				preparedStatement.setString(1, userToUpdate.getUsername());
@@ -124,10 +126,10 @@ public class UserDAO {
 		}
 
 		return false;
-		
+
 	}
 
-	public boolean deleteUser(Integer id) {
+	public boolean deleteUser (int id) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETE);
@@ -135,8 +137,11 @@ public class UserDAO {
 			int n = preparedStatement.executeUpdate();
 			if (n != 0)
 				return true;
+
 		} catch (SQLException e) {
 		}
 		return false;
 	}
+
+
 }

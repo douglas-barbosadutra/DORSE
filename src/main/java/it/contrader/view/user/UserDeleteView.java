@@ -1,34 +1,34 @@
 package it.contrader.view.user;
 
 import it.contrader.controller.Request;
-import it.contrader.controller.UserController;
 import it.contrader.main.MainDispatcher;
-import it.contrader.model.User;
 import it.contrader.view.AbstractView;
 
-public class UserReadView extends AbstractView {
+public class UserDeleteView extends AbstractView {
+	private Request request;
 
 	private int id;
-	private Request request;
-	private final String mode = "READ";
+	private final String mode = "DELETE";
 
-	public UserReadView() {
-		new UserController();
+	public UserDeleteView() {
 	}
 
 	@Override
 	public void showResults(Request request) {
-		if (request != null) {
-			User user = (User) request.get("user");
-			System.out.println(user);
+		if (request!=null) {
+			System.out.println("La cancellazione è andata a buon fine.\n");
 			MainDispatcher.getInstance().callView("User", null);
 		}
 	}
 
 	@Override
 	public void showOptions() {
-		System.out.println("Inserisci l'ID dell'utente:");
-		id = Integer.parseInt(getInput());
+		try {
+			System.out.println("Inserisci id dell'utente:");
+			id = Integer.parseInt(getInput());
+		} catch (Exception e) {
+
+		}
 	}
 
 	@Override
@@ -38,5 +38,6 @@ public class UserReadView extends AbstractView {
 		request.put("mode", mode);
 		MainDispatcher.getInstance().callAction("User", "doControl", request);
 	}
+
 
 }

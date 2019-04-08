@@ -23,7 +23,7 @@ public class ConnectionSingleton {
         if (connection == null) {
             try {
                 Properties properties = new Properties();
-                InputStream inputStream = new FileInputStream("DORSE/config.properties");
+                InputStream inputStream = new FileInputStream("config.properties");
                 properties.load(inputStream);
                 String vendor = properties.getProperty("db.vendor");
                 String driver = properties.getProperty("db.driver");
@@ -36,7 +36,7 @@ public class ConnectionSingleton {
                 //Class c = Class.forName(driver);
                 
                 
-    			Class c = Class.forName(driver);
+    			Class<?> c = Class.forName(driver);
     			System.out.println("Ho caricato: " + c.getName());
                 String url = "jdbc:" + vendor + "://" + host + ":" + port + "/" + dbName+"?"+jdbcAdditionalParams;
     			connection = (Connection) DriverManager.getConnection(url, username, password);

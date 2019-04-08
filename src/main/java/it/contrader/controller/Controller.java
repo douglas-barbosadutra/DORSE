@@ -1,5 +1,5 @@
 package it.contrader.controller;
 
 public interface Controller {
-    public void doControl(Request request);
+	public void doControl(Request request);
 }

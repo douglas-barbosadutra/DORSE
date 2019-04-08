@@ -4,13 +4,13 @@ import it.contrader.dao.LoginDAO;
 
 public class LoginService {
 
-    private LoginDAO loginDAO;
+	private LoginDAO loginDAO;
 
-    public LoginService() {
-        this.loginDAO = new LoginDAO();
-    }
+	public LoginService() {
+		this.loginDAO = new LoginDAO();
+	}
 
-    public String login (String username, String password) {
-        return this.loginDAO.login(username, password);
-    }
+	public String login (String username, String password) {
+		return this.loginDAO.login(username, password);
+	}
 }

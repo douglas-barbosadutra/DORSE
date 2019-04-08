@@ -12,7 +12,7 @@ public class User {
 	protected String password;
 	protected Date birthdate;
 	protected String telnumber;
-	
+
 	public User() {
 	}
 
@@ -28,7 +28,7 @@ public class User {
 	public void setUserId(int userId) {
 		this.id = userId;
 	}
-	
+
 	public String getUsertype() {
 		return usertype;
 	}
@@ -86,14 +86,13 @@ public class User {
 		this.telnumber = telnumber;
 	}
 
-	
-	
+
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", usertype=" + usertype + ", nome=" + nome + ", cognome=" + cognome + ", username="
-				+ username + ", password=" + password + ", birthdate=" + birthdate + ", telnumber=" + telnumber + "]";
+		return  id + "\t"  + username +"\t\t" +   password + "\t\t" + usertype;
 	}
-	
+
 
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -137,8 +136,8 @@ public class User {
 			return false;
 		return true;
 	}
-	
 
-	
+
+
 
 }

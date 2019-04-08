@@ -1,6 +1,6 @@
 package it.contrader.main;
 
-import java.io.IOException;
+
 import java.lang.reflect.Method;
 
 import it.contrader.controller.Controller;
@@ -38,14 +38,14 @@ public class MainDispatcher {
 		oggettoView.showResults(request);
 		oggettoView.showOptions();
 		oggettoView.submit();
-		try {
+		/*try {
 			new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 			//Runtime.getRuntime().exec("clear");
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		}
+		}*/
 		
 		
 

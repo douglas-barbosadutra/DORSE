@@ -6,18 +6,18 @@ public class Building {
 
 	private int id;
 	private String indirizzo;
-	private Utente utente;
 	private List<Ambiente> ambienti;
-	
-	
+	private String user;
+	private int userid;
+
 	public Building() {
-		
+
 	}
-	
-	public Building(String indirizzo, Utente utente, List<Ambiente> ambienti) {
+
+	public Building(String indirizzo, int userid) {
 		this.indirizzo = indirizzo;
-		this.utente = utente;
-		this.ambienti = ambienti;
+		this.userid = userid;
+
 	}
 
 	public int getBuildingId() {
@@ -36,13 +36,7 @@ public class Building {
 		this.indirizzo = indirizzo;
 	}
 
-	public Utente getUtente() {
-		return utente;
-	}
 
-	public void setUtente(Utente utente) {
-		this.utente = utente;
-	}
 
 	public List<Ambiente> getAmbienti() {
 		return ambienti;
@@ -52,12 +46,11 @@ public class Building {
 		this.ambienti = ambienti;
 	}
 
-	
-	
+
+
 	@Override
 	public String toString() {
-		return "Building [buildingId=" + id + ", indirizzo=" + indirizzo + ", utente=" + utente + ", ambienti="
-				+ ambienti + "]";
+		return  id + "\t\t" + indirizzo + "\t\t" + userid ;
 	}
 
 
@@ -81,16 +74,27 @@ public class Building {
 				return false;
 		} else if (!indirizzo.equals(other.indirizzo))
 			return false;
-		if (utente == null) {
-			if (other.utente != null)
-				return false;
-		} else if (!utente.equals(other.utente))
-			return false;
-		return true;
+		return false;
 	}
-	
-	
-	
-	
-	
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
+	}
+
+	public int getUserid() {
+		return userid;
+	}
+
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
+
+
+
+
+
 }
