@@ -5,6 +5,7 @@ public class Item {
 	boolean stato;
 	int codice;
 	String descrizione;
+	String itemtype;
 
 	public Item() {
 
@@ -47,13 +48,23 @@ public class Item {
 		this.descrizione = descrizione;
 	}
 
+	public String getItemtype() {
+		return itemtype;
+	}
+
+	public void setItemtype(String itemtype) {
+		this.itemtype = itemtype;
+	}
 
 	@Override
 	public String toString() {
-		return "Item [itemId=" + id + ", stato=" + stato + ", codice=" + codice + ", descrizione=" + descrizione
-				+ "]";
+		return "Item [id=" + id + ", stato=" + stato + ", codice=" + codice + ", descrizione=" + descrizione
+				+ ", itemtype=" + itemtype + "]";
 	}
 
+
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -71,11 +82,15 @@ public class Item {
 			return false;
 		if (id != other.id)
 			return false;
+		if (itemtype == null) {
+			if (other.itemtype != null)
+				return false;
+		} else if (!itemtype.equals(other.itemtype))
+			return false;
 		if (stato != other.stato)
 			return false;
 		return true;
 	}
-
 
 
 

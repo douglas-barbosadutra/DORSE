@@ -6,7 +6,6 @@ public class Building {
 
 	private int id;
 	private String indirizzo;
-	private Utente utente;
 	private List<Ambiente> ambienti;
 	private String user;
 	private int userid;
@@ -37,13 +36,7 @@ public class Building {
 		this.indirizzo = indirizzo;
 	}
 
-	public Utente getUtente() {
-		return utente;
-	}
 
-	public void setUtente(Utente utente) {
-		this.utente = utente;
-	}
 
 	public List<Ambiente> getAmbienti() {
 		return ambienti;
@@ -81,12 +74,7 @@ public class Building {
 				return false;
 		} else if (!indirizzo.equals(other.indirizzo))
 			return false;
-		if (utente == null) {
-			if (other.utente != null)
-				return false;
-		} else if (!utente.equals(other.utente))
-			return false;
-		return true;
+		return false;
 	}
 
 	public String getUser() {
