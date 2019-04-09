@@ -20,7 +20,7 @@ public class BuildingDAO {
 
 	}
 
-	public List<Building> getAllBuilding() {
+	public List<Building> getAllBuildings() {
 		List<Building> buildings = new ArrayList<>();
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
@@ -32,7 +32,7 @@ public class BuildingDAO {
 				String indirizzo = resultSet.getString("indirizzo");
 				int userid = resultSet.getInt("user");
 				building = new Building(indirizzo, userid);
-				building.setBuildingId(id);
+				building.setId(id);
 
 				buildings.add(building);
 			}
@@ -47,7 +47,7 @@ public class BuildingDAO {
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_INSERT);
 			preparedStatement.setString(1, building.getIndirizzo());
-			preparedStatement.setInt(2, building.getUserid());
+			preparedStatement.setInt(2, building.getUserId());
 			preparedStatement.execute();
 			return true;
 		} catch (SQLException e) {
@@ -70,7 +70,7 @@ public class BuildingDAO {
 			indirizzo = resultSet.getString("indirizzo");
 			userid = resultSet.getInt("user");
 			Building building = new Building(indirizzo, userid);
-			building.setBuildingId(resultSet.getInt("id"));
+			building.setId(resultSet.getInt("id"));
 
 			return building;
 		} catch (SQLException e) {
@@ -84,10 +84,10 @@ public class BuildingDAO {
 		Connection connection = ConnectionSingleton.getInstance();
 
 		// Check if id is present
-		if (buildingToUpdate.getBuildingId() == 0)
+		if (buildingToUpdate.getId() == 0)
 			return false;
 
-		Building userRead = readBuilding(buildingToUpdate.getBuildingId());
+		Building userRead = readBuilding(buildingToUpdate.getId());
 		if (!userRead.equals(buildingToUpdate)) {
 			try {
 				// Fill the userToUpdate object
@@ -96,15 +96,15 @@ public class BuildingDAO {
 				}
 
 
-				if (buildingToUpdate.getUserid() == 0 ) {
-					buildingToUpdate.setUserid(userRead.getUserid());
+				if (buildingToUpdate.getUserId() == 0 ) {
+					buildingToUpdate.setUserId(userRead.getUserId());
 				}
 
 				// Update the user
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
 				preparedStatement.setString(1, buildingToUpdate.getIndirizzo());
-				preparedStatement.setInt(2, buildingToUpdate.getUserid());
-				preparedStatement.setInt(3, buildingToUpdate.getBuildingId());
+				preparedStatement.setInt(2, buildingToUpdate.getUserId());
+				preparedStatement.setInt(3, buildingToUpdate.getId());
 				int a = preparedStatement.executeUpdate();
 				if (a > 0)
 					return true;
@@ -120,9 +120,10 @@ public class BuildingDAO {
 
 	}
 
-	public boolean deleteBuilding(int id) {
+	public boolean deleteBuilding(Building building) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
+			int id = building.getId();
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETE);
 			preparedStatement.setInt(1, id);
 			int n = preparedStatement.executeUpdate();

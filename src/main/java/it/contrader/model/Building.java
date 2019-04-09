@@ -7,24 +7,30 @@ public class Building {
 	private int id;
 	private String indirizzo;
 	private List<Ambiente> ambienti;
-	private String user;
-	private int userid;
+	private int userId;
 
 	public Building() {
 
 	}
 
-	public Building(String indirizzo, int userid) {
+	public Building(String indirizzo, int userId) {
 		this.indirizzo = indirizzo;
-		this.userid = userid;
+		this.userId = userId;
+
+	}
+	
+	public Building(int id, String indirizzo, int userId) {
+		this.id = id;
+		this.indirizzo = indirizzo;
+		this.userId = userId;
 
 	}
 
-	public int getBuildingId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setBuildingId(int buildingId) {
+	public void setId(int buildingId) {
 		this.id = buildingId;
 	}
 
@@ -50,7 +56,7 @@ public class Building {
 
 	@Override
 	public String toString() {
-		return  id + "\t\t" + indirizzo + "\t\t" + userid ;
+		return  id + "\t\t" + indirizzo + "\t\t" + userId ;
 	}
 
 
@@ -77,20 +83,12 @@ public class Building {
 		return false;
 	}
 
-	public String getUser() {
-		return user;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setUser(String user) {
-		this.user = user;
-	}
-
-	public int getUserid() {
-		return userid;
-	}
-
-	public void setUserid(int userid) {
-		this.userid = userid;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 
