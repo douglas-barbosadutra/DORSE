@@ -24,14 +24,14 @@
 			for (UserDTO u : userlist) {
 		%>
 		<tr>
-			<td><a href=UserManagerServlet?mode=read&id= <%=u.getId()%>>
+			<td><a href=UserManagerServlet?mode=read&id=<%=u.getId()%>>
 					<%=u.getUsername()%>
 			</a></td>
 			<td><%=u.getPassword()%></td>
 			<td><%=u.getUsertype()%></td>
-			<td><a href=UserManagerServlet?mode=update&id= <%=u.getId()%>>Modifica</a>
+			<td><a href=UserManagerServlet?mode=update&id=<%=u.getId()%>>Modifica</a>
 			</td>
-			<td><a href=UserManagerServlet?mode=delete&id= <%=u.getId()%>>Cancella</a>
+			<td><a href=UserManagerServlet?mode=delete&id=<%=u.getId()%>>Cancella</a>
 			</td>
 
 		</tr>
