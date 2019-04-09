@@ -10,20 +10,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import it.contrader.converter.UsersConverter;
-import it.contrader.dto.UsersDTO;
-import it.contrader.service.UsersServiceDTO;
+import it.contrader.converter.UserConverter;
+import it.contrader.dto.UserDTO;
+import it.contrader.service.UserServiceDTO;
 
 
 /**
  * La servlet si occupa di parlare con la JSP e utilizza i servizi opportuni.
- * Per chi farà User dovrà anche occuparsi del Login che abbiamo lasciato come struttura e va modificata in modo opportuno
+ * Per chi farï¿½ User dovrï¿½ anche occuparsi del Login che abbiamo lasciato come struttura e va modificata in modo opportuno
  *
  */
-public class UsersServlet extends HttpServlet {
+public class UserServlet extends HttpServlet {
 
-	private final UsersServiceDTO usersServiceDTO = new UsersServiceDTO();
-	private List<UsersDTO> allUsers= new ArrayList<>();
+	private final UserServiceDTO usersServiceDTO = new UserServiceDTO();
+	private List<UserDTO> allUsers= new ArrayList<>();
+	private UserServiceDTO userServiceDTO;
 
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -44,8 +45,8 @@ public class UsersServlet extends HttpServlet {
 			final String username = request.getParameter("username");
 			final String password = request.getParameter("password");
 			final String ruolo = request.getParameter("ruolo");
-			final UsersDTO users = new UsersDTO(id,username, password, ruolo);
-			usersServiceDTO.insertUsers(users);
+			final UserDTO users = new UserDTO(id,username, password, ruolo);
+			userServiceDTO.insertUser(users);
 			showAllUsers(request, response);
 			break;
 					
@@ -60,19 +61,19 @@ public class UsersServlet extends HttpServlet {
 			final String usernameUpdate = request.getParameter("username");
 			final String passwordUpdate = request.getParameter("password");
 			final String ruoloUpdate = request.getParameter("ruolo");
-			final UsersDTO user = new UsersDTO(idUpdate, usernameUpdate,passwordUpdate, ruoloUpdate);
+			final UserDTO user = new UserDTO(idUpdate, usernameUpdate,passwordUpdate, ruoloUpdate);
 					
 				
 					
-			usersServiceDTO.updateUsers(user);
+			usersServiceDTO.updateUser(user);
 			showAllUsers(request, response);
 			break;
 
 		case "delete":
 			final Integer idUpdat = Integer.parseInt(request.getParameter("id"));
 			
-			final UsersDTO use = new UsersDTO(idUpdat,"" ,"","");
-			usersServiceDTO.deleteUsers(use);
+			final UserDTO use = new UserDTO(idUpdat,"" ,"","");
+			usersServiceDTO.deleteUser(use);
 			showAllUsers(request, response);
 			break;
 
