@@ -10,26 +10,38 @@ import javax.servlet.http.HttpSession;
 import it.contrader.dto.UserDTO;
 import it.contrader.service.UserServiceDTO;
 
-/**
- * Servlet implementation class UserManagerServlet
- */
 public class UserManagerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private String mode;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UserManagerServlet() {
-        super();
-       
-    }
 
-    @Override
+
+
+	public UserManagerServlet() {
+		super();
+
+	}
+
+	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    UserServiceDTO userService = new UserServiceDTO();
-	    List<UserDTO> listDTO = userService.getAllUsers();
-	    request.setAttribute("userlist", listDTO);
-	    getServletContext().getRequestDispatcher("/usermanager.jsp").forward(request, response);
-   }
+		UserServiceDTO userService = new UserServiceDTO();
+		String mode = request.getParameter("mode");
+		switch (mode.toUpperCase()) {
+
+		case "USERLIST":
+
+			List<UserDTO> listDTO = userService.getAllUsers();
+			request.setAttribute("userlist", listDTO);
+			getServletContext().getRequestDispatcher("/user/usermanager.jsp").forward(request, response);
+			break;
+
+
+		case "READ":
+
+			int id = Integer.parseInt(request.getParameter("id"));
+			UserDTO userToRead= userService.readUser(id);
+			request.setAttribute("userToRead", userToRead);
+			getServletContext().getRequestDispatcher("/user/readuser.jsp").forward(request, response);
+			break;
+		}
+	}
 }

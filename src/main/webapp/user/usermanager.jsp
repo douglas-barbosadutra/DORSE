@@ -20,7 +20,7 @@
 	<% for(UserDTO u: userlist) {%> 
 	<tr>
 		<td> 
-			<%=u.getUsername()%>
+			<a href=UserManagerServlet?mode=read&id=<%=u.getId()%>> <%=u.getUsername()%> </a>
 		</td>
 		<td> 
 			<%=u.getPassword()%>
@@ -31,6 +31,12 @@
 	</tr>	
 	<%} %>
 </table>
+
+
+
+
+
+
 
 </body>
 </html>

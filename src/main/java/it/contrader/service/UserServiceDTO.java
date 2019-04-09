@@ -8,23 +8,15 @@ import it.contrader.dao.UserDAO;
 import it.contrader.dto.UserDTO;
 import it.contrader.model.User;
 
-/**
- * Classe che si occupa di interfacciarsi con la persistenza e recuperare
- * attraverso i metodi del Data Access Object le n-uple desiderate, Le converte
- * in un oggetto DTO e le restituisce al controller opportuno
- */
+
 public class UserServiceDTO {
 
 	private final UserDAO userDAO;
 
-	public UserServiceDTO() {
+	public  UserServiceDTO() {
 		this.userDAO = new UserDAO();
 	}
 
-	/**
-	 * Come vediamo la lista recuperata è di tipo Esempio ma noi la convertiamo in EsempioDTO
-	 * Invito chi fa i converter a fare un metodo per convertire direttamente la lista senza farli uno ad uno perch� � sporco e poco efficiente
-	 */
 	public List<UserDTO> getAllUsers() {
 
 		List<User> list = userDAO.getAllUser();
@@ -36,6 +28,11 @@ public class UserServiceDTO {
 
 		return listDTO;
 	}
+	
+	public UserDTO readUser(int id) {
+		return UserConverter.toDTO(userDAO.readUser(id));
+	}
+	
 	
 	public UserDTO readUser(String username, String password) {
 		return UserConverter.toDTO(userDAO.readUser(username, password));

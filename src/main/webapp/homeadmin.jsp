@@ -7,7 +7,7 @@
 	<h2>------- MENU PRINCIPALE ADMIN -------</h2>
 
 	
-<a href="UserManagerServlet"> Gestione Utenti </a>
+<a href="UserManagerServlet?mode=userlist"> Gestione Utenti </a>
 <a href="BuildingManagerServlet"> Gestione Building </a>
 
 

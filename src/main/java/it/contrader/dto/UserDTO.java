@@ -1,10 +1,6 @@
 package it.contrader.dto;
 
-/**
- * Il DTO (Data transfer object) � un ponte che ci permette di nascondere le
- * informazioni principali del nostro model
- * 
- */
+
 public class UserDTO {
 
 
