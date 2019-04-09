@@ -156,10 +156,9 @@ public class UserDAO {
 
 	}
 
-	public boolean deleteUser (User user) {
+	public boolean deleteUser (int id) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
-			int id = user.getUserId();
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETE);
 			preparedStatement.setInt(1, id);
 			int n = preparedStatement.executeUpdate();

@@ -11,12 +11,18 @@ public class UserDTO {
 	private String usertype;
 
 	public UserDTO(Integer id, String username, String password, String usertype) {
-		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.usertype = usertype;
 	}
+
+	public UserDTO (String username, String password, String usertype) {
+		this.username = username;
+		this.password = password;
+		this.usertype = usertype;
+	}
+
 
 	public Integer getId() {
 		return id;
