@@ -8,6 +8,7 @@
 
 	
 <a href="UserManagerServlet"> Gestione Utenti </a>
+<a href="BuildingManagerServlet"> Gestione Building </a>
 
 
 
