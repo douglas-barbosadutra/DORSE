@@ -22,7 +22,7 @@ public class UserServiceDTO {
 	}
 
 	/**
-	 * Come vediamo la lista recuperata � di tipo Esempio ma noi la convertiamo in EsempioDTO
+	 * Come vediamo la lista recuperata è di tipo Esempio ma noi la convertiamo in EsempioDTO
 	 * Invito chi fa i converter a fare un metodo per convertire direttamente la lista senza farli uno ad uno perch� � sporco e poco efficiente
 	 */
 	public List<UserDTO> getAllUsers() {

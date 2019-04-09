@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 			
 			switch (userDTO.getUsertype().toUpperCase()) {
 			case "ADMIN":
-				getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
+				getServletContext().getRequestDispatcher("/homeadmin.jsp").forward(request, response);
 				break;
 			case "OPERATORE":
 				getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
