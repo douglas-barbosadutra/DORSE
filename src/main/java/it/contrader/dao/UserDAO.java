@@ -92,7 +92,7 @@ public class UserDAO {
 
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_READ_UP);
 			preparedStatement.setString(1, username);
-			preparedStatement.setString(1, password);
+			preparedStatement.setString(2, password);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			resultSet.next();
 			int id = resultSet.getInt("idUser");

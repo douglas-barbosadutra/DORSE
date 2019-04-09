@@ -7,11 +7,13 @@ package it.contrader.dto;
  */
 public class UserDTO {
 
+
+
 	private Integer id;
 	private String username;
 	private String password;
 	private String usertype;
-	
+
 	public UserDTO(Integer id, String username, String password, String usertype) {
 		super();
 		this.id = id;
@@ -50,5 +52,8 @@ public class UserDTO {
 	public void setUsertype(String usertype) {
 		this.usertype = usertype;
 	}
-
+	@Override
+	public String toString() {
+		return username ;
+	}
 }

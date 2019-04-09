@@ -18,8 +18,6 @@ public class LoginServlet extends HttpServlet {
 
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		System.out.println("stocazzo");
 
 		final HttpSession session = request.getSession();
 		session.setAttribute("utente", null);
