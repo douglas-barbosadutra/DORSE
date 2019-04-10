@@ -1,17 +1,20 @@
 package it.contrader.servlets;
 
 import java.util.List;
-
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import it.contrader.dto.UserDTO;
 import it.contrader.service.UserServiceDTO;
 
 public class UserManagerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private String mode;
 
 
 
@@ -59,10 +62,27 @@ public class UserManagerServlet extends HttpServlet {
 			getServletContext().getRequestDispatcher("/user/usermanager.jsp").forward(request, response);
 			break;
 
-		case "UPDATE":
-
-
+		case "READTOUPDATE":
+			id = Integer.parseInt(request.getParameter("id"));
+			UserDTO userReadToUpdate= userService.readUser(id);
+			request.setAttribute("userReadToUpdate", userReadToUpdate);
+			getServletContext().getRequestDispatcher("/user/updateuser.jsp").forward(request, response);
 			break;
+			
+		case "UPDATE":
+			username = request.getParameter("username");
+			password = request.getParameter("password");
+			usertype = request.getParameter("usertype");
+			id = Integer.parseInt(request.getParameter("id"));
+			UserDTO userToUpdate = new UserDTO (id,username, password, usertype);
+			ans = userService.updateUser(userToUpdate);
+			request.setAttribute("ans", ans);
+			listDTO = userService.getAllUsers();
+			request.setAttribute("userlist", listDTO);
+			request.setAttribute("mode", "update");
+			getServletContext().getRequestDispatcher("/user/usermanager.jsp").forward(request, response);
+			break;
+
 
 		case "DELETE":
 			id = Integer.parseInt(request.getParameter("id"));

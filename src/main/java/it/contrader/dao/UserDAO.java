@@ -114,28 +114,8 @@ public class UserDAO {
 
 	public boolean updateUser(User userToUpdate) {
 		Connection connection = ConnectionSingleton.getInstance();
-
-		// Check if id is present
-		if (userToUpdate.getUserId() == 0)
-			return false;
-
-		User userRead = readUser(userToUpdate.getUserId());
-		if (!userRead.equals(userToUpdate)) {
+	
 			try {
-				// Fill the userToUpdate object
-				if (userToUpdate.getUsername() == null || userToUpdate.getUsername().equals("")) {
-					userToUpdate.setUsername(userRead.getUsername());
-				}
-
-				if (userToUpdate.getPassword() == null || userToUpdate.getPassword().equals("")) {
-					userToUpdate.setPassword(userRead.getPassword());
-				}
-
-				if (userToUpdate.getUsertype() == null || userToUpdate.getUsertype().equals("")) {
-					userToUpdate.setUsertype(userRead.getUsertype());
-				}
-
-				// Update the user
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
 				preparedStatement.setString(1, userToUpdate.getUsername());
 				preparedStatement.setString(2, userToUpdate.getPassword());
@@ -144,16 +124,14 @@ public class UserDAO {
 				int a = preparedStatement.executeUpdate();
 				if (a > 0)
 					return true;
-				else
+				else 
 					return false;
+				
 
 			} catch (SQLException e) {
 				return false;
 			}
-		}
-
-		return false;
-
+		
 	}
 
 	public boolean deleteUser (int id) {

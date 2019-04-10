@@ -39,7 +39,7 @@ public class UserServiceDTO {
 	}
 
 	public boolean updateUser (UserDTO userDTO) {
-		return this.userDAO.updateUser(UserConverter.toEntityNoId(userDTO));
+		return this.userDAO.updateUser(UserConverter.toEntity(userDTO));
 		
 }
 	
