@@ -4,11 +4,14 @@ import java.sql.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import it.contrader.utils.ConnectionSingleton;
 import it.contrader.utils.GestoreEccezioni;
+import it.contrader.model.Ambiente;
 import it.contrader.model.User;
 
-public class UserDAO {
+public class UserDAO implements DAO<User> {
 
 	private final String QUERY_ALL = "SELECT * FROM user";
 	private final String QUERY_INSERT = "INSERT INTO user (username, password, usertype) VALUES (?,?,?)";
@@ -21,7 +24,7 @@ public class UserDAO {
 
 	}
 
-	public List<User> getAllUser() {
+	public List<User> getAll() {
 		List<User> usersList = new ArrayList<>();
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
@@ -42,40 +45,27 @@ public class UserDAO {
 		}
 		return usersList;
 	}
-
-	public boolean insertUser(User userToInsert) {
-		Connection connection = ConnectionSingleton.getInstance();
-		try {	
-			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_INSERT);
-			preparedStatement.setString(1, userToInsert.getUsername());
-			preparedStatement.setString(2, userToInsert.getPassword());
-			preparedStatement.setString(3, userToInsert.getUsertype());
-			preparedStatement.execute();
-			return true;
-		} catch (SQLException e) {
-			GestoreEccezioni.getInstance().gestisciEccezione(e);
-			return false;
-		}
-
+	
+	@Override
+	public List<User> getAllBy(Object o) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	public User readUser(int userId) {
+	@Override
+	public User read(int id) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
-
-
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_READ);
-			preparedStatement.setInt(1, userId);
+			preparedStatement.setInt(1, id);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			resultSet.next();
 			String username, password, usertype;
-
 			username = resultSet.getString("username");
 			password = resultSet.getString("password");
 			usertype = resultSet.getString("usertype");
 			User user = new User(username, password, usertype);
 			user.setUserId(resultSet.getInt("idUser"));
-
 			return user;
 		} catch (SQLException e) {
 			GestoreEccezioni.getInstance().gestisciEccezione(e);
@@ -83,13 +73,10 @@ public class UserDAO {
 		}
 	}
 	
-	
-	
-	public User readUser(String username, String password) {
+	@Override
+	public User read(String username, String password) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
-
-
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_READ_UP);
 			preparedStatement.setString(1, username);
 			preparedStatement.setString(2, password);
@@ -98,29 +85,56 @@ public class UserDAO {
 			int id = resultSet.getInt("idUser");
 			String usertype = resultSet.getString("usertype");
 			User user = new User(id, username, password, usertype);
-
 			return user;
-			
 		} catch (SQLException e) {
 			GestoreEccezioni.getInstance().gestisciEccezione(e);
 			return null;
 		}
 	}
-	
-	
-	
-	
-	
 
-	public boolean updateUser(User userToUpdate) {
+	@Override
+	public boolean insert(User user) {
 		Connection connection = ConnectionSingleton.getInstance();
-	
+		try {	
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_INSERT);
+			preparedStatement.setString(1, user.getUsername());
+			preparedStatement.setString(2, user.getPassword());
+			preparedStatement.setString(3, user.getUsertype());
+			preparedStatement.execute();
+			return true;
+		} catch (SQLException e) {
+			GestoreEccezioni.getInstance().gestisciEccezione(e);
+			return false;
+		}
+	}
+
+	@Override
+	public boolean update(User user) {
+		Connection connection = ConnectionSingleton.getInstance();
+
+		// Check if id is present
+		if (user.getUserId() == 0)
+			return false;
+
+		User userRead = read(user.getUserId());
+		if (!userRead.equals(user)) {
 			try {
+				// Fill the userToUpdate object
+				if (user.getUsername() == null || user.getUsername().equals("")) {
+					user.setUsername(userRead.getUsername());
+				}
+				if (user.getPassword() == null || user.getPassword().equals("")) {
+					user.setPassword(userRead.getPassword());
+				}
+				if (user.getUsertype() == null || user.getUsertype().equals("")) {
+					user.setUsertype(userRead.getUsertype());
+				}
+				// Update the user
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
-				preparedStatement.setString(1, userToUpdate.getUsername());
-				preparedStatement.setString(2, userToUpdate.getPassword());
-				preparedStatement.setString(3, userToUpdate.getUsertype());
-				preparedStatement.setInt(4, userToUpdate.getUserId());
+				preparedStatement.setString(1, user.getUsername());
+				preparedStatement.setString(2, user.getPassword());
+				preparedStatement.setString(3, user.getUsertype());
+				preparedStatement.setInt(4, user.getUserId());
 				int a = preparedStatement.executeUpdate();
 				if (a > 0)
 					return true;
@@ -131,13 +145,16 @@ public class UserDAO {
 			} catch (SQLException e) {
 				return false;
 			}
-		
+		}
+		return false;
 	}
 
-	public boolean deleteUser (int id) {
+	@Override
+	public boolean delete(User user) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETE);
+			int id = user.getUserId();
 			preparedStatement.setInt(1, id);
 			int n = preparedStatement.executeUpdate();
 			if (n != 0)
@@ -147,6 +164,4 @@ public class UserDAO {
 		}
 		return false;
 	}
-
-
 }

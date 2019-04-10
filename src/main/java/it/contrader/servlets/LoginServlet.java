@@ -8,12 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import it.contrader.dto.DTO;
 import it.contrader.dto.UserDTO;
+import it.contrader.service.ServiceDTO;
 import it.contrader.service.UserServiceDTO;
 
 public class LoginServlet extends HttpServlet {
 
-	private final UserServiceDTO userServiceDTO = new UserServiceDTO();
+	private final ServiceDTO<UserDTO> userServiceDTO = new UserServiceDTO();
 
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,7 +27,7 @@ public class LoginServlet extends HttpServlet {
 			final String username = request.getParameter("username").toString();
 			final String password = request.getParameter("password").toString();
 			// recuperiamo l'utente
-			final UserDTO userDTO = userServiceDTO.readUser(username, password);
+			final UserDTO userDTO = userServiceDTO.read(username, password);
 
 			if (userDTO != null)
 				session.setAttribute("utente", userDTO);

@@ -1,7 +1,7 @@
 package it.contrader.dto;
 
 
-public class UserDTO {
+public class UserDTO implements DTO {
 
 
 

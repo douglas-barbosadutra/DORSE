@@ -4,10 +4,14 @@ import java.sql.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
+import it.contrader.model.Ambiente;
 import it.contrader.model.Building;
+import it.contrader.model.User;
 import it.contrader.utils.ConnectionSingleton;
 import it.contrader.utils.GestoreEccezioni;
-public class BuildingDAO {
+public class BuildingDAO implements DAO<Building> {
 
 	private final String QUERY_ALL = "SELECT * FROM building";
 	private final String QUERY_INSERT = "INSERT INTO building (indirizzo, user) VALUES (?,?)";
@@ -20,7 +24,8 @@ public class BuildingDAO {
 
 	}
 
-	public List<Building> getAllBuildings() {
+	@Override
+	public List<Building> getAll() {
 		List<Building> buildings = new ArrayList<>();
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
@@ -41,23 +46,15 @@ public class BuildingDAO {
 		}
 		return buildings;
 	}
-
-	public boolean insertBuilding(Building building) {
-		Connection connection = ConnectionSingleton.getInstance();
-		try {
-			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_INSERT);
-			preparedStatement.setString(1, building.getIndirizzo());
-			preparedStatement.setInt(2, building.getUserId());
-			preparedStatement.execute();
-			return true;
-		} catch (SQLException e) {
-			GestoreEccezioni.getInstance().gestisciEccezione(e);
-			return false;
-		}
-
+	
+	@Override
+	public List<Building> getAllBy(Object o) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	public Building readBuilding(int id) {
+	@Override
+	public Building read(int id) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_READ);
@@ -77,18 +74,48 @@ public class BuildingDAO {
 			GestoreEccezioni.getInstance().gestisciEccezione(e);
 			return null;
 		}
-
 	}
 
-	public boolean updateBuilding(Building buildingToUpdate) {
+	@Override
+	public boolean insert(Building building) {
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_INSERT);
+			preparedStatement.setString(1, building.getIndirizzo());
+			preparedStatement.setInt(2, building.getUserId());
+			preparedStatement.execute();
+			return true;
+		} catch (SQLException e) {
+			GestoreEccezioni.getInstance().gestisciEccezione(e);
+			return false;
+		}
+	}
+
+	@Override
+	public boolean update(Building building) {
 		Connection connection = ConnectionSingleton.getInstance();
 
+		// Check if id is present
+		if (building.getId() == 0)
+			return false;
+
+		Building userRead = (Building)read(building.getId());
+		if (!userRead.equals(building)) {
 			try {
+				// Fill the userToUpdate object
+				if (building.getIndirizzo() == null || building.getIndirizzo().equals("")) {
+					building.setIndirizzo(userRead.getIndirizzo());
+				}
+
+
+				if (building.getUserId() == 0 ) {
+					building.setUserId(userRead.getUserId());
+				}
 
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
-				preparedStatement.setString(1, buildingToUpdate.getIndirizzo());
-				preparedStatement.setInt(2, buildingToUpdate.getUserId());
-				preparedStatement.setInt(3, buildingToUpdate.getId());
+				preparedStatement.setString(1, building.getIndirizzo());
+				preparedStatement.setInt(2, building.getUserId());
+				preparedStatement.setInt(3, building.getId());
 				int a = preparedStatement.executeUpdate();
 				if (a > 0)
 					return true;
@@ -98,13 +125,17 @@ public class BuildingDAO {
 			} catch (SQLException e) {
 				return false;
 			}
-	
+		}
+
+		return false;
 	}
 
-	public boolean deleteBuilding(int id) {
+	@Override
+	public boolean delete(Building building) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETE);
+			int id = building.getId();
 			preparedStatement.setInt(1, id);
 			int n = preparedStatement.executeUpdate();
 			if (n != 0)
@@ -112,5 +143,11 @@ public class BuildingDAO {
 		} catch (SQLException e) {
 		}
 		return false;
+	}
+
+	@Override
+	public Building read(String param1, String param2) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

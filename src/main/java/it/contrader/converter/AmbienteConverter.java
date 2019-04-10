@@ -3,10 +3,10 @@ package it.contrader.converter;
 import it.contrader.dto.AmbienteDTO;
 import it.contrader.model.Ambiente;
 
-public class AmbienteConverter {
+public class AmbienteConverter implements Converter<Ambiente,AmbienteDTO> {
 
 	
-	public static Ambiente toEntity(AmbienteDTO ambienteDTO) {
+	public Ambiente toEntity(AmbienteDTO ambienteDTO) {
 
 		Ambiente ambiente = null;
 		if (ambienteDTO != null) {
@@ -17,7 +17,7 @@ public class AmbienteConverter {
 	}
 
 
-	public static AmbienteDTO toDTO(Ambiente ambiente) {
+	public AmbienteDTO toDTO(Ambiente ambiente) {
 
 		AmbienteDTO ambienteDTO = null;
 		if (ambiente != null) {

@@ -3,32 +3,19 @@ package it.contrader.converter;
 import it.contrader.dto.BuildingDTO;
 import it.contrader.model.Building;
 
+public class BuildingConverter implements Converter<Building,BuildingDTO> {
 
-public class BuildingConverter {
-
-
-	public static Building toEntityNoId(BuildingDTO buildingDTO) {
+	public Building toEntity(BuildingDTO buildingDTO) {
 
 		Building building = null;
 		if (buildingDTO != null) {
-			building = new Building(buildingDTO.getIndirizzo(), buildingDTO.getUserId());
+			building = new Building(building.getId(), buildingDTO.getIndirizzo(), buildingDTO.getUserId());
 		}
 
 		return building;
 	}
 
-	public static Building toEntity(BuildingDTO buildingDTO) {
-
-		Building building = null;
-		if (buildingDTO != null) {
-			building = new Building(buildingDTO.getId(),buildingDTO.getIndirizzo(), buildingDTO.getUserId());
-		}
-
-		return building;
-	}
-	
-	
-	public static BuildingDTO toDTO(Building building) {
+	public BuildingDTO toDTO(Building building) {
 
 		BuildingDTO buildingDTO = null;
 		if (building != null) {

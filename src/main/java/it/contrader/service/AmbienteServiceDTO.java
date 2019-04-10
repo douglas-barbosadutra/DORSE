@@ -5,20 +5,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.contrader.converter.AmbienteConverter;
+import it.contrader.converter.BuildingConverter;
 import it.contrader.dao.AmbienteDAO;
+import it.contrader.dao.BuildingDAO;
 import it.contrader.dto.AmbienteDTO;
+import it.contrader.dto.BuildingDTO;
 import it.contrader.model.Ambiente;
+import it.contrader.model.Building;
 
 
-public class AmbienteServiceDTO {
-
-	private final AmbienteDAO ambienteDAO;
+public class AmbienteServiceDTO extends AbstractServiceDTO<Ambiente,AmbienteDTO> {
 
 	public AmbienteServiceDTO() {
-		this.ambienteDAO = new AmbienteDAO();
+		dao = new AmbienteDAO();
+		converter = new AmbienteConverter();
 	}
 
-	public List<AmbienteDTO> getAllAmbientebyBuilding(int buildingid) {
+	/*public List<AmbienteDTO> getAllAmbientebyBuilding(int buildingid) {
 
 		List<Ambiente> list = ambienteDAO.getAllAmbientebyBuilding(buildingid);
 		List<AmbienteDTO> listDTO = new ArrayList<>();
@@ -47,10 +50,5 @@ public class AmbienteServiceDTO {
 	
 	public boolean insertAmbiente (AmbienteDTO ambienteDTO) {
 		return this.ambienteDAO.insertAmbiente(AmbienteConverter.toEntity(ambienteDTO));
-	
-}
-		
-	
-	
-	
+	*/
 }

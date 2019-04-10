@@ -9,7 +9,7 @@ import it.contrader.model.Item;
 import it.contrader.utils.ConnectionSingleton;
 import it.contrader.utils.GestoreEccezioni;
 
-public class ItemDAO {
+public class ItemDAO implements DAO<Item> {
 
 	public ItemDAO() {
 
@@ -21,7 +21,8 @@ public class ItemDAO {
 	private final String QUERY_INSERT = "INSERT INTO item (itemType, description) VALUES (?,?)";
 	private final String QUERY_DELETE = "DELETE FROM item WHERE id=?";
 
-	public List<Item> getAllItems() {
+	@Override
+	public List<Item> getAll() {
 		List<Item> itemList = new ArrayList();
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
@@ -40,29 +41,15 @@ public class ItemDAO {
 		}
 		return itemList;
 	}
-
-	public List<Item> getByAmbient(Ambiente ambient) {
-		List<Item> itemList = new ArrayList();
-		Connection connection = ConnectionSingleton.getInstance();
-		try {
-			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_BY_AMBIENT);
-			preparedStatement.setInt(1, ambient.getId());
-			ResultSet resultSet = preparedStatement.executeQuery();
-			Item item;
-			while (resultSet.next()) {
-				int id = resultSet.getInt("id");
-				String itemType = resultSet.getString("itemType");
-				String description = resultSet.getString("description");
-				item = new Item(id, description, itemType);
-				itemList.add(item);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return itemList;
+	
+	@Override
+	public List<Item> getAllBy(Object o) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	public Item readItem(int id) {
+	@Override
+	public Item read(int id) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_READ);
@@ -79,7 +66,8 @@ public class ItemDAO {
 		}
 	}
 
-	public boolean insertItem(Item item) {
+	@Override
+	public boolean insert(Item item) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_INSERT);
@@ -93,10 +81,18 @@ public class ItemDAO {
 		}
 	}
 
-	public boolean deleteItem(int id) {
+	@Override
+	public boolean update(Item t) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean delete(Item item) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETE);
+			int id = item.getId();
 			preparedStatement.setInt(1, id);
 			int n = preparedStatement.executeUpdate();
 			if (n != 0)
@@ -108,5 +104,11 @@ public class ItemDAO {
 		}
 
 
+	}
+
+	@Override
+	public Item read(String param1, String param2) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

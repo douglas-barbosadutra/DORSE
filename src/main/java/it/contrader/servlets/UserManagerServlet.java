@@ -9,12 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import it.contrader.dto.BuildingDTO;
+import it.contrader.dto.DTO;
 import it.contrader.dto.UserDTO;
+import it.contrader.service.ServiceDTO;
 import it.contrader.service.UserServiceDTO;
 
 public class UserManagerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private String mode;
 
 
 
@@ -25,7 +28,7 @@ public class UserManagerServlet extends HttpServlet {
 
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserServiceDTO userService = new UserServiceDTO();
+		ServiceDTO<UserDTO> userService = new UserServiceDTO();
 		String mode = request.getParameter("mode");
 		int id;
 		List<UserDTO> listDTO;
@@ -35,7 +38,7 @@ public class UserManagerServlet extends HttpServlet {
 
 		case "USERLIST":
 
-			listDTO = userService.getAllUsers();
+			listDTO = userService.getAll();
 			request.setAttribute("userlist", listDTO);
 			getServletContext().getRequestDispatcher("/user/usermanager.jsp").forward(request, response);
 			break;
@@ -43,7 +46,7 @@ public class UserManagerServlet extends HttpServlet {
 		case "READ":
 
 			id = Integer.parseInt(request.getParameter("id"));
-			UserDTO userToRead= userService.readUser(id);
+			UserDTO userToRead= userService.read(id);
 			request.setAttribute("userToRead", userToRead);
 			getServletContext().getRequestDispatcher("/user/readuser.jsp").forward(request, response);
 			break;
@@ -54,17 +57,17 @@ public class UserManagerServlet extends HttpServlet {
 			String usertype = request.getParameter("usertype").toString();
 			UserDTO userToInsert = new UserDTO (username,password,usertype);
 
-			ans = userService.insertUser(userToInsert);
+			ans = userService.insert(userToInsert);
 			request.setAttribute("ans", ans);
 			request.setAttribute("mode", "insert");
-			listDTO = userService.getAllUsers();
+			listDTO = userService.getAll();
 			request.setAttribute("userlist", listDTO);
 			getServletContext().getRequestDispatcher("/user/usermanager.jsp").forward(request, response);
 			break;
 
 		case "READTOUPDATE":
 			id = Integer.parseInt(request.getParameter("id"));
-			UserDTO userReadToUpdate= userService.readUser(id);
+			UserDTO userReadToUpdate= userService.read(id);
 			request.setAttribute("userReadToUpdate", userReadToUpdate);
 			getServletContext().getRequestDispatcher("/user/updateuser.jsp").forward(request, response);
 			break;
@@ -75,9 +78,9 @@ public class UserManagerServlet extends HttpServlet {
 			usertype = request.getParameter("usertype");
 			id = Integer.parseInt(request.getParameter("id"));
 			UserDTO userToUpdate = new UserDTO (id,username, password, usertype);
-			ans = userService.updateUser(userToUpdate);
+			ans = userService.update(userToUpdate);
 			request.setAttribute("ans", ans);
-			listDTO = userService.getAllUsers();
+			listDTO = userService.getAll();
 			request.setAttribute("userlist", listDTO);
 			request.setAttribute("mode", "update");
 			getServletContext().getRequestDispatcher("/user/usermanager.jsp").forward(request, response);
@@ -86,9 +89,10 @@ public class UserManagerServlet extends HttpServlet {
 
 		case "DELETE":
 			id = Integer.parseInt(request.getParameter("id"));
-			ans = userService.deleteUser(id);
+			UserDTO dto = userService.read(id);
+			ans = userService.delete(dto);
 			request.setAttribute("ans", ans);
-			listDTO = userService.getAllUsers();
+			listDTO = userService.getAll();
 			request.setAttribute("userlist", listDTO);
 			request.setAttribute("mode", "delete");
 			getServletContext().getRequestDispatcher("/user/usermanager.jsp").forward(request, response);

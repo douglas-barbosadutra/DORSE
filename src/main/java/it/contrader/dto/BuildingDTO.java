@@ -1,6 +1,6 @@
 package it.contrader.dto;
 
-public class BuildingDTO {
+public class BuildingDTO implements DTO {
 
 	private Integer id;
 	private String indirizzo;
