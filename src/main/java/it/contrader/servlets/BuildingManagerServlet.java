@@ -9,9 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import it.contrader.dto.BuildingDTO;
-import it.contrader.dto.DTO;
 import it.contrader.service.BuildingServiceDTO;
 
 

@@ -9,11 +9,18 @@ public class BuildingConverter implements Converter<Building,BuildingDTO> {
 
 		Building building = null;
 		if (buildingDTO != null) {
-			building = new Building(building.getId(), buildingDTO.getIndirizzo(), buildingDTO.getUserId());
+			building = new Building(buildingDTO.getIndirizzo(), buildingDTO.getUserId());
+			
+		}
+		Integer id = buildingDTO.getId();
+		if(id != null) {
+			building.setId(id);
 		}
 
 		return building;
 	}
+
+
 
 	public BuildingDTO toDTO(Building building) {
 

@@ -19,7 +19,13 @@ public class AmbienteDTO {
 			this.setBuildingid(buildingid);
 
 		}
+		public AmbienteDTO(int id, String descrizione, int buildingid) {
+			super ();
+			this.id = id;
+			this.descrizione = descrizione;
+			this.buildingid = buildingid;
 
+		}
 		public int getBuildingid() {
 			return buildingid;
 		}

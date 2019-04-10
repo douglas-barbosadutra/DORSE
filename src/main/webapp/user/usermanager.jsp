@@ -53,7 +53,7 @@
 			type="text" id="type" name="usertype"
 			placeholder="inserisci lo usertype">
 
-		<button type="submit" value="Insert" name="pulsante">Inserisci</button>
+		<button type="submit" name="pulsante">Inserisci</button>
 	</form>
 
 

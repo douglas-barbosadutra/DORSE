@@ -12,13 +12,6 @@
 <%UserDTO u = (UserDTO) request.getAttribute("userReadToUpdate");%>
 
 
-<table>
-	<tr> 
-		<th>Username</th>
-		<th>Password</th>
-		<th>Usertype</th>
-	</tr>	
-</table>
 
 		<form action="UserManagerServlet?mode=update&id=<%=u.getId()%>" method="post">
 
@@ -31,7 +24,7 @@
 			type="text" id="type" name="usertype"
 			value=<%=u.getUsertype()%>>
 
-		<button type="submit" value="Insert" name="pulsante">Modifica</button>
+		<button type="submit"  name="pulsante">Modifica</button>
 		</form>		
 	
 </body>

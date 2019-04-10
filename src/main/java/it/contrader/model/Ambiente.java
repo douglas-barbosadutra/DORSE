@@ -18,6 +18,14 @@ public class Ambiente {
 		this.buildingid = buildingid;
 
 	}
+	
+	public Ambiente(int id, String descrizione, int buildingid) {
+		super ();
+		this.id = id;
+		this.descrizione = descrizione;
+		this.buildingid = buildingid;
+
+	}
 
 
 

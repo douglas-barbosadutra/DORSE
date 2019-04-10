@@ -42,7 +42,7 @@
 			type="text" id="user" name="user"
 			placeholder="inseriscil'ID dello user"> 
 			
-		<button type="submit" value="Insert" name="pulsante">Inserisci</button>
+		<button type="submit"  name="pulsante">Inserisci</button>
 	</form>
 
 

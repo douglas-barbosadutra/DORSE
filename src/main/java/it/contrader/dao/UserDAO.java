@@ -1,14 +1,10 @@
 package it.contrader.dao;
 
 import java.sql.*;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
 import it.contrader.utils.ConnectionSingleton;
 import it.contrader.utils.GestoreEccezioni;
-import it.contrader.model.Ambiente;
 import it.contrader.model.User;
 
 public class UserDAO implements DAO<User> {
@@ -37,7 +33,7 @@ public class UserDAO implements DAO<User> {
 				String password = resultSet.getString("password");
 				String usertype = resultSet.getString("usertype");
 				user = new User(username, password, usertype);
-				user.setUserId(userId);
+				user.setId(userId);
 				usersList.add(user);
 			}
 		} catch (SQLException e) {
@@ -65,7 +61,7 @@ public class UserDAO implements DAO<User> {
 			password = resultSet.getString("password");
 			usertype = resultSet.getString("usertype");
 			User user = new User(username, password, usertype);
-			user.setUserId(resultSet.getInt("idUser"));
+			user.setId(resultSet.getInt("idUser"));
 			return user;
 		} catch (SQLException e) {
 			GestoreEccezioni.getInstance().gestisciEccezione(e);
@@ -113,10 +109,10 @@ public class UserDAO implements DAO<User> {
 		Connection connection = ConnectionSingleton.getInstance();
 
 		// Check if id is present
-		if (user.getUserId() == 0)
+		if (user.getId() == 0)
 			return false;
 
-		User userRead = read(user.getUserId());
+		User userRead = read(user.getId());
 		if (!userRead.equals(user)) {
 			try {
 				// Fill the userToUpdate object
@@ -134,7 +130,7 @@ public class UserDAO implements DAO<User> {
 				preparedStatement.setString(1, user.getUsername());
 				preparedStatement.setString(2, user.getPassword());
 				preparedStatement.setString(3, user.getUsertype());
-				preparedStatement.setInt(4, user.getUserId());
+				preparedStatement.setInt(4, user.getId());
 				int a = preparedStatement.executeUpdate();
 				if (a > 0)
 					return true;
@@ -154,7 +150,7 @@ public class UserDAO implements DAO<User> {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETE);
-			int id = user.getUserId();
+			int id = user.getId();
 			preparedStatement.setInt(1, id);
 			int n = preparedStatement.executeUpdate();
 			if (n != 0)

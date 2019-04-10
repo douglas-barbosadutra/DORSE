@@ -20,13 +20,13 @@
 <form action="BuildingManagerServlet?mode=update&id=<%=id%>" method="post">
 
 
-		<input type="text" id="user" name="indirizzo"
+		indirizzo: <input type="text" id="user" name="indirizzo"
 			value="<%=b.getIndirizzo()%>">
-		<input
+		Id Utente: <input
 			type="text" id="pass" name="user"
 			value=<%=b.getUserId()%>> 
 			
-		<button type="submit" value="Insert" name="pulsante">Modifica</button>
+		<button type="submit" name="pulsante">Modifica</button>
 
 </form>
 
