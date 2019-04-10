@@ -49,14 +49,10 @@
 
 	<%
 		if (request.getAttribute("ans") != null) {
-
 			String mode = request.getParameter("mode");
 			boolean ans = (boolean) request.getAttribute("ans");
-
 			switch (mode) {
-
 			case "insert":
-
 				if (ans) {
 	%>
 	<h3>L'inserimento è andato alla grande!</h3>
@@ -67,9 +63,7 @@
 	<%
 		}
 				break;
-
 			case "delete":
-
 				if (ans) {
 	%>
 	<h3>La cancellazione è andata alla grande!</h3>
@@ -81,7 +75,6 @@
 		}
 				break;
 			case "update":
-
 				if (ans) {
 	%>
 	<h3>La modifica è andata alla grande!</h3>
@@ -92,9 +85,7 @@
 	<%
 		}
 				break;
-
 			}
-
 		}
 	%>
 
