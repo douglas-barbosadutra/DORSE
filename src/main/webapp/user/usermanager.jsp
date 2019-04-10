@@ -29,7 +29,7 @@
 			</a></td>
 			<td><%=u.getPassword()%></td>
 			<td><%=u.getUsertype()%></td>
-			<td><a href=UserManagerServlet?mode=update&id=<%=u.getId()%>>Modifica</a>
+			<td><a href=UserManagerServlet?mode=readtoupdate&id=<%=u.getId()%>>Modifica</a>
 			</td>
 			<td><a href=UserManagerServlet?mode=delete&id=<%=u.getId()%>>Cancella</a>
 			</td>
@@ -84,6 +84,19 @@
 				if (ans) {
 	%>
 	<h3>La cancellazione è andata alla grande!</h3>
+	<%
+		} else {
+	%>
+	<h3>Ritenta, sarai più fortunato...</h3>
+	<%
+		}
+				break;
+				
+			case "update":
+
+				if (ans) {
+	%>
+	<h3>La modifica è andata alla grande!</h3>
 	<%
 		} else {
 	%>
