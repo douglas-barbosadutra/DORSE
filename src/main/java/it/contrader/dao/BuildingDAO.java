@@ -83,24 +83,8 @@ public class BuildingDAO {
 	public boolean updateBuilding(Building buildingToUpdate) {
 		Connection connection = ConnectionSingleton.getInstance();
 
-		// Check if id is present
-		if (buildingToUpdate.getId() == 0)
-			return false;
-
-		Building userRead = readBuilding(buildingToUpdate.getId());
-		if (!userRead.equals(buildingToUpdate)) {
 			try {
-				// Fill the userToUpdate object
-				if (buildingToUpdate.getIndirizzo() == null || buildingToUpdate.getIndirizzo().equals("")) {
-					buildingToUpdate.setIndirizzo(userRead.getIndirizzo());
-				}
 
-
-				if (buildingToUpdate.getUserId() == 0 ) {
-					buildingToUpdate.setUserId(userRead.getUserId());
-				}
-
-				// Update the user
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
 				preparedStatement.setString(1, buildingToUpdate.getIndirizzo());
 				preparedStatement.setInt(2, buildingToUpdate.getUserId());
@@ -114,16 +98,12 @@ public class BuildingDAO {
 			} catch (SQLException e) {
 				return false;
 			}
-		}
-
-		return false;
-
+	
 	}
 
-	public boolean deleteBuilding(Building building) {
+	public boolean deleteBuilding(int id) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
-			int id = building.getId();
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETE);
 			preparedStatement.setInt(1, id);
 			int n = preparedStatement.executeUpdate();

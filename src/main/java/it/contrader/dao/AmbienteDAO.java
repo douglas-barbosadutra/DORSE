@@ -25,7 +25,7 @@ public class AmbienteDAO {
 
 	}
 
-	public List<Ambiente> showAllAmbiente(int buildingid) {
+	public List<Ambiente> getAllAmbientebyBuilding(int buildingid) {
 		List<Ambiente> ambienti = new ArrayList<>();
 		Connection connection = ConnectionSingleton.getInstance();
 		try {

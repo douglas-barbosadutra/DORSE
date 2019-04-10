@@ -6,7 +6,13 @@ public class BuildingDTO {
 	private String indirizzo;
 	private int userId;
 	
-	public BuildingDTO(Integer id, String indirizzo, int userId) {
+	public BuildingDTO( String indirizzo, int userId) {
+		super();
+		this.indirizzo = indirizzo;
+		this.userId = userId;
+	}
+
+	public BuildingDTO(int id, String indirizzo, int userId) {
 		super();
 		this.id = id;
 		this.indirizzo = indirizzo;

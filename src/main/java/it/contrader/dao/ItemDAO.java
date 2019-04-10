@@ -12,15 +12,15 @@ import it.contrader.utils.GestoreEccezioni;
 public class ItemDAO {
 
 	public ItemDAO() {
-		
+
 	}
-	
+
 	private final String QUERY_ALL = "SELECT * FROM item";
 	private final String QUERY_BY_AMBIENT = "SELECT * FROM item JOIN ambient ON item.ambient = ambient.id AND ambient.id=?";
 	private final String QUERY_READ = "SELECT * FROM item WHERE item.id=?";
 	private final String QUERY_INSERT = "INSERT INTO item (itemType, description) VALUES (?,?)";
 	private final String QUERY_DELETE = "DELETE FROM item WHERE id=?";
-	
+
 	public List<Item> getAllItems() {
 		List<Item> itemList = new ArrayList();
 		Connection connection = ConnectionSingleton.getInstance();
@@ -40,7 +40,7 @@ public class ItemDAO {
 		}
 		return itemList;
 	}
-	
+
 	public List<Item> getByAmbient(Ambiente ambient) {
 		List<Item> itemList = new ArrayList();
 		Connection connection = ConnectionSingleton.getInstance();
@@ -61,7 +61,7 @@ public class ItemDAO {
 		}
 		return itemList;
 	}
-	
+
 	public Item readItem(int id) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
@@ -78,7 +78,7 @@ public class ItemDAO {
 			return null;
 		}
 	}
-	
+
 	public boolean insertItem(Item item) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
@@ -92,7 +92,7 @@ public class ItemDAO {
 			return false;
 		}
 	}
-	
+
 	public boolean deleteItem(int id) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
@@ -101,9 +101,12 @@ public class ItemDAO {
 			int n = preparedStatement.executeUpdate();
 			if (n != 0)
 				return true;
+			return false;
 		} catch (SQLException e) {
 			GestoreEccezioni.getInstance().gestisciEccezione(e);
 			return false;
 		}
+
+
 	}
 }
