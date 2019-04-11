@@ -37,6 +37,7 @@ public class UserManagerServlet extends HttpServlet {
 
 		case "USERLIST":
 			updateList(request);
+			getServletContext().getRequestDispatcher("/user/usermanager.jsp").forward(request, response);
 			break;
 
 		case "READ":

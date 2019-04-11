@@ -11,30 +11,25 @@
 	<h2>MENU PRINCIPALE OPERATORE</h2>
 <br>
 
-<%if (request.getAttribute("view")==null) {%>
-<a href="BuildingManagerServlet?mode=buildinglistOP"> Visualizza i Building </a>
-<%}%>
-<br>
+<a href="BuildingManagerServlet?mode=buildinglistOP"> Visualizza i Building </a>>
+
 
 <%if (request.getAttribute("view")=="buildings") {
-List<BuildingDTO> buildinglist = (List<BuildingDTO>) request.getAttribute("buildinglistOP");%>
+List<BuildingDTO> list = (List<BuildingDTO>) request.getAttribute("list");%>
 
 <table>
 <tr> 
 	<th>Indirizzo</th>
 	<th>User</th>
 </tr>
-<%for(BuildingDTO b: buildinglist) {%> 
+<%for(BuildingDTO b: list) {%> 
 <tr>
 	<td> 
-		<a href=BuildingManagerServlet?mode=read&id=<%=b.getId()%>><%=b.getIndirizzo()%></a>
+		<a href=AmbienteManagerServlet?mode=ambientelistby&buildingId=<%=b.getId()%>><%=b.getIndirizzo()%></a>
 	</td>
 	<td> 
 		<%=b.getUserId()%>
 	</td>
-	<td>
-	<a href=AmbienteManagerServlet?mode=ambientelistby&id=<%=b.getId()%>>Visualizza gli Ambienti</a>
-		</td>
 </tr>	
 <%} %>
 </table>

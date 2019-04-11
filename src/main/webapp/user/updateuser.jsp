@@ -9,7 +9,7 @@
 <body>
 <h1>Pagina di modifica utente</h1>
 
-<%UserDTO u = (UserDTO) request.getAttribute("userReadToUpdate");%>
+<%UserDTO u = (UserDTO) request.getAttribute("dto");%>
 
 
 

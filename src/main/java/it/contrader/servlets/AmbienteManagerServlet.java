@@ -2,35 +2,30 @@ package it.contrader.servlets;
 
 import java.io.IOException;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import it.contrader.dto.AmbienteDTO;
-import it.contrader.dto.BuildingDTO;
-import it.contrader.dto.DTO;
-import it.contrader.dto.ItemDTO;
-import it.contrader.dto.UserDTO;
 import it.contrader.service.AmbienteServiceDTO;
-import it.contrader.service.BuildingServiceDTO;
-import it.contrader.service.ItemServiceDTO;
 import it.contrader.service.ServiceDTO;
-import it.contrader.service.UserServiceDTO;
-
 
 public class AmbienteManagerServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
+	private int buildingId;
+	private HttpSession session;
 
 	public AmbienteManagerServlet() {
 	}
 	
 	public void updateList(HttpServletRequest request) {
-		int buildingId = Integer.parseInt(request.getParameter("id"));
-		ServiceDTO<UserDTO> service = new UserServiceDTO();
-		List<UserDTO>listDTO = service.getAllBy(buildingId);
+		buildingId = Integer.parseInt(request.getParameter("buildingId"));
+		ServiceDTO<AmbienteDTO> service = new AmbienteServiceDTO();
+		List<AmbienteDTO>listDTO = service.getAllBy(buildingId);
 		request.setAttribute("list", listDTO);
+		session.setAttribute("buildingId", "buildingId");
 	}
 	
 	@Override
@@ -40,6 +35,9 @@ public class AmbienteManagerServlet extends HttpServlet{
 		AmbienteDTO dto;
 		int id, buildingId;
 		boolean ans;
+		
+		session = request.getSession();
+		buildingId = (Integer)session.getAttribute("buildingId");
 		
 		switch (mode.toUpperCase()) {
 

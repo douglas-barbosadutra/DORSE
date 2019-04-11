@@ -11,7 +11,7 @@
 
 
 	<%
-		List<UserDTO> userlist = (List<UserDTO>) request.getAttribute("userlist");
+		List<UserDTO> list = (List<UserDTO>) request.getAttribute("list");
 	%>
 
 	<table>
@@ -21,7 +21,7 @@
 			<th>Usertype</th>
 		</tr>
 		<%
-			for (UserDTO u : userlist) {
+			for (UserDTO u : list) {
 		%>
 		<tr>
 			<td><a href=UserManagerServlet?mode=read&id=<%=u.getId()%>>

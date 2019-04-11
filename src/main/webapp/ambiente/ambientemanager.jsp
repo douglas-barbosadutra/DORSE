@@ -13,7 +13,7 @@
 
 
 
-<%List<AmbienteDTO> ambientelist = (List<AmbienteDTO>) request.getAttribute("ambientelist");%>
+<%List<AmbienteDTO> list = (List<AmbienteDTO>) request.getAttribute("list");%>
 
 
 
@@ -22,13 +22,10 @@
 		<th>Descrizione</th>
 		<th>Building</th>
 	</tr>
-	<%for(AmbienteDTO a: ambientelist) {%> 
+	<%for(AmbienteDTO a: list) {%> 
 	<tr>
 		<td> 
 			<a href=AmbienteManagerServlet?mode=read&id=<%=a.getId()%>><%=a.getDescrizione()%></a>
-		</td>
-		<td> 
-			<a href=BuildingManagerServlet?mode=read&id=<%=a.getBuildingid()%>><%=a.getBuildingid()%></a>
 		</td>
 		<td><a href=AmbienteManagerServlet?mode=preupdate&id=<%=a.getId()%>>Modifica</a>
 			</td>
@@ -47,8 +44,8 @@
 		Descrizione: <input type="text" id="tipo" name="descrizione"
 			placeholder="inserisci la descrizione"> <input type="hidden"
 			name="mode" value="insert">
-		<input type="hidden" name="buildingid"
-			value="<%=request.getParameter("buildingid")%>">
+		<input type="hidden" name="buildingId"
+			value="<%=request.getParameter("buildingId")%>">
 		<button type="submit">Inserisci</button>
 	</form>
 

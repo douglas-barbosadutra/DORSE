@@ -9,14 +9,14 @@
 <body>
 
 
-<% List<BuildingDTO> buildinglist = (List<BuildingDTO>) request.getAttribute("buildinglist");%>
+<% List<BuildingDTO> list = (List<BuildingDTO>) request.getAttribute("list");%>
 
 <table>
 	<tr> 
 		<th>Indirizzo</th>
 		<th>User</th>
 	</tr>
-	<% for(BuildingDTO b: buildinglist) {%> 
+	<% for(BuildingDTO b: list) {%> 
 	<tr>
 		<td> 
 			<a href=BuildingManagerServlet?mode=read&id=<%=b.getId()%>><%=b.getIndirizzo()%></a>
@@ -39,7 +39,7 @@
 		Indirizzo: <input type="text" id="indirizzo" name="indirizzo"
 			placeholder="inserisci l'indirizzo">
 		Id Utente: <input
-			type="text" id="user" name="user"
+			type="text" id="user" name="userId"
 			placeholder="inseriscil'ID dello user"> 
 			
 		<button type="submit"  name="pulsante">Inserisci</button>

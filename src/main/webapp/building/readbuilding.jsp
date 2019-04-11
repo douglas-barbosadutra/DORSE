@@ -10,7 +10,7 @@
 	<h1>Pagina di lettura Building</h1>
 
 	<%
-		BuildingDTO b = (BuildingDTO) request.getAttribute("buildingToRead");
+		BuildingDTO b = (BuildingDTO) request.getAttribute("dto");
 	%>
 
 

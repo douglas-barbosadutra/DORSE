@@ -10,7 +10,7 @@
 
 <h1>Pagina di lettura utente</h1>
 
-<%UserDTO u = (UserDTO) request.getAttribute("userToRead");%>
+<%UserDTO u = (UserDTO) request.getAttribute("dto");%>
 
 
 <table>

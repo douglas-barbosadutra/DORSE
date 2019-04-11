@@ -9,8 +9,8 @@
 <body>
 	<h1>Pagina di lettura Ambiente</h1>
 
-	<%AmbienteDTO a = (AmbienteDTO) request.getAttribute("ambienteToRead");
-	List<ItemDTO> items = (List<ItemDTO>) request.getAttribute("items");%>
+	<%AmbienteDTO a = (AmbienteDTO) request.getAttribute("dto");
+	List<ItemDTO> list = (List<ItemDTO>) request.getAttribute("list");%>
 
 
 	<table>
@@ -28,17 +28,17 @@
 	
 	<h1>Items</h1>
 	
-	<table>
-		<tr>
-			<th>Tipo</th>
-			<th>Descrizione</th>
-		</tr>
-		<%for(ItemDTO item: items) {%>
-			<tr>
-				<td><%=item.getItemType()%></td>
-				<td><%=item.getDescription()%></td>
-			</tr>
-		<%} %>
-	</table>
+<!-- 	<table> -->
+<!-- 		<tr> -->
+<!-- 			<th>Tipo</th> -->
+<!-- 			<th>Descrizione</th> -->
+<!-- 		</tr> -->
+<%-- 		<%for(ItemDTO item: list) {%> --%>
+<!-- 			<tr> -->
+<%-- 				<td><%=item.getItemType()%></td> --%>
+<%-- 				<td><%=item.getDescription()%></td> --%>
+<!-- 			</tr> -->
+<%-- 		<%} %> --%>
+<!-- 	</table> -->
 </body>
 </html>

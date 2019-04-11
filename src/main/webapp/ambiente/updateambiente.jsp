@@ -12,7 +12,7 @@
 
 
 	<%
-		AmbienteDTO a = (AmbienteDTO) request.getAttribute("ambiente");
+		AmbienteDTO a = (AmbienteDTO) request.getAttribute("dto");
 		int id = a.getId();
 	%>
 	
@@ -23,7 +23,7 @@
 		Descrizione: <input type="text" id="desc" name="descrizione"
 			value="<%=a.getDescrizione()%>">
 		Id Building: <input
-			type="text" id="buil" name="building"
+			type="text" id="buil" name="buildingId"
 			value=<%=a.getBuildingid()%>> 
 			
 		<button type="submit" name="pulsante">Modifica</button>

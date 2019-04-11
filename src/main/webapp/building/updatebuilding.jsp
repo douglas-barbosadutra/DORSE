@@ -12,7 +12,7 @@
 
 
 	<%
-		BuildingDTO b = (BuildingDTO) request.getAttribute("building");
+		BuildingDTO b = (BuildingDTO) request.getAttribute("dto");
 		int id = b.getId();
 	%>
 	
@@ -23,7 +23,7 @@
 		indirizzo: <input type="text" id="user" name="indirizzo"
 			value="<%=b.getIndirizzo()%>">
 		Id Utente: <input
-			type="text" id="pass" name="user"
+			type="text" id="pass" name="userId"
 			value=<%=b.getUserId()%>> 
 			
 		<button type="submit" name="pulsante">Modifica</button>
