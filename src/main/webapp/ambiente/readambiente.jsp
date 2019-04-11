@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="it.contrader.dto.*"%>
+    pageEncoding="ISO-8859-1" import="it.contrader.dto.*" import="java.util.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +9,8 @@
 <body>
 	<h1>Pagina di lettura Ambiente</h1>
 
-	<%AmbienteDTO a = (AmbienteDTO) request.getAttribute("ambienteToRead");%>
+	<%AmbienteDTO a = (AmbienteDTO) request.getAttribute("ambienteToRead");
+	List<ItemDTO> items = (List<ItemDTO>) request.getAttribute("items");%>
 
 
 	<table>
@@ -23,6 +24,21 @@
 			<td><%=a.getBuildingid()%></td>
 
 		</tr>
+	</table>
+	
+	<h1>Items</h1>
+	
+	<table>
+		<tr>
+			<th>Tipo</th>
+			<th>Descrizione</th>
+		</tr>
+		<%for(ItemDTO item: items) {%>
+			<tr>
+				<td><%=item.getItemType()%></td>
+				<td><%=item.getDescription()%></td>
+			</tr>
+		<%} %>
 	</table>
 </body>
 </html>

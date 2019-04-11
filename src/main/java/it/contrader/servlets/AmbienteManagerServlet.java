@@ -9,100 +9,91 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.contrader.dto.AmbienteDTO;
+import it.contrader.dto.BuildingDTO;
+import it.contrader.dto.DTO;
+import it.contrader.dto.ItemDTO;
+import it.contrader.dto.UserDTO;
 import it.contrader.service.AmbienteServiceDTO;
+import it.contrader.service.BuildingServiceDTO;
+import it.contrader.service.ItemServiceDTO;
+import it.contrader.service.ServiceDTO;
+import it.contrader.service.UserServiceDTO;
 
 
 public class AmbienteManagerServlet extends HttpServlet{
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public AmbienteManagerServlet() {
-		super();
-
+	}
+	
+	public void updateList(HttpServletRequest request) {
+		int buildingId = Integer.parseInt(request.getParameter("id"));
+		ServiceDTO<UserDTO> service = new UserServiceDTO();
+		List<UserDTO>listDTO = service.getAllBy(buildingId);
+		request.setAttribute("list", listDTO);
 	}
 	
 	@Override
 	public void service (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		AmbienteServiceDTO ambienteService = new AmbienteServiceDTO();
-		String mode = request.getParameter("mode");
-		
-		List<AmbienteDTO> listDTO;
+		ServiceDTO<AmbienteDTO> service = new AmbienteServiceDTO();
+	    String mode = request.getParameter("mode");
+		AmbienteDTO dto;
+		int id, buildingId;
 		boolean ans;
-		int id;
-		int building;
-		String descrizione;
 		
 		switch (mode.toUpperCase()) {
 
 		case "AMBIENTELISTBY":
-			id = Integer.parseInt(request.getParameter("id"));
-			listDTO = ambienteService.getAllBy(id);
-			request.setAttribute("ambientelist", listDTO);
-			request.setAttribute("building", id);
+			updateList(request);
 			getServletContext().getRequestDispatcher("/ambiente/ambientemanager.jsp").forward(request, response);
 			break;
 
 		case "BUILDINGLISTOP":
-			listDTO = ambienteService.getAll();
-			request.setAttribute("buildinglistOP", listDTO);
-			request.setAttribute("view", "buildings");
+			updateList(request);
 			getServletContext().getRequestDispatcher("/homeoperatore.jsp").forward(request, response);
 			break;
 
 		case "READ":
 			id = Integer.parseInt(request.getParameter("id"));
-			AmbienteDTO ambienteToRead = ambienteService.read(id);
-			ambienteToRead.toString();
-			request.setAttribute("ambienteToRead", ambienteToRead);
+			dto = service.read(id);
+			request.setAttribute("dto", dto);
 			getServletContext().getRequestDispatcher("/ambiente/readambiente.jsp").forward(request, response);
 			break;
 
 		case "INSERT":
-			descrizione= request.getParameter("descrizione");
-			building = (Integer) request.getAttribute("buildingid");
-			AmbienteDTO ambienteToInsert = new AmbienteDTO (descrizione,building);
-			ans = ambienteService.insert(ambienteToInsert);
+			String descrizione= request.getParameter("descrizione");
+			buildingId = Integer.parseInt(request.getParameter("buildingid"));
+			dto = new AmbienteDTO (descrizione, buildingId);
+			ans = service.insert(dto);
 			request.setAttribute("ans", ans);
-			request.setAttribute("mode", "insert");
-			listDTO = ambienteService.getAllBy(building);
-			request.setAttribute("ambientelist", listDTO);
+			updateList(request);
 			getServletContext().getRequestDispatcher("/ambiente/ambientemanager.jsp").forward(request, response);
 			break;
 
 		case "PREUPDATE":
 			id = Integer.parseInt(request.getParameter("id"));
-			AmbienteDTO ambiente = ambienteService.read(id);
-			ambiente.setId(id);
-			request.setAttribute("ambiente", ambiente);
+			dto = service.read(id);
+			dto.setId(id);
+			request.setAttribute("dto", dto);
 			getServletContext().getRequestDispatcher("/ambiente/updateambiente.jsp").forward(request, response);
 			break;
 
 		case "UPDATE":
 			descrizione = request.getParameter("descrizione");
-			building = Integer.parseInt(request.getParameter("building"));
+			buildingId = Integer.parseInt(request.getParameter("buildingId"));
 			id = Integer.parseInt(request.getParameter("id"));
-			AmbienteDTO buildingToUpdate = new AmbienteDTO(id,descrizione, building);
-			ans = ambienteService.update(buildingToUpdate);
-			request.setAttribute("ans", ans);
-			request.setAttribute("mode", "update");
-			listDTO = ambienteService.getAllBy(building);
-			request.setAttribute("ambientelist", listDTO);
+			dto = new AmbienteDTO(id, descrizione, buildingId);
+			ans = service.update(dto);
+			updateList(request);
 			getServletContext().getRequestDispatcher("/ambiente/ambientemanager.jsp").forward(request, response);
 			break;
 
 		case "DELETE":
 			id = Integer.parseInt(request.getParameter("id"));
-			AmbienteDTO dto = ambienteService.read(id);
-			building= dto.getBuildingid();
-			ans = ambienteService.delete(dto);
+			dto = service.read(id);
+			ans = service.delete(dto);
 			request.setAttribute("ans", ans);
-			listDTO = ambienteService.getAllBy(building);
-			request.setAttribute("ambientelist", listDTO);
-			request.setAttribute("mode", "delete");
+			updateList(request);
 			getServletContext().getRequestDispatcher("/ambiente/ambientemanager.jsp").forward(request, response);
 			break;
 		}

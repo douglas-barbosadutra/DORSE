@@ -7,6 +7,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import it.contrader.dto.DTO;
 import it.contrader.dto.UserDTO;
 import it.contrader.service.ServiceDTO;
 import it.contrader.service.UserServiceDTO;
@@ -14,35 +16,33 @@ import it.contrader.service.UserServiceDTO;
 public class UserManagerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
-
 	public UserManagerServlet() {
-		super();
-
+	}
+	
+	public void updateList(HttpServletRequest request) {
+		ServiceDTO<UserDTO> service = new UserServiceDTO();
+		List<UserDTO>listDTO = service.getAll();
+		request.setAttribute("list", listDTO);
 	}
 
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ServiceDTO<UserDTO> userService = new UserServiceDTO();
+		ServiceDTO<UserDTO> service = new UserServiceDTO();
 		String mode = request.getParameter("mode");
+		UserDTO dto;
 		int id;
-		List<UserDTO> listDTO;
 		boolean ans;
 
 		switch (mode.toUpperCase()) {
 
 		case "USERLIST":
-
-			listDTO = userService.getAll();
-			request.setAttribute("userlist", listDTO);
-			getServletContext().getRequestDispatcher("/user/usermanager.jsp").forward(request, response);
+			updateList(request);
 			break;
 
 		case "READ":
-
 			id = Integer.parseInt(request.getParameter("id"));
-			UserDTO userToRead= userService.read(id);
-			request.setAttribute("userToRead", userToRead);
+			dto = service.read(id);
+			request.setAttribute("dto", dto);
 			getServletContext().getRequestDispatcher("/user/readuser.jsp").forward(request, response);
 			break;
 
@@ -50,20 +50,17 @@ public class UserManagerServlet extends HttpServlet {
 			String username = request.getParameter("username").toString();
 			String password = request.getParameter("password").toString();
 			String usertype = request.getParameter("usertype").toString();
-			UserDTO userToInsert = new UserDTO (username,password,usertype);
-
-			ans = userService.insert(userToInsert);
+			dto = new UserDTO (username,password,usertype);
+			ans = service.insert(dto);
 			request.setAttribute("ans", ans);
-			request.setAttribute("mode", "insert");
-			listDTO = userService.getAll();
-			request.setAttribute("userlist", listDTO);
+			updateList(request);
 			getServletContext().getRequestDispatcher("/user/usermanager.jsp").forward(request, response);
 			break;
 
 		case "READTOUPDATE":
 			id = Integer.parseInt(request.getParameter("id"));
-			UserDTO userReadToUpdate= userService.read(id);
-			request.setAttribute("userReadToUpdate", userReadToUpdate);
+			dto = service.read(id);
+			request.setAttribute("dto", dto);
 			getServletContext().getRequestDispatcher("/user/updateuser.jsp").forward(request, response);
 			break;
 			
@@ -72,24 +69,18 @@ public class UserManagerServlet extends HttpServlet {
 			password = request.getParameter("password");
 			usertype = request.getParameter("usertype");
 			id = Integer.parseInt(request.getParameter("id"));
-			UserDTO userToUpdate = new UserDTO (id,username, password, usertype);
-			ans = userService.update(userToUpdate);
-			request.setAttribute("ans", ans);
-			listDTO = userService.getAll();
-			request.setAttribute("userlist", listDTO);
-			request.setAttribute("mode", "update");
+			dto = new UserDTO (id,username, password, usertype);
+			ans = service.update(dto);
+			updateList(request);
 			getServletContext().getRequestDispatcher("/user/usermanager.jsp").forward(request, response);
 			break;
 
-
 		case "DELETE":
 			id = Integer.parseInt(request.getParameter("id"));
-			UserDTO dto = userService.read(id);
-			ans = userService.delete(dto);
+			dto = service.read(id);
+			ans = service.delete(dto);
 			request.setAttribute("ans", ans);
-			listDTO = userService.getAll();
-			request.setAttribute("userlist", listDTO);
-			request.setAttribute("mode", "delete");
+			updateList(request);
 			getServletContext().getRequestDispatcher("/user/usermanager.jsp").forward(request, response);
 			break;
 		}

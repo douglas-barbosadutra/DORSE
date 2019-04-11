@@ -13,29 +13,24 @@ import it.contrader.service.ServiceDTO;
 import it.contrader.service.UserServiceDTO;
 
 public class LoginServlet extends HttpServlet {
-
 	private static final long serialVersionUID = 1L;
-	private final ServiceDTO<UserDTO> userServiceDTO = new UserServiceDTO();
 
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		final HttpSession session = request.getSession();
 		session.setAttribute("utente", null);
+		
+		ServiceDTO<UserDTO> service = new UserServiceDTO();
 
 		if (request != null) {
-			final String username = request.getParameter("username").toString();
-			final String password = request.getParameter("password").toString();
-			// recuperiamo l'utente
-			final UserDTO userDTO = userServiceDTO.read(username, password);
+			String username = request.getParameter("username").toString();
+			String password = request.getParameter("password").toString();
+			UserDTO dto = service.read(username, password);
 
-			if (userDTO != null)
-				session.setAttribute("utente", userDTO);
-
-			// verifichiamo che tipo di ruolo ha all'interno dell'applicazione
-			// e lo reindirizziamo nella jsp opportuna
+			if (dto != null)
+				session.setAttribute("user", dto);
 			
-			switch (userDTO.getUsertype().toUpperCase()) {
+			switch (dto.getUsertype().toUpperCase()) {
 			case "ADMIN":
 				getServletContext().getRequestDispatcher("/homeadmin.jsp").forward(request, response);
 				break;
@@ -48,5 +43,4 @@ public class LoginServlet extends HttpServlet {
 			}
 		}
 	}
-
 }

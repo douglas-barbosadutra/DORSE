@@ -4,6 +4,8 @@ import java.sql.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import it.contrader.model.Ambiente;
 import it.contrader.model.Item;
 import it.contrader.utils.ConnectionSingleton;
 import it.contrader.utils.GestoreEccezioni;
@@ -15,7 +17,7 @@ public class ItemDAO implements DAO<Item> {
 	}
 
 	private final String QUERY_ALL = "SELECT * FROM item";
-	//private final String QUERY_BY_AMBIENT = "SELECT * FROM item JOIN ambient ON item.ambient = ambient.id AND ambient.id=?";
+	private final String QUERY_BY_AMBIENT = "SELECT * FROM item JOIN ambiente ON item.ambient = ambiente.id AND ambiente.id=?";
 	private final String QUERY_READ = "SELECT * FROM item WHERE item.id=?";
 	private final String QUERY_INSERT = "INSERT INTO item (itemType, description) VALUES (?,?)";
 	private final String QUERY_DELETE = "DELETE FROM item WHERE id=?";
@@ -43,8 +45,26 @@ public class ItemDAO implements DAO<Item> {
 	
 	@Override
 	public List<Item> getAllBy(Object o) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Item> items = new ArrayList<>();
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_BY_AMBIENT);
+			int ambientId = (Integer)o;
+			preparedStatement.setInt(1, ambientId);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			Item item;
+			while (resultSet.next()) {
+				int id = resultSet.getInt("id");
+				String itemType = resultSet.getString("itemtype");
+				String description = resultSet.getString("description");
+				item = new Item(description, itemType);
+				item.setId(id);
+				items.add(item);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return items;
 	}
 
 	@Override
