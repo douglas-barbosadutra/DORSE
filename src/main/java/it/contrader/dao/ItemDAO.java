@@ -34,7 +34,8 @@ public class ItemDAO implements DAO<Item> {
 				int id = resultSet.getInt("id");
 				String itemType = resultSet.getString("itemType");
 				String description = resultSet.getString("description");
-				item = new Item(id, description, itemType);
+				int ambientId = resultSet.getInt("ambient");
+				item = new Item(id, description, itemType, ambientId);
 				itemList.add(item);
 			}
 		} catch (SQLException e) {
@@ -57,7 +58,7 @@ public class ItemDAO implements DAO<Item> {
 				int id = resultSet.getInt("id");
 				String itemType = resultSet.getString("itemtype");
 				String description = resultSet.getString("description");
-				item = new Item(description, itemType);
+				item = new Item(description, itemType, ambientId);
 				item.setId(id);
 				items.add(item);
 			}
@@ -77,7 +78,8 @@ public class ItemDAO implements DAO<Item> {
 			resultSet.next();
 			String itemType = resultSet.getString("itemType");
 			String description = resultSet.getString("description");
-			Item item = new Item(id, description, itemType);
+			int ambientId = resultSet.getInt("ambient");
+			Item item = new Item(id, description, itemType, ambientId);
 			return item;
 		} catch (SQLException e) {
 			GestoreEccezioni.getInstance().gestisciEccezione(e);

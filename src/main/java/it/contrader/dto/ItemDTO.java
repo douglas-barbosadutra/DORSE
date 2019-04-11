@@ -4,10 +4,18 @@ public class ItemDTO implements DTO {
 	int id;
 	String description;
 	String itemType;
+	int ambientId;
 	
-	public ItemDTO(int id, String description, String itemType) {
+	public ItemDTO(int id, String description, String itemType, int ambientId) {
 		this.description = description;
 		this.itemType = itemType;
+		this.ambientId = ambientId;
+	}
+	
+	public ItemDTO(String description, String itemType, int ambientId) {
+		this.description = description;
+		this.itemType = itemType;
+		this.ambientId = ambientId;
 	}
 
 	public int getId() {
@@ -32,5 +40,13 @@ public class ItemDTO implements DTO {
 
 	public void setItemType(String itemType) {
 		this.itemType = itemType;
+	}
+
+	public int getAmbientId() {
+		return ambientId;
+	}
+
+	public void setAmbientId(int ambientId) {
+		this.ambientId = ambientId;
 	}
 }
