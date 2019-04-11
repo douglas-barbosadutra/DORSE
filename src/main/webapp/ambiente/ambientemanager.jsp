@@ -39,15 +39,17 @@
 
 
 
-<h2>Inserisci un nuovo ambiente in questo building</h2>
-<%int building = (Integer) request.getAttribute("building");%>
-<h1><%=building%></h1>
-	<form action="AmbienteManagerServlet?mode=insert&buildingid=<%=building%>" method="get">
+	<h2>Inserisci un nuovo ambiente in questo building</h2>
+
+	<form
+		action="AmbienteManagerServlet" method="get">
 
 		Descrizione: <input type="text" id="tipo" name="descrizione"
-			placeholder="inserisci la descrizione">
-			
-		<button type="submit" value="Insert" name="pulsante">Inserisci</button>
+			placeholder="inserisci la descrizione"> <input type="hidden"
+			name="mode" value="insert">
+		<input type="hidden" name="buildingid"
+			value="<%=request.getParameter("buildingid")%>">
+		<button type="submit">Inserisci</button>
 	</form>
 
 
