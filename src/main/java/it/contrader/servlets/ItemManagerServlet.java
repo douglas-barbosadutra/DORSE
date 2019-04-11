@@ -14,16 +14,16 @@ import it.contrader.service.ServiceDTO;
 
 public class ItemManagerServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
-	private int ambienteId;
+	private int ambientId;
 	private HttpSession session;
 
 	public ItemManagerServlet() {
 	}
 	
 	public void updateList(HttpServletRequest request) {
-		session.getAttribute("ambienteId" );
+		session.getAttribute("ambientId" );
 		ServiceDTO<ItemDTO> service = new ItemServiceDTO();
-		List<ItemDTO>listDTO = service.getAllBy(ambienteId);
+		List<ItemDTO>listDTO = service.getAllBy(ambientId);
 		request.setAttribute("list", listDTO);
 	}
 	
@@ -32,8 +32,8 @@ public class ItemManagerServlet extends HttpServlet{
 		ServiceDTO<ItemDTO> service = new ItemServiceDTO();
 	    String mode = request.getParameter("mode");
 	    
-	    if(request.getParameter("ambienteId")!=null) {
-	    	ambienteId = Integer.parseInt(request.getParameter("ambienteId").toString());
+	    if(request.getParameter("ambientId")!=null) {
+	    	ambientId = Integer.parseInt(request.getParameter("ambientId").toString());
 	    }
 	    
 		ItemDTO dto;
@@ -42,7 +42,7 @@ public class ItemManagerServlet extends HttpServlet{
 		String description, itemType;
 		
 		session = request.getSession();
-		session.setAttribute("ambienteId",ambienteId);
+		session.setAttribute("ambientId",ambientId);
 		
 		switch (mode.toUpperCase()) {
 
@@ -65,7 +65,7 @@ public class ItemManagerServlet extends HttpServlet{
 
 		case "INSERT":
 			description= request.getParameter("description");
-			itemType= request.getParameter("itemtype");
+			itemType= request.getParameter("itemType");
 			int ambientId = Integer.parseInt(request.getParameter("ambientId"));
 			dto = new ItemDTO (description, itemType, ambientId);
 			ans = service.insert(dto);

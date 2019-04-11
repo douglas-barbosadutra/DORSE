@@ -26,19 +26,7 @@
 		</tr>
 	</table>
 
-	<h1>Items</h1>
+<a href="ItemManagerServlet?mode=itemlistby&ambientId=<%=a.getId()%>" > Gestisci Item</a>
 
-	<table>
-		<tr>
-			<th>Tipo</th>
-			<th>Descrizione</th>
-		</tr>
-		<%for(ItemDTO item: list) {%>
-		<tr>
-			<td><%=item.getItemType()%></td>
-			<td><%=item.getDescription()%></td>
-		</tr>
-		<%} %>
-	</table>
 </body>
 </html>

@@ -25,7 +25,7 @@ public class ItemConverter implements Converter<Item,ItemDTO> {
 
 		ItemDTO itemDTO = null;
 		if (item != null) {
-			itemDTO = new ItemDTO(item.getId(), item.getDescription(), item.getItemType(), itemDTO.getAmbientId());
+			itemDTO = new ItemDTO(item.getId(), item.getDescription(), item.getItemType(), item.getAmbientId());
 		}
 
 		return itemDTO;

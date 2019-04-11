@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Gestione Ambienti dell' item ${itemId}</title>
+<title>Gestione Item dell' ambiente ${ambientId}</title>
 </head>
 <body>
-<h1>Ambienti del ambiente ${ambienteId} </h1>
+<h1>Item dell' ambiente ${ambienteId} </h1>
 
 
 
@@ -19,12 +19,16 @@
 
 <table>
 	<tr> 
+		<th>ItemType</th>
 		<th>Descrizione</th>
 	</tr>
 	<%for(ItemDTO i: list) {%> 
 	<tr>
 		<td> 
-			<a href=ItemManagerServlet?mode=read&id=<%=i.getId()%>><%=i.getDescription()%></a>
+			<a href=ItemManagerServlet?mode=read&id=<%=i.getId()%>><%=i.getItemType()%></a>
+		</td>
+			<td> 
+			<a href=ItemManagerServlet"><%=i.getDescription()%></a>
 		</td>
 		<td><a href=ItemManagerServlet?mode=preupdate&id=<%=i.getId()%>>Modifica</a>
 			</td>
@@ -38,8 +42,10 @@
 	<h2>Inserisci un nuovo item in questo ambiente</h2>
 
 	<form
-		action="AmbienteManagerServlet" method="get">
+		action="ItemManagerServlet" method="get">
 
+		ItemType: <input type="text" id="tipo" name="itemType"
+			placeholder="inserisci l'itemtype">
 		Descrizione: <input type="text" id="tipo" name="description"
 			placeholder="inserisci la descrizione"> <input type="hidden"
 			name="mode" value="insert">

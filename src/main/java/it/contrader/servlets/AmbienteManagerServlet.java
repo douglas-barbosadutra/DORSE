@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import it.contrader.dto.AmbienteDTO;
+import it.contrader.dto.ItemDTO;
 import it.contrader.service.AmbienteServiceDTO;
+import it.contrader.service.ItemServiceDTO;
 import it.contrader.service.ServiceDTO;
 
 public class AmbienteManagerServlet extends HttpServlet{
@@ -50,7 +52,7 @@ public class AmbienteManagerServlet extends HttpServlet{
 			updateList(request);
 			getServletContext().getRequestDispatcher("/ambiente/ambientemanager.jsp").forward(request, response);
 			break;
-
+			
 		case "BUILDINGLISTOP":
 			updateList(request);
 			getServletContext().getRequestDispatcher("/homeoperatore.jsp").forward(request, response);
@@ -58,6 +60,13 @@ public class AmbienteManagerServlet extends HttpServlet{
 
 		case "READ":
 			id = Integer.parseInt(request.getParameter("id"));
+				
+			ServiceDTO<ItemDTO> itemservice = new ItemServiceDTO();
+			List<ItemDTO>listDTO = itemservice.getAllBy(id);
+			request.setAttribute("list", listDTO);
+			
+			session.setAttribute("ambientId",id);
+			
 			dto = service.read(id);
 			request.setAttribute("dto", dto);
 			getServletContext().getRequestDispatcher("/ambiente/readambiente.jsp").forward(request, response);

@@ -19,7 +19,7 @@ public class ItemDAO implements DAO<Item> {
 	private final String QUERY_ALL = "SELECT * FROM item";
 	private final String QUERY_BY_AMBIENT = "SELECT * FROM item JOIN ambiente ON item.ambient = ambiente.id AND ambiente.id=?";
 	private final String QUERY_READ = "SELECT * FROM item WHERE id=?";
-	private final String QUERY_INSERT = "INSERT INTO item (itemType, description) VALUES (?,?)";
+	private final String QUERY_INSERT = "INSERT INTO item (itemType, description,ambient) VALUES (?,?,?)";
 	private final String QUERY_DELETE = "DELETE FROM item WHERE id=?";
 
 	@Override
@@ -94,6 +94,7 @@ public class ItemDAO implements DAO<Item> {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_INSERT);
 			preparedStatement.setString(1, item.getItemType());
 			preparedStatement.setString(2, item.getDescription());
+			preparedStatement.setInt(3, item.getAmbientId());
 			preparedStatement.execute();
 			return true;
 		} catch (SQLException e) {
