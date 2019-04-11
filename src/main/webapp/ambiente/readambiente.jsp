@@ -25,20 +25,20 @@
 
 		</tr>
 	</table>
-	
+
 	<h1>Items</h1>
-	
-<!-- 	<table> -->
-<!-- 		<tr> -->
-<!-- 			<th>Tipo</th> -->
-<!-- 			<th>Descrizione</th> -->
-<!-- 		</tr> -->
-<%-- 		<%for(ItemDTO item: list) {%> --%>
-<!-- 			<tr> -->
-<%-- 				<td><%=item.getItemType()%></td> --%>
-<%-- 				<td><%=item.getDescription()%></td> --%>
-<!-- 			</tr> -->
-<%-- 		<%} %> --%>
-<!-- 	</table> -->
+
+	<table>
+		<tr>
+			<th>Tipo</th>
+			<th>Descrizione</th>
+		</tr>
+		<%for(ItemDTO item: list) {%>
+		<tr>
+			<td><%=item.getItemType()%></td>
+			<td><%=item.getDescription()%></td>
+		</tr>
+		<%} %>
+	</table>
 </body>
 </html>
