@@ -30,7 +30,7 @@ CREATE TABLE `ambiente` (
   `building` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `building_idx` (`building`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `ambiente` (
 
 LOCK TABLES `ambiente` WRITE;
 /*!40000 ALTER TABLE `ambiente` DISABLE KEYS */;
-INSERT INTO `ambiente` VALUES (12,'camera',1),(15,'aaaa',181),(23,'caccaaaaaa',195),(24,'merda',195),(25,'camera da letto',184);
+INSERT INTO `ambiente` VALUES (12,'camera',1),(15,'aaaa',181),(23,'caccaaaaaa',195),(24,'merda',195),(25,'camera da letto',184),(31,'cacca',184);
 /*!40000 ALTER TABLE `ambiente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -77,14 +77,14 @@ DROP TABLE IF EXISTS `item`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `item` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `itemtype` varchar(45) DEFAULT NULL,
   `description` varchar(45) DEFAULT NULL,
   `ambient` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `ambient_idx` (`ambient`),
   CONSTRAINT `ambient` FOREIGN KEY (`ambient`) REFERENCES `ambiente` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,6 +93,7 @@ CREATE TABLE `item` (
 
 LOCK TABLES `item` WRITE;
 /*!40000 ALTER TABLE `item` DISABLE KEYS */;
+INSERT INTO `item` VALUES (1,'attuatore','luce',25),(2,'sensore','interruttore',25),(3,'sensore','interruttore',25),(4,'sensore','interruttore',25),(5,'sensore','interruttore',25),(6,'cacca','cacca',31);
 /*!40000 ALTER TABLE `item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -132,4 +133,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-11 17:57:42
+-- Dump completed on 2019-04-11 19:10:20

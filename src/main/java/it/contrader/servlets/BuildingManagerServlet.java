@@ -1,17 +1,15 @@
 package it.contrader.servlets;
 
 import java.io.IOException;
+
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import it.contrader.dto.BuildingDTO;
-import it.contrader.dto.DTO;
-import it.contrader.dto.UserDTO;
 import it.contrader.service.BuildingServiceDTO;
 import it.contrader.service.ServiceDTO;
-import it.contrader.service.UserServiceDTO;
 
 public class BuildingManagerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

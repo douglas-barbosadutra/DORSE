@@ -16,30 +16,35 @@ public class ItemManagerServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	private int ambientId;
 	private HttpSession session;
-
+	private int id;
 	public ItemManagerServlet() {
 	}
 	
 	public void updateList(HttpServletRequest request) {
 		session.getAttribute("ambientId" );
 		ServiceDTO<ItemDTO> service = new ItemServiceDTO();
-		List<ItemDTO>listDTO = service.getAllBy(ambientId);
+		List<ItemDTO> listDTO = service.getAllBy(ambientId);
 		request.setAttribute("list", listDTO);
 	}
 	
 	@Override
 	public void service (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ServiceDTO<ItemDTO> service = new ItemServiceDTO();
-	    String mode = request.getParameter("mode");
 	    
 	    if(request.getParameter("ambientId")!=null) {
 	    	ambientId = Integer.parseInt(request.getParameter("ambientId").toString());
 	    }
-	    
+
+		if(request.getParameter("id")!=null) {
+			id = Integer.parseInt(request.getParameter("id"));
+	    }
+		
 		ItemDTO dto;
-		int id;
 		boolean ans;
 		String description, itemType;
+		
+		
+	    String mode = request.getParameter("mode");
 		
 		session = request.getSession();
 		session.setAttribute("ambientId",ambientId);
@@ -57,10 +62,9 @@ public class ItemManagerServlet extends HttpServlet{
 			break;
 
 		case "READ":
-			id = Integer.parseInt(request.getParameter("id"));
 			dto = service.read(id);
 			request.setAttribute("dto", dto);
-			getServletContext().getRequestDispatcher("/item/readItem.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/item/readitem.jsp").forward(request, response);
 			break;
 
 		case "INSERT":
@@ -75,26 +79,24 @@ public class ItemManagerServlet extends HttpServlet{
 			break;
 
 		case "PREUPDATE":
-			id = Integer.parseInt(request.getParameter("id"));
-			dto = service.read(id);
-			dto.setId(id);
+			dto = service.read(id);;
 			request.setAttribute("dto", dto);
-			getServletContext().getRequestDispatcher("/item/updateItem.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/item/updateitem.jsp").forward(request, response);
 			break;
 
 		case "UPDATE":
-			description = request.getParameter("descrizione");
-			id = Integer.parseInt(request.getParameter("id"));
+			description = request.getParameter("description");
 			itemType= request.getParameter("itemtype");
 			ambientId = Integer.parseInt(request.getParameter("ambientId"));
-			dto = new ItemDTO(id, description, itemType, ambientId);
+			int idToUpdate = Integer.parseInt(request.getParameter("idToUpdate"));
+			dto = new ItemDTO(idToUpdate,description, itemType, ambientId);
 			ans = service.update(dto);
+			request.setAttribute("ans", ans);
 			updateList(request);
 			getServletContext().getRequestDispatcher("/item/itemmanager.jsp").forward(request, response);
 			break;
 
 		case "DELETE":
-			id = Integer.parseInt(request.getParameter("id"));
 			dto = service.read(id);
 			ans = service.delete(dto);
 			request.setAttribute("ans", ans);

@@ -2,10 +2,9 @@ package it.contrader.dao;
 
 import java.sql.*;
 
+
 import java.util.ArrayList;
 import java.util.List;
-
-import it.contrader.model.Ambiente;
 import it.contrader.model.Item;
 import it.contrader.utils.ConnectionSingleton;
 import it.contrader.utils.GestoreEccezioni;
@@ -17,8 +16,9 @@ public class ItemDAO implements DAO<Item> {
 	}
 
 	private final String QUERY_ALL = "SELECT * FROM item";
-	private final String QUERY_BY_AMBIENT = "SELECT * FROM item JOIN ambiente ON item.ambient = ambiente.id AND ambiente.id=?";
+	private final String QUERY_BY_AMBIENT = "SELECT * FROM item WHERE ambient=?";
 	private final String QUERY_READ = "SELECT * FROM item WHERE id=?";
+	private final String QUERY_UPDATE = "UPDATE item SET itemtype=?, description=? WHERE id=?";
 	private final String QUERY_INSERT = "INSERT INTO item (itemType, description,ambient) VALUES (?,?,?)";
 	private final String QUERY_DELETE = "DELETE FROM item WHERE id=?";
 
@@ -32,7 +32,7 @@ public class ItemDAO implements DAO<Item> {
 			Item item;
 			while (resultSet.next()) {
 				int id = resultSet.getInt("id");
-				String itemType = resultSet.getString("itemType");
+				String itemType = resultSet.getString("itemtype");
 				String description = resultSet.getString("description");
 				int ambientId = resultSet.getInt("ambient");
 				item = new Item(id, description, itemType, ambientId);
@@ -53,13 +53,13 @@ public class ItemDAO implements DAO<Item> {
 			int ambientId = (Integer)o;
 			preparedStatement.setInt(1, ambientId);
 			ResultSet resultSet = preparedStatement.executeQuery();
-			Item item;
+			
 			while (resultSet.next()) {
 				int id = resultSet.getInt("id");
 				String itemType = resultSet.getString("itemtype");
 				String description = resultSet.getString("description");
-				item = new Item(description, itemType, ambientId);
-				item.setId(id);
+				int ambient = resultSet.getInt("ambient");
+				Item item = new Item(id, description, itemType, ambient);
 				items.add(item);
 			}
 		} catch (SQLException e) {
@@ -76,11 +76,12 @@ public class ItemDAO implements DAO<Item> {
 			preparedStatement.setInt(1, id);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			resultSet.next();
-			String itemType = resultSet.getString("itemType");
+			String itemType = resultSet.getString("itemtype");
 			String description = resultSet.getString("description");
 			int ambientId = resultSet.getInt("ambient");
 			Item item = new Item(id, description, itemType, ambientId);
 			return item;
+			
 		} catch (SQLException e) {
 			GestoreEccezioni.getInstance().gestisciEccezione(e);
 			return null;
@@ -104,9 +105,21 @@ public class ItemDAO implements DAO<Item> {
 	}
 
 	@Override
-	public boolean update(Item t) {
-		return false;
+	public boolean update(Item item) {
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+			PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
+			preparedStatement.setString(1, item.getItemType());
+			preparedStatement.setString(2, item.getDescription());
+			preparedStatement.setInt(3, item.getId());
+			preparedStatement.executeUpdate();
+		} 
+		catch (SQLException e) {
+			return false;
+		}
+		return true;
 	}
+		
 
 	@Override
 	public boolean delete(Item item) {

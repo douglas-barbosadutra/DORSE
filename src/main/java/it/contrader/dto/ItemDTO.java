@@ -7,6 +7,7 @@ public class ItemDTO implements DTO {
 	int ambientId;
 	
 	public ItemDTO(int id, String description, String itemType, int ambientId) {
+		this.id = id;
 		this.description = description;
 		this.itemType = itemType;
 		this.ambientId = ambientId;

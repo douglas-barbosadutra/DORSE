@@ -7,14 +7,7 @@
 <title>Gestione Item dell' ambiente ${ambientId}</title>
 </head>
 <body>
-<h1>Item dell' ambiente ${ambienteId} </h1>
-
-
-
-
-
-<%List<ItemDTO> list = (List<ItemDTO>) request.getAttribute("list");%>
-
+<h1>Item dell' ambiente ${ambientId} </h1>
 
 
 <table>
@@ -22,13 +15,14 @@
 		<th>ItemType</th>
 		<th>Descrizione</th>
 	</tr>
-	<%for(ItemDTO i: list) {%> 
+	<%List<ItemDTO> list = (List<ItemDTO>) request.getAttribute("list");
+	for(ItemDTO i: list) {%> 
 	<tr>
 		<td> 
 			<a href=ItemManagerServlet?mode=read&id=<%=i.getId()%>><%=i.getItemType()%></a>
 		</td>
 			<td> 
-			<a href=ItemManagerServlet"><%=i.getDescription()%></a>
+			<%=i.getDescription()%></a>
 		</td>
 		<td><a href=ItemManagerServlet?mode=preupdate&id=<%=i.getId()%>>Modifica</a>
 			</td>

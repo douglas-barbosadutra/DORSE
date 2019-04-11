@@ -15,16 +15,18 @@
 
 
 	<table>
+
 		<tr>
+			<th>ItemType</th>
 			<th>Descrizione</th>
 			<th>Ambiente</th>
 
 		</tr>
+
 		<tr>
+			<td><%=i.getItemType()%></td>
 			<td><%=i.getDescription()%></td>
 			<td><%=i.getAmbientId()%></td>
 
 		</tr>
 	</table>
-	
-	

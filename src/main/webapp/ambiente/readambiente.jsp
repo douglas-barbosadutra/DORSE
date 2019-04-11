@@ -10,7 +10,7 @@
 	<h1>Pagina di lettura Ambiente</h1>
 
 	<%AmbienteDTO a = (AmbienteDTO) request.getAttribute("dto");
-	List<ItemDTO> list = (List<ItemDTO>) request.getAttribute("list");%>
+	%>
 
 
 	<table>

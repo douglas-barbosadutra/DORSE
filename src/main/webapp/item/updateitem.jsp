@@ -17,13 +17,16 @@
 	%>
 	
 	
-<form action="ItemManagerServlet?mode=update&id=<%=id%>" method="post">
+<form action="ItemManagerServlet?mode=update&idToUpdate=<%=id%>" method="post">
 
 
-		Descrizione: <input type="text" id="desc" name="description"
-			value="<%=i.getDescription()%>">
-		Id Item: <input
-			type="text" id="amb" name="ambientId"
+		ItemType: <input type="text"  name="itemtype"
+			value="<%=i.getItemType()%>">
+		Descrizione: <input
+			type="text"name="description"
+			value=<%=i.getDescription()%>> 
+			<input
+			type="hidden" name="ambientId"
 			value=<%=i.getAmbientId()%>> 
 			
 		<button type="submit" >Modifica</button>

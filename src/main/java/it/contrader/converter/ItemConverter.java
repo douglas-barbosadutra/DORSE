@@ -9,7 +9,7 @@ public class ItemConverter implements Converter<Item,ItemDTO> {
 
 		Item item = null;
 		if (itemDTO != null) {
-			item = new Item( itemDTO.getDescription(), itemDTO.getItemType(), itemDTO.getAmbientId());
+			item = new Item(itemDTO.getDescription(), itemDTO.getItemType(), itemDTO.getAmbientId());
 			
 		}
 		Integer id =itemDTO.getId();

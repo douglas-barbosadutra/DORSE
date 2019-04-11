@@ -1,6 +1,8 @@
 package it.contrader.model;
 
 public class Item {
+
+
 	int id;
 	String description;
 	String itemType;
@@ -53,6 +55,12 @@ public class Item {
 
 	public void setAmbientId(int ambientId) {
 		this.ambientId = ambientId;
+	}
+	
+	@Override
+	public String toString() {
+		return "Item [id=" + id + ", description=" + description + ", itemType=" + itemType + ", ambientId=" + ambientId
+				+ "]";
 	}
 }
 
