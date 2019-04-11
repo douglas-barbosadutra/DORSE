@@ -21,23 +21,28 @@ public class AmbienteManagerServlet extends HttpServlet{
 	}
 	
 	public void updateList(HttpServletRequest request) {
-		buildingId = Integer.parseInt(request.getParameter("buildingId"));
+		session.getAttribute("buildingId" );
 		ServiceDTO<AmbienteDTO> service = new AmbienteServiceDTO();
 		List<AmbienteDTO>listDTO = service.getAllBy(buildingId);
 		request.setAttribute("list", listDTO);
-		session.setAttribute("buildingId", "buildingId");
+	
 	}
 	
 	@Override
 	public void service (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ServiceDTO<AmbienteDTO> service = new AmbienteServiceDTO();
 	    String mode = request.getParameter("mode");
+	    
+	    if(request.getParameter("buildingId")!=null) {
+	    buildingId = Integer.parseInt(request.getParameter("buildingId").toString());
+	    }
+	    
 		AmbienteDTO dto;
-		int id, buildingId;
+		int id;
 		boolean ans;
 		
 		session = request.getSession();
-		buildingId = (Integer)session.getAttribute("buildingId");
+		session.setAttribute("buildingId",buildingId);
 		
 		switch (mode.toUpperCase()) {
 
@@ -60,7 +65,6 @@ public class AmbienteManagerServlet extends HttpServlet{
 
 		case "INSERT":
 			String descrizione= request.getParameter("descrizione");
-			buildingId = Integer.parseInt(request.getParameter("buildingid"));
 			dto = new AmbienteDTO (descrizione, buildingId);
 			ans = service.insert(dto);
 			request.setAttribute("ans", ans);
@@ -78,7 +82,6 @@ public class AmbienteManagerServlet extends HttpServlet{
 
 		case "UPDATE":
 			descrizione = request.getParameter("descrizione");
-			buildingId = Integer.parseInt(request.getParameter("buildingId"));
 			id = Integer.parseInt(request.getParameter("id"));
 			dto = new AmbienteDTO(id, descrizione, buildingId);
 			ans = service.update(dto);

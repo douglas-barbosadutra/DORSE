@@ -7,7 +7,7 @@
 <title>Gestione Ambienti del building ?</title>
 </head>
 <body>
-<h1>Ambienti del building ?</h1>
+<h1>Ambienti del building ${buildingId} </h1>
 
 
 
@@ -45,7 +45,7 @@
 			placeholder="inserisci la descrizione"> <input type="hidden"
 			name="mode" value="insert">
 		<input type="hidden" name="buildingId"
-			value="<%=request.getParameter("buildingId")%>">
+			value="<%=session.getAttribute("buildingId")%>">
 		<button type="submit">Inserisci</button>
 	</form>
 

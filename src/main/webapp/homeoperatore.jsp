@@ -11,7 +11,7 @@
 	<h2>MENU PRINCIPALE OPERATORE</h2>
 <br>
 
-<a href="BuildingManagerServlet?mode=buildinglistOP"> Visualizza i Building </a>>
+<a href="BuildingManagerServlet?mode=buildinglistOP"> Visualizza i Building </a>
 
 
 <%if (request.getAttribute("view")=="buildings") {
