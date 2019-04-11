@@ -4,13 +4,11 @@
 </head>
 <body>
 	<h1>Benvenuto ${utente}</h1>
-	<h2>------- MENU PRINCIPALE ADMIN -------</h2>
+	<h2>MENU PRINCIPALE ADMIN</h2>
 
-	
 <a href="UserManagerServlet?mode=userlist"> Gestione Utenti </a>
+<br>
 <a href="BuildingManagerServlet?mode=buildinglist"> Gestione Building </a>
-
-
 
 </body>
 </html>

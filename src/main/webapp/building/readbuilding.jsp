@@ -4,8 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<titleL>Lettura Building
-</title>
+<title>Lettura Building</title>
 </head>
 <body>
 	<h1>Pagina di lettura Building</h1>

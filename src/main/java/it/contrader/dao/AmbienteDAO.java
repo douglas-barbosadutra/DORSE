@@ -13,7 +13,7 @@ public class AmbienteDAO implements DAO<Ambiente> {
 
 	private final String QUERY_ALL = "SELECT * FROM ambiente WHERE building=?";
 	private final String QUERY_INSERT = "INSERT INTO ambiente (tipo, building) VALUES (?,?)";
-	private final String QUERY_READ = "SELECT * FROM ambiente WHERE building=? AND  id=?";
+	private final String QUERY_READ = "SELECT * FROM ambiente WHERE id=?";
 	private final String QUERY_UPDATE = "UPDATE ambiente SET tipo=?, building=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM ambiente WHERE id=?";
 
@@ -56,6 +56,7 @@ public class AmbienteDAO implements DAO<Ambiente> {
 	public Ambiente read(int id) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
+			
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_READ);
 			preparedStatement.setInt(1,id);
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -68,7 +69,7 @@ public class AmbienteDAO implements DAO<Ambiente> {
 		} 
 		catch (SQLException e) {
 			GestoreEccezioni.getInstance().gestisciEccezione(e);
-
+			
 			return null;
 		}
 	}

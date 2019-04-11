@@ -4,7 +4,6 @@ package it.contrader.servlets;
 
 import java.io.IOException;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -39,9 +38,15 @@ public class BuildingManagerServlet extends HttpServlet {
 			    request.setAttribute("buildinglist", listDTO);
 			    getServletContext().getRequestDispatcher("/building/buildingmanager.jsp").forward(request, response);
 			    break;
-
+			    
+		case "BUILDINGLISTOP":
+			listDTO = buildingService.getAll();
+		    request.setAttribute("buildinglistOP", listDTO);
+		    request.setAttribute("view", "buildings");
+		    getServletContext().getRequestDispatcher("/homeoperatore.jsp").forward(request, response);
+		    break;
+		    
 		case "READ":
-
 			id = Integer.parseInt(request.getParameter("id"));
 			BuildingDTO buildingToRead= buildingService.read(id);
 			request.setAttribute("buildingToRead", buildingToRead);

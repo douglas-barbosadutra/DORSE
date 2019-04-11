@@ -9,7 +9,7 @@
 <body>
 
 
-<% List<BuildingDTO> buildinglist = (List<BuildingDTO>)request.getAttribute("buildinglist");%>
+<% List<BuildingDTO> buildinglist = (List<BuildingDTO>) request.getAttribute("buildinglist");%>
 
 <table>
 	<tr> 

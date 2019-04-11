@@ -1,10 +1,9 @@
 package it.contrader.dao;
 
 import java.sql.*;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import it.contrader.model.Ambiente;
 import it.contrader.model.Item;
 import it.contrader.utils.ConnectionSingleton;
 import it.contrader.utils.GestoreEccezioni;
@@ -16,14 +15,14 @@ public class ItemDAO implements DAO<Item> {
 	}
 
 	private final String QUERY_ALL = "SELECT * FROM item";
-	private final String QUERY_BY_AMBIENT = "SELECT * FROM item JOIN ambient ON item.ambient = ambient.id AND ambient.id=?";
+	//private final String QUERY_BY_AMBIENT = "SELECT * FROM item JOIN ambient ON item.ambient = ambient.id AND ambient.id=?";
 	private final String QUERY_READ = "SELECT * FROM item WHERE item.id=?";
 	private final String QUERY_INSERT = "INSERT INTO item (itemType, description) VALUES (?,?)";
 	private final String QUERY_DELETE = "DELETE FROM item WHERE id=?";
 
 	@Override
 	public List<Item> getAll() {
-		List<Item> itemList = new ArrayList();
+		List<Item> itemList = new ArrayList<Item>();
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			Statement statement = connection.createStatement();
@@ -83,7 +82,6 @@ public class ItemDAO implements DAO<Item> {
 
 	@Override
 	public boolean update(Item t) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

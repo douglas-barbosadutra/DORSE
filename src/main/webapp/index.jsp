@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Login Trader</title>
+<title>Login DoSer</title>
 </head>
 <body>
 	<div>
@@ -14,7 +14,6 @@
 					placeholder="inserisci password">
 			</h3>
 			<button type="submit" value="Login" name="pulsante">Login</button>
-			<br> <a href="register.jsp"> Registrati </a>
 		</form>
 	</div>
 </body>

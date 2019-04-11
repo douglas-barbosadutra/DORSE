@@ -2,19 +2,19 @@ package it.contrader.servlets;
 
 import java.io.IOException;
 
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import it.contrader.dto.DTO;
 import it.contrader.dto.UserDTO;
 import it.contrader.service.ServiceDTO;
 import it.contrader.service.UserServiceDTO;
 
 public class LoginServlet extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
 	private final ServiceDTO<UserDTO> userServiceDTO = new UserServiceDTO();
 
 	@Override
@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
 				getServletContext().getRequestDispatcher("/homeadmin.jsp").forward(request, response);
 				break;
 			case "OPERATORE":
-				getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
+				getServletContext().getRequestDispatcher("/homeoperatore.jsp").forward(request, response);
 				break;
 			default:
 				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);

@@ -42,4 +42,14 @@
     <servlet-name>BuildingManagerServlet</servlet-name>
     <url-pattern>/BuildingManagerServlet</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <description></description>
+    <display-name>AmbienteManagerServlet</display-name>
+    <servlet-name>AmbienteManagerServlet</servlet-name>
+    <servlet-class>it.contrader.servlets.AmbienteManagerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AmbienteManagerServlet</servlet-name>
+    <url-pattern>/AmbienteManagerServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -1,7 +1,5 @@
 package it.contrader.service;
 
-import java.util.List;
-
 import it.contrader.converter.BuildingConverter;
 import it.contrader.dao.BuildingDAO;
 import it.contrader.dto.BuildingDTO;
