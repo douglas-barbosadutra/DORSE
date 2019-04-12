@@ -49,9 +49,11 @@
 		Password: <input
 			type="text" id="pass" name="password"
 			placeholder="inserisci password"> 
-		Usertype: <input
-			type="text" id="type" name="usertype"
-			placeholder="inserisci lo usertype">
+		Usertype: <select name="usertype">
+  			<option value="admin">admin</option>
+  			<option value="operatore">operator</option>
+  			<option value="client">client</option>
+		</select>
 
 		<button type="submit" name="pulsante">Insert</button>
 	</form>

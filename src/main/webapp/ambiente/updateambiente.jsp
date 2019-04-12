@@ -22,9 +22,9 @@
 
 		Description: <input type="text" id="desc" name="descrizione"
 			value="<%=a.getDescrizione()%>">
-		Building ID: <input
-			type="text" id="buil" name="buildingId"
-			value=<%=a.getBuildingid()%>> 
+<!-- 		Building ID: <input -->
+<!-- 			type="text" id="buil" name="buildingId" -->
+<%-- 			value=<%=a.getBuildingid()%>>  --%>
 			
 		<button type="submit" name="pulsante">Edit</button>
 

@@ -30,9 +30,11 @@ public class BuildingManagerServlet extends HttpServlet {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    ServiceDTO<BuildingDTO> service = new BuildingServiceDTO();
 	    ServiceDTO<UserDTO> userService = new UserServiceDTO();
+	    List<UserDTO> clientList = userService.getAllBy("client");
 	    List<UserDTO> operatorList = userService.getAllBy("operatore");
 	    
 	    request.setAttribute("operatorList", operatorList);
+	    request.setAttribute("clientList", clientList);
 	    
 	    String mode = request.getParameter("mode");
 		BuildingDTO dto;
@@ -42,15 +44,11 @@ public class BuildingManagerServlet extends HttpServlet {
 		switch (mode.toUpperCase()) {
 
 		case "BUILDINGLIST":
-			request.setAttribute("operatorList", operatorList);
-			
 			updateList(request);
 			getServletContext().getRequestDispatcher("/building/buildingmanager.jsp").forward(request, response);
 			break;
 			    
 		case "BUILDINGLISTOP":
-			request.setAttribute("operatorList", operatorList);
-			
 			updateList(request);
 			request.setAttribute("view", "buildings");
 			getServletContext().getRequestDispatcher("/homeoperatore.jsp").forward(request, response);
@@ -64,8 +62,6 @@ public class BuildingManagerServlet extends HttpServlet {
 			break;
 
 		case "INSERT":
-			request.setAttribute("operatorList", operatorList);
-			
 			String indirizzo = request.getParameter("indirizzo");
 			userId = Integer.parseInt(request.getParameter("userId"));
 			operatorId = Integer.parseInt(request.getParameter("operatorId"));
@@ -80,9 +76,6 @@ public class BuildingManagerServlet extends HttpServlet {
 			id = Integer.parseInt(request.getParameter("id"));
 			dto = service.read(id);
 			dto.setId(id);
-			
-			request.setAttribute("operatorList", operatorList);
-			
 			request.setAttribute("dto", dto);
 			getServletContext().getRequestDispatcher("/building/updatebuilding.jsp").forward(request, response);
 			break;

@@ -15,6 +15,7 @@
 		BuildingDTO b = (BuildingDTO) request.getAttribute("dto");
 		int id = b.getId();
 		List<UserDTO> operatorList = (List)request.getAttribute("operatorList");
+		List<UserDTO> clientList = (List<UserDTO>)request.getAttribute("clientList");
 	%>
 	
 	
@@ -24,9 +25,11 @@
 		<input type="hidden" name="id" value="<%=id%>">
 		Address: <input type="text" id="user" name="indirizzo"
 			value="<%=b.getIndirizzo()%>">
-		User ID: <input
-			type="text" id="pass" name="userId"
-			value=<%=b.getUserId()%>> 
+		Client: <select name="clientId">
+		<% for (UserDTO c : clientList) { %>
+  			<option <%if (b.getOperatorId() == c.getId()) {%> selected <%} %> value="<%=c.getId()%>"><%=c.getUsername()%></option>
+  <% } %>
+</select>
 		Operator: <select name="operatorId">
 		<% for (UserDTO op : operatorList) { %>
   			<option <%if (b.getOperatorId() == op.getId()) {%> selected <%} %> value="<%=op.getId()%>"><%=op.getUsername()%></option>

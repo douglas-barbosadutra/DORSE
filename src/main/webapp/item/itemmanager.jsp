@@ -4,16 +4,16 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Gestione Item dell' ambiente ${ambientId}</title>
+<title>Item manager ${ambientId}</title>
 </head>
 <body>
-<h1>Item dell' ambiente ${ambientId} </h1>
+<h1>Item manager ${ambientId} </h1>
 
 
 <table>
 	<tr> 
 		<th>ItemType</th>
-		<th>Descrizione</th>
+		<th>Description</th>
 	</tr>
 	<%List<ItemDTO> list = (List<ItemDTO>) request.getAttribute("list");
 	for(ItemDTO i: list) {%> 

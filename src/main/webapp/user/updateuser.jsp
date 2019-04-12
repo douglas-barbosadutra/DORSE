@@ -20,9 +20,11 @@
 		Password: <input
 			type="text" id="pass" name="password"
 			value=<%=u.getPassword()%>> 
-		Usertype: <input
-			type="text" id="type" name="usertype"
-			value=<%=u.getUsertype()%>>
+		Usertype: <select name="usertype">
+  			<option value="admin" <%if(u.getUsertype().equals("admin")) {%>selected<%}%>>admin</option>
+  			<option value="operatore" <%if(u.getUsertype().equals("operatore")) {%>selected<%}%>>operator</option>
+  			<option value="client" <%if(u.getUsertype().equals("client")) {%>selected<%}%>>client</option>
+		</select>
 
 		<button type="submit"  name="pulsante">Edit</button>
 		</form>		

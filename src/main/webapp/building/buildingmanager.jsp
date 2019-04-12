@@ -10,7 +10,8 @@
 
 
 <% List<BuildingDTO> list = (List<BuildingDTO>) request.getAttribute("list");
-List<UserDTO> operatorList = (List<UserDTO>)request.getAttribute("operatorList");%>
+List<UserDTO> operatorList = (List<UserDTO>)request.getAttribute("operatorList");
+List<UserDTO> clientList = (List<UserDTO>)request.getAttribute("clientList");%>
 
 <table>
 	<tr> 
@@ -43,11 +44,12 @@ List<UserDTO> operatorList = (List<UserDTO>)request.getAttribute("operatorList")
 
 		Address: <input type="text" id="indirizzo" name="indirizzo"
 			placeholder="inserisci l'indirizzo">
-		User ID: <input
-			type="text" id="user" name="userId"
-			placeholder="inserisci l'ID dello user"> 
+		Client: <select name="userId">
+		<% for (UserDTO c : clientList) { %>
+  			<option value="<%=c.getId()%>"><%=c.getUsername()%></option>
+  <% } %>
+  </select>
 		Operator: <select name="operatorId">
-<!-- 		<option value=""> </option> -->
 		<% for (UserDTO op : operatorList) { %>
   			<option value="<%=op.getId()%>"><%=op.getUsername()%></option>
   <% } %>
