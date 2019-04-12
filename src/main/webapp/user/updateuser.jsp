@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Modifica Utente</title>
+<title>Edit User</title>
 </head>
 <body>
-<h1>Pagina di modifica utente</h1>
+<h1>Edit user</h1>
 
 <%UserDTO u = (UserDTO) request.getAttribute("dto");%>
 
@@ -15,16 +15,16 @@
 
 		<form action="UserManagerServlet?mode=update&id=<%=u.getId()%>" method="post">
 
-		username: <input type="text" id="user" name="username"
+		Username: <input type="text" id="user" name="username"
 			value=<%=u.getUsername()%>>
-		password: <input
+		Password: <input
 			type="text" id="pass" name="password"
 			value=<%=u.getPassword()%>> 
-		usertype: <input
+		Usertype: <input
 			type="text" id="type" name="usertype"
 			value=<%=u.getUsertype()%>>
 
-		<button type="submit"  name="pulsante">Modifica</button>
+		<button type="submit"  name="pulsante">Edit</button>
 		</form>		
 	
 </body>

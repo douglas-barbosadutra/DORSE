@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Gestione Utenti</title>
+<title>User Manager</title>
 </head>
 <body>
 
@@ -29,9 +29,9 @@
 			</a></td>
 			<td><%=u.getPassword()%></td>
 			<td><%=u.getUsertype()%></td>
-			<td><a href=UserManagerServlet?mode=readtoupdate&id=<%=u.getId()%>>Modifica</a>
+			<td><a href=UserManagerServlet?mode=readtoupdate&id=<%=u.getId()%>>Edit</a>
 			</td>
-			<td><a href=UserManagerServlet?mode=delete&id=<%=u.getId()%>>Cancella</a>
+			<td><a href=UserManagerServlet?mode=delete&id=<%=u.getId()%>>Delete</a>
 			</td>
 
 		</tr>
@@ -40,20 +40,20 @@
 		%>
 	</table>
 
-	<h2>Inserisci un nuovo utente</h2>
+	<h2>Insert new user</h2>
 
 	<form action="UserManagerServlet?mode=insert" method="post">
 
-		username: <input type="text" id="user" name="username"
+		Username: <input type="text" id="user" name="username"
 			placeholder="inserisci username">
-		password: <input
+		Password: <input
 			type="text" id="pass" name="password"
 			placeholder="inserisci password"> 
-		usertype: <input
+		Usertype: <input
 			type="text" id="type" name="usertype"
 			placeholder="inserisci lo usertype">
 
-		<button type="submit" name="pulsante">Inserisci</button>
+		<button type="submit" name="pulsante">Insert</button>
 	</form>
 
 
@@ -70,7 +70,7 @@
 
 				if (ans) {
 	%>
-	<h3>L'inserimento è andato alla grande!</h3>
+	<h3>Insert successful</h3>
 	<%
 		} else {
 	%>
@@ -87,7 +87,7 @@
 	<%
 		} else {
 	%>
-	<h3>Ritenta, sarai più fortunato...</h3>
+	<h3>Insert failed</h3>
 	<%
 		}
 				break;
@@ -96,11 +96,11 @@
 
 				if (ans) {
 	%>
-	<h3>La modifica è andata alla grande!</h3>
+	<h3>Edit successful</h3>
 	<%
 		} else {
 	%>
-	<h3>Ritenta, sarai più fortunato...</h3>
+	<h3>Edit failed</h3>
 	<%
 		}
 				break;

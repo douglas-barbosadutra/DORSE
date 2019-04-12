@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Lettura Ambiente</title>
+<title>Ambient</title>
 </head>
 <body>
-	<h1>Pagina di lettura Ambiente</h1>
+	<h1>Ambient</h1>
 
 	<%AmbienteDTO a = (AmbienteDTO) request.getAttribute("dto");
 	%>
@@ -15,7 +15,7 @@
 
 	<table>
 		<tr>
-			<th>Descrizione</th>
+			<th>Description</th>
 			<th>Building</th>
 
 		</tr>
@@ -26,7 +26,7 @@
 		</tr>
 	</table>
 
-<a href="ItemManagerServlet?mode=itemlistby&ambientId=<%=a.getId()%>" > Gestisci Item</a>
+<a href="ItemManagerServlet?mode=itemlistby&ambientId=<%=a.getId()%>" > Manage items</a>
 
 </body>
 </html>

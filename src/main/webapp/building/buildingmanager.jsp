@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Gestione Building</title>
+<title>Building manager</title>
 </head>
 <body>
 
@@ -13,7 +13,7 @@
 
 <table>
 	<tr> 
-		<th>Indirizzo</th>
+		<th>Address</th>
 		<th>User</th>
 	</tr>
 	<% for(BuildingDTO b: list) {%> 
@@ -24,25 +24,25 @@
 		<td> 
 			<a href=UserManagerServlet?mode=read&id=<%=b.getUserId()%>><%=b.getUserId()%></a>
 		</td>
-		<td><a href=BuildingManagerServlet?mode=preupdate&id=<%=b.getId()%>>Modifica</a>
+		<td><a href=BuildingManagerServlet?mode=preupdate&id=<%=b.getId()%>>Edit</a>
 			</td>
-		<td><a href=BuildingManagerServlet?mode=delete&id=<%=b.getId()%>>Cancella</a>
+		<td><a href=BuildingManagerServlet?mode=delete&id=<%=b.getId()%>>Delete</a>
 	</tr>	
 	<%} %>
 </table>
 
 
-	<h2>Inserisci un nuovo building</h2>
+	<h2>Insert new building</h2>
 
 	<form action="BuildingManagerServlet?mode=insert" method="post">
 
-		Indirizzo: <input type="text" id="indirizzo" name="indirizzo"
+		Address: <input type="text" id="indirizzo" name="indirizzo"
 			placeholder="inserisci l'indirizzo">
-		Id Utente: <input
+		User ID: <input
 			type="text" id="user" name="userId"
 			placeholder="inseriscil'ID dello user"> 
 			
-		<button type="submit"  name="pulsante">Inserisci</button>
+		<button type="submit"  name="pulsante">Insert</button>
 	</form>
 
 
@@ -55,33 +55,33 @@
 			case "insert":
 				if (ans) {
 	%>
-	<h3>L'inserimento è andato alla grande!</h3>
+	<h3>Insert successful</h3>
 	<%
 		} else {
 	%>
-	<h3>Ritenta, sarai più fortunato...</h3>
+	<h3>Insert failed</h3>
 	<%
 		}
 				break;
 			case "delete":
 				if (ans) {
 	%>
-	<h3>La cancellazione è andata alla grande!</h3>
+	<h3>Delete successful</h3>
 	<%
 		} else {
 	%>
-	<h3>Ritenta, sarai più fortunato...</h3>
+	<h3>Delete failed</h3>
 	<%
 		}
 				break;
 			case "update":
 				if (ans) {
 	%>
-	<h3>La modifica è andata alla grande!</h3>
+	<h3>Update successful</h3>
 	<%
 		} else {
 	%>
-	<h3>Ritenta, sarai più fortunato...</h3>
+	<h3>Update failed</h3>
 	<%
 		}
 				break;

@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Gestione Ambienti del building ?</title>
+<title>Building's ambients manager ?</title>
 </head>
 <body>
-<h1>Ambienti del building ${buildingId} </h1>
+<h1>Ambients of building ${buildingId} </h1>
 
 
 
@@ -19,7 +19,7 @@
 
 <table>
 	<tr> 
-		<th>Descrizione</th>
+		<th>Description</th>
 		<th>Building</th>
 	</tr>
 	<%for(AmbienteDTO a: list) {%> 
@@ -27,26 +27,26 @@
 		<td> 
 			<a href=AmbienteManagerServlet?mode=read&id=<%=a.getId()%>><%=a.getDescrizione()%></a>
 		</td>
-		<td><a href=AmbienteManagerServlet?mode=preupdate&id=<%=a.getId()%>>Modifica</a>
+		<td><a href=AmbienteManagerServlet?mode=preupdate&id=<%=a.getId()%>>Edit</a>
 			</td>
-		<td><a href=AmbienteManagerServlet?mode=delete&id=<%=a.getId()%>>Cancella</a>
+		<td><a href=AmbienteManagerServlet?mode=delete&id=<%=a.getId()%>>Delete</a>
 	</tr>	
 	<%} %>
 </table>
 
 
 
-	<h2>Inserisci un nuovo ambiente in questo building</h2>
+	<h2>Insert new ambient</h2>
 
 	<form
 		action="AmbienteManagerServlet" method="get">
 
-		Descrizione: <input type="text" id="tipo" name="descrizione"
+		Description: <input type="text" id="tipo" name="descrizione"
 			placeholder="inserisci la descrizione"> <input type="hidden"
 			name="mode" value="insert">
 		<input type="hidden" name="buildingId"
 			value="<%=session.getAttribute("buildingId")%>">
-		<button type="submit">Inserisci</button>
+		<button type="submit">Insert</button>
 	</form>
 
 
@@ -60,33 +60,33 @@
 			case "insert":
 				if (ans) {
 	%>
-	<h3>L'inserimento è andato alla grande!</h3>
+	<h3>Insert successful</h3>
 	<%
 		} else {
 	%>
-	<h3>Ritenta, sarai più fortunato...</h3>
+	<h3>Insert failed</h3>
 	<%
 		}
 				break;
 			case "delete":
 				if (ans) {
 	%>
-	<h3>La cancellazione è andata alla grande!</h3>
+	<h3>Delete successful</h3>
 	<%
 		} else {
 	%>
-	<h3>Ritenta, sarai più fortunato...</h3>
+	<h3>Delete failed</h3>
 	<%
 		}
 				break;
 			case "update":
 				if (ans) {
 	%>
-	<h3>La modifica è andata alla grande!</h3>
+	<h3>Edit successful</h3>
 	<%
 		} else {
 	%>
-	<h3>Ritenta, sarai più fortunato...</h3>
+	<h3>Edit failed</h3>
 	<%
 		}
 				break;

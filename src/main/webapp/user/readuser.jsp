@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Lettura Utente</title>
+<title>User</title>
 </head>
 <body>
 
-<h1>Pagina di lettura utente</h1>
+<h1>User</h1>
 
 <%UserDTO u = (UserDTO) request.getAttribute("dto");%>
 

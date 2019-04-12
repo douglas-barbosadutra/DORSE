@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Modifica Building</title>
+<title>Edit Building</title>
 </head>
 <body>
-<h1>Pagina di modifica Building</h1>
+<h1>Edit Building</h1>
 
 
 
@@ -22,18 +22,18 @@
 
 		<input type="hidden" name="mode" value="update">
 		<input type="hidden" name="id" value="<%=id%>">
-		indirizzo: <input type="text" id="user" name="indirizzo"
+		Address: <input type="text" id="user" name="indirizzo"
 			value="<%=b.getIndirizzo()%>">
-		Id Utente: <input
+		User ID: <input
 			type="text" id="pass" name="userId"
 			value=<%=b.getUserId()%>> 
-		Operatore: <select name="operatorId">
+		Operator: <select name="operatorId">
 		<% for (UserDTO op : operatorList) { %>
   			<option <%if (b.getOperatorId() == op.getId()) {%> selected <%} %> value="<%=op.getId()%>"><%=op.getUsername()%></option>
   <% } %>
 </select>
 			
-		<button type="submit">Modifica</button>
+		<button type="submit">Edit</button>
 
 </form>
 

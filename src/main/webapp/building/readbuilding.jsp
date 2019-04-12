@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Lettura Building</title>
+<title>Building</title>
 </head>
 <body>
-	<h1>Pagina di lettura Building</h1>
+	<h1>Building</h1>
 
 	<%
 		BuildingDTO b = (BuildingDTO) request.getAttribute("dto");
@@ -16,9 +16,9 @@
 
 	<table>
 		<tr>
-			<th>Indirizzo</th>
+			<th>Address</th>
 			<th>User</th>
-			<th>Operatore</th>
+			<th>Operator</th>
 		</tr>
 		<tr>
 			<td><%=b.getIndirizzo()%></td>

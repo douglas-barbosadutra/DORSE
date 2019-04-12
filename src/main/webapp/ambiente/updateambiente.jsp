@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Modifica Ambiente</title>
+<title>Edit ambient</title>
 </head>
 <body>
-<h1>Pagina di modifica Ambiente</h1>
+<h1>Edit ambient</h1>
 
 
 
@@ -20,13 +20,13 @@
 <form action="AmbienteManagerServlet?mode=update&id=<%=id%>" method="post">
 
 
-		Descrizione: <input type="text" id="desc" name="descrizione"
+		Description: <input type="text" id="desc" name="descrizione"
 			value="<%=a.getDescrizione()%>">
-		Id Building: <input
+		Building ID: <input
 			type="text" id="buil" name="buildingId"
 			value=<%=a.getBuildingid()%>> 
 			
-		<button type="submit" name="pulsante">Modifica</button>
+		<button type="submit" name="pulsante">Edit</button>
 
 </form>
 </body>

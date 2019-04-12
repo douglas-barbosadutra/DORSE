@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Menu Principale Operatore</title>
+<title>Operator main menu</title>
 </head>
 <body>
-	<h1>Benvenuto ${utente}</h1>
-	<h2>MENU PRINCIPALE OPERATORE</h2>
+	<h1>Welcome ${utente}</h1>
+	<h2>Operator main menu</h2>
 <br>
 
-<a href="BuildingManagerServlet?mode=buildinglistOP"> Visualizza i Building </a>
+<a href="BuildingManagerServlet?mode=buildinglistOP"> View buildings </a>
 
 
 <%if (request.getAttribute("view")=="buildings") {
@@ -19,7 +19,7 @@ List<BuildingDTO> list = (List<BuildingDTO>) request.getAttribute("list");%>
 
 <table>
 <tr> 
-	<th>Indirizzo</th>
+	<th>Address</th>
 	<th>User</th>
 </tr>
 <%for(BuildingDTO b: list) {%> 

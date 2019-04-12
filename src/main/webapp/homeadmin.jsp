@@ -1,14 +1,14 @@
 <html>
 <head>
-<title>Menu Principale Admin</title>
+<title>Admin main menu</title>
 </head>
 <body>
-	<h1>Benvenuto ${utente}</h1>
-	<h2>MENU PRINCIPALE ADMIN</h2>
+	<h1>Welcome ${utente}</h1>
+	<h2>Admin main menu</h2>
 
-<a href="UserManagerServlet?mode=userlist"> Gestione Utenti </a>
+<a href="UserManagerServlet?mode=userlist"> Manage users</a>
 <br> </br>
-<a href="BuildingManagerServlet?mode=buildinglist"> Gestione Building </a>
+<a href="BuildingManagerServlet?mode=buildinglist"> Manage buildings </a>
 <br> </br>
 
 <form action="LogoutServlet" method="post">
