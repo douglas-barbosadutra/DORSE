@@ -8,13 +8,14 @@
 <title>Edit Building</title>
 </head>
 <body>
+<%@ include file="header.jsp" %>
 <div class="navbar">
   <a href="homeadmin.jsp">Home</a>
   <a href="UserManagerServlet?mode=userlist">Users</a>
   <a href="BuildingManagerServlet?mode=buildinglist">Buildings</a>
   <a href="LogoutServlet" id="logout">Logout</a>
 </div>
-<h1>Edit Building</h1>
+<div clas="main">
 
 
 
@@ -26,26 +27,57 @@
 	%>
 	
 	
-<form action="BuildingManagerServlet" method="get">
-
-		<input type="hidden" name="mode" value="update">
-		<input type="hidden" name="id" value="<%=id%>">
-		Address: <input type="text" id="user" name="indirizzo"
-			value="<%=b.getIndirizzo()%>">
-		Client: <select name="clientId">
+	
+	
+	 <form id="floatleft" action="BuildingManagerServlet" method="get" >
+	 		<input type="hidden" name="mode" value="update">
+			<input type="hidden" name="id" value="<%=id%>">
+			
+  <div class="row">
+    <div class="col-25">
+      <label  for="address">Address</label> 
+    </div>
+    <div class="col-75">
+      <input type="text" id="user" name="indirizzo" value="<%=b.getIndirizzo()%>">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="client">Client</label>
+    </div>
+    <div class="col-75">
+      <select id="client" name="clientId">
 		<% for (UserDTO c : clientList) { %>
   			<option <%if (b.getOperatorId() == c.getId()) {%> selected <%} %> value="<%=c.getId()%>"><%=c.getUsername()%></option>
-  <% } %>
-</select>
-		Operator: <select name="operatorId">
+  			<% } %>
+		</select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label id="floatleft" for="operator">Operator</label>
+    </div>
+   		 <div class="col-75">
+      		<select id="operator" name="operatorId">
+      			
 		<% for (UserDTO op : operatorList) { %>
   			<option <%if (b.getOperatorId() == op.getId()) {%> selected <%} %> value="<%=op.getId()%>"><%=op.getUsername()%></option>
   <% } %>
 </select>
-			
-		<button type="submit">Edit</button>
+    	</div>
+  </div>
+   
+      <button type="submit" >Edit</button>
+</form>
+   
+	
+	
+	
+	
+	
 
 </form>
-
+</div>
+<%@ include file="footer.jsp" %>
 </body>
 </html>

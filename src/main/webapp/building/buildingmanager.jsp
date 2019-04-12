@@ -8,6 +8,7 @@
 <link href="css/vittoriostyle.css" rel="stylesheet">
 </head>
 <body>
+<%@ include file="header.jsp" %>
 
 <div class="navbar">
   <a  href="homeadmin.jsp">Home</a>
@@ -15,7 +16,7 @@
   <a class="active" href="BuildingManagerServlet?mode=buildinglist">Buildings</a>
   <a href="LogoutServlet" id="logout">Logout</a>
 </div>
-
+<div class="main">
 
 <% List<BuildingDTO> list = (List<BuildingDTO>) request.getAttribute("list");
 List<UserDTO> operatorList = (List<UserDTO>)request.getAttribute("operatorList");
@@ -51,29 +52,61 @@ List<UserDTO> clientList = (List<UserDTO>)request.getAttribute("clientList");%>
 </table>
 
 
-	<h2>Insert new building</h2>
-
-	<form action="BuildingManagerServlet?mode=insert" method="post">
-
-		Address: <input type="text" id="indirizzo" name="indirizzo"
-			placeholder="inserisci l'indirizzo">
-		Client: <select name="userId">
-		<% for (UserDTO c : clientList) { %>
-  			<option value="<%=c.getId()%>"><%=c.getUsername()%></option>
-  <% } %>
-  </select>
-		Operator: <select name="operatorId">
-		<% for (UserDTO op : operatorList) { %>
-  			<option value="<%=op.getId()%>"><%=op.getUsername()%></option>
-  <% } %>
-</select>
-			
-		<button type="submit"  name="pulsante">Insert</button>
-	</form>
 
 
 
-	<%
+
+ <form id="floatright" action="BuildingManagerServlet?mode=insert" method="post">
+  <div class="row">
+    <div class="col-25">
+      <label  for="address">Address</label> 
+    </div>
+    <div class="col-75">
+      <input type="text" id="address" name="indirizzo" placeholder="Insert address..."> 
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="client">Client</label>
+    </div>
+    <div class="col-75">
+      <select id="client" name="userId">
+      <option value="0">Select client:</option>
+			<%
+				for (UserDTO c : clientList) {
+			%>
+			<option value="<%=c.getId()%>"><%=c.getUsername()%></option>
+			<%
+				}
+			%>
+		</select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label id="floatleft" for="operator">Operator</label>
+    </div>
+   		 <div class="col-75">
+      		<select id="operator" name="operatorId">
+      			<option value="0">Select operator:</option>
+					<%
+						for (UserDTO op : operatorList) {
+					%>
+					<option value="<%=op.getId()%>"><%=op.getUsername()%></option>
+					<%
+						}
+					%>
+			</select>	
+    	</div>
+  </div>
+   
+      <button type="submit" >Insert</button>
+</form>
+   
+
+
+
+<%-- 	<%
 		if (request.getAttribute("ans") != null) {
 			String mode = request.getParameter("mode");
 			boolean ans = (boolean) request.getAttribute("ans");
@@ -81,40 +114,43 @@ List<UserDTO> clientList = (List<UserDTO>)request.getAttribute("clientList");%>
 			case "insert":
 				if (ans) {
 	%>
-	<h3>Insert successful</h3>
+	<res>Insert successful<res>
 	<%
 		} else {
 	%>
-	<h3>Insert failed</h3>
+	<res>Insert failed<res>
 	<%
 		}
 				break;
 			case "delete":
 				if (ans) {
 	%>
-	<h3>Delete successful</h3>
+	<res>Delete successful</res>
 	<%
 		} else {
 	%>
-	<h3>Delete failed</h3>
+	<res>Delete failed<res>
 	<%
 		}
 				break;
 			case "update":
 				if (ans) {
 	%>
-	<h3>Update successful</h3>
+	<res>Update successful<res>
 	<%
 		} else {
 	%>
-	<h3>Update failed</h3>
+	<res>Update failed<res>
 	<%
 		}
 				break;
 			}
 		}
 	%>
+ --%>
 
-
+ 
+ </div>
+<%@ include file="footer.jsp" %>
 </body>
 </html>

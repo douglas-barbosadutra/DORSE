@@ -8,8 +8,6 @@
 </head>
 <body>
 	<h1>Welcome ${utente}</h1>
-	<h2>Operator main menu</h2>
-<br>
 
 <a href="BuildingManagerServlet?mode=buildinglistOP"> View buildings </a>
 

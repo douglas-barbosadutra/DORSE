@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="it.contrader.dto.BuildingDTO"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" import="it.contrader.dto.BuildingDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,13 +8,15 @@
 <title>Building</title>
 </head>
 <body>
+<%@ include file="header.jsp" %>
 <div class="navbar">
   <a href="homeadmin.jsp">Home</a>
   <a href="UserManagerServlet?mode=userlist">Users</a>
   <a href="BuildingManagerServlet?mode=buildinglist">Buildings</a>
   <a href="LogoutServlet" id="logout">Logout</a>
 </div>
-	<h1>Building</h1>
+<br>
+<div class="main">
 
 	<%
 		BuildingDTO b = (BuildingDTO) request.getAttribute("dto");
@@ -34,5 +36,23 @@
 		</tr>
 	</table>
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+</div>
+
+<%@ include file="footer.jsp" %>
 </body>
 </html>

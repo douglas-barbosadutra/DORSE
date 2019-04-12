@@ -8,15 +8,16 @@
 <title>User</title>
 </head>
 <body>
-
+<%@ include file="header.jsp" %>
 <div class="navbar">
   <a href="homeadmin.jsp">Home</a>
   <a href="UserManagerServlet?mode=userlist">Users</a>
   <a href="BuildingManagerServlet?mode=buildinglist">Buildings</a>
   <a href="LogoutServlet" id="logout">Logout</a>
 </div>
+<br>
 
-<h1>User</h1>
+<div class="main">
 <%UserDTO u = (UserDTO) request.getAttribute("dto");%>
 
 
@@ -33,20 +34,24 @@
 	</tr>	
 </table>
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
+</div>
 
-
-
-
-
-
-
-
-
-
-
-
-
+<%@ include file="footer.jsp" %>
 </body>
 </html>

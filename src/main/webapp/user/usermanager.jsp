@@ -7,9 +7,9 @@
 <meta charset="ISO-8859-1">
 <link href="css/vittoriostyle.css" rel="stylesheet">
 <title>User Manager</title>
-<link href="css/vittoriostyle.css" rel="stylesheet">
 </head>
 <body>
+<%@ include file="header.jsp" %>
 
 <div class="navbar">
   <a  href="homeadmin.jsp">Home</a>
@@ -17,7 +17,7 @@
   <a href="BuildingManagerServlet?mode=buildinglist">Buildings</a>
   <a href="LogoutServlet" id="logout">Logout</a>
 </div>
-
+<div class="main">
 	<%
 		List<UserDTO> list = (List<UserDTO>) request.getAttribute("list");
 	%>
@@ -52,78 +52,42 @@
 		%>
 	</table>
 
-	<h2>Insert new user</h2>
-
-	<form action="UserManagerServlet?mode=insert" method="post">
-
-		Username: <input type="text" id="user" name="username"
-			placeholder="inserisci username">
-		Password: <input
-			type="text" id="pass" name="password"
-			placeholder="inserisci password"> 
-		Usertype: <select name="usertype">
-  			<option value="admin">admin</option>
-  			<option value="operatore">operator</option>
-  			<option value="client">client</option>
-		</select>
-
-		<button type="submit" name="pulsante">Insert</button>
-	</form>
 
 
+<form id="floatright" action="UserManagerServlet?mode=insert" method="post">
+  <div class="row">
+    <div class="col-25">
+      <label for="user">Username</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="user" name="username" placeholder="inserisci username">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+     <label for="pass">Password</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="pass" name="password" placeholder="inserisci password"> 
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="type">Usertype</label>
+    </div>
+   		 <div class="col-75">
+ 			<select id="type" name="usertype">
+  				<option value="admin">admin</option>
+  				<option value="operatore">operator</option>
+  				<option value="client">client</option>
+			</select>
+    	</div>
+  </div>
+      <button type="submit" >Insert</button>
+</form>
 
-	<%
-		if (request.getAttribute("ans") != null) {
-
-			String mode = request.getParameter("mode");
-			boolean ans = (boolean) request.getAttribute("ans");
-
-			switch (mode) {
-
-			case "insert":
-
-				if (ans) {
-	%>
-	<h3>Insert successful</h3>
-	<%
-		} else {
-	%>
-	<h3>Ritenta, sarai più fortunato...</h3>
-	<%
-		}
-				break;
-
-			case "delete":
-
-				if (ans) {
-	%>
-	<h3>La cancellazione è andata alla grande!</h3>
-	<%
-		} else {
-	%>
-	<h3>Insert failed</h3>
-	<%
-		}
-				break;
-				
-			case "update":
-
-				if (ans) {
-	%>
-	<h3>Edit successful</h3>
-	<%
-		} else {
-	%>
-	<h3>Edit failed</h3>
-	<%
-		}
-				break;
-
-		}
-
-		}
-	%>
-
-
+</div>
+<br>
+<%@ include file="footer.jsp" %>
 </body>
 </html>
