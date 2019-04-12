@@ -35,7 +35,11 @@ List<BuildingDTO> list = (List<BuildingDTO>) request.getAttribute("list");%>
 </table>
 <%}%>
 
+<br> </br>
 
+<form action="LogoutServlet" method="post">
+<button type="submit" value="Logout" name="pulsante">Logout</button>
+</form>
 
 </body>
 </html>
