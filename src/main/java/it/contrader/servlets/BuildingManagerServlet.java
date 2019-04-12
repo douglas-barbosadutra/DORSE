@@ -29,6 +29,11 @@ public class BuildingManagerServlet extends HttpServlet {
     @Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    ServiceDTO<BuildingDTO> service = new BuildingServiceDTO();
+	    ServiceDTO<UserDTO> userService = new UserServiceDTO();
+	    List<UserDTO> operatorList = userService.getAllBy("operatore");
+	    
+	    request.setAttribute("operatorList", operatorList);
+	    
 	    String mode = request.getParameter("mode");
 		BuildingDTO dto;
 		int id, userId, operatorId;
@@ -37,11 +42,15 @@ public class BuildingManagerServlet extends HttpServlet {
 		switch (mode.toUpperCase()) {
 
 		case "BUILDINGLIST":
+			request.setAttribute("operatorList", operatorList);
+			
 			updateList(request);
 			getServletContext().getRequestDispatcher("/building/buildingmanager.jsp").forward(request, response);
 			break;
 			    
 		case "BUILDINGLISTOP":
+			request.setAttribute("operatorList", operatorList);
+			
 			updateList(request);
 			request.setAttribute("view", "buildings");
 			getServletContext().getRequestDispatcher("/homeoperatore.jsp").forward(request, response);
@@ -55,9 +64,12 @@ public class BuildingManagerServlet extends HttpServlet {
 			break;
 
 		case "INSERT":
+			request.setAttribute("operatorList", operatorList);
+			
 			String indirizzo = request.getParameter("indirizzo");
 			userId = Integer.parseInt(request.getParameter("userId"));
-			dto = new BuildingDTO (indirizzo,userId);
+			operatorId = Integer.parseInt(request.getParameter("operatorId"));
+			dto = new BuildingDTO (indirizzo,userId,operatorId);
 			ans = service.insert(dto);
 			request.setAttribute("ans", ans);
 			updateList(request);
@@ -69,8 +81,6 @@ public class BuildingManagerServlet extends HttpServlet {
 			dto = service.read(id);
 			dto.setId(id);
 			
-			ServiceDTO<UserDTO> service1 = new UserServiceDTO();
-			List<UserDTO> operatorList = service1.getAllBy("operatore");
 			request.setAttribute("operatorList", operatorList);
 			
 			request.setAttribute("dto", dto);

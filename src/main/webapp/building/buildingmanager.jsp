@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="java.util.List" import="it.contrader.dto.BuildingDTO"%>
+    pageEncoding="ISO-8859-1" import="java.util.List" import="it.contrader.dto.BuildingDTO" import="it.contrader.dto.UserDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,12 +9,14 @@
 <body>
 
 
-<% List<BuildingDTO> list = (List<BuildingDTO>) request.getAttribute("list");%>
+<% List<BuildingDTO> list = (List<BuildingDTO>) request.getAttribute("list");
+List<UserDTO> operatorList = (List<UserDTO>)request.getAttribute("operatorList");%>
 
 <table>
 	<tr> 
 		<th>Address</th>
 		<th>User</th>
+		<th>Operator</th>
 	</tr>
 	<% for(BuildingDTO b: list) {%> 
 	<tr>
@@ -23,6 +25,9 @@
 		</td>
 		<td> 
 			<a href=UserManagerServlet?mode=read&id=<%=b.getUserId()%>><%=b.getUserId()%></a>
+		</td>
+		<td> 
+			<a href=UserManagerServlet?mode=read&id=<%=b.getOperatorId()%>><%=b.getOperatorId()%></a>
 		</td>
 		<td><a href=BuildingManagerServlet?mode=preupdate&id=<%=b.getId()%>>Edit</a>
 			</td>
@@ -40,7 +45,13 @@
 			placeholder="inserisci l'indirizzo">
 		User ID: <input
 			type="text" id="user" name="userId"
-			placeholder="inseriscil'ID dello user"> 
+			placeholder="inserisci l'ID dello user"> 
+		Operator: <select name="operatorId">
+<!-- 		<option value=""> </option> -->
+		<% for (UserDTO op : operatorList) { %>
+  			<option value="<%=op.getId()%>"><%=op.getUsername()%></option>
+  <% } %>
+</select>
 			
 		<button type="submit"  name="pulsante">Insert</button>
 	</form>
