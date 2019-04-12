@@ -2,8 +2,8 @@
     pageEncoding="ISO-8859-1" import="it.contrader.dto.*" import="java.util.List"%>
 <!DOCTYPE html>
 <html>
-<head>
 <meta charset="ISO-8859-1">
+<link href="css/vittoriostyle.css" rel="stylesheet">
 <title>Operator main menu</title>
 </head>
 <body>

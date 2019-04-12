@@ -4,12 +4,19 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link href="css/vittoriostyle.css" rel="stylesheet">
 <title>User</title>
 </head>
 <body>
 
-<h1>User</h1>
+<div class="navbar">
+  <a href="homeadmin.jsp">Home</a>
+  <a href="UserManagerServlet?mode=userlist">Users</a>
+  <a href="BuildingManagerServlet?mode=buildinglist">Buildings</a>
+  <a href="LogoutServlet" id="logout">Logout</a>
+</div>
 
+<h1>User</h1>
 <%UserDTO u = (UserDTO) request.getAttribute("dto");%>
 
 

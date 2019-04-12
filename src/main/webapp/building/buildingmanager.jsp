@@ -5,19 +5,32 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Building manager</title>
+<link href="css/vittoriostyle.css" rel="stylesheet">
 </head>
 <body>
+
+<div class="navbar">
+  <a  href="homeadmin.jsp">Home</a>
+  <a href="UserManagerServlet?mode=userlist">Users</a>
+  <a class="active" href="BuildingManagerServlet?mode=buildinglist">Buildings</a>
+  <a href="LogoutServlet" id="logout">Logout</a>
+</div>
 
 
 <% List<BuildingDTO> list = (List<BuildingDTO>) request.getAttribute("list");
 List<UserDTO> operatorList = (List<UserDTO>)request.getAttribute("operatorList");
 List<UserDTO> clientList = (List<UserDTO>)request.getAttribute("clientList");%>
 
+<br>
+
+
 <table>
 	<tr> 
 		<th>Address</th>
 		<th>User</th>
 		<th>Operator</th>
+			<th></th>
+			<th></th>
 	</tr>
 	<% for(BuildingDTO b: list) {%> 
 	<tr>

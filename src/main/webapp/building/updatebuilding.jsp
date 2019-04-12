@@ -4,9 +4,16 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link href="css/vittoriostyle.css" rel="stylesheet">
 <title>Edit Building</title>
 </head>
 <body>
+<div class="navbar">
+  <a href="homeadmin.jsp">Home</a>
+  <a href="UserManagerServlet?mode=userlist">Users</a>
+  <a href="BuildingManagerServlet?mode=buildinglist">Buildings</a>
+  <a href="LogoutServlet" id="logout">Logout</a>
+</div>
 <h1>Edit Building</h1>
 
 

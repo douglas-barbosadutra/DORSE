@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link href="css/vittoriostyle.css" rel="stylesheet">
 <title>Building's ambients manager ?</title>
 </head>
 <body>
