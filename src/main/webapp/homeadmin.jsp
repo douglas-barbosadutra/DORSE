@@ -10,6 +10,9 @@
 </head>
 <body>
 
+<div class="header">D<img class="imgheader" src="css/DoserLogo.svg" alt="DoserLogo">SER
+</div>
+
 
 <div class="navbar">
   <a class="active" href="homeadmin.jsp">Home</a>
@@ -17,10 +20,10 @@
   <a href="BuildingManagerServlet?mode=buildinglist">Buildings</a>
   <a href="LogoutServlet" id="logout">Logout</a>
 </div>
-
+<div class="main">
 
 <h1>Welcome ${user}</h1>
 
-
+</div>
 </body>
 </html>
