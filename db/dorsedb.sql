@@ -29,8 +29,9 @@ CREATE TABLE `ambiente` (
   `tipo` varchar(45) DEFAULT 'stanza generica',
   `building` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `building_idx` (`building`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `building_idx` (`building`),
+  CONSTRAINT `building` FOREIGN KEY (`building`) REFERENCES `building` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -55,7 +56,7 @@ CREATE TABLE `building` (
   `user` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_idx` (`user`)
-) ENGINE=InnoDB AUTO_INCREMENT=1999 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2002 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,7 +65,7 @@ CREATE TABLE `building` (
 
 LOCK TABLES `building` WRITE;
 /*!40000 ALTER TABLE `building` DISABLE KEYS */;
-INSERT INTO `building` VALUES (1,'Via Accademia 43',1);
+INSERT INTO `building` VALUES (1999,'Via Accademia 21',1);
 /*!40000 ALTER TABLE `building` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -82,8 +83,8 @@ CREATE TABLE `item` (
   `ambient` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `ambient_idx` (`ambient`),
-  CONSTRAINT `ambient` FOREIGN KEY (`ambient`) REFERENCES `ambiente` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `ambient` FOREIGN KEY (`ambient`) REFERENCES `ambiente` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -131,4 +132,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-12  9:32:10
+-- Dump completed on 2019-04-12  9:48:07
