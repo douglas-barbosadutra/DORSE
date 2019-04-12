@@ -18,12 +18,12 @@
 		<tr>
 			<th>Indirizzo</th>
 			<th>User</th>
-
+			<th>Operatore</th>
 		</tr>
 		<tr>
 			<td><%=b.getIndirizzo()%></td>
 			<td><%=b.getUserId()%></td>
-
+			<td><%=b.getOperatorId()%></td>
 		</tr>
 	</table>
 

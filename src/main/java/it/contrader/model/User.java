@@ -12,6 +12,8 @@ public class User {
 	protected String password;
 	protected Date birthdate;
 	protected String telnumber;
+	
+	private List<Building> managedBuildings;
 
 	public User() {
 	}
@@ -93,13 +95,18 @@ public class User {
 		this.telnumber = telnumber;
 	}
 
+	public List<Building> getManagedBuildings() {
+		return managedBuildings;
+	}
 
+	public void setManagedBuildings(List<Building> managedBuildings) {
+		this.managedBuildings = managedBuildings;
+	}
 
 	@Override
 	public String toString() {
 		return  id + "\t"  + username +"\t\t" +   password + "\t\t" + usertype;
 	}
-
 
 	public boolean equals(Object obj) {
 		if (this == obj)

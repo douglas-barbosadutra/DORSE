@@ -5,6 +5,14 @@ public class BuildingDTO implements DTO {
 	private Integer id;
 	private String indirizzo;
 	private int userId;
+	private int operatorId;
+	
+	public BuildingDTO( String indirizzo, int userId, int operatorId) {
+		super();
+		this.indirizzo = indirizzo;
+		this.userId = userId;
+		this.operatorId = operatorId;
+	}
 	
 	public BuildingDTO( String indirizzo, int userId) {
 		super();
@@ -12,11 +20,12 @@ public class BuildingDTO implements DTO {
 		this.userId = userId;
 	}
 
-	public BuildingDTO(int id, String indirizzo, int userId) {
+	public BuildingDTO(int id, String indirizzo, int userId, int operatorId) {
 		super();
 		this.id = id;
 		this.indirizzo = indirizzo;
 		this.userId = userId;
+		this.operatorId = operatorId;
 	}
 
 	public Integer getId() {
@@ -42,6 +51,12 @@ public class BuildingDTO implements DTO {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	
-	
+
+	public int getOperatorId() {
+		return operatorId;
+	}
+
+	public void setOperatorId(int operatorId) {
+		this.operatorId = operatorId;
+	}
 }

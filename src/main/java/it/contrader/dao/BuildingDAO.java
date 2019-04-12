@@ -1,20 +1,19 @@
 package it.contrader.dao;
 
 import java.sql.*;
-
-
 import java.util.ArrayList;
 import java.util.List;
 import it.contrader.model.Building;
 import it.contrader.utils.ConnectionSingleton;
 import it.contrader.utils.GestoreEccezioni;
+
 public class BuildingDAO implements DAO<Building> {
 
 	private final String QUERY_ALL = "SELECT * FROM building";
-	private final String QUERY_INSERT = "INSERT INTO building (indirizzo, user) VALUES (?,?)";
+	private final String QUERY_INSERT = "INSERT INTO building (indirizzo, user, operator) VALUES (?,?,?)";
 	private final String QUERY_READ = "SELECT * FROM building WHERE id=?";
-
-	private final String QUERY_UPDATE = "UPDATE building SET indirizzo=?, user=? WHERE id=?";
+	private final String QUERY_BY = "SELECT * FROM building WHERE operator=?";
+	private final String QUERY_UPDATE = "UPDATE building SET indirizzo=?, user=? operator=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM building WHERE id=?";
 
 	public BuildingDAO() {
@@ -33,7 +32,8 @@ public class BuildingDAO implements DAO<Building> {
 				int id = resultSet.getInt("id");
 				String indirizzo = resultSet.getString("indirizzo");
 				int userid = resultSet.getInt("user");
-				building = new Building(indirizzo, userid);
+				int operatorId = resultSet.getInt("operator");
+				building = new Building(indirizzo, userid, operatorId);
 				building.setId(id);
 
 				buildings.add(building);
@@ -46,8 +46,28 @@ public class BuildingDAO implements DAO<Building> {
 	
 	@Override
 	public List<Building> getAllBy(Object o) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Building> buildings = new ArrayList<>();
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_BY);
+			int operatorId = (Integer)o;
+			preparedStatement.setInt(1, operatorId);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			Building building;
+			while (resultSet.next()) {
+				int id = resultSet.getInt("id");
+				String indirizzo = resultSet.getString("indirizzo");
+				int userid = resultSet.getInt("user");
+				building = new Building(indirizzo, userid, operatorId);
+				building.setId(id);
+
+				buildings.add(building);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return buildings;
 	}
 
 	@Override
@@ -58,12 +78,10 @@ public class BuildingDAO implements DAO<Building> {
 			preparedStatement.setInt(1, id);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			resultSet.next();
-			int userid;
-			String indirizzo;
-
-			indirizzo = resultSet.getString("indirizzo");
-			userid = resultSet.getInt("user");
-			Building building = new Building(indirizzo, userid);
+			String indirizzo = resultSet.getString("indirizzo");
+			int userid = resultSet.getInt("user");
+			int operatorId = resultSet.getInt("operator");
+			Building building = new Building(indirizzo, userid, operatorId);
 			building.setId(resultSet.getInt("id"));
 
 			return building;
@@ -80,6 +98,7 @@ public class BuildingDAO implements DAO<Building> {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_INSERT);
 			preparedStatement.setString(1, building.getIndirizzo());
 			preparedStatement.setInt(2, building.getUserId());
+			preparedStatement.setInt(3, building.getOperatorId());
 			preparedStatement.execute();
 			return true;
 		} catch (SQLException e) {
@@ -108,11 +127,16 @@ public class BuildingDAO implements DAO<Building> {
 				if (building.getUserId() == 0 ) {
 					building.setUserId(userRead.getUserId());
 				}
+				
+				if (building.getOperatorId() == 0 ) {
+					building.setOperatorId(userRead.getOperatorId());
+				}
 
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
 				preparedStatement.setString(1, building.getIndirizzo());
 				preparedStatement.setInt(2, building.getUserId());
-				preparedStatement.setInt(3, building.getId());
+				preparedStatement.setInt(3, building.getOperatorId());
+				preparedStatement.setInt(4, building.getId());
 				int a = preparedStatement.executeUpdate();
 				if (a > 0)
 					return true;

@@ -5,11 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 import it.contrader.utils.ConnectionSingleton;
 import it.contrader.utils.GestoreEccezioni;
+import it.contrader.model.Building;
 import it.contrader.model.User;
 
 public class UserDAO implements DAO<User> {
 
 	private final String QUERY_ALL = "SELECT * FROM user";
+	private final String QUERY_BY_USERTYPE = "SELECT * FROM user WHERE usertype=?";
 	private final String QUERY_INSERT = "INSERT INTO user (username, password, usertype) VALUES (?,?,?)";
 	private final String QUERY_READ = "SELECT * FROM user WHERE idUser=?";
 	private final String QUERY_READ_UP = "SELECT * FROM user WHERE username=? AND password=?";
@@ -44,8 +46,27 @@ public class UserDAO implements DAO<User> {
 	
 	@Override
 	public List<User> getAllBy(Object o) {
-		// TODO Auto-generated method stub
-		return null;
+		List<User> usersList = new ArrayList<>();
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_BY_USERTYPE);
+			String usertype = (String)o;
+			preparedStatement.setString(1, usertype);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			User user;
+			while (resultSet.next()) {
+				int userId = resultSet.getInt("idUser");
+				String username = resultSet.getString("username");
+				String password = resultSet.getString("password");
+				user = new User(username, password, usertype);
+				user.setId(userId);
+				usersList.add(user);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return usersList;
 	}
 
 	@Override

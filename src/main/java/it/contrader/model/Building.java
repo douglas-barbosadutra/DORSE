@@ -8,22 +8,23 @@ public class Building {
 	private String indirizzo;
 	private List<Ambiente> ambienti;
 	private int userId;
+	private int operatorId;
 
 	public Building() {
 
 	}
 
-	public Building(String indirizzo, int userId) {
+	public Building(String indirizzo, int userId, int operatorId) {
 		this.indirizzo = indirizzo;
 		this.userId = userId;
-
+		this.operatorId = operatorId;
 	}
 	
-	public Building(int id, String indirizzo, int userId) {
+	public Building(int id, String indirizzo, int userId, int operatorId) {
 		this.id = id;
 		this.indirizzo = indirizzo;
 		this.userId = userId;
-
+		this.operatorId = operatorId;
 	}
 
 	public int getId() {
@@ -42,8 +43,6 @@ public class Building {
 		this.indirizzo = indirizzo;
 	}
 
-
-
 	public List<Ambiente> getAmbienti() {
 		return ambienti;
 	}
@@ -52,7 +51,13 @@ public class Building {
 		this.ambienti = ambienti;
 	}
 
+	public int getOperatorId() {
+		return operatorId;
+	}
 
+	public void setOperatorId(int operatorId) {
+		this.operatorId = operatorId;
+	}
 
 	@Override
 	public String toString() {

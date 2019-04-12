@@ -9,7 +9,7 @@ public class BuildingConverter implements Converter<Building,BuildingDTO> {
 
 		Building building = null;
 		if (buildingDTO != null) {
-			building = new Building(buildingDTO.getIndirizzo(), buildingDTO.getUserId());
+			building = new Building(buildingDTO.getIndirizzo(), buildingDTO.getUserId(), buildingDTO.getOperatorId());
 			
 		}
 		Integer id = buildingDTO.getId();
@@ -26,7 +26,7 @@ public class BuildingConverter implements Converter<Building,BuildingDTO> {
 
 		BuildingDTO buildingDTO = null;
 		if (building != null) {
-			buildingDTO = new BuildingDTO(building.getId(), building.getIndirizzo(), building.getUserId());
+			buildingDTO = new BuildingDTO(building.getId(), building.getIndirizzo(), building.getUserId(), building.getOperatorId());
 		}
 
 		return buildingDTO;
