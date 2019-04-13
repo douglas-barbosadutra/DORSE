@@ -5,16 +5,28 @@
 <head>
 <meta charset="ISO-8859-1">
 <link href="css/vittoriostyle.css" rel="stylesheet">
-<title>Item manager ${ambientId}</title>
+<title>Item manager</title>
 </head>
 <body>
-<h1>Item manager ${ambientId} </h1>
+<%@ include file="header.jsp" %>
+
+<div class="navbar">
+  <a href="homeoperatore.jsp">Home</a>
+  <a href="BuildingManagerServlet?mode=buildinglistOP">Buildings</a>
+  <a href="AmbienteManagerServlet?mode=ambientelist">Rooms</a>
+  <a class="active" href="ItemManagerServlet?mode=itemlist">Items</a>
+  <a href="LogoutServlet" id="logout">Logout</a>
+</div>
+
+<h1>Item in ambient ${ambientId} </h1>
 
 
 <table>
 	<tr> 
 		<th>ItemType</th>
 		<th>Description</th>
+		<th></th>
+		<th></th>
 	</tr>
 	<%List<ItemDTO> list = (List<ItemDTO>) request.getAttribute("list");
 	for(ItemDTO i: list) {%> 
@@ -25,74 +37,39 @@
 			<td> 
 			<%=i.getDescription()%></a>
 		</td>
-		<td><a href=ItemManagerServlet?mode=preupdate&id=<%=i.getId()%>>Modifica</a>
+		<td><a href=ItemManagerServlet?mode=preupdate&id=<%=i.getId()%>>Edit</a>
 			</td>
-		<td><a href=ItemManagerServlet?mode=delete&id=<%=i.getId()%>>Cancella</a>
+		<td><a href=ItemManagerServlet?mode=delete&id=<%=i.getId()%>>Delete</a>
 	</tr>	
 	<%} %>
 </table>
 
+	<form id="floatright" action="ItemManagerServlet" method="get">
 
-
-	<h2>Inserisci un nuovo item in questo ambiente</h2>
-
-	<form
-		action="ItemManagerServlet" method="get">
-
-		ItemType: <input type="text" id="tipo" name="itemType"
-			placeholder="inserisci l'itemtype">
-		Descrizione: <input type="text" id="tipo" name="description"
-			placeholder="inserisci la descrizione"> <input type="hidden"
-			name="mode" value="insert">
-		<input type="hidden" name="ambientId"
-			value="<%=session.getAttribute("ambientId")%>">
-		<button type="submit">Inserisci</button>
+  <div class="row">
+    <div class="col-25">
+      <label  for="desc">Itemtype:</label> 
+    </div>
+    <div class="col-75">
+      <select id="type" name="itemType">
+  				<option value="attuatore">actuator</option>
+  				<option value="sensore">sensor</option>
+			</select> 
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label  for="desc">Description:</label> 
+    </div>
+    <div class="col-75">
+      <input type="text" id="desc" name="description" placeholder="Insert description..."> 
+    </div>
+  </div>
+		<input type="hidden" name="mode" value="insert">
+		<input type="hidden" name="ambientId" value="<%=session.getAttribute("ambientId")%>">
+		<button type="submit">Insert</button>
 	</form>
 
-
-
-
-	<%
-		if (request.getAttribute("ans") != null) {
-			String mode = request.getParameter("mode");
-			boolean ans = (boolean) request.getAttribute("ans");
-			switch (mode) {
-			case "insert":
-				if (ans) {
-	%>
-	<h3>L'inserimento è andato alla grande!</h3>
-	<%
-		} else {
-	%>
-	<h3>Ritenta, sarai più fortunato...</h3>
-	<%
-		}
-				break;
-			case "delete":
-				if (ans) {
-	%>
-	<h3>La cancellazione è andata alla grande!</h3>
-	<%
-		} else {
-	%>
-	<h3>Ritenta, sarai più fortunato...</h3>
-	<%
-		}
-				break;
-			case "update":
-				if (ans) {
-	%>
-	<h3>La modifica è andata alla grande!</h3>
-	<%
-		} else {
-	%>
-	<h3>Ritenta, sarai più fortunato...</h3>
-	<%
-		}
-				break;
-			}
-		}
-	%>
-
+<%@ include file="footer.jsp" %>
 </body>
 </html>

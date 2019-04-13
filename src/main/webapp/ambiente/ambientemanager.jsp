@@ -5,10 +5,21 @@
 <head>
 <meta charset="ISO-8859-1">
 <link href="css/vittoriostyle.css" rel="stylesheet">
-<title>Building's ambients manager ?</title>
+<title>Room manager</title>
 </head>
 <body>
-<h1>Ambients of building ${buildingId} </h1>
+
+<%@ include file="header.jsp" %>
+
+<div class="navbar">
+  <a href="homeoperatore.jsp">Home</a>
+  <a href="BuildingManagerServlet?mode=buildinglistOP">Buildings</a>
+  <a class="active" href="AmbienteManagerServlet?mode=ambientelist">Rooms</a>
+  <a href="ItemManagerServlet?mode=itemlist">Items</a>
+  <a href="LogoutServlet" id="logout">Logout</a>
+</div>
+
+<h1>Rooms of building ${buildingId} </h1>
 
 
 
@@ -21,7 +32,8 @@
 <table>
 	<tr> 
 		<th>Description</th>
-		<th>Building</th>
+		<th></th>
+		<th></th>
 	</tr>
 	<%for(AmbienteDTO a: list) {%> 
 	<tr>
@@ -37,63 +49,24 @@
 
 
 
-	<h2>Insert new ambient</h2>
 
-	<form
-		action="AmbienteManagerServlet" method="get">
+<form id="floatright" action="AmbienteManagerServlet" method="get">
+  <div class="row">
+    <div class="col-25">
+      <label  for="desc">Description:</label> 
+    </div>
+    <div class="col-75">
+      <input type="text" id="desc" name="descrizione" placeholder="Insert description..."> 
+    </div>
+  </div>
+		<input type="hidden" name="mode" value="insert">
+      <button type="submit" >Insert</button>
+</form>
 
-		Description: <input type="text" id="tipo" name="descrizione"
-			placeholder="inserisci la descrizione"> <input type="hidden"
-			name="mode" value="insert">
-		<input type="hidden" name="buildingId"
-			value="<%=session.getAttribute("buildingId")%>">
-		<button type="submit">Insert</button>
-	</form>
 
 
 
-
-	<%
-		if (request.getAttribute("ans") != null) {
-			String mode = request.getParameter("mode");
-			boolean ans = (boolean) request.getAttribute("ans");
-			switch (mode) {
-			case "insert":
-				if (ans) {
-	%>
-	<h3>Insert successful</h3>
-	<%
-		} else {
-	%>
-	<h3>Insert failed</h3>
-	<%
-		}
-				break;
-			case "delete":
-				if (ans) {
-	%>
-	<h3>Delete successful</h3>
-	<%
-		} else {
-	%>
-	<h3>Delete failed</h3>
-	<%
-		}
-				break;
-			case "update":
-				if (ans) {
-	%>
-	<h3>Edit successful</h3>
-	<%
-		} else {
-	%>
-	<h3>Edit failed</h3>
-	<%
-		}
-				break;
-			}
-		}
-	%>
+<%@ include file="footer.jsp" %>
 
 </body>
 </html>

@@ -8,27 +8,34 @@
 <title>Edit ambient</title>
 </head>
 <body>
-<h1>Edit ambient</h1>
+<%@include file="header.jsp"%>
 
-
+<div class="navbar">
+  <a href="homeoperatore.jsp">Home</a>
+  <a href="BuildingManagerServlet?mode=buildinglistOP">Buildings</a>
+  <a class="active" href="AmbienteManagerServlet?mode=ambientelist">Rooms</a>
+  <a href="ItemManagerServlet?mode=itemlist">Items</a>
+  <a href="LogoutServlet" id="logout">Logout</a>
+</div>
 
 	<%
 		AmbienteDTO a = (AmbienteDTO) request.getAttribute("dto");
 		int id = a.getId();
 	%>
-	
-	
-<form action="AmbienteManagerServlet?mode=update&id=<%=id%>" method="post">
+<br>
 
-
-		Description: <input type="text" id="desc" name="descrizione"
-			value="<%=a.getDescrizione()%>">
-<!-- 		Building ID: <input -->
-<!-- 			type="text" id="buil" name="buildingId" -->
-<%-- 			value=<%=a.getBuildingid()%>>  --%>
-			
+	<form action="AmbienteManagerServlet?mode=update&id=<%=id%>" method="post">
+		<div class="row">
+			<div class="col-25">
+				<label for="desc">Description:</label>
+			</div>
+			<div class="col-75">
+				<input type="text" id="desc" name="descrizione" placeholder="Insert description...">
+			</div>
+		</div>
 		<button type="submit" name="pulsante">Edit</button>
+	</form>
 
-</form>
+	<%@ include file="footer.jsp" %>
 </body>
 </html>

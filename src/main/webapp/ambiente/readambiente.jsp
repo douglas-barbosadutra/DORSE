@@ -8,10 +8,20 @@
 <title>Ambient</title>
 </head>
 <body>
-	<h1>Ambient</h1>
-
+<%@include file="header.jsp"%>
 	<%AmbienteDTO a = (AmbienteDTO) request.getAttribute("dto");
 	%>
+
+
+<div class="navbar">
+  <a  href="homeoperatore.jsp">Home</a>
+  <a href="BuildingManagerServlet?mode=buildinglistOP">Buildings</a>
+  <a class="active" href="AmbienteManagerServlet?mode=ambientelist">Rooms</a>
+  <a href="ItemManagerServlet?mode=itemlist">Items</a>
+  <a href="LogoutServlet" id="logout">Logout</a>
+</div>
+
+<br>
 
 
 	<table>
@@ -21,13 +31,26 @@
 
 		</tr>
 		<tr>
-			<td><%=a.getDescrizione()%></td>
+			<td><a href="ItemManagerServlet?mode=itemlistby&ambientId=<%=a.getId()%>" ><%=a.getDescrizione()%></a></td>
 			<td><%=a.getBuildingid()%></td>
 
 		</tr>
 	</table>
 
-<a href="ItemManagerServlet?mode=itemlistby&ambientId=<%=a.getId()%>" > Manage items</a>
 
+<div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+</div>
+
+<%@ include file="footer.jsp" %>
 </body>
 </html>

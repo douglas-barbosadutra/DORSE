@@ -8,19 +8,26 @@
 <title>Lettura Item</title>
 </head>
 <body>
-	<h1>Pagina di lettura Item</h1>
+<%@ include file="header.jsp" %>
 
 	<%
 	ItemDTO i = (ItemDTO) request.getAttribute("dto");
 	%>
-
+<div class="navbar">
+  <a href="homeoperatore.jsp">Home</a>
+  <a href="BuildingManagerServlet?mode=buildinglistOP">Buildings</a>
+  <a href="AmbienteManagerServlet?mode=ambientelist">Rooms</a>
+  <a class="active" href="ItemManagerServlet?mode=itemlist">Items</a>
+  <a href="LogoutServlet" id="logout">Logout</a>
+</div>
+<br>
 
 	<table>
 
 		<tr>
-			<th>ItemType</th>
-			<th>Descrizione</th>
-			<th>Ambiente</th>
+			<th>Itemtype</th>
+			<th>Description</th>
+			<th>Room</th>
 
 		</tr>
 
@@ -31,3 +38,20 @@
 
 		</tr>
 	</table>
+	
+<br>
+<br>	
+<br>
+<br>	
+<br>
+<br>	
+<br>
+<br>
+<br>
+<br>	
+<br>
+<br>	
+	
+	<%@ include file="footer.jsp" %>
+</body>
+</html>

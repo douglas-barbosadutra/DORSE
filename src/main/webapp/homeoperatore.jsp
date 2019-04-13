@@ -7,14 +7,26 @@
 <title>Operator main menu</title>
 </head>
 <body>
-	<h1>Welcome ${utente}</h1>
+<%@include file="css/header.jsp"%>
 
-<a href="BuildingManagerServlet?mode=buildinglistOP"> View buildings </a>
+<div class="navbar">
+  <a class="active" href="homeoperatore.jsp">Home</a>
+  <a href="BuildingManagerServlet?mode=buildinglistOP">Buildings</a>
+  <a href="AmbienteManagerServlet?mode=ambientelist">Rooms</a>
+  <a href="ItemManagerServlet?mode=itemlist">Items</a>
+  <a href="LogoutServlet" id="logout">Logout</a>
+</div>
 
+<%if (request.getAttribute("view")!="buildings") {
+List<BuildingDTO> list = (List<BuildingDTO>) request.getAttribute("list");%>
+<h1>Welcome ${user}</h1>
+<%}%>
 
 <%if (request.getAttribute("view")=="buildings") {
 List<BuildingDTO> list = (List<BuildingDTO>) request.getAttribute("list");%>
+<br>
 
+	
 <table>
 <tr> 
 	<th>Address</th>
@@ -33,11 +45,11 @@ List<BuildingDTO> list = (List<BuildingDTO>) request.getAttribute("list");%>
 </table>
 <%}%>
 
-<br> </br>
 
-<form action="LogoutServlet" method="post">
-<button type="submit" value="Logout" name="pulsante">Logout</button>
-</form>
+
+<br>
+
+<%@ include file="css/footer.jsp" %>
 
 </body>
 </html>
