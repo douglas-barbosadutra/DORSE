@@ -10,10 +10,10 @@ import it.contrader.utils.GestoreEccezioni;
 public class BuildingDAO implements DAO<Building> {
 
 	private final String QUERY_ALL = "SELECT * FROM building";
-	private final String QUERY_INSERT = "INSERT INTO building (indirizzo, user, operator) VALUES (?,?,?)";
+	private final String QUERY_INSERT = "INSERT INTO building (address, user, operator) VALUES (?,?,?)";
 	private final String QUERY_READ = "SELECT * FROM building WHERE id=?";
 	private final String QUERY_BY = "SELECT * FROM building WHERE operator=?";
-	private final String QUERY_UPDATE = "UPDATE building SET indirizzo=?, user=? operator=? WHERE id=?";
+	private final String QUERY_UPDATE = "UPDATE building SET address=?, user=?, operator=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM building WHERE id=?";
 
 	public BuildingDAO() {
@@ -30,7 +30,7 @@ public class BuildingDAO implements DAO<Building> {
 			Building building;
 			while (resultSet.next()) {
 				int id = resultSet.getInt("id");
-				String indirizzo = resultSet.getString("indirizzo");
+				String indirizzo = resultSet.getString("address");
 				int userid = resultSet.getInt("user");
 				int operatorId = resultSet.getInt("operator");
 				building = new Building(indirizzo, userid, operatorId);
@@ -56,7 +56,7 @@ public class BuildingDAO implements DAO<Building> {
 			Building building;
 			while (resultSet.next()) {
 				int id = resultSet.getInt("id");
-				String indirizzo = resultSet.getString("indirizzo");
+				String indirizzo = resultSet.getString("address");
 				int userid = resultSet.getInt("user");
 				building = new Building(indirizzo, userid, operatorId);
 				building.setId(id);
@@ -78,7 +78,7 @@ public class BuildingDAO implements DAO<Building> {
 			preparedStatement.setInt(1, id);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			resultSet.next();
-			String indirizzo = resultSet.getString("indirizzo");
+			String indirizzo = resultSet.getString("address");
 			int userid = resultSet.getInt("user");
 			int operatorId = resultSet.getInt("operator");
 			Building building = new Building(indirizzo, userid, operatorId);
@@ -111,44 +111,22 @@ public class BuildingDAO implements DAO<Building> {
 	public boolean update(Building building) {
 		Connection connection = ConnectionSingleton.getInstance();
 
-		// Check if id is present
-		if (building.getId() == 0)
-			return false;
-
-		Building userRead = (Building)read(building.getId());
-		if (!userRead.equals(building)) {
-			try {
-				// Fill the userToUpdate object
-				if (building.getIndirizzo() == null || building.getIndirizzo().equals("")) {
-					building.setIndirizzo(userRead.getIndirizzo());
-				}
-
-
-				if (building.getUserId() == 0 ) {
-					building.setUserId(userRead.getUserId());
-				}
-				
-				if (building.getOperatorId() == 0 ) {
-					building.setOperatorId(userRead.getOperatorId());
-				}
-
-				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
-				preparedStatement.setString(1, building.getIndirizzo());
-				preparedStatement.setInt(2, building.getUserId());
-				preparedStatement.setInt(3, building.getOperatorId());
-				preparedStatement.setInt(4, building.getId());
-				int a = preparedStatement.executeUpdate();
-				if (a > 0)
-					return true;
-				else
-					return false;
-
-			} catch (SQLException e) {
+		try {
+			PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
+			preparedStatement.setString(1, building.getIndirizzo());
+			preparedStatement.setInt(2, building.getUserId());
+			preparedStatement.setInt(3, building.getOperatorId());
+			preparedStatement.setInt(4, building.getId());
+			int a = preparedStatement.executeUpdate();
+			if (a > 0)
+				return true;
+			else
 				return false;
-			}
+
+		} catch (SQLException e) {
+			return false;
 		}
 
-		return false;
 	}
 
 	@Override
@@ -168,7 +146,6 @@ public class BuildingDAO implements DAO<Building> {
 
 	@Override
 	public Building read(String param1, String param2) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

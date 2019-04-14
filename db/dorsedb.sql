@@ -31,7 +31,7 @@ CREATE TABLE `ambiente` (
   PRIMARY KEY (`id`),
   KEY `building_idx` (`building`),
   CONSTRAINT `building` FOREIGN KEY (`building`) REFERENCES `building` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +40,7 @@ CREATE TABLE `ambiente` (
 
 LOCK TABLES `ambiente` WRITE;
 /*!40000 ALTER TABLE `ambiente` DISABLE KEYS */;
+INSERT INTO `ambiente` VALUES (55,'Bedroom',2022),(59,'Bathroom',2022),(60,'Kitchen',2022);
 /*!40000 ALTER TABLE `ambiente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -52,11 +53,12 @@ DROP TABLE IF EXISTS `building`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `building` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `indirizzo` varchar(45) NOT NULL,
+  `address` varchar(45) NOT NULL,
   `user` int(11) NOT NULL,
+  `operator` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_idx` (`user`)
-) ENGINE=InnoDB AUTO_INCREMENT=2002 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2028 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,7 +67,7 @@ CREATE TABLE `building` (
 
 LOCK TABLES `building` WRITE;
 /*!40000 ALTER TABLE `building` DISABLE KEYS */;
-INSERT INTO `building` VALUES (1999,'Via Accademia 21',1);
+INSERT INTO `building` VALUES (2022,'Viale Traiano',45,44),(2023,'Vicolo Stretto',46,44),(2024,'Via Accademia',46,47),(2025,'Via Roma',48,44),(2026,'Corso Magellano',49,47);
 /*!40000 ALTER TABLE `building` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,7 +86,7 @@ CREATE TABLE `item` (
   PRIMARY KEY (`id`),
   KEY `ambient_idx` (`ambient`),
   CONSTRAINT `ambient` FOREIGN KEY (`ambient`) REFERENCES `ambiente` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,6 +95,7 @@ CREATE TABLE `item` (
 
 LOCK TABLES `item` WRITE;
 /*!40000 ALTER TABLE `item` DISABLE KEYS */;
+INSERT INTO `item` VALUES (21,'attuatore','Lights',55),(25,'sensore','Switch',55);
 /*!40000 ALTER TABLE `item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,7 +113,7 @@ CREATE TABLE `user` (
   `usertype` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`iduser`),
   UNIQUE KEY `username_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -119,7 +122,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'admin','admin','admin'),(33,'user1','user','user'),(35,'a','a','operatore');
+INSERT INTO `user` VALUES (43,'Vittorio','Vittorio','admin'),(44,'Katia','Katia','operatore'),(45,'Girolamo','Girolamo','client'),(46,'Grandma','Grandma','client'),(47,'Doctor','Doctor','operatore'),(48,'Grandpa','Grandpa','client'),(49,'Son','Son','client');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -132,4 +135,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-12  9:48:07
+-- Dump completed on 2019-04-14 14:19:58

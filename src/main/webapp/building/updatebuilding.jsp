@@ -21,7 +21,6 @@
 
 	<%
 		BuildingDTO b = (BuildingDTO) request.getAttribute("dto");
-		int id = b.getId();
 		List<UserDTO> operatorList = (List)request.getAttribute("operatorList");
 		List<UserDTO> clientList = (List<UserDTO>)request.getAttribute("clientList");
 	%>
@@ -31,7 +30,7 @@
 	
 	 <form id="floatleft" action="BuildingManagerServlet" method="get" >
 	 		<input type="hidden" name="mode" value="update">
-			<input type="hidden" name="id" value="<%=id%>">
+			<input type="hidden" name="id" value="<%=b.getId()%>">
 			
   <div class="row">
     <div class="col-25">
@@ -46,9 +45,9 @@
       <label for="client">Client</label>
     </div>
     <div class="col-75">
-      <select id="client" name="clientId">
+      <select id="client" name="clientId" >
 		<% for (UserDTO c : clientList) { %>
-  			<option <%if (b.getOperatorId() == c.getId()) {%> selected <%} %> value="<%=c.getId()%>"><%=c.getUsername()%></option>
+  			<option <%if (b.getUserId() == c.getId()) {%> selected <%} %> value="<%=c.getId()%>"><%=c.getUsername()%></option>
   			<% } %>
 		</select>
     </div>
@@ -71,12 +70,6 @@
 </form>
    
 	
-	
-	
-	
-	
-
-</form>
 </div>
 <%@ include file="footer.jsp" %>
 </body>

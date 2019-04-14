@@ -86,12 +86,13 @@ public class ItemManagerServlet extends HttpServlet{
 
 		case "UPDATE":
 			description = request.getParameter("description");
-			itemType= request.getParameter("itemtype");
+			itemType= request.getParameter("itemType");
 			ambientId = Integer.parseInt(request.getParameter("ambientId"));
 			int idToUpdate = Integer.parseInt(request.getParameter("idToUpdate"));
 			dto = new ItemDTO(idToUpdate,description, itemType, ambientId);
 			ans = service.update(dto);
 			request.setAttribute("ans", ans);
+			System.out.println(ans);
 			updateList(request);
 			getServletContext().getRequestDispatcher("/item/itemmanager.jsp").forward(request, response);
 			break;

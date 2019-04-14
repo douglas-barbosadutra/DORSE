@@ -33,8 +33,8 @@
 			</div>
 			<div class="col-75">
 		     <select id="type" name="itemType">
-  				<option value="attuatore">actuator</option>
-  				<option value="sensore">sensor</option>
+  				<option <%if(i.getItemType()=="attuatore" ){%> selected="selected" <%}%> value="attuatore">actuator</option>
+  				<option <%if(i.getItemType()=="sensore" ){%> selected="selected" <%}%> value="sensore">sensor</option>
 			</select> 		
 			</div>
 		</div>
@@ -43,7 +43,7 @@
 				<label for="desc">Description:</label>
 			</div>
 			<div class="col-75">
-				<input type="text" id="desc" name="description" placeholder="Insert description...">
+				<input value=<%=i.getDescription()%> type="text" id="desc" name="description" placeholder="Insert description...">
 			</div>
 		</div>
 		<input type="hidden" name="ambientId" value=<%=i.getAmbientId()%>> 

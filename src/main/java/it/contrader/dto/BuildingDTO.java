@@ -2,6 +2,12 @@ package it.contrader.dto;
 
 public class BuildingDTO implements DTO {
 
+	@Override
+	public String toString() {
+		return "BuildingDTO [id=" + id + ", indirizzo=" + indirizzo + ", userId=" + userId + ", operatorId="
+				+ operatorId + "]";
+	}
+
 	private Integer id;
 	private String indirizzo;
 	private int userId;

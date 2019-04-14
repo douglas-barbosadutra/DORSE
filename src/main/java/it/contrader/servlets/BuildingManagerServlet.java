@@ -1,14 +1,12 @@
 package it.contrader.servlets;
 
 import java.io.IOException;
-
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import it.contrader.dto.BuildingDTO;
-import it.contrader.dto.DTO;
 import it.contrader.dto.UserDTO;
 import it.contrader.service.BuildingServiceDTO;
 import it.contrader.service.ServiceDTO;
@@ -83,10 +81,11 @@ public class BuildingManagerServlet extends HttpServlet {
 		case "UPDATE":
 			id = Integer.parseInt(request.getParameter("id"));
 			indirizzo = request.getParameter("indirizzo");
-			userId = Integer.parseInt(request.getParameter("userId"));
+			int clientId = Integer.parseInt(request.getParameter("clientId"));
 			operatorId = Integer.parseInt(request.getParameter("operatorId"));
-			dto = new BuildingDTO(id, indirizzo, userId, operatorId);
+			dto = new BuildingDTO(id, indirizzo, clientId, operatorId);
 			ans = service.update(dto);
+			System.out.println(ans);
 			updateList(request);
 			getServletContext().getRequestDispatcher("/building/buildingmanager.jsp").forward(request, response);
 			break;

@@ -1,11 +1,11 @@
 package it.contrader.dao;
 
 import java.sql.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import it.contrader.utils.ConnectionSingleton;
 import it.contrader.utils.GestoreEccezioni;
-import it.contrader.model.Building;
 import it.contrader.model.User;
 
 public class UserDAO implements DAO<User> {
