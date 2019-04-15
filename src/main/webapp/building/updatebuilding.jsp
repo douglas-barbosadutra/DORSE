@@ -12,7 +12,7 @@
 <div class="navbar">
   <a href="homeadmin.jsp">Home</a>
   <a href="UserManagerServlet?mode=userlist">Users</a>
-  <a href="BuildingManagerServlet?mode=buildinglist">Buildings</a>
+  <a class="active" href="BuildingManagerServlet?mode=buildinglist">Buildings</a>
   <a href="LogoutServlet" id="logout">Logout</a>
 </div>
 <div clas="main">
@@ -69,6 +69,7 @@
       <button type="submit" >Edit</button>
 </form>
    
+	
 	
 </div>
 <%@ include file="../css/footer.jsp" %>
