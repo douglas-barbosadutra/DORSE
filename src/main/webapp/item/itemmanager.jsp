@@ -4,17 +4,15 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link href="css/vittoriostyle.css" rel="stylesheet">
+<link href="../css/vittoriostyle.css" rel="stylesheet">
 <title>Item manager</title>
 </head>
 <body>
-<%@ include file="header.jsp" %>
+<%@ include file="../css/header.jsp" %>
 
 <div class="navbar">
   <a href="homeoperatore.jsp">Home</a>
   <a href="BuildingManagerServlet?mode=buildinglistOP">Buildings</a>
-  <a href="AmbienteManagerServlet?mode=ambientelist">Rooms</a>
-  <a class="active" href="ItemManagerServlet?mode=itemlist">Items</a>
   <a href="LogoutServlet" id="logout">Logout</a>
 </div>
 
@@ -70,6 +68,6 @@
 		<button type="submit">Insert</button>
 	</form>
 
-<%@ include file="footer.jsp" %>
+<%@ include file="../css/footer.jsp" %>
 </body>
 </html>

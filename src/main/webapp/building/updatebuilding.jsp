@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link href="css/vittoriostyle.css" rel="stylesheet">
+<link href="../css/vittoriostyle.css" rel="stylesheet">
 <title>Edit Building</title>
 </head>
 <body>
-<%@ include file="header.jsp" %>
+<%@ include file="../css/header.jsp" %>
 <div class="navbar">
   <a href="homeadmin.jsp">Home</a>
   <a href="UserManagerServlet?mode=userlist">Users</a>
@@ -71,6 +71,6 @@
    
 	
 </div>
-<%@ include file="footer.jsp" %>
+<%@ include file="../css/footer.jsp" %>
 </body>
 </html>

@@ -12,38 +12,23 @@
 <div class="navbar">
   <a class="active" href="homeoperatore.jsp">Home</a>
   <a href="BuildingManagerServlet?mode=buildinglistOP">Buildings</a>
-  <a href="AmbienteManagerServlet?mode=ambientelist">Rooms</a>
-  <a href="ItemManagerServlet?mode=itemlist">Items</a>
   <a href="LogoutServlet" id="logout">Logout</a>
 </div>
 
-<%if (request.getAttribute("view")!="buildings") {
-List<BuildingDTO> list = (List<BuildingDTO>) request.getAttribute("list");%>
-<h1>Welcome ${user}</h1>
-<%}%>
 
-<%if (request.getAttribute("view")=="buildings") {
-List<BuildingDTO> list = (List<BuildingDTO>) request.getAttribute("list");%>
-<br>
+<h1>Welcome ${user}</h1>
+
+
 
 	
-<table>
-<tr> 
-	<th>Address</th>
-	<th>User</th>
-</tr>
-<%for(BuildingDTO b: list) {%> 
-<tr>
-	<td> 
-		<a href=AmbienteManagerServlet?mode=ambientelistby&buildingId=<%=b.getId()%>><%=b.getIndirizzo()%></a>
-	</td>
-	<td> 
-		<%=b.getUserId()%>
-	</td>
-</tr>	
-<%} %>
-</table>
-<%}%>
+<div>
+
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+</div>
+
 
 
 

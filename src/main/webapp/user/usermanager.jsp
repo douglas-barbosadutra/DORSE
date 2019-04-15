@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link href="css/vittoriostyle.css" rel="stylesheet">
+<link href="../css/vittoriostyle.css" rel="stylesheet">
 <title>User Manager</title>
 </head>
 <body>
-<%@ include file="header.jsp" %>
+<%@ include file="../css/header.jsp" %>
 
 <div class="navbar">
   <a  href="homeadmin.jsp">Home</a>
@@ -88,6 +88,6 @@
 
 </div>
 <br>
-<%@ include file="footer.jsp" %>
+<%@ include file="../css/footer.jsp" %>
 </body>
 </html>

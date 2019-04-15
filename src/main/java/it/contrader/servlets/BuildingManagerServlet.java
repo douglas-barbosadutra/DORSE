@@ -48,8 +48,7 @@ public class BuildingManagerServlet extends HttpServlet {
 			    
 		case "BUILDINGLISTOP":
 			updateList(request);
-			request.setAttribute("view", "buildings");
-			getServletContext().getRequestDispatcher("/homeoperatore.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/building/buildingmanagerop.jsp").forward(request, response);
 		    break;
 		    
 		case "READ":
