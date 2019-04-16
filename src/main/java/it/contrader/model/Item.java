@@ -1,6 +1,6 @@
 package it.contrader.model;
 
-import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.Setter;
 
 @Getter
@@ -19,33 +18,15 @@ import lombok.Setter;
 @NoArgsConstructor
 
 @Entity
-public class User {
-
+public class Item {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@NonNull
-	private String username;
+	private String description;
 	
-	private String password;
+	private String type;
 	
-	@NonNull
-	private String name;
-	
-	@NonNull
-	private String surname;
-	
-	private String email;
-	
-	private String address;
-	
-	private String telnumber;
-	
-	@NonNull
-	private Date birthdate;
-	
-	private String ccc;
-	
-	private boolean paymentStatus;
+	private boolean status;
 }

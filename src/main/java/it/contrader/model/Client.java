@@ -1,11 +1,14 @@
 package it.contrader.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,33 +22,23 @@ import lombok.Setter;
 @NoArgsConstructor
 
 @Entity
-public class User {
+public class Client {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@NonNull
-	private String username;
-	
-	private String password;
-	
-	@NonNull
 	private String name;
 	
-	@NonNull
 	private String surname;
 	
-	private String email;
-	
-	private String address;
+	private Date birthdate;
 	
 	private String telnumber;
 	
-	@NonNull
-	private Date birthdate;
+	@OneToOne
+	private Apartment apartment;
 	
-	private String ccc;
-	
-	private boolean paymentStatus;
+	@ManyToMany
+	private List<Disease> diseases;
 }

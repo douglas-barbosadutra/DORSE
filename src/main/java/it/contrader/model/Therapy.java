@@ -19,33 +19,14 @@ import lombok.Setter;
 @NoArgsConstructor
 
 @Entity
-public class User {
-
+public class Therapy {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@NonNull
-	private String username;
+	private String medicine;
 	
-	private String password;
-	
-	@NonNull
-	private String name;
-	
-	@NonNull
-	private String surname;
-	
-	private String email;
-	
-	private String address;
-	
-	private String telnumber;
-	
-	@NonNull
-	private Date birthdate;
-	
-	private String ccc;
-	
-	private boolean paymentStatus;
+	private String dosage;
+
 }
