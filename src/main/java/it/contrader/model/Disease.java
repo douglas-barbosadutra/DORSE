@@ -31,7 +31,7 @@ public class Disease {
 	private String name;
 	
 	@ManyToMany
-	private List<Cathegory> cathegories;
+	private List<Category> categories;
 	
 	@OneToMany
 	private List<Therapy> therapies;

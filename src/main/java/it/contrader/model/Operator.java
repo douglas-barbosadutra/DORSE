@@ -21,7 +21,7 @@ import lombok.Setter;
 public class Operator extends User {
 
 	@ManyToOne
-	private Cathegory cathegory;
+	private Category category;
 	
 	private boolean availability;
 }
