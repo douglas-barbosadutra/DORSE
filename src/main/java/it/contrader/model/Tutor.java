@@ -18,6 +18,6 @@ import lombok.Setter;
 @Entity
 public class Tutor extends User {
 
-	@OneToMany
+	@OneToMany(mappedBy = "tutor")
 	private List<Client> clients;
 }

@@ -33,6 +33,6 @@ public class Disease {
 	@ManyToMany
 	private List<Category> categories;
 	
-	@OneToMany
+	@OneToMany (mappedBy = "disease")
 	private List<Therapy> therapies;
 }

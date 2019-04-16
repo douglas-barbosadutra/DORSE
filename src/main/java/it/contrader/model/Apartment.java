@@ -1,6 +1,5 @@
 package it.contrader.model;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -28,6 +27,6 @@ public class Apartment {
 
 	private String address;
 	
-	@OneToMany
+	@OneToMany (mappedBy = "apartment")
 	private List<Room> rooms;
 }

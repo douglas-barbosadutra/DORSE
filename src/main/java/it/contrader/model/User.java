@@ -3,9 +3,10 @@ package it.contrader.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+import javax.persistence.*;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,6 +20,7 @@ import lombok.Setter;
 @NoArgsConstructor
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
 
 	@Id

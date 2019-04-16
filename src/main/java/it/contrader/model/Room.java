@@ -3,7 +3,7 @@ package it.contrader.model;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+import javax.persistence.*;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -27,6 +27,10 @@ public class Room {
 
 	private String description;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "room")
 	private List<Thing> things;
+	
+	@ManyToOne
+	@JoinColumn(name = "apartment_id")
+	private Apartment apartment;
 }
