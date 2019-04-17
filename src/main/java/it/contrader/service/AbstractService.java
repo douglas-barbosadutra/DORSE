@@ -9,7 +9,7 @@ import it.contrader.converter.Converter;
 
 //T = entity, V = DTO
 @Service
-public class AbstractService<T,V> implements ServiceDTO<T,V> {
+public abstract class AbstractService<T,V> implements ServiceDTO<T,V> {
 	
 	protected CrudRepository<T,Long> crudRepository;
 	protected Converter<T,V> converter;
