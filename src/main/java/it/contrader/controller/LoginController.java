@@ -50,7 +50,9 @@ public class LoginController {
 			@RequestParam(value = "password") String password,
 			@RequestParam(value = "usertype") Object userType) {
 		
-		UserDTO userDTO = new UserDTO(43, username, password, (UserType)userType, name, surname, email, address, telnumber, (Date)birthdate, ccc, false);
+		Date d = new Date();
+		
+		UserDTO userDTO = new UserDTO(3, username, password, UserType.TUTOR, name, surname, email, address, telnumber, d, ccc, false);
 		
 		userService.insert(userDTO);
 		
