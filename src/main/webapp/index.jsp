@@ -32,8 +32,10 @@
 			class="form-control" placeholder="Password" required> <input
 			type="text" name="richiesta" value="login" hidden>
 
-		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Log
 			in</button>
 	</form>
+	
+	<h2>Ehi, coglione! Non sei ancora registrato? MOLTO MALE! <a href="register.jsp"> Registrati qui....ORAAAA!</a></h2>
 </body>
 </html>
