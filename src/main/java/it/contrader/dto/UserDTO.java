@@ -1,17 +1,11 @@
-package it.contrader.model;
+package it.contrader.dto;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.*;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-
+import it.contrader.model.User.UserType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.Setter;
 
 @Getter
@@ -19,21 +13,10 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 
-@Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-public class User {
-	
-	public enum UserType {
-		SUPERUSER,
-		OPERATOR,
-		TUTOR
-	}
+public class UserDTO {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@Column(unique = true)
 	private String username;
 	
 	private String password;
@@ -54,6 +37,5 @@ public class User {
 	
 	private String ccc;
 	
-	@Column(columnDefinition = "boolean default false")
 	private boolean paymentStatus;
 }
