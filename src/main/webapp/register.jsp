@@ -39,11 +39,11 @@
 	<input type="text" name="ccc" id="ccc"  placeholder="Insert CCC " >
 
 	<label for="UserType">UserType</label> 
-	<select id= "UserType">
+	<select id= "UserType" name="usertype">
 	<option value="OPERATOR">Operator<option>
 	<option value="TUTOR">Tutor<option>
 	</select>
-	
+	<button type="submit">Register NOW!!!!!!!!(you asshole...)</button>
 </form>
 
 

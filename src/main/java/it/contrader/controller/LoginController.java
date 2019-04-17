@@ -38,7 +38,7 @@ public class LoginController {
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public UserDTO register(
-			@RequestParam(value = "id") String id,
+			
 			@RequestParam(value = "name") String name,
 			@RequestParam(value = "surname") String surname,
 			@RequestParam(value = "birthdate") Object birthdate,
@@ -50,7 +50,7 @@ public class LoginController {
 			@RequestParam(value = "password") String password,
 			@RequestParam(value = "usertype") Object userType) {
 		
-		UserDTO userDTO = new UserDTO(Long.parseLong(id), username, password, (UserType)userType, name, surname, email, address, telnumber, (Date)birthdate, ccc, false);
+		UserDTO userDTO = new UserDTO(43, username, password, (UserType)userType, name, surname, email, address, telnumber, (Date)birthdate, ccc, false);
 		
 		userService.insert(userDTO);
 		
