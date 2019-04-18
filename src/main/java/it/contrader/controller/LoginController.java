@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.contrader.dto.OperatorDTO;
+import it.contrader.dto.SuperuserDTO;
 import it.contrader.dto.UserDTO;
 import it.contrader.model.User.UserType;
 import it.contrader.service.OperatorService;
+import it.contrader.service.SuperuserService;
 import it.contrader.service.UserService;
 
 @Controller
@@ -24,13 +26,15 @@ import it.contrader.service.UserService;
 public class LoginController {
 
 	private UserService userService;
+	private SuperuserService superuserService;
 	private OperatorService operatorService;
 
 	private HttpSession session;
 	
 	@Autowired
-	public LoginController(UserService userService, OperatorService operatorService) {
+	public LoginController(UserService userService, SuperuserService superuserService, OperatorService operatorService) {
 		this.userService = userService;
+		this.superuserService = superuserService;
 		this.operatorService = operatorService;
 	}
 	
@@ -69,8 +73,12 @@ public class LoginController {
 		//UserDTO userDTO = new UserDTO(3, username, password, UserType.TUTOR, name, surname, email, address, telnumber, d, ccc, false);
 		
 		switch(userType1) {
+		case SUPERUSER:
+			SuperuserDTO superuserDTO = new SuperuserDTO(0, username, password, userType1, name, surname, email, address, telnumber, date, ccc, false);
+			superuserService.insert(superuserDTO);
+			return "homesuperuser";
 		case OPERATOR:
-			OperatorDTO operatorDTO = new OperatorDTO(6, username, password, userType1, name, surname, email, address, telnumber, date, ccc, false, null, true);
+			OperatorDTO operatorDTO = new OperatorDTO(0, username, password, userType1, name, surname, email, address, telnumber, date, ccc, false, null, true);
 			operatorService.insert(operatorDTO);
 			return "homeoperator";
 		default:
