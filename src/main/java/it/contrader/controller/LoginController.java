@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import it.contrader.dto.OperatorDTO;
 import it.contrader.dto.SuperuserDTO;
+import it.contrader.dto.TutorDTO;
 import it.contrader.dto.UserDTO;
 import it.contrader.model.User.UserType;
 import it.contrader.service.OperatorService;
 import it.contrader.service.SuperuserService;
+import it.contrader.service.TutorService;
 import it.contrader.service.UserService;
 
 @Controller
@@ -28,14 +30,16 @@ public class LoginController {
 	private UserService userService;
 	private SuperuserService superuserService;
 	private OperatorService operatorService;
+	private TutorService tutorService;
 
 	private HttpSession session;
 	
 	@Autowired
-	public LoginController(UserService userService, SuperuserService superuserService, OperatorService operatorService) {
+	public LoginController(UserService userService, SuperuserService superuserService, OperatorService operatorService, TutorService tutorService) {
 		this.userService = userService;
 		this.superuserService = superuserService;
 		this.operatorService = operatorService;
+		this.tutorService = tutorService;
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -81,6 +85,10 @@ public class LoginController {
 			OperatorDTO operatorDTO = new OperatorDTO(0, username, password, userType1, name, surname, email, address, telnumber, date, ccc, false, null, true);
 			operatorService.insert(operatorDTO);
 			return "homeoperator";
+		case TUTOR:
+			TutorDTO tutorDTO = new TutorDTO(0, username, password, userType1, name, surname, email, address, telnumber, date, ccc, false, null);
+			tutorService.insert(tutorDTO);
+			return "hometutor";
 		default:
 			return null;
 		}
