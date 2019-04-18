@@ -28,9 +28,8 @@ public class LoginController {
 	private SuperuserService superuserService;
 	private OperatorService operatorService;
 	private TutorService tutorService;
-
 	private HttpSession session;
-	
+
 	@Autowired
 	public LoginController(UserService userService, SuperuserService superuserService, OperatorService operatorService, TutorService tutorService) {
 		this.userService = userService;
@@ -38,19 +37,37 @@ public class LoginController {
 		this.operatorService = operatorService;
 		this.tutorService = tutorService;
 	}
-	
+
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(
 			@RequestParam(value="username", required=true) String username, 
 			@RequestParam(value="password", required=true) String password)
 	{
 		UserDTO userDTO = userService.findByUsernameAndPassword(username,password);
-		return "home";
+		UserType userType = userDTO.getUserType();
+
+		switch(userType) {
+		case SUPERUSER:
+			 session.setAttribute("user","SUPERUSER");
+			return "homesuperuser";
+
+		case OPERATOR:
+			session.setAttribute("user","OPERATOR");
+			return "homeoperator";
+
+		case TUTOR:
+			session.setAttribute("user","TUTOR");
+			return "hometutor";
+
+		default:
+			return "index";
+		}	
+
 	}
-	
+
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String register(
-			
+
 			@RequestParam(value = "name") String name,
 			@RequestParam(value = "surname") String surname,
 			@RequestParam(value = "birthdate") String birthdate,
@@ -60,28 +77,44 @@ public class LoginController {
 			@RequestParam(value = "ccc") String ccc,
 			@RequestParam(value = "username") String username,
 			@RequestParam(value = "password") String password,
-			@RequestParam(value = "usertype") String userType) {
-		
+			@RequestParam(value = "usertype") String userTypestr
+			) 
+	{
+
 		Date date = null;
 		try {
 			date = new SimpleDateFormat("yyyy-mm-dd").parse(birthdate);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+
+		UserType userType = UserType.valueOf(userTypestr);
+
+
+		switch(userType) {
 		
-		UserType userType1 = UserType.valueOf(userType);
-		
-		
-		switch(userType1) {
 		case SUPERUSER:
-			SuperuserDTO superuserDTO = new SuperuserDTO(0, username, password, userType1, name, surname, email, address, telnumber, date, ccc, false);
+			SuperuserDTO superuserDTO = new SuperuserDTO();
+			superuserDTO.setUsername(username);
+			superuserDTO.setPassword(password);
+			superuserDTO.setUserType(userType);
+			superuserDTO.setName(name);
+			superuserDTO.setSurname(surname);
+			superuserDTO.setEmail(email);
+			superuserDTO.setAddress(address);
+			superuserDTO.setTelnumber(telnumber);
+			superuserDTO.setBirthdate(date);
+			superuserDTO.setCcc(ccc);
+			
 			superuserService.insert(superuserDTO);
-			return "homesuperuser";
+			
+			return "index";
+			
 		case OPERATOR:
-			OperatorDTO operatorDTO = new OperatorDTO(0, username, password, userType1, name, surname, email, address, telnumber, date, ccc, false, null, true);
+			OperatorDTO operatorDTO = new OperatorDTO();
 			operatorDTO.setUsername(username);
 			operatorDTO.setPassword(password);
-			operatorDTO.setUserType(userType1);
+			operatorDTO.setUserType(userType);
 			operatorDTO.setName(name);
 			operatorDTO.setSurname(surname);
 			operatorDTO.setEmail(email);
@@ -89,16 +122,30 @@ public class LoginController {
 			operatorDTO.setTelnumber(telnumber);
 			operatorDTO.setBirthdate(date);
 			operatorDTO.setCcc(ccc);
-			
+
 			operatorService.insert(operatorDTO);
+
+			return "index";
 			
-			return "homeoperator";
 		case TUTOR:
-			TutorDTO tutorDTO = new TutorDTO(0, username, password, userType1, name, surname, email, address, telnumber, date, ccc, false, null);
+			TutorDTO tutorDTO = new TutorDTO();
+			tutorDTO.setUsername(username);
+			tutorDTO.setPassword(password);
+			tutorDTO.setUserType(userType);
+			tutorDTO.setName(name);
+			tutorDTO.setSurname(surname);
+			tutorDTO.setEmail(email);
+			tutorDTO.setAddress(address);
+			tutorDTO.setTelnumber(telnumber);
+			tutorDTO.setBirthdate(date);
+			tutorDTO.setCcc(ccc);
+			
 			tutorService.insert(tutorDTO);
-			return "hometutor";
+			
+			return "index";
+			
 		default:
-			return null;
+			return "index";
 		}
 	}
 }

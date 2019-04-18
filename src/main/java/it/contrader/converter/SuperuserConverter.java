@@ -1,7 +1,6 @@
 package it.contrader.converter;
 
 import it.contrader.dto.SuperuserDTO;
-import it.contrader.dto.UserDTO;
 import it.contrader.model.Superuser;
 
 public class SuperuserConverter implements Converter<Superuser,SuperuserDTO> {
