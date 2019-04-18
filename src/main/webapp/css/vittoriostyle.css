@@ -147,12 +147,13 @@ a:hover {
 
 /*Forms*/
 select {
-	width: 100%;
+	width: 70%;
 	padding: 14px 20px;
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	background-color: #ffffff;
 	margin: 8px 0;
+	float:right;
 }
 
 select:hover {
@@ -160,7 +161,7 @@ select:hover {
 }
 
 option {
-	width: 100%;
+	width: 70%;
 	background-color: #ffff;
 	color: #000000;
 	padding: 14px 20px;
@@ -171,7 +172,7 @@ option {
 }
 
 input {
-	width: 80%;
+	width: 70%;
 	background-color: #ffff;
 	color: #000000;
 	padding: 14px 20px;
@@ -196,8 +197,8 @@ res {
 	text-align: center;
 }
 
-form {
-	width: 35%;
+.register {
+	width: 70%;
 	border-radius: 7px;
 	background-color: #f2f2f2;
 	padding: 20px;
@@ -225,6 +226,8 @@ form {
 label {
 	padding: 12px 12px 12px 0;
 	display: inline-block;
+	width:25%;
+	float:left;
 }
 
 button {

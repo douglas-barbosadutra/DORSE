@@ -1,9 +1,8 @@
 package it.contrader.converter;
 
 import it.contrader.dto.OperatorDTO;
-import it.contrader.dto.UserDTO;
 import it.contrader.model.Operator;
-import it.contrader.model.User;
+
 
 public class OperatorConverter implements Converter<Operator,OperatorDTO> {
 
@@ -17,8 +16,17 @@ public class OperatorConverter implements Converter<Operator,OperatorDTO> {
 			operator.setPassword(operatorDTO.getPassword());
 			operator.setUserType(operatorDTO.getUserType());
 			operator.setName(operatorDTO.getName());
-			operator.setAvailability(operatorDTO.isAvailability());
+			operator.setSurname(operatorDTO.getSurname());
 			operator.setBirthdate(operatorDTO.getBirthdate());
+			operator.setAddress(operatorDTO.getAddress());
+			operator.setEmail(operatorDTO.getEmail());
+			operator.setTelnumber(operatorDTO.getTelnumber());
+			operator.setCcc(operatorDTO.getCcc());
+			operator.setPaymentStatus(operatorDTO.isPaymentStatus());
+			
+			operator.setAvailability(operatorDTO.isAvailability());
+			operator.setCategory(operatorDTO.getCategory());
+			
 		}
 		return operator;
 	}
@@ -27,15 +35,23 @@ public class OperatorConverter implements Converter<Operator,OperatorDTO> {
 	public OperatorDTO toDTO(Operator operator) {
 		OperatorDTO operatorDTO = null;
 		if (operator != null) {
-			operatorDTO = new OperatorDTO();
 			operatorDTO.setId(operator.getId());
 			operatorDTO.setUsername(operator.getUsername());
 			operatorDTO.setPassword(operator.getPassword());
 			operatorDTO.setUserType(operator.getUserType());
 			operatorDTO.setName(operator.getName());
-			operatorDTO.setAvailability(operator.isAvailability());
+			operatorDTO.setSurname(operator.getSurname());
 			operatorDTO.setBirthdate(operator.getBirthdate());
+			operatorDTO.setAddress(operator.getAddress());
+			operatorDTO.setEmail(operator.getEmail());
+			operatorDTO.setTelnumber(operator.getTelnumber());
+			operatorDTO.setCcc(operator.getCcc());
+			operatorDTO.setPaymentStatus(operator.isPaymentStatus());
+			
+			operatorDTO.setAvailability(operator.isAvailability());
+			operatorDTO.setCategory(operator.getCategory());
 		}
 		return operatorDTO;
 	}
 }
+

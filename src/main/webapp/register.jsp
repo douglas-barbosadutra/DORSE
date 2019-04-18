@@ -5,11 +5,18 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Register</title>
+
+<!-- Bootstrap core CSS -->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="/css/vittoriostyle.css" rel="stylesheet">
+
 </head>
 <body>
 
 
-<form action="/user/register" method="post">
+<form class="register" action="/user/register" method="post">
 
 	<label for="Username">Username</label> 
 	<input type="text" name="username" id="Username"  placeholder="Insert Username" >

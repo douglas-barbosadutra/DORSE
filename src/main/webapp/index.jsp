@@ -16,13 +16,13 @@
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="/css/signin.css" rel="stylesheet">
+<link href="/css/vittoriostyle.css" rel="stylesheet">
 
 </head>
 
 <body class="text-center">
 	<form class="form-signin" action="/user/login" method="post">
-		<h1 class="h3 mb-3 font-weight-normal">Metabot LOGIN PAGE</h1>
+		<h1 class="h3 mb-3 font-weight-normal">OVERDOSER LOGIN PAGE</h1>
 
 		<label for="inputUser" class="sr-only">Username</label> <input
 			type="text" name="username" id="inputUser" class="form-control"

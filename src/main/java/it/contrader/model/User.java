@@ -1,17 +1,14 @@
 package it.contrader.model;
 
 import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.*;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.Setter;
 
 @Getter

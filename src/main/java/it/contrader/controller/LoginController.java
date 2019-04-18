@@ -3,12 +3,9 @@ package it.contrader.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -74,7 +71,6 @@ public class LoginController {
 		
 		UserType userType1 = UserType.valueOf(userType);
 		
-		//UserDTO userDTO = new UserDTO(3, username, password, UserType.TUTOR, name, surname, email, address, telnumber, d, ccc, false);
 		
 		switch(userType1) {
 		case SUPERUSER:
@@ -83,7 +79,19 @@ public class LoginController {
 			return "homesuperuser";
 		case OPERATOR:
 			OperatorDTO operatorDTO = new OperatorDTO(0, username, password, userType1, name, surname, email, address, telnumber, date, ccc, false, null, true);
+			operatorDTO.setUsername(username);
+			operatorDTO.setPassword(password);
+			operatorDTO.setUserType(userType1);
+			operatorDTO.setName(name);
+			operatorDTO.setSurname(surname);
+			operatorDTO.setEmail(email);
+			operatorDTO.setAddress(address);
+			operatorDTO.setTelnumber(telnumber);
+			operatorDTO.setBirthdate(date);
+			operatorDTO.setCcc(ccc);
+			
 			operatorService.insert(operatorDTO);
+			
 			return "homeoperator";
 		case TUTOR:
 			TutorDTO tutorDTO = new TutorDTO(0, username, password, userType1, name, surname, email, address, telnumber, date, ccc, false, null);
