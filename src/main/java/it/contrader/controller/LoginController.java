@@ -48,15 +48,12 @@ public class LoginController {
 
 		switch(userType) {
 		case SUPERUSER:
-			 session.setAttribute("user","SUPERUSER");
 			return "homesuperuser";
 
 		case OPERATOR:
-			session.setAttribute("user","OPERATOR");
 			return "homeoperator";
 
 		case TUTOR:
-			session.setAttribute("user","TUTOR");
 			return "hometutor";
 
 		default:
