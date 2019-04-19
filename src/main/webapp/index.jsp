@@ -21,8 +21,8 @@
 </head>
 
 <body class="text-center">
-	<form class="form-signin" action="/user/login" method="post">
-		<h1 class="h3 mb-3 font-weight-normal">OVERDOSER LOGIN PAGE</h1>
+	<form class="login" action="/user/login" method="post">
+		<h1>OVERDOSER LOGIN</h1>
 
 		<label for="inputUser" class="sr-only">Username</label> <input
 			type="text" name="username" id="inputUser" class="form-control"
@@ -36,6 +36,6 @@
 			in</button>
 	</form>
 	
-	<h2>Ehi, coglione! Non sei ancora registrato? MOLTO MALE! <a href="register.jsp"> Registrati qui....ORAAAA!</a></h2>
+	<h2>Non sei ancora registrato? MOLTO MALE! <a href="register.jsp"> Registrati qui....ORAAAA!</a></h2>
 </body>
 </html>

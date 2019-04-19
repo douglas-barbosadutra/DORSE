@@ -20,4 +20,7 @@ public class Tutor extends User {
 
 	@OneToMany(mappedBy = "tutor")
 	private List<Client> clients;
+	
+	@OneToMany (mappedBy= "tutor")
+	private List<Apartment> apartments;
 }

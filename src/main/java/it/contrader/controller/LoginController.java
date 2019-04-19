@@ -3,7 +3,7 @@ package it.contrader.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.servlet.http.HttpSession;
+//import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +28,7 @@ public class LoginController {
 	private SuperuserService superuserService;
 	private OperatorService operatorService;
 	private TutorService tutorService;
-	private HttpSession session;
+	//private HttpSession session;
 
 	@Autowired
 	public LoginController(UserService userService, SuperuserService superuserService, OperatorService operatorService, TutorService tutorService) {

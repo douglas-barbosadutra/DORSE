@@ -15,19 +15,22 @@
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="/css/navbar.css" rel="stylesheet">
+<link href="/css/vittoriostyle.css" rel="stylesheet">
 </head>
 
 <body>
-<nav class='navbar navbar-inverse'>
-     <div class='container-fluid'>
-         <ul class='nav navbar-nav navbar-inverse navbar-custom'>
-            <li><a href="/Home/userManagement/">User</a></li>
-            <li><a href="/Home/chatManagement/">Chatbot</a></li>
-            <li><a href="/Home/logout/">Logout</a></li>
-         </ul>
-    </div>
-</nav>
-<h1>Progetto METABOT</h1>
+<h1>PROGETTO DOSER</h1>
+<h2>Home Tutor</h2>
+
+
+<form class="register" action="/apartment/registerapartment" method="post">
+
+	<label for="Address">Address</label> 
+	<input type="text" name="address" id="Address"  placeholder="Insert Address" >
+	
+	<button type="submit">Register Apartment</button>
+</form>
+
+
 </body>
 </html>
