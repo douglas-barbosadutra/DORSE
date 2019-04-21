@@ -1,5 +1,7 @@
 package it.contrader.service;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
@@ -24,12 +26,17 @@ public abstract class AbstractService<T,V> implements ServiceDTO<T,V> {
 
 	@Override
 	public List<V> getAll() {
-		return (List<V>) crudRepository.findAll();
+		Iterable<T> iter = crudRepository.findAll();
+		List<V> list = new ArrayList<>();
+		for (T item : iter) {
+	        list.add(converter.toDTO(item));
+	    }
+		return list;
 	}
 
 	@Override
 	public V read(long id) {
-		return converter.toDTO((T)crudRepository.findById(id));
+		return converter.toDTO(crudRepository.findById(id).get());
 	}
 
 	@Override
