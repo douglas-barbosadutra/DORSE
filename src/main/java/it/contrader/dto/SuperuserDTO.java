@@ -1,10 +1,7 @@
 package it.contrader.dto;
 
 import java.util.Date;
-
-import it.contrader.model.Category;
 import it.contrader.model.User.UserType;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

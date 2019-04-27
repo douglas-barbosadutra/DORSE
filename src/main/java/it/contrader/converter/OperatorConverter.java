@@ -33,8 +33,9 @@ public class OperatorConverter implements Converter<Operator,OperatorDTO> {
 
 	@Override
 	public OperatorDTO toDTO(Operator operator) {
-		OperatorDTO operatorDTO = null;
-		if (operator != null) {
+		OperatorDTO operatorDTO = new OperatorDTO();
+		
+		if (operator != null) {		
 			operatorDTO.setId(operator.getId());
 			operatorDTO.setUsername(operator.getUsername());
 			operatorDTO.setPassword(operator.getPassword());

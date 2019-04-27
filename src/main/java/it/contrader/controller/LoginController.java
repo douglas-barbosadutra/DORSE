@@ -3,18 +3,16 @@ package it.contrader.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-//import javax.servlet.http.HttpSession;
+import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import it.contrader.dto.OperatorDTO;
-import it.contrader.dto.SuperuserDTO;
-import it.contrader.dto.TutorDTO;
-import it.contrader.dto.UserDTO;
+import it.contrader.dto.*;
 import it.contrader.model.User.UserType;
+import it.contrader.service.ApartmentService;
 import it.contrader.service.OperatorService;
 import it.contrader.service.SuperuserService;
 import it.contrader.service.TutorService;
@@ -28,32 +26,37 @@ public class LoginController {
 	private SuperuserService superuserService;
 	private OperatorService operatorService;
 	private TutorService tutorService;
-	//private HttpSession session;
+	private ApartmentService apartmentService;
 
 	@Autowired
-	public LoginController(UserService userService, SuperuserService superuserService, OperatorService operatorService, TutorService tutorService) {
+	public LoginController(UserService userService, SuperuserService superuserService, OperatorService operatorService, TutorService tutorService, ApartmentService apartmentService) {
 		this.userService = userService;
 		this.superuserService = superuserService;
 		this.operatorService = operatorService;
 		this.tutorService = tutorService;
+		this.apartmentService = apartmentService;
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(
+	public String login(HttpServletRequest request,
 			@RequestParam(value="username", required=true) String username, 
 			@RequestParam(value="password", required=true) String password)
 	{
 		UserDTO userDTO = userService.findByUsernameAndPassword(username,password);
 		UserType userType = userDTO.getUserType();
-
+		request.getSession().setAttribute("user", userDTO);
 		switch(userType) {
 		case SUPERUSER:
 			return "homesuperuser";
 
 		case OPERATOR:
 			return "homeoperator";
-
+			
 		case TUTOR:
+			List<ApartmentDTO> apartmentlist;
+			apartmentlist = apartmentService.findAllBytutor_id(userDTO.getId());
+			
+			request.getSession().setAttribute("apartmentlist", apartmentlist);
 			return "hometutor";
 
 		default:

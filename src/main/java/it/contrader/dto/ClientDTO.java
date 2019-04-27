@@ -2,9 +2,7 @@ package it.contrader.dto;
 
 import java.util.Date;
 import java.util.List;
-import it.contrader.model.Apartment;
 import it.contrader.model.Disease;
-import it.contrader.model.Tutor;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,11 +24,10 @@ public class ClientDTO {
 	
 	private String telnumber;
 	
-	private Apartment apartment;
+	private ApartmentDTO apartmentDTO;
 	
 	private List<Disease> diseases;
 	
-	private Tutor tutor;
-	
+	private TutorDTO tutorDTO;
 	
 }

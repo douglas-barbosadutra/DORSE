@@ -1,17 +1,19 @@
 package it.contrader.dto;
 
 import java.util.List;
+
 import it.contrader.model.Room;
-import it.contrader.model.Tutor;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class ApartmentDTO {
 
 	private long id;
@@ -20,6 +22,6 @@ public class ApartmentDTO {
 	
 	private List<Room> rooms;
 	
-	private Tutor tutor;
+	private TutorDTO tutorDTO;
 	
 }

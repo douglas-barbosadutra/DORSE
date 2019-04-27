@@ -48,7 +48,7 @@
 	<option value="OPERATOR">Operator<option>
 	<option value="TUTOR">Tutor<option>
 	</select>
-	<button type="submit">Register NOW!!!!!!!!(you asshole...)</button>
+	<button type="submit">Register</button>
 </form>
 
 

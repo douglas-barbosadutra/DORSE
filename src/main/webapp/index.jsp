@@ -30,12 +30,11 @@
 			for="inputPassword" class="sr-only">Password</label> <input
 			type="password" name="password" id="inputPassword"
 			class="form-control" placeholder="Password" required> <input
-			type="text" name="richiesta" value="login" hidden>
+			type="hidden" name="richiesta" value="login" >
 
-		<button class="btn btn-lg btn-primary btn-block" type="submit">Log
-			in</button>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
 	</form>
 	
-	<h2>Non sei ancora registrato? MOLTO MALE! <a href="register.jsp"> Registrati qui....ORAAAA!</a></h2>
+	<h2><a href="register.jsp"> Register here</a></h2>
 </body>
 </html>

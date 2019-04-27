@@ -3,9 +3,11 @@ package it.contrader.converter;
 import it.contrader.dto.TutorDTO;
 import it.contrader.model.Tutor;
 
-
 public class TutorConverter implements Converter<Tutor,TutorDTO> {
 
+	private ClientConverter clientConverter = new ClientConverter();
+	
+	
 	@Override
 	public Tutor toEntity(TutorDTO tutorDTO) {
 		Tutor tutor = null;
@@ -25,7 +27,7 @@ public class TutorConverter implements Converter<Tutor,TutorDTO> {
 			tutor.setCcc(tutorDTO.getCcc());
 			tutor.setPaymentStatus(tutorDTO.isPaymentStatus());
 			
-			tutor.setClients(tutorDTO.getClients());
+			tutor.setClients(clientConverter.toEntityList(tutorDTO.getClientsDTO()));
 		}
 		return tutor;
 	}
@@ -34,6 +36,7 @@ public class TutorConverter implements Converter<Tutor,TutorDTO> {
 	public TutorDTO toDTO(Tutor tutor) {
 		TutorDTO tutorDTO = null;
 		if (tutor != null) {
+			tutorDTO = new TutorDTO();
 			tutorDTO.setId(tutor.getId());
 			tutorDTO.setUsername(tutor.getUsername());
 			tutorDTO.setPassword(tutor.getPassword());
@@ -47,8 +50,12 @@ public class TutorConverter implements Converter<Tutor,TutorDTO> {
 			tutorDTO.setCcc(tutor.getCcc());
 			tutorDTO.setPaymentStatus(tutor.isPaymentStatus());
 			
-			tutorDTO.setClients(tutor.getClients());
+			
+			tutorDTO.setClientsDTO(clientConverter.toDTOList(tutor.getClients()));
+
 		}
 		return tutorDTO;
 	}
+
+
 }
