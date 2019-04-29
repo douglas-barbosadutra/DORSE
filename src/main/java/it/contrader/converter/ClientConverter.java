@@ -9,9 +9,9 @@ import it.contrader.model.Client;
 public class ClientConverter implements Converter<Client, ClientDTO> {
 
 	@Autowired
-	private ApartmentConverter apartmentConverter = new ApartmentConverter();
+	private ApartmentConverter apartmentConverter;
 	@Autowired
-	private TutorConverter tutorConverter = new TutorConverter();
+	private TutorConverter tutorConverter;
 	
 	@Override
 	public Client toEntity(ClientDTO clientDTO) {
