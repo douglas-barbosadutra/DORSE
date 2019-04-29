@@ -1,10 +1,13 @@
 package it.contrader.converter;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import it.contrader.dto.TutorDTO;
 import it.contrader.model.Tutor;
 
 public class TutorConverter implements Converter<Tutor,TutorDTO> {
 
+	@Autowired
 	private ClientConverter clientConverter = new ClientConverter();
 	
 	

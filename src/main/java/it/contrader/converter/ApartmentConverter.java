@@ -3,13 +3,16 @@ package it.contrader.converter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 import it.contrader.dto.ApartmentDTO;
 import it.contrader.model.Apartment;
 
 
 public class ApartmentConverter implements Converter<Apartment, ApartmentDTO> {
 
-	
+	@Autowired
 	private TutorConverter tutorConverter = new TutorConverter();
 
 	@Override

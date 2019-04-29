@@ -139,7 +139,6 @@ public class LoginController {
 			tutorDTO.setTelnumber(telnumber);
 			tutorDTO.setBirthdate(date);
 			tutorDTO.setCcc(ccc);
-			
 			tutorService.insert(tutorDTO);
 			
 			return "index";

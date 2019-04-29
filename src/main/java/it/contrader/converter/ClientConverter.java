@@ -9,8 +9,9 @@ import it.contrader.model.Client;
 public class ClientConverter implements Converter<Client, ClientDTO> {
 
 	@Autowired
-	private ApartmentConverter apartmentConverter;
-	private TutorConverter tutorConverter;
+	private ApartmentConverter apartmentConverter = new ApartmentConverter();
+	@Autowired
+	private TutorConverter tutorConverter = new TutorConverter();
 	
 	@Override
 	public Client toEntity(ClientDTO clientDTO) {
@@ -49,9 +50,12 @@ public class ClientConverter implements Converter<Client, ClientDTO> {
 
 	public List<Client> toEntityList (List<ClientDTO> listDTO){
 		List<Client> list = new ArrayList<Client>();
-		for (ClientDTO cDTO:listDTO) {
-			Client c = toEntity(cDTO);
-			list.add(c);
+
+		if(listDTO != null) {
+			for (ClientDTO cDTO:listDTO) {
+				Client c = toEntity(cDTO);
+				list.add(c);
+			}
 		}
 		return list;
 	}
@@ -59,9 +63,11 @@ public class ClientConverter implements Converter<Client, ClientDTO> {
 	public List<ClientDTO> toDTOList(List<Client> list){
 
 		List<ClientDTO> listDTO = new ArrayList<ClientDTO>();
-		for (Client c:list) {
-			ClientDTO cDTO = toDTO(c);
-			listDTO.add(cDTO);
+		if(listDTO != null) {
+			for (Client c:list) {
+				ClientDTO cDTO = toDTO(c);
+				listDTO.add(cDTO);
+			}
 		}
 		return listDTO;
 	}
