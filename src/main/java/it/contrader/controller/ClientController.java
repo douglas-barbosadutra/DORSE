@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import it.contrader.dto.*;
+import it.contrader.model.Client;
 import it.contrader.service.*;
 
 
@@ -18,13 +19,13 @@ public class ClientController {
 
 	private ClientService clientService;
 	private ApartmentService apartmentService;
-	//private TutorService tutorService;
+	private TutorService tutorService;
 	
 	@Autowired
 	public ClientController(ClientService clientService, ApartmentService apartmentService, TutorService tutorService) {
 		this.clientService = clientService;
 		this.apartmentService = apartmentService;
-		//this.tutorService = tutorService;
+		this.tutorService = tutorService;
 		
 	}
 	
@@ -50,15 +51,14 @@ public class ClientController {
 			e.printStackTrace();
 		}
 
-			//TutorDTO tutorDTO = tutorService.read(tutor_id) ;
+			TutorDTO tutorDTO = tutorService.read(tutor_id) ;
 			ApartmentDTO apartmentDTO = apartmentService.read(apartment_id);
-			
 			ClientDTO clientDTO= new ClientDTO();
 			clientDTO.setName(name);
 			clientDTO.setSurname(surname);
 			clientDTO.setTelnumber(telnumber);
 			clientDTO.setBirthdate(date);
-			//clientDTO.setTutorDTO(tutorDTO);
+			clientDTO.setTutorDTO(tutorDTO);
 			clientDTO.setApartmentDTO(apartmentDTO);
 			
 			

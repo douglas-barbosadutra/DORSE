@@ -7,11 +7,11 @@ import it.contrader.model.Tutor;
 
 public class TutorConverter implements Converter<Tutor,TutorDTO> {
 
-	private ApartmentConverter apartmentConverter;
-	
-	public TutorConverter() {
-		apartmentConverter = new ApartmentConverter();
-	}
+//	private ApartmentConverter apartmentConverter;
+//	
+//	public TutorConverter() {
+//		apartmentConverter = new ApartmentConverter();
+//	}
 	
 	@Override
 	public Tutor toEntity(TutorDTO tutorDTO) {
@@ -32,7 +32,7 @@ public class TutorConverter implements Converter<Tutor,TutorDTO> {
 			tutor.setCcc(tutorDTO.getCcc());
 			tutor.setPaymentStatus(tutorDTO.isPaymentStatus());
 			
-			tutor.setApartments(apartmentConverter.toEntityList(tutorDTO.getApartmentsDTO()));
+			//tutor.setApartments(apartmentConverter.toEntityList(tutorDTO.getApartmentsDTO()));
 		}
 		return tutor;
 	}
@@ -56,7 +56,7 @@ public class TutorConverter implements Converter<Tutor,TutorDTO> {
 			tutorDTO.setPaymentStatus(tutor.isPaymentStatus());
 			
 			
-			tutorDTO.setApartmentsDTO(apartmentConverter.toDTOList(tutor.getApartments()));
+			//tutorDTO.setApartmentsDTO(apartmentConverter.toDTOList(tutor.getApartments()));
 
 		}
 		return tutorDTO;

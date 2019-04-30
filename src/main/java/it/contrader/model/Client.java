@@ -42,7 +42,7 @@ public class Client {
 	@OneToMany
 	private List<Disease> diseases;
 	
-//	@ManyToOne
-//	@JoinColumn(name = "tutor_id")
-//	private Tutor tutor;
+	@ManyToOne
+	@JoinColumn(name = "tutor_id")
+	private Tutor tutor;
 }
