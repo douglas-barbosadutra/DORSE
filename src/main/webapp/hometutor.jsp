@@ -51,7 +51,7 @@
 	<label for="Apartment">Apartment</label>
 	<select name="apartment_id" id="Apartment">
 	<%for (ApartmentDTO a : apartments){%>
-		<option value="<%=a.getId()%>"><%=a.getAddress()%><option>
+		<option value="<%=a.getId()%>"><%=a.getAddress()%></option>
 	<%}%>
 	</select>
 	

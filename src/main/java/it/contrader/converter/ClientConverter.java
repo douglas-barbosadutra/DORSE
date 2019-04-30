@@ -8,10 +8,13 @@ import it.contrader.model.Client;
 
 public class ClientConverter implements Converter<Client, ClientDTO> {
 
-	@Autowired
 	private ApartmentConverter apartmentConverter;
-	@Autowired
-	private TutorConverter tutorConverter;
+	//private TutorConverter tutorConverter;
+	
+	public ClientConverter() {
+		apartmentConverter = new ApartmentConverter();
+		//tutorConverter = new TutorConverter();
+	}
 	
 	@Override
 	public Client toEntity(ClientDTO clientDTO) {
@@ -24,7 +27,7 @@ public class ClientConverter implements Converter<Client, ClientDTO> {
 			client.setApartment(apartmentConverter.toEntity(clientDTO.getApartmentDTO()));
 			client.setBirthdate(clientDTO.getBirthdate());
 			client.setTelnumber(clientDTO.getTelnumber());
-			client.setTutor(tutorConverter.toEntity(clientDTO.getTutorDTO()));
+			client.setTutor(apartmentConverter.tutorConverter.toEntity(clientDTO.getTutorDTO()));
 			client.setDiseases(clientDTO.getDiseases());
 		}
 		return client;
@@ -41,7 +44,7 @@ public class ClientConverter implements Converter<Client, ClientDTO> {
 			clientDTO.setApartmentDTO(apartmentConverter.toDTO(client.getApartment()));
 			clientDTO.setBirthdate(client.getBirthdate());
 			clientDTO.setTelnumber(client.getTelnumber());
-			clientDTO.setTutorDTO(tutorConverter.toDTO(client.getTutor()));
+			clientDTO.setTutorDTO(apartmentConverter.tutorConverter.toDTO(client.getTutor()));
 			clientDTO.setDiseases(client.getDiseases());
 		}
 

@@ -12,8 +12,11 @@ import it.contrader.model.Apartment;
 
 public class ApartmentConverter implements Converter<Apartment, ApartmentDTO> {
 
-	@Autowired
-	private TutorConverter tutorConverter = new TutorConverter();
+	TutorConverter tutorConverter;
+	
+	public ApartmentConverter() {
+		tutorConverter = new TutorConverter();
+	}
 
 	@Override
 	public Apartment toEntity(ApartmentDTO apartmentDTO) {

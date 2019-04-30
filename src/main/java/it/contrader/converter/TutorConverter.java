@@ -7,9 +7,11 @@ import it.contrader.model.Tutor;
 
 public class TutorConverter implements Converter<Tutor,TutorDTO> {
 
-	@Autowired
-	private ClientConverter clientConverter = new ClientConverter();
+	private ClientConverter clientConverter;
 	
+	public TutorConverter() {
+		clientConverter = new ClientConverter();
+	}
 	
 	@Override
 	public Tutor toEntity(TutorDTO tutorDTO) {
