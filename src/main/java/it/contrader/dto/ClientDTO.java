@@ -26,8 +26,6 @@ public class ClientDTO {
 	
 	private ApartmentDTO apartmentDTO;
 	
-	private List<Disease> diseases;
-	
-	private TutorDTO tutorDTO;
+	private List<Disease> diseases;	
 	
 }

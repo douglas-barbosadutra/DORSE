@@ -18,13 +18,13 @@ public class ClientController {
 
 	private ClientService clientService;
 	private ApartmentService apartmentService;
-	private TutorService tutorService;
+	//private TutorService tutorService;
 	
 	@Autowired
 	public ClientController(ClientService clientService, ApartmentService apartmentService, TutorService tutorService) {
 		this.clientService = clientService;
 		this.apartmentService = apartmentService;
-		this.tutorService = tutorService;
+		//this.tutorService = tutorService;
 		
 	}
 	
@@ -50,7 +50,7 @@ public class ClientController {
 			e.printStackTrace();
 		}
 
-			TutorDTO tutorDTO = tutorService.read(tutor_id) ;
+			//TutorDTO tutorDTO = tutorService.read(tutor_id) ;
 			ApartmentDTO apartmentDTO = apartmentService.read(apartment_id);
 			
 			ClientDTO clientDTO= new ClientDTO();
@@ -58,7 +58,7 @@ public class ClientController {
 			clientDTO.setSurname(surname);
 			clientDTO.setTelnumber(telnumber);
 			clientDTO.setBirthdate(date);
-			clientDTO.setTutorDTO(tutorDTO);
+			//clientDTO.setTutorDTO(tutorDTO);
 			clientDTO.setApartmentDTO(apartmentDTO);
 			
 			

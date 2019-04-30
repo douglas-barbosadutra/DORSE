@@ -24,4 +24,6 @@ public class ApartmentDTO {
 	
 	private TutorDTO tutorDTO;
 	
+	private List<ClientDTO> clientsDTO;
+	
 }

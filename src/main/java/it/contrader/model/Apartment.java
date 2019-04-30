@@ -33,4 +33,8 @@ public class Apartment {
 	@ManyToOne
 	@JoinColumn(name = "tutor_id")
 	private Tutor tutor;
+	
+	@OneToMany (mappedBy = "apartment")
+	private List <Client> clients;
+	
 }

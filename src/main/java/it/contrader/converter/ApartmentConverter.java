@@ -13,9 +13,11 @@ import it.contrader.model.Apartment;
 public class ApartmentConverter implements Converter<Apartment, ApartmentDTO> {
 
 	TutorConverter tutorConverter;
+	ClientConverter clientConverter;
 	
 	public ApartmentConverter() {
 		tutorConverter = new TutorConverter();
+		clientConverter = new ClientConverter();
 	}
 
 	@Override
@@ -24,9 +26,8 @@ public class ApartmentConverter implements Converter<Apartment, ApartmentDTO> {
 		if(apartmentDTO!=null) {
 			apartment.setId(apartmentDTO.getId());
 			apartment.setAddress(apartmentDTO.getAddress());
-			
 			apartment.setTutor(tutorConverter.toEntity(apartmentDTO.getTutorDTO()));
-			
+			apartment.setClients(clientConverter.toEntityList(apartmentDTO.getClientsDTO()));
 			apartment.setRooms(apartmentDTO.getRooms());
 			
 		}
@@ -41,6 +42,7 @@ public class ApartmentConverter implements Converter<Apartment, ApartmentDTO> {
 			apartmentDTO.setId(apartment.getId());
 			apartmentDTO.setAddress(apartment.getAddress());
 			apartmentDTO.setTutorDTO(tutorConverter.toDTO(apartment.getTutor()));
+			apartmentDTO.setClientsDTO(clientConverter.toDTOList(apartment.getClients()));
 			apartmentDTO.setRooms(apartment.getRooms());
 		}
 		return apartmentDTO;

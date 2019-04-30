@@ -35,13 +35,14 @@ public class Client {
 	
 	private String telnumber;
 	
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(name = "apartment_id")
 	private Apartment apartment;
 	
 	@OneToMany
 	private List<Disease> diseases;
 	
-	@ManyToOne
-	@JoinColumn(name = "tutor_id")
-	private Tutor tutor;
+//	@ManyToOne
+//	@JoinColumn(name = "tutor_id")
+//	private Tutor tutor;
 }

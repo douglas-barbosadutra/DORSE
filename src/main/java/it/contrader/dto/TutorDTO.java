@@ -18,10 +18,10 @@ import lombok.ToString;
 
 public class TutorDTO extends UserDTO {
 	
-	private List<ClientDTO> clientsDTO;
+	private List<ApartmentDTO> apartmentsDTO;
 	
-	public TutorDTO(long id, String username, String password, UserType userType, String name, String surname, String email, String address, String telnumber, Date birthdate, String ccc, boolean paymentStatus, List<ClientDTO> clientsDTO) {
+	public TutorDTO(long id, String username, String password, UserType userType, String name, String surname, String email, String address, String telnumber, Date birthdate, String ccc, boolean paymentStatus, List<ApartmentDTO> apartmentsDTO) {
 		super(id, username, password, userType, name, surname, email, address, telnumber, birthdate, ccc, paymentStatus);
-		this.clientsDTO = clientsDTO;
+		this.apartmentsDTO = apartmentsDTO;
 	}
 }
