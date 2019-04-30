@@ -1,5 +1,7 @@
 package it.contrader.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import it.contrader.dto.ApartmentDTO;
 import it.contrader.dto.TutorDTO;
+import it.contrader.dto.UserDTO;
 import it.contrader.service.ApartmentService;
 import it.contrader.service.TutorService;
 
@@ -18,6 +21,7 @@ public class ApartmentController {
 
 	private ApartmentService apartmentService;
 	private TutorService tutorService;
+	private UserDTO userDTO;
 
 	@Autowired
 	public ApartmentController(ApartmentService apartmentService,TutorService tutorService) {
@@ -38,6 +42,11 @@ public class ApartmentController {
 		apartmentDTO.setTutorDTO(tutorDTO);
 		apartmentService.insert(apartmentDTO);
 
+		List<ApartmentDTO> apartmentlist;
+		userDTO = (UserDTO) request.getSession().getAttribute("user");
+		apartmentlist = apartmentService.findAllBytutor_id(userDTO.getId());
+		request.getSession().setAttribute("apartmentlist", apartmentlist);
+		
 		return "hometutor";
 	}
 }

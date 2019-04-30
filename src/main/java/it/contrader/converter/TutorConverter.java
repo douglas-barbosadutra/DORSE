@@ -1,7 +1,5 @@
 package it.contrader.converter;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import it.contrader.dto.TutorDTO;
 import it.contrader.model.Tutor;
 
