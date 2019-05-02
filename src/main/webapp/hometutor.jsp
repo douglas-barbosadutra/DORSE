@@ -112,7 +112,7 @@
 	</tr>
 	<%for(ThingDTO t:things) {%>
 	<tr>
-		<td><%=t.getDescription()%></td>
+		<td><a href="/item/read?thing_id=<%=t.getId()%>"><%=t.getDescription()%></a></td>
 		<td>Update</td>
 		<td><a href="/thing/delete?thing_id=<%=t.getId()%>">Delete</a></td>
 	</tr>
