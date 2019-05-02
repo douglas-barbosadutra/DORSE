@@ -104,7 +104,22 @@
 </form>
 
 
+<table>
+	<tr>
+		<th>Description</th>
+		<th> Edit</th>
+		<th> Edit</th>
+	</tr>
+	<%for(ThingDTO t:things) {%>
+	<tr>
+		<td><%=t.getDescription()%></td>
+		<td>Update</td>
+		<td>Delete</td>
+	</tr>
+	<%} %>
 
+
+</table>
 
 
 

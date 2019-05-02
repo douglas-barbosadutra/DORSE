@@ -30,6 +30,7 @@ public class LoginController {
 	private ApartmentService apartmentService;
 	private ThingService thingService;
 
+
 	@Autowired
 	public LoginController(UserService userService, SuperuserService superuserService, OperatorService operatorService, TutorService tutorService, ApartmentService apartmentService, ThingService thingService) {
 		this.userService = userService;

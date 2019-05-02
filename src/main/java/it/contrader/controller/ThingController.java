@@ -35,4 +35,13 @@ public class ThingController {
 		return "hometutor";
 	}
 	
+	@RequestMapping(value = "/read", method = RequestMethod.POST)
+	public String read(HttpServletRequest request) {
+		
+		
+		return "hometutor";
+	}
+	
+	
+	
 }
