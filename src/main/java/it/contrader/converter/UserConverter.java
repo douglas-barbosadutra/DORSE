@@ -4,7 +4,7 @@ import it.contrader.dto.UserDTO;
 
 import it.contrader.model.User;
 
-public class UserConverter implements Converter<User,UserDTO> {
+public class UserConverter extends AbstractConverter<User,UserDTO> {
 
 	@Override
 	public User toEntity(UserDTO userDTO) {

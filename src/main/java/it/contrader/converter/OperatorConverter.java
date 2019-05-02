@@ -4,7 +4,7 @@ import it.contrader.dto.OperatorDTO;
 import it.contrader.model.Operator;
 
 
-public class OperatorConverter implements Converter<Operator,OperatorDTO> {
+public class OperatorConverter extends AbstractConverter<Operator,OperatorDTO> {
 
 	@Override
 	public Operator toEntity(OperatorDTO operatorDTO) {

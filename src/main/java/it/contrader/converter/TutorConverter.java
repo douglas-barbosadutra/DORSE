@@ -3,7 +3,7 @@ package it.contrader.converter;
 import it.contrader.dto.TutorDTO;
 import it.contrader.model.Tutor;
 
-public class TutorConverter implements Converter<Tutor,TutorDTO> {
+public class TutorConverter extends AbstractConverter<Tutor,TutorDTO> {
 
 //	private ApartmentConverter apartmentConverter;
 //	

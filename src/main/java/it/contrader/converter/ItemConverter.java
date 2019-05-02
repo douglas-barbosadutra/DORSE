@@ -1,9 +1,13 @@
 package it.contrader.converter;
 
+import java.util.List;
+
+import it.contrader.dto.ClientDTO;
 import it.contrader.dto.ItemDTO;
+import it.contrader.model.Client;
 import it.contrader.model.Item;
 
-public class ItemConverter implements Converter<Item, ItemDTO> {
+public class ItemConverter extends AbstractConverter<Item, ItemDTO> {
 	
 	private ThingConverter thingConverter;
 	
@@ -32,9 +36,8 @@ public class ItemConverter implements Converter<Item, ItemDTO> {
 			itemDTO.setDescription(item.getDescription());
 			itemDTO.setType(item.getType());
 			itemDTO.setStatus(item.isStatus());
-			itemDTO.setThing(thingConverter.toDTO(item.getThing()));
+			itemDTO.setThing(thingConverter.toDTO(itemDTO.getThingDTO()));
 		}
 		return itemDTO;
 	}
-
 }

@@ -3,7 +3,7 @@ package it.contrader.converter;
 import it.contrader.dto.SuperuserDTO;
 import it.contrader.model.Superuser;
 
-public class SuperuserConverter implements Converter<Superuser,SuperuserDTO> {
+public class SuperuserConverter extends AbstractConverter<Superuser,SuperuserDTO> {
 
 	@Override
 	public Superuser toEntity(SuperuserDTO superuserDTO) {

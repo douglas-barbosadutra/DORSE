@@ -8,7 +8,7 @@ import it.contrader.dto.ApartmentDTO;
 import it.contrader.model.Apartment;
 
 
-public class ApartmentConverter implements Converter<Apartment, ApartmentDTO> {
+public class ApartmentConverter extends AbstractConverter<Apartment, ApartmentDTO> {
 
 	TutorConverter tutorConverter;
 	//ClientConverter clientConverter;
@@ -45,25 +45,4 @@ public class ApartmentConverter implements Converter<Apartment, ApartmentDTO> {
 		}
 		return apartmentDTO;
 	}
-
-	
-	public List<Apartment> toEntityList (List<ApartmentDTO> listDTO){
-		List<Apartment> list = new ArrayList<Apartment>();
-		for (ApartmentDTO cDTO:listDTO) {
-			Apartment c = toEntity(cDTO);
-			list.add(c);
-		}
-		return list;
-	}
-
-	public List<ApartmentDTO> toDTOList(List<Apartment> list){
-
-		List<ApartmentDTO> listDTO = new ArrayList<ApartmentDTO>();
-		for (Apartment c:list) {
-			ApartmentDTO cDTO = toDTO(c);
-			listDTO.add(cDTO);
-		}
-		return listDTO;
-	}
-	
 }

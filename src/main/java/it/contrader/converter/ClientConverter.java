@@ -5,7 +5,7 @@ import java.util.List;
 import it.contrader.dto.ClientDTO;
 import it.contrader.model.Client;
 
-public class ClientConverter implements Converter<Client, ClientDTO> {
+public class ClientConverter extends AbstractConverter<Client, ClientDTO> {
 
 	private ApartmentConverter apartmentConverter;
 	private TutorConverter tutorConverter;
@@ -48,29 +48,5 @@ public class ClientConverter implements Converter<Client, ClientDTO> {
 		}
 
 		return clientDTO;
-	}
-
-	public List<Client> toEntityList (List<ClientDTO> listDTO){
-		List<Client> list = new ArrayList<Client>();
-
-		if(listDTO != null) {
-			for (ClientDTO cDTO:listDTO) {
-				Client c = toEntity(cDTO);
-				list.add(c);
-			}
-		}
-		return list;
-	}
-
-	public List<ClientDTO> toDTOList(List<Client> list){
-
-		List<ClientDTO> listDTO = new ArrayList<ClientDTO>();
-		if(listDTO != null) {
-			for (Client c:list) {
-				ClientDTO cDTO = toDTO(c);
-				listDTO.add(cDTO);
-			}
-		}
-		return listDTO;
 	}
 }
