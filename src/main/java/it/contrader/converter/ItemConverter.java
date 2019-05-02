@@ -36,7 +36,7 @@ public class ItemConverter extends AbstractConverter<Item, ItemDTO> {
 			itemDTO.setDescription(item.getDescription());
 			itemDTO.setType(item.getType());
 			itemDTO.setStatus(item.isStatus());
-			itemDTO.setThing(thingConverter.toDTO(itemDTO.getThingDTO()));
+			itemDTO.setThingDTO(thingConverter.toDTO(item.getThing()));
 		}
 		return itemDTO;
 	}
