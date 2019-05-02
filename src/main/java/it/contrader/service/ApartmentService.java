@@ -11,7 +11,7 @@ import it.contrader.model.Apartment;
 
 @Service
 public class ApartmentService extends AbstractService<Apartment, ApartmentDTO> {
-
+	
 	private ApartmentConverter apartmentConverter = new ApartmentConverter();
 
 	@Autowired
