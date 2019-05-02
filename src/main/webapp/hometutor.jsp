@@ -22,6 +22,7 @@
 <h1>PROGETTO DOSER</h1>
 <% UserDTO user = (UserDTO) session.getAttribute("user");
    List<ApartmentDTO> apartments = (List<ApartmentDTO>) session.getAttribute("apartmentlist");
+		List<ThingDTO> things = (List<ThingDTO>) session.getAttribute("thinglist");
 %>
 <h2>Benvenuto <%=user.getName()%> <%=user.getSurname()%></h2>
 
@@ -82,31 +83,24 @@
 	
 	<button type="submit">Insert Thing</button>
 
+</form>
 
-	<form class="register" action="/client/register" method="post">
+	<form class="register" action="/item/create" method="post">
 
-	<label for="Name">Name</label> 
-	<input type="text" name="name" id="Name"  placeholder="Insert Name">
+	<label for="Description">Description</label> 
+	<input type="text" name="description" id="Description"  placeholder="Insert Description">
 	
-	<label for="Surname">Surname</label>
-	<input type="text" name="surname" id="Surname"  placeholder="Insert Surname">
+	<label for="Itemtype">Itemtype</label>
+	<input type="text" name="itemtype" id="Itemtype"  placeholder="Insert Itemtype">
 	
-	<label for="Date">Birthdate</label>
-	<input type="date" name="birthdate" id="Date" >
-	
-	<label for="Telnumber">Telephone Number</label>
-	<input type="text" name="telnumber" id="Telnumber" >
-	
-	<label for="Apartment">Apartment</label>
-	<select name="apartment_id" id="Apartment">
-	<%for (ApartmentDTO a : apartments){%>
-		<option value="<%=a.getId()%>"><%=a.getAddress()%></option>
+	<label for="Thing">Thing</label>
+	<select name="thing_id" id="Thing">
+	<%for (ThingDTO t : things){%>
+		<option value="<%=t.getId()%>"><%=t.getDescription()%></option>
 	<%}%>
 	</select>
 	
-	<input type="hidden" name="tutor_id" value="<%=user.getId()%>">
-	
-	<button type="submit">Register Client</button>
+	<button type="submit">Insert Item</button>
 </form>
 
 

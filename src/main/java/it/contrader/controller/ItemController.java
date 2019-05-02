@@ -28,8 +28,8 @@ public class ItemController {
 	public String create(
 			@RequestParam(value = "description") String description,
 			@RequestParam(value = "itemtype") String type,
-			@RequestParam(value = "thing_id") String thing_id,
-			@RequestParam(value = "status") String status
+			@RequestParam(value = "thing_id") String thing_id
+		
 			)
 	{
 		ItemDTO itemDTO = new ItemDTO();
@@ -38,7 +38,7 @@ public class ItemController {
 		itemDTO.setDescription(description);
 		itemDTO.setType(type);
 		itemDTO.setThingDTO(thingDTO);
-		itemDTO.setStatus(Boolean.parseBoolean(status));
+		itemDTO.setStatus(false);
 		
 		itemService.insert(itemDTO);
 		return "hometutor";
