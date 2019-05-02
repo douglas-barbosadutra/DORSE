@@ -15,6 +15,7 @@ import it.contrader.model.User.UserType;
 import it.contrader.service.ApartmentService;
 import it.contrader.service.OperatorService;
 import it.contrader.service.SuperuserService;
+import it.contrader.service.ThingService;
 import it.contrader.service.TutorService;
 import it.contrader.service.UserService;
 
@@ -27,14 +28,16 @@ public class LoginController {
 	private OperatorService operatorService;
 	private TutorService tutorService;
 	private ApartmentService apartmentService;
+	private ThingService thingService;
 
 	@Autowired
-	public LoginController(UserService userService, SuperuserService superuserService, OperatorService operatorService, TutorService tutorService, ApartmentService apartmentService) {
+	public LoginController(UserService userService, SuperuserService superuserService, OperatorService operatorService, TutorService tutorService, ApartmentService apartmentService, ThingService thingService) {
 		this.userService = userService;
 		this.superuserService = superuserService;
 		this.operatorService = operatorService;
 		this.tutorService = tutorService;
 		this.apartmentService = apartmentService;
+		this.thingService = thingService;
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -56,7 +59,12 @@ public class LoginController {
 			List<ApartmentDTO> apartmentlist;
 			apartmentlist = apartmentService.findAllBytutor_id(userDTO.getId());
 			
+			List<ThingDTO> thinglist;
+			thinglist=thingService.getAll();
+			
 			request.getSession().setAttribute("apartmentlist", apartmentlist);
+			request.getSession().setAttribute("thinglist", thinglist);
+			
 			return "hometutor";
 
 		default:
