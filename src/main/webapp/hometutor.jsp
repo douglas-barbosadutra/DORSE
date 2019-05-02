@@ -114,7 +114,7 @@
 	<tr>
 		<td><%=t.getDescription()%></td>
 		<td>Update</td>
-		<td>Delete</td>
+		<td><a href="/thing/delete?thing_id=<%=t.getId()%>">Delete</a></td>
 	</tr>
 	<%} %>
 

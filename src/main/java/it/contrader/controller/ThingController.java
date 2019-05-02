@@ -15,11 +15,14 @@ import it.contrader.service.ThingService;
 public class ThingController {
 	
  private ThingService thingService;
+private HttpServletRequest request;
 
 	public ThingController(ThingService thingService) {
 		this.thingService = thingService;
 	}
 		
+
+	
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public String register(HttpServletRequest request,
 			@RequestParam(value = "description") String description) 
@@ -32,12 +35,22 @@ public class ThingController {
 		thinglist=thingService.getAll();
 		request.getSession().setAttribute("thinglist", thinglist);
 		
+		
 		return "hometutor";
 	}
 	
-	@RequestMapping(value = "/read", method = RequestMethod.POST)
-	public String read(HttpServletRequest request) {
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public String read(HttpServletRequest request,
+			@RequestParam(value = "thing_id") String thing_id
+			) 
+	{
+		ThingDTO thingDTO = new ThingDTO();
+		thingDTO = thingService.read(Long.parseLong(thing_id));
+		thingService.delete(thingDTO);
 		
+		List<ThingDTO> thinglist;
+		thinglist=thingService.getAll();
+		request.getSession().setAttribute("thinglist", thinglist);
 		
 		return "hometutor";
 	}
