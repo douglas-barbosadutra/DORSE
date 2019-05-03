@@ -1,6 +1,7 @@
 package it.contrader.services;
 
 import java.util.ArrayList;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
@@ -11,11 +12,10 @@ import it.contrader.converter.Converter;
 @Service
 public abstract class AbstractService<Entity,DTO> implements MyService<Entity,DTO> {
 	
+	@Autowired
 	protected CrudRepository<Entity,Long> crudRepository;
+	@Autowired
 	protected Converter<Entity,DTO> converter;
-	
-	public AbstractService() {
-	}
 
 	@Override
 	public Entity insert(DTO dto) {

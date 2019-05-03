@@ -1,8 +1,11 @@
 package it.contrader.converter;
 
+import org.springframework.stereotype.Component;
+
 import it.contrader.dto.UserDTO;
 import it.contrader.model.User;
 
+@Component
 public class ConverterUser extends AbstractConverter<User,UserDTO>{
 
 	@Override
@@ -14,7 +17,7 @@ public class ConverterUser extends AbstractConverter<User,UserDTO>{
 			userDTO.setUsername(user.getUsername());
 			userDTO.setPassword(user.getPassword());
 			userDTO.setEmail(user.getEmail());
-			userDTO.setRuolo(user.getRuolo());
+			userDTO.setType(user.getType());
 		}
 		return userDTO;
 	}
@@ -28,7 +31,7 @@ public class ConverterUser extends AbstractConverter<User,UserDTO>{
 			user.setUsername(userDTO.getUsername());
 			user.setPassword(userDTO.getPassword());
 			user.setEmail(userDTO.getEmail());
-			user.setRuolo(userDTO.getRuolo());
+			user.setType(userDTO.getType());
 		}
 		return user;
 	}
