@@ -1,6 +1,16 @@
-<div>
-    <h1><a routerLink="/login">Login</a></h1>
-  <div >
-      </div>
-      <router-outlet></router-outlet>
-    </div>
+<table>
+	<tr>
+		<th>#</th>
+		<th>Username</th>
+		<th>Password</th>
+		<th>Type</th>
+		<th>Email</th>
+	</tr>
+	<tr *ngFor="let user of users">
+		<td>{{ user.id }}</td>
+		<td>{{ user.username }}</td>
+		<td>{{ user.password }}</td>
+		<td>{{ user.type }}</td>
+		<td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
+	</tr>
+</table>
