@@ -1,7 +1,10 @@
 <body>
 
   <div class="container">
-    <form >
+
+    <h1 class="title">MIMA</h1>
+
+    <form #f>
 
       <div class="form-group">
         <label class="col-form-label">Username</label>
@@ -12,7 +15,7 @@
       </div>
 
       <div class="form-group">
-        <button style="margin-top:2%" class="btn btn-primary" type="submit">Login</button>
+        <button style="margin-top:2%" class="btn btn-primary" type="submit" (click)="login(f)">Login</button>
       </div>
 
     </form>
