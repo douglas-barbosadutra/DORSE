@@ -3,21 +3,30 @@ package it.contrader.converter;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractConverter<Entity,DTO> implements Converter<Entity,DTO>{
+public abstract class AbstractConverter<Entity,DTO> implements Converter<Entity,DTO> {
 
-	public List<Entity> toEntityList(List<DTO> dtoList) {
-		List<Entity> entityList = new ArrayList<>();
-		for (DTO dto : dtoList) {
-			entityList.add(toEntity(dto));
+	public List<Entity> toEntityList (List<DTO> listDTO) {
+		
+		List<Entity> list = new ArrayList<Entity>();
+
+		if(listDTO != null) {
+			for (DTO dto:listDTO) {
+				Entity entity = toEntity(dto);
+				list.add(entity);
+			}
 		}
-		return entityList;
+		return list;
 	}
 	
-	public List<DTO> toDTOList(List<Entity> entityList) {
-		List<DTO> dtoList = new ArrayList<>();
-		for (Entity entity : entityList) {
-			dtoList.add(toDTO(entity));
+	public List<DTO> toDTOList (List<Entity> listEntity) {
+		List<DTO> list = new ArrayList<DTO>();
+
+		if(listEntity != null) {
+			for (Entity entity:listEntity) {
+				DTO dto = toDTO(entity);
+				list.add(dto);
+			}
 		}
-		return dtoList;
+		return list;
 	}
 }

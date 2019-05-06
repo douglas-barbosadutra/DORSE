@@ -1,8 +1,8 @@
-package it.contrader.services;
+package it.contrader.service;
 
 import java.util.List;
 
-public interface MyService<Entity,DTO> {
+public interface ServiceDTO<Entity,DTO> {
 	
 	public List<DTO> getAll();
 
