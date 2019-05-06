@@ -13,7 +13,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class OperatorDTO extends UserDTO {
 	
 	public OperatorDTO(long id, String username, String password, UserType userType, String name, String surname, String email, String address, String telnumber, Date birthdate, String ccc, boolean paymentStatus, Category category, boolean availability) {

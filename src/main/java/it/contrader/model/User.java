@@ -34,11 +34,9 @@ public class User {
 	private String username;
 	
 	private String password;
-<<<<<<< Updated upstream
 
 	private String type;
 
-=======
 	
 	private UserType userType;
 	
@@ -46,7 +44,6 @@ public class User {
 	
 	private String surname;
 	
->>>>>>> Stashed changes
 	private String email;
 	
 	private String address;
