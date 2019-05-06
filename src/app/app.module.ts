@@ -1,16 +1,28 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserService } from './services/user.service';
+
+import { UsersComponent } from '../components/user/users.component';
+import { DashboardComponent } from '../components/dashboard/dashboard.component';
+import { MessagesComponent } from '../components/messages/messages.component';
+import { UserDetailComponent } from '../components/user-detail/user-detail.component';
+
+import { UserService } from 'src/services/user.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
+    UsersComponent,
+    DashboardComponent,
+    MessagesComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     HttpClientModule
   ],
   providers: [UserService],

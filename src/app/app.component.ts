@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { UserDTO } from './models/user';
-import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -8,16 +6,5 @@ import { UserService } from './services/user.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ANGULAR';
-  
-  users: UserDTO[];
-  
-  constructor(private userService: UserService) {
-  }
-  
-  ngOnInit() {
-      this.userService.findAll().subscribe(data => {
-          this.users = data;
-      });
-    }
+  title = 'DORSEAngular';
 }

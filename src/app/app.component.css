@@ -1,0 +1,36 @@
+.item1 { grid-area: header; }
+.item2 { grid-area: menu; }
+.item3 { grid-area: main; }
+.item4 { grid-area: nav; }
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  grid-template-areas:
+    'header header header header header header header header header header header header header header header header'
+    'nav nav nav nav nav nav nav nav nav nav nav nav nav nav nav nav'
+    'menu menu menu main main main main main main main main main main main main main'
+    'menu menu menu main main main main main main main main main main main main main'
+    'menu menu menu main main main main main main main main main main main main main'
+    'menu menu menu main main main main main main main main main main main main main'
+    'menu menu menu main main main main main main main main main main main main main'
+    'menu menu menu main main main main main main main main main main main main main';
+  background-color: #ffffff;
+  grid-gap: 12px;
+  padding: 10px;
+
+}
+
+.grid-container > div {
+  background-color: #27D8CA;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+
+
+body {
+height:auto;
+width: auto;
+}

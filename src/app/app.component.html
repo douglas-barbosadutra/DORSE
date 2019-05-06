@@ -1,16 +1,10 @@
-<table>
-	<tr>
-		<th>#</th>
-		<th>Username</th>
-		<th>Password</th>
-		<th>Type</th>
-		<th>Email</th>
-	</tr>
-	<tr *ngFor="let user of users">
-		<td>{{ user.id }}</td>
-		<td>{{ user.username }}</td>
-		<td>{{ user.password }}</td>
-		<td>{{ user.type }}</td>
-		<td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
-	</tr>
-</table>
+<body>
+<div class="grid-container">
+  <div class="item1">Header Component</div>
+ 
+  <div class="item4">Navbar Component</div>
+  <div class="item3"><router-outlet></router-outlet></div> 
+  <div class="item2">Menu Component</div>
+
+</div>
+</body>
