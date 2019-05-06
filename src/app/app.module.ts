@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { UsersComponent } from '../components/user/users.component';
 import { DashboardComponent } from '../components/dashboard/dashboard.component';
 import { MessagesComponent } from '../components/messages/messages.component';
-import { UserDetailComponent } from '../components/user-detail/user-detail.component';
+import { UserDetailComponent } from '../components/user/user-detail/user-detail.component';
 
 import { UserService } from 'src/services/user.service';
 import { HttpClientModule } from '@angular/common/http';

@@ -25,7 +25,7 @@
 .grid-container > div {
   background-color: #27D8CA;
   text-align: center;
-  padding: 20px 0;
+  padding: 20px 10px;
   font-size: 30px;
 }
 
@@ -34,3 +34,4 @@ body {
 height:auto;
 width: auto;
 }
+
