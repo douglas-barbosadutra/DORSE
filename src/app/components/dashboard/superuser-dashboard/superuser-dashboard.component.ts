@@ -3,11 +3,11 @@ import { UserDTO } from 'src/app/dto/userdto';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: [ './dashboard.component.css' ]
+  selector: 'app-superuser-dashboard',
+  templateUrl: './superuser-dashboard.component.html',
+  styleUrls: [ './superuser-dashboard.component.css' ]
 })
-export class DashboardComponent implements OnInit {
+export class SuperuserDashboardComponent implements OnInit {
 
   users: UserDTO[] = [];
 
