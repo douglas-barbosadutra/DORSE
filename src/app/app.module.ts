@@ -14,6 +14,8 @@ import { UserDetailComponent } from '../app/components/user/user-detail/user-det
 import { HeaderComponent } from '../app/components/header/header.component';
 import { NavbarComponent } from '../app/components/navbar/navbar.component';
 import { MenuComponent } from '../app/components/menu/menu.component';
+import { LoginComponent } from '../app/components/login/login.component';
+import { RegistrationComponent } from './components/registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { MenuComponent } from '../app/components/menu/menu.component';
     UserDetailComponent,
     HeaderComponent,
     NavbarComponent,
-    MenuComponent
+    MenuComponent,
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,

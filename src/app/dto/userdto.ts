@@ -1,4 +1,6 @@
-export class UserDTO {
+    export enum UserType { SUPERUSER, OPERATOR, TUTOR }
+
+    export class UserDTO {
 
     id: number;
 
@@ -6,7 +8,7 @@ export class UserDTO {
 
     password: string;
 
-    userType: number;
+    userType: UserType;
 
     name: string;
 
@@ -23,4 +25,6 @@ export class UserDTO {
     ccc: string;
 
     paymentStatus: boolean;
-}
+
+    }
+

@@ -1,0 +1,40 @@
+/*Login*/
+.log {
+	width: 95%;
+	z-index: -1;
+	opacity: 0.4;
+	position: absolute;
+}
+
+.login {
+	position: fixed;
+	height: 50%;
+	width: 20%;
+	margin-left: 40%;
+	margin-right: 40%;
+	margin-top: 10%;
+	margin-bottom: auto;
+	z-index: 1;
+}
+
+.login input {
+	text-align: center;
+	float: center;
+	clear: both;
+	width: 90%;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+.login label {
+	float: center;
+	clear: both;
+	width: 100%;
+	text-align: center;
+}
+
+.register{
+text-align: center;
+position: fixed;
+
+}
