@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-
-enum UserType { SUPERUSER, OPERATOR, TUTOR }
+import { LoginService } from '../../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,33 +10,22 @@ enum UserType { SUPERUSER, OPERATOR, TUTOR }
 })
 export class LoginComponent implements OnInit {
 
-private idUtenteLocale: number;
-  constructor(private loginService: LoginService, private router:  Router) { }
 
-  ngOnInit(){
+  constructor(private loginService: LoginService, private router: Router) { }
+
+  ngOnInit() {
 
   }
 
-  login(f: NgForm): void {
-    this.loginService.login(f.value.username, f.value.password).subscribe((response) => {
-
-      if(response != null){
-        this.idUtenteLocale = response.id;
-        console.log(this.idUtenteLocale);
-        sessionStorage.setItem("idUser", JSON.stringify(this.idUtenteLocale));
-
-        if(response.rank == OPERATOR)
-          this.router.navigateByUrl("/homeUser");
-
-        else if(response.rank == TUTOR)
-          this.router.navigateByUrl("/homeAdmin");
-
-        else
-            this.router.navigateByUrl("/homeEmployee");
-      }
-      else{
-        alert("user o pass errati");
-      }
-    });
+    login(f: NgForm): void {
+        this.loginService.login(f.value.username, f.value.username).subscribe((response) => {
+        if (response != null) {
+            // TOFIX
+            if (response.userType.toString() === 'SUPERUSER') {
+                console.log('entra nel secondo if');
+                this.router.navigateByUrl('/dashboard');
+            }
+        }
+        });
   }
 }

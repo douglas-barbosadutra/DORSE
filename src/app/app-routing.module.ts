@@ -7,6 +7,7 @@ import { UserDetailComponent } from '../app/components/user/user-detail/user-det
 import { LoginComponent } from '../app/components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 
+
 const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent},

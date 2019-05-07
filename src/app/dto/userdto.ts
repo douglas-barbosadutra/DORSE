@@ -1,6 +1,6 @@
-    export enum UserType { SUPERUSER, OPERATOR, TUTOR }
+   import {UserType} from './usertype';
 
-    export class UserDTO {
+   export class UserDTO {
 
     id: number;
 
