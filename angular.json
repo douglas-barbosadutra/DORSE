@@ -3,21 +3,17 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ANGULAR": {
+    "DORSEAngular": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
-      "schematics": {
-        "@schematics/angular:component": {
-          "inlineTemplate": true
-        }
-      },
+      "schematics": {},
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ANGULAR",
+            "outputPath": "dist/DORSEAngular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,18 +58,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ANGULAR:build"
+            "browserTarget": "DORSEAngular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ANGULAR:build:production"
+              "browserTarget": "DORSEAngular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ANGULAR:build"
+            "browserTarget": "DORSEAngular:build"
           }
         },
         "test": {
@@ -107,7 +103,7 @@
         }
       }
     },
-    "ANGULAR-e2e": {
+    "DORSEAngular-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -116,11 +112,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ANGULAR:serve"
+            "devServerTarget": "DORSEAngular:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ANGULAR:serve:production"
+              "devServerTarget": "DORSEAngular:serve:production"
             }
           }
         },
@@ -136,5 +132,5 @@
       }
     }
   },
-  "defaultProject": "ANGULAR"
+  "defaultProject": "DORSEAngular"
 }

@@ -1,0 +1,10 @@
+div{
+padding: 10px;
+background-color: aquamarine;
+width: auto;
+float:left;
+}
+div:hover{
+
+    background-color: firebrick;
+}

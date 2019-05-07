@@ -1,7 +1,7 @@
-.item1 { grid-area: header; }
-.item2 { grid-area: menu; }
-.item3 { grid-area: main; }
-.item4 { grid-area: nav; }
+.item1 { grid-area: header  ; background-color: #ffffff;}
+.item2 { grid-area: menu    ; background-color: #27D8CA;}
+.item3 { grid-area: main    ; background-color: #27D8CA;}
+.item4 { grid-area: nav     ; background-color: #27D8CA; height: 50%;}
 
 .grid-container {
   display: grid;
@@ -9,13 +9,14 @@
   grid-template-rows: repeat(8, 1fr);
   grid-template-areas:
     'header header header header header header header header header header header header header header header header'
-    'nav nav nav nav nav nav nav nav nav nav nav nav nav nav nav nav'
-    'menu menu menu main main main main main main main main main main main main main'
-    'menu menu menu main main main main main main main main main main main main main'
-    'menu menu menu main main main main main main main main main main main main main'
-    'menu menu menu main main main main main main main main main main main main main'
-    'menu menu menu main main main main main main main main main main main main main'
-    'menu menu menu main main main main main main main main main main main main main';
+    'nav    nav    nav    nav    nav    nav    nav    nav    nav    nav    nav    nav    nav    nav    nav    nav'
+    'menu   menu   menu   main   main   main   main   main   main   main   main   main   main   main   main   main'
+    'menu   menu   menu   main   main   main   main   main   main   main   main   main   main   main   main   main'
+    'menu   menu   menu   main   main   main   main   main   main   main   main   main   main   main   main   main'
+    'menu   menu   menu   main   main   main   main   main   main   main   main   main   main   main   main   main'
+    'menu   menu   menu   main   main   main   main   main   main   main   main   main   main   main   main   main'
+    'menu   menu   menu   main   main   main   main   main   main   main   main   main   main   main   main   main';
+
   background-color: #ffffff;
   grid-gap: 12px;
   padding: 10px;
@@ -23,10 +24,9 @@
 }
 
 .grid-container > div {
-  background-color: #27D8CA;
   text-align: center;
-  padding: 20px 10px;
-  font-size: 30px;
+  padding: 10px 10px;
+  font-size: 25px;
 }
 
 
@@ -35,3 +35,6 @@ height:auto;
 width: auto;
 }
 
+*{
+    font-family: sans-serif;
+}
