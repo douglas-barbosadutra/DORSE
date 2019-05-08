@@ -1,4 +1,4 @@
-export class ApartmentsDTO {
+export class ApartmentDTO {
     address: string;
 
     constructor(address: string) {

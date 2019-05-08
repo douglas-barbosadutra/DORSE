@@ -1,0 +1,8 @@
+  <li *ngFor="let apartment of apartments">
+    <a routerLink="/detail/{{apartment.id}}">
+      <span>{{apartment.id}}</span> {{apartment.address}}
+    </a>
+    <button type="submit" (click)="delete(apartment.id)">
+      delete
+    </button>
+  </li>

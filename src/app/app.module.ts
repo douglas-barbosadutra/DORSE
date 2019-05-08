@@ -15,9 +15,10 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { TutorDashboardComponent } from './components/dashboard/tutor-dashboard/tutor-dashboard.component';
 import { SuperuserDashboardComponent } from './components/dashboard/superuser-dashboard/superuser-dashboard.component';
 import { OperatorDashboardComponent } from './components/dashboard/operator-dashboard/operator-dashboard.component';
-import { ApartmentsComponent } from './components/apartments/apartments.component';
 import { RoomComponent } from './components/room/room.component';
 import { RoomDetailsComponent } from './components/room/room-details/room-details.component';
+import { ApartmentComponent } from './components/apartment/apartment.component';
+import { ApartmentDetailsComponent } from './components/apartment/apartment-details/apartment-details.component';
 
 
 @NgModule({
@@ -34,9 +35,10 @@ import { RoomDetailsComponent } from './components/room/room-details/room-detail
     TutorDashboardComponent,
     SuperuserDashboardComponent,
     OperatorDashboardComponent,
-    ApartmentsComponent,
     RoomComponent,
-    RoomDetailsComponent
+    RoomDetailsComponent,
+    ApartmentComponent,
+    ApartmentDetailsComponent
   ],
   imports: [
     BrowserModule,
