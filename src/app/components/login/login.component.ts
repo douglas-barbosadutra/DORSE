@@ -18,12 +18,17 @@ export class LoginComponent implements OnInit {
   }
 
     login(f: NgForm): void {
-        this.loginService.login(f.value.username, f.value.username).subscribe((response) => {
+        this.loginService.login(f.value.username, f.value.password).subscribe((response) => {
         if (response != null) {
             // TOFIX
             if (response.userType.toString() === 'SUPERUSER') {
-                console.log('entra nel secondo if');
-                this.router.navigateByUrl('/dashboard');
+                this.router.navigateByUrl('/superuser-dashboard');
+            }
+            else if (response.userType.toString() === 'OPERATOR') {
+                this.router.navigateByUrl('/operator-dashboard');
+            }
+            else if (response.userType.toString() === 'TUTOR') {
+                this.router.navigateByUrl('/tutor-dashboard');
             }
         }
         });
