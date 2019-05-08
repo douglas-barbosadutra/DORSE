@@ -2,11 +2,13 @@ package it.contrader.dto;
 
 import java.util.Date;
 import it.contrader.model.User.UserType;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 @Data
-@EqualsAndHashCode(callSuper=false)
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserDTO {
 
 	private long id;

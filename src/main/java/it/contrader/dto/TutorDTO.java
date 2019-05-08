@@ -5,9 +5,11 @@ import java.util.List;
 import it.contrader.model.User.UserType;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
+@NoArgsConstructor
 public class TutorDTO extends UserDTO {
 	
 	private List<ApartmentDTO> apartmentsDTO;
