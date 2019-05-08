@@ -29,5 +29,13 @@
         .subscribe(users => this.users = users);
     }
 
+    delete(id: number ) {
+        console.log('user.ts ok');
+        this.userService.delete(id);
+
+    }
+
+
+
 
         }

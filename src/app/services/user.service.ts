@@ -21,5 +21,12 @@ return this.http.get<UserDTO[]>(this.usersUrl);
 getUser(id: number): Observable<UserDTO> {
   return this.http.get<UserDTO>('http://localhost:8080/user/read?id=' + id);
 }
+
+
+    delete(id: number) {
+        console.log('user service ok');
+        this.http.delete('http://localhost:8080/user/delete?id=' + id).subscribe();
+    }
+
 }
 
