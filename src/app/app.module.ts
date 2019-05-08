@@ -16,6 +16,8 @@ import { TutorDashboardComponent } from './components/dashboard/tutor-dashboard/
 import { SuperuserDashboardComponent } from './components/dashboard/superuser-dashboard/superuser-dashboard.component';
 import { OperatorDashboardComponent } from './components/dashboard/operator-dashboard/operator-dashboard.component';
 import { ApartmentsComponent } from './components/apartments/apartments.component';
+import { RoomComponent } from './components/room/room.component';
+import { RoomDetailsComponent } from './components/room/room-details/room-details.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { ApartmentsComponent } from './components/apartments/apartments.componen
     TutorDashboardComponent,
     SuperuserDashboardComponent,
     OperatorDashboardComponent,
-    ApartmentsComponent
+    ApartmentsComponent,
+    RoomComponent,
+    RoomDetailsComponent
   ],
   imports: [
     BrowserModule,
