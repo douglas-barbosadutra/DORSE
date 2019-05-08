@@ -15,6 +15,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { TutorDashboardComponent } from './components/dashboard/tutor-dashboard/tutor-dashboard.component';
 import { SuperuserDashboardComponent } from './components/dashboard/superuser-dashboard/superuser-dashboard.component';
 import { OperatorDashboardComponent } from './components/dashboard/operator-dashboard/operator-dashboard.component';
+import { ApartmentsComponent } from './components/apartments/apartments.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { OperatorDashboardComponent } from './components/dashboard/operator-dash
     RegistrationComponent,
     TutorDashboardComponent,
     SuperuserDashboardComponent,
-    OperatorDashboardComponent
+    OperatorDashboardComponent,
+    ApartmentsComponent
   ],
   imports: [
     BrowserModule,
