@@ -2,14 +2,11 @@ package it.contrader.dto;
 
 import java.util.Date;
 import it.contrader.model.User.UserType;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-@Getter
-@Setter
-@NoArgsConstructor
-
+@Data
+@EqualsAndHashCode(callSuper=false)
 public class SuperuserDTO extends UserDTO {
 
 	public SuperuserDTO(long id, String username, String password, UserType userType, String name, String surname, String email, String address, String telnumber, Date birthdate, String ccc, boolean paymentStatus) {

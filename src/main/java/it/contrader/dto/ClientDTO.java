@@ -3,15 +3,10 @@ package it.contrader.dto;
 import java.util.Date;
 import java.util.List;
 import it.contrader.model.Disease;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+
+@Data
 public class ClientDTO {
 
 	private long id;

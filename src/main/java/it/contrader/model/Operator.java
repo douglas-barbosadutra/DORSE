@@ -2,16 +2,12 @@ package it.contrader.model;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
 
+@Data
+@EqualsAndHashCode(callSuper=false)
 @Entity
 public class Operator extends User {
 

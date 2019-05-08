@@ -1,14 +1,11 @@
 package it.contrader.model;
 
 import javax.persistence.Entity;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-@Getter
-@Setter
-@NoArgsConstructor
-
+@Data
+@EqualsAndHashCode(callSuper=false)
 @Entity
 public class Superuser extends User {
 
