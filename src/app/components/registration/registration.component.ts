@@ -17,7 +17,7 @@ export class RegistrationComponent implements OnInit {
   ngOnInit() {
       this.userDTO = new UserDTO();
   }
-  
+
   register(): void {
       this.loginService.register(this.userDTO).subscribe((response) => {
       if (response != null) {

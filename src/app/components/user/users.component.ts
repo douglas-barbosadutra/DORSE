@@ -21,7 +21,6 @@
 
         ngOnInit() {
         this.getUsers();
-
         }
 
     getUsers(): void {
@@ -29,10 +28,11 @@
         .subscribe(users => this.users = users);
     }
 
+    // Subscribe execute getUser() as soon as delete gets a response
     delete(id: number ) {
-        console.log('user.ts ok');
-        this.userService.delete(id);
-
+        this.userService.delete(id).subscribe(
+            resp => this.getUsers()
+        );
     }
 
 

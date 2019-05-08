@@ -14,11 +14,11 @@ export class LoginService {
 
   login(username: string, password: string): Observable<UserDTO> {
     const params = new HttpParams().set('username', username).set('password', password);
-    return this.http.post<UserDTO>('http://localhost:8080/login', params);
+    return this.http.post<UserDTO>('http://localhost:8080/user/login', params);
   }
-  
+
   register(userDTO: UserDTO): Observable<UserDTO> {
-      return this.http.post<UserDTO>('http://localhost:8080/register', userDTO);
+      return this.http.post<UserDTO>('http://localhost:8080/user/register', userDTO);
     }
 
 

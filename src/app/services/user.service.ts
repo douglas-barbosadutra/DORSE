@@ -12,20 +12,19 @@ export class UserService {
 
     constructor(private http: HttpClient) { }
 
-/* GET users from the server */
-getUsers(): Observable<UserDTO[]> {
-return this.http.get<UserDTO[]>(this.usersUrl);
-}
+    /* GET users from the server */
+    getUsers(): Observable<UserDTO[]> {
+        return this.http.get<UserDTO[]>(this.usersUrl);
+    }
 
-/* GET user from the server depending on id parameter */
-getUser(id: number): Observable<UserDTO> {
-  return this.http.get<UserDTO>('http://localhost:8080/user/read?id=' + id);
-}
+    /* GET user from the server depending on id parameter */
+    getUser(id: number): Observable<UserDTO> {
+        return this.http.get<UserDTO>('http://localhost:8080/user/read?id=' + id);
+    }
 
-
-    delete(id: number) {
-        console.log('user service ok');
-        this.http.delete('http://localhost:8080/user/delete?id=' + id).subscribe();
+    /* DELETE user from the server depending on id parameter */
+    delete(id: number): Observable<any> {
+        return this.http.delete('http://localhost:8080/user/delete?id=' + id);
     }
 
 }

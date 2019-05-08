@@ -23,11 +23,9 @@ export class LoginComponent implements OnInit {
             // TOFIX
             if (response.userType.toString() === 'SUPERUSER') {
                 this.router.navigateByUrl('/superuser-dashboard');
-            }
-            else if (response.userType.toString() === 'OPERATOR') {
+            } else if (response.userType.toString() === 'OPERATOR') {
                 this.router.navigateByUrl('/operator-dashboard');
-            }
-            else if (response.userType.toString() === 'TUTOR') {
+            } else if (response.userType.toString() === 'TUTOR') {
                 this.router.navigateByUrl('/tutor-dashboard');
             }
         }
