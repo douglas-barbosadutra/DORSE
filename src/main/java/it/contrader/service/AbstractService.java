@@ -43,7 +43,7 @@ public abstract class AbstractService<Entity,DTO> implements ServiceDTO<Entity,D
 	}
 
 	@Override
-	public void delete(DTO dto) {
-		crudRepository.delete(converter.toEntity(dto));
+	public void delete(long id) {
+		crudRepository.deleteById(id);
 	}
 }

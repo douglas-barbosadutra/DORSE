@@ -55,19 +55,7 @@ public class ItemController {
 		return "homeitem";	
 	}
 	
-	@GetMapping("/delete")
-	public String delete(HttpServletRequest request,
-			@RequestParam(value = "item_id") String item_id
-			) 
-	{
-		ItemDTO itemDTO = new ItemDTO();
-		itemDTO = itemService.read(Long.parseLong(item_id));
-		itemService.delete(itemDTO);
-		String thing_id = (String) request.getSession().getAttribute("thing_id");
-		List<ItemDTO> itemlist = itemService.findAllBything_id(Long.parseLong(thing_id));
-		request.getSession().setAttribute("itemlist",itemlist);
-		
-		return "homeitem";
+	
 	
 	}
-}
+

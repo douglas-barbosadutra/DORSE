@@ -12,5 +12,5 @@ public interface ServiceDTO<Entity,DTO> {
 	
 	public Entity update (DTO dto);
 	
-	public void delete (DTO dto);
+	public void delete (long id);
 }
