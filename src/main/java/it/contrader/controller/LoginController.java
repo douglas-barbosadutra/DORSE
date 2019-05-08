@@ -65,13 +65,13 @@ public class LoginController {
 		
 		switch(userType) {
 		case SUPERUSER:
-			superuserService.insert((SuperuserDTO)userDTO);
+			superuserService.insert((SuperuserDTO)userDTO.cast());
 			break;
 		case OPERATOR:
-			operatorService.insert((OperatorDTO)userDTO);
+			operatorService.insert((OperatorDTO)userDTO.cast());
 			break;
 		case TUTOR:
-			tutorService.insert((TutorDTO)userDTO);
+			tutorService.insert((TutorDTO)userDTO.cast());
 			break;
 		default:
 		}
