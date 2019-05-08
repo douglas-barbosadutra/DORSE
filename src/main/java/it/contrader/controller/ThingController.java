@@ -41,22 +41,7 @@ public class ThingController {
 		
 		return "hometutor";
 	}
-	
-	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public String read(HttpServletRequest request,
-			@RequestParam(value = "thing_id") String thing_id
-			) 
-	{
-		ThingDTO thingDTO = new ThingDTO();
-		thingDTO = thingService.read(Long.parseLong(thing_id));
-		thingService.delete(thingDTO);
-		
-		List<ThingDTO> thinglist;
-		thinglist=thingService.getAll();
-		request.getSession().setAttribute("thinglist", thinglist);
-		
-		return "hometutor";
-	}
+
 	
 	
 	
