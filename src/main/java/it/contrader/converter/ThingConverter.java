@@ -6,7 +6,7 @@ import it.contrader.dto.ThingDTO;
 import it.contrader.model.Thing;
 
 @Component
-public class ThingConverter implements Converter<Thing,ThingDTO> {
+public class ThingConverter extends AbstractConverter<Thing,ThingDTO> {
 
 	@Override
 	public Thing toEntity(ThingDTO thingDTO) {

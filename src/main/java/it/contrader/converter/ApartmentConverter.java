@@ -22,7 +22,6 @@ public class ApartmentConverter extends AbstractConverter<Apartment, ApartmentDT
 			apartment.setId(apartmentDTO.getId());
 			apartment.setAddress(apartmentDTO.getAddress());
 			apartment.setTutor(tutorConverter.toEntity(apartmentDTO.getTutorDTO()));
-			apartment.setRooms(apartmentDTO.getRoomsDTO());
 			
 		}
 		return apartment;
@@ -36,7 +35,6 @@ public class ApartmentConverter extends AbstractConverter<Apartment, ApartmentDT
 			apartmentDTO.setId(apartment.getId());
 			apartmentDTO.setAddress(apartment.getAddress());
 			apartmentDTO.setTutorDTO(tutorConverter.toDTO(apartment.getTutor()));
-			apartmentDTO.setRoomsDTO(apartment.getRooms());
 		}
 		return apartmentDTO;
 	}
