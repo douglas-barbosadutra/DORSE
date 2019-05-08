@@ -1,7 +1,9 @@
 package it.contrader.service;
 
 import java.util.List;
+import org.springframework.stereotype.Service;
 
+@Service
 public interface ServiceDTO<Entity,DTO> {
 	
 	public List<DTO> getAll();

@@ -14,7 +14,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-
 @OnDelete(action = OnDeleteAction.CASCADE)
 public class Operator extends User {
 
