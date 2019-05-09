@@ -1,10 +1,12 @@
 package it.contrader.controller;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -25,8 +27,8 @@ public abstract class AbstractController <Entity, DTO>{
 		service.delete(id);
 	}
 	
-	@GetMapping("/update")
-	public DTO update(DTO dto){
+	@PutMapping("/update")
+	public DTO update(@RequestBody DTO dto){
 		service.update(dto);
 		return dto;
 	}
