@@ -18,6 +18,7 @@ export class RoomDetailsComponent implements OnInit {
 
   ngOnInit(): void {
        this.getRoom();
+       
   }
 
   getRoom(): void {
@@ -26,6 +27,12 @@ export class RoomDetailsComponent implements OnInit {
 }
   goBack(): void {
     this.location.back();
+
+  }
+
+
+  save(): void {
+    this.roomService.update(this.room).subscribe(() => this.goBack());
 
   }
 }

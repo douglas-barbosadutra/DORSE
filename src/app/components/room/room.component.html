@@ -1,5 +1,12 @@
+   <label>insert room
+   <input type = "text" #newroom/>
+   </label>
+  <button (click)="insert(newroom.value)" >
+   insert
+  </button>
+
   <li *ngFor="let room of rooms">
-    <a routerLink="/detail/{{room.id}}">
+    <a routerLink="/room-details/{{room.id}}">
       <span>{{room.id}}</span> {{room.description}}
     </a>
     <button type="submit" (click)="delete(room.id)">

@@ -27,10 +27,25 @@ getRoom(id: number): Observable<RoomDTO> {
     delete(id: number): Observable<any> {
         return this.http.delete('http://localhost:8080/room/delete?id=' + id);
     }
+
+
+
+    insert(room: RoomDTO): Observable<any> {
+        return this.http.post('http://localhost:8080/room/insert', room)
 }
 
 
+    update(room: RoomDTO): Observable<any> {
+        return this.http.put('http://localhost:8080/room/update', room);
+    
 
+
+
+    }
+
+
+
+}
 
 
 

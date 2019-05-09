@@ -11,7 +11,7 @@ import { RoomService } from 'src/app/services/room.service';
         export class RoomComponent implements OnInit {
 
         rooms: RoomDTO[];
-
+        roomtoinsert: RoomDTO;
          selectedRoom: RoomDTO;
 
        onSelect(room: RoomDTO): void {
@@ -22,6 +22,7 @@ import { RoomService } from 'src/app/services/room.service';
 
          ngOnInit() {
              this.getRooms();
+             this.roomtoinsert = new RoomDTO();
         }
 // tslint:disable-next-line: one-line
         getRooms(){
@@ -30,7 +31,13 @@ import { RoomService } from 'src/app/services/room.service';
 
         delete(id: number ) {
         console.log('room.ts ok');
-        this.roomService.delete(id);
+        this.roomService.delete(id).subscribe(room => this.getRooms());
+
+    }
+
+    insert(newroom: string): void {
+        this.roomtoinsert.description = newroom;
+        this.roomService.insert(this.roomtoinsert).subscribe(room => this.getRooms());
 
     }
 }
