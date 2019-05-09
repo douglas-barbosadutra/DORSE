@@ -29,8 +29,9 @@ public class RoomConverter extends AbstractConverter<Room, RoomDTO> {
 		if(room!=null) {
 			roomDTO.setId(room.getId());
 			roomDTO.setDescription(room.getDescription());
-			roomDTO.setThingsDTO(thingConverter.toDTOList(room.getThings()));
-			roomDTO.setApartmentDTO(apartmentConverter.toDTO(room.getApartment()));
+			//TOFIX
+			//roomDTO.setThingsDTO(thingConverter.toDTOList(room.getThings()));
+			//roomDTO.setApartmentDTO(apartmentConverter.toDTO(room.getApartment()));
 			
 		}
 		return roomDTO;
