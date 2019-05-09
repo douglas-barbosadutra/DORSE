@@ -7,6 +7,9 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { SuperuserDashboardComponent } from './components/dashboard/superuser-dashboard/superuser-dashboard.component';
 import { OperatorDashboardComponent } from './components/dashboard/operator-dashboard/operator-dashboard.component';
 import { TutorDashboardComponent } from './components/dashboard/tutor-dashboard/tutor-dashboard.component';
+import { ApartmentComponent } from './components/apartment/apartment.component';
+import { RoomComponent } from './components/room/room.component';
+import { ThingComponent } from './components/thing/thing.component';
 
 
 const routes: Routes = [
@@ -17,7 +20,12 @@ const routes: Routes = [
     { path: 'detail/:id', component: UserDetailComponent },
     { path: 'superuser-dashboard', component: SuperuserDashboardComponent},
     { path: 'operator-dashboard', component: OperatorDashboardComponent},
-    { path: 'tutor-dashboard', component: TutorDashboardComponent}];
+    { path: 'tutor-dashboard', component: TutorDashboardComponent},
+    { path: 'apartments', component: ApartmentComponent},
+    { path: 'rooms', component: RoomComponent},
+    { path: 'things', component: ThingComponent},
+    ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

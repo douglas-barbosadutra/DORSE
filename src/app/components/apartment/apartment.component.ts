@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApartmentDTO } from '../../dto/apartment';
+import { ApartmentDTO } from '../../dto/apartmentdto';
 import { ApartmentService } from '../../services/apartment.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { ApartmentService } from '../../services/apartment.service';
   styleUrls: ['./apartment.component.css']
 })
 export class ApartmentComponent implements OnInit {
-    
+
   apartments: ApartmentDTO[];
 
   constructor(private apartmentService: ApartmentService) { }
@@ -16,11 +16,11 @@ export class ApartmentComponent implements OnInit {
   ngOnInit() {
       this.getApartments();
   }
-  
+
   getApartments(): void {
-      this.apartmentService.getApartments().subscribe(apartments => this.apartments = apartments);
+      this.apartmentService.getAll().subscribe(apartments => this.apartments = apartments);
   }
-  
+
   delete(id: number ) {
       this.apartmentService.delete(id);
 

@@ -1,3 +1,8 @@
-<p>
-  room works!
-</p>
+  <li *ngFor="let room of rooms">
+    <a routerLink="/detail/{{room.id}}">
+      <span>{{room.id}}</span> {{room.description}}
+    </a>
+    <button type="submit" (click)="delete(room.id)">
+      delete
+    </button>
+  </li>

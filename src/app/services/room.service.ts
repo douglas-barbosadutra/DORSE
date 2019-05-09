@@ -11,25 +11,22 @@ export class RoomService {
 
     constructor(private http: HttpClient) { }
 
-  
-/* GET users from the server */
+/* GET rooms from the server */
 getRooms(): Observable<RoomDTO[]> {
 return this.http.get<RoomDTO[]>('http://localhost:8080/room/getall');
 }
 
 
-/* GET user from the server depending on id parameter */
+/* GET room from the server depending on id parameter */
 getRoom(id: number): Observable<RoomDTO> {
   return this.http.get<RoomDTO>('http://localhost:8080/room/read?id=' + id);
 }
 
-delete(id: number) {
-        console.log('room service ok');
-        this.http.delete('http://localhost:8080/room/delete?id=' + id).subscribe();
+
+  /* DELETE user from the server depending on id parameter */
+    delete(id: number): Observable<any> {
+        return this.http.delete('http://localhost:8080/room/delete?id=' + id);
     }
-
-
-
 }
 
 

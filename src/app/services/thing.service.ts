@@ -1,29 +1,30 @@
-        import { Component, OnInit } from '@angular/core';
-        import { ThingDTO } from 'src/app/dto/thingdto';
-        import { ThingService } from 'src/app/services/thing.service';
+import { Injectable } from '@angular/core';
+import { ThingDTO } from 'src/app/dto/thingdto';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
-        @Component({
-        selector: 'app-thing',
-        templateUrl: './thing.component.html',
-        styleUrls: ['./thing.component.css']
-        })
-        export class ThingComponent implements OnInit {
+@Injectable({
+  providedIn: 'root'
+})
 
-    users: ThingDTO[];
+export class ThingService {
 
-    selectedUser: ThingDTO;
+        constructor(private http: HttpClient) {}
 
-        onSelect(user: ThingDTO): void {
-        this.selectedUser = user;
-        }
+    /* GET all things from the server */
+    getThings(): Observable<ThingDTO[]> {
+        return this.http.get<ThingDTO[]>('http://localhost:8080/thing/getall');
+    }
 
-        constructor(private thingService: ThingService) { }
 
-        ngOnInit() {
-        this.getUsers();
+    /* GET thing from the server depending on id parameter */
+    getThing(id: number): Observable<ThingDTO> {
+        return this.http.get<ThingDTO>('http://localhost:8080/thing/read?id=' + id);
+    }
 
-        }
+    /* DELETE thing from the server depending on id parameter */
+    delete(id: number): Observable<any> {
+        return this.http.delete('http://localhost:8080/thing/delete?id=' + id);
+    }
 
-    getUsers(): void {
-        this.thingService.getUsers()
-        .subscribe(users => this.users = users);
+}

@@ -31,7 +31,7 @@
     // Subscribe execute getUser() as soon as delete gets a response
     delete(id: number ) {
         this.userService.delete(id).subscribe(
-            resp => this.getUsers()
+            () => this.getUsers()
         );
     }
 

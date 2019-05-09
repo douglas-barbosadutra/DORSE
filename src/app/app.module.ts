@@ -8,7 +8,6 @@ import { UsersComponent } from '../app/components/user/users.component';
 import { MessagesComponent } from '../app/components/messages/messages.component';
 import { UserDetailComponent } from '../app/components/user/user-detail/user-detail.component';
 import { HeaderComponent } from '../app/components/header/header.component';
-import { NavbarComponent } from '../app/components/navbar/navbar.component';
 import { MenuComponent } from '../app/components/menu/menu.component';
 import { LoginComponent } from '../app/components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
@@ -18,7 +17,13 @@ import { OperatorDashboardComponent } from './components/dashboard/operator-dash
 import { RoomComponent } from './components/room/room.component';
 import { RoomDetailsComponent } from './components/room/room-details/room-details.component';
 import { ApartmentComponent } from './components/apartment/apartment.component';
+import { TutorNavbarComponent } from './components/navbar/tutor-navbar/tutor-navbar.component';
+import { OperatorNavbarComponent } from './components/navbar/operator-navbar/operator-navbar.component';
+import { SuperuserNavbarComponent } from './components/navbar/superuser-navbar/superuser-navbar.component';
 import { ApartmentDetailsComponent } from './components/apartment/apartment-details/apartment-details.component';
+import { ThingComponent } from './components/thing/thing.component';
+import { ThingDetailsComponent } from './components/thing/thing-details/thing-details.component';
+
 
 
 @NgModule({
@@ -28,7 +33,6 @@ import { ApartmentDetailsComponent } from './components/apartment/apartment-deta
     MessagesComponent,
     UserDetailComponent,
     HeaderComponent,
-    NavbarComponent,
     MenuComponent,
     LoginComponent,
     RegistrationComponent,
@@ -38,7 +42,13 @@ import { ApartmentDetailsComponent } from './components/apartment/apartment-deta
     RoomComponent,
     RoomDetailsComponent,
     ApartmentComponent,
-    ApartmentDetailsComponent
+    ApartmentDetailsComponent,
+    TutorNavbarComponent,
+    OperatorNavbarComponent,
+    SuperuserNavbarComponent,
+    ThingComponent,
+    ThingDetailsComponent
+
   ],
   imports: [
     BrowserModule,

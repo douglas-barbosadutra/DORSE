@@ -8,13 +8,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserService {
 
-    private usersUrl = 'http://localhost:8080/user/getall';
-
     constructor(private http: HttpClient) { }
 
-    /* GET users from the server */
+    /* GET all users from the server */
     getUsers(): Observable<UserDTO[]> {
-        return this.http.get<UserDTO[]>(this.usersUrl);
+        return this.http.get<UserDTO[]>('http://localhost:8080/user/getall');
     }
 
     /* GET user from the server depending on id parameter */

@@ -1,4 +1,5 @@
-import {ApartmentDTO} from './apartment';
+import {ApartmentDTO} from './apartmentdto';
+import { ThingDTO } from './thingdto';
 
 
 export class RoomDTO {
@@ -6,6 +7,5 @@ export class RoomDTO {
     id: number;
     description: string;
     apartmentDTO: ApartmentDTO;
-    ThingDTO[]: thingsDTO;
-    
+    thingsDTO: ThingDTO[];
 }
