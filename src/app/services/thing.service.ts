@@ -26,5 +26,10 @@ export class ThingService {
     delete(id: number): Observable<any> {
         return this.http.delete('http://localhost:8080/thing/delete?id=' + id);
     }
-
+    insert(thing: ThingDTO): Observable<any>{
+        return this.http.post('http://localhost:8080/thing/insert', thing)
+    }
+    update(thing: ThingDTO): Observable<any>{
+        return this.http.put('http://localhost:8080/thing/update', thing)
+    }
 }

@@ -1,3 +1,13 @@
-<p>
-  thing works!
-</p>
+<input #newthing/>
+<button (click)="insert(newthing.value)">Insert</button>
+
+
+
+  <li *ngFor="let thing of things">
+    <a routerLink="/thing-details/{{thing.id}}">
+      <span>{{thing.id}}</span> {{thing.description}}
+    </a>
+    <button type="submit" (click)="delete(thing.id)">
+      delete
+    </button>
+  </li>
