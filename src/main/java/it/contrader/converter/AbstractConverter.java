@@ -3,6 +3,9 @@ package it.contrader.converter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public abstract class AbstractConverter<Entity,DTO> implements Converter<Entity,DTO> {
 
 	public List<Entity> toEntityList (List<DTO> listDTO) {

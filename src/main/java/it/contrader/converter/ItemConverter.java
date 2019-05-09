@@ -11,9 +11,6 @@ public class ItemConverter extends AbstractConverter<Item, ItemDTO> {
 	@Autowired
 	private ThingConverter thingConverter;
 	
-	public ItemConverter() {
-	}
-
 	@Override
 	public Item toEntity(ItemDTO itemDTO) {
 		Item item = new Item();
