@@ -12,9 +12,6 @@ public class ApartmentConverter extends AbstractConverter<Apartment, ApartmentDT
 	@Autowired
 	private TutorConverter tutorConverter;
 	
-	public ApartmentConverter() {
-	}
-
 	@Override
 	public Apartment toEntity(ApartmentDTO apartmentDTO) {
 		Apartment apartment = new Apartment();

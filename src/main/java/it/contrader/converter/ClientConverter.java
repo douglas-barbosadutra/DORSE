@@ -13,8 +13,6 @@ public class ClientConverter extends AbstractConverter<Client, ClientDTO> {
 	@Autowired
 	private TutorConverter tutorConverter;
 	
-	public ClientConverter() {
-	}
 	
 	@Override
 	public Client toEntity(ClientDTO clientDTO) {
