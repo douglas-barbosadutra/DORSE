@@ -1,5 +1,12 @@
-  <li *ngFor="let apartment of apartments">
-    <a routerLink="/detail/{{apartment.id}}">
+   <label>insert apartment
+   <input type = "text" #address/>
+   </label>
+  <button (click)="insert(address.value)" >
+   insert
+  </button>
+  
+   <li *ngFor="let apartment of apartments">
+    <a routerLink="/apartment-details/{{apartment.id}}">
       <span>{{apartment.id}}</span> {{apartment.address}}
     </a>
     <button type="submit" (click)="delete(apartment.id)">

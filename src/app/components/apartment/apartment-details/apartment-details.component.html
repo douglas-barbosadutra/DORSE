@@ -1,3 +1,16 @@
-<p>
-  apartment-details works!
-</p>
+<div>
+
+<table>
+<th class="left">{{apartment.address | uppercase}}'S </th><th class="right">DETAILS</th>
+
+<tr>
+    <td>Id </td><td>{{apartment.id}}</td>
+</tr>
+<tr>
+    <td>Address </td><td> <input [(ngModel)]= "apartment.address"/> </td>
+</tr>
+</table>
+
+  <button (click)="goBack()">go back</button>
+  <button (click)="save()">save</button>
+</div>

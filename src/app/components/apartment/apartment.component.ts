@@ -10,6 +10,7 @@ import { ApartmentService } from '../../services/apartment.service';
 export class ApartmentComponent implements OnInit {
 
   apartments: ApartmentDTO[];
+  apartment: ApartmentDTO;
 
   constructor(private apartmentService: ApartmentService) { }
 
@@ -22,8 +23,13 @@ export class ApartmentComponent implements OnInit {
   }
 
   delete(id: number ) {
-      this.apartmentService.delete(id);
-
+      this.apartmentService.delete(id).subscribe(apartment => this.getApartments());
+  }
+  
+  insert(address: string): void {
+      this.apartment = new ApartmentDTO();
+      this.apartment.address = address;
+      this.apartmentService.insert(this.apartment).subscribe(apartment => this.getApartments());
   }
 
 }

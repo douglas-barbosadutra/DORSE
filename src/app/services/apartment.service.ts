@@ -18,7 +18,15 @@ export class ApartmentService {
       return this.http.get<ApartmentDTO>('http://localhost:8080/apartment/read?id=' + id);
   }
 
-  delete(id: number) {
-      this.http.delete('http://localhost:8080/apartment/delete?id=' + id);
+  delete(id: number): Observable<any>{
+      return this.http.delete('http://localhost:8080/apartment/delete?id=' + id);
+  }
+  
+  insert(apartment: ApartmentDTO): Observable<any> {
+      return this.http.post('http://localhost:8080/apartment/insert', apartment);
+  }
+  
+  update(apartment: ApartmentDTO): Observable<any> {
+      return this.http.put('http://localhost:8080/apartment/update', apartment);
   }
 }

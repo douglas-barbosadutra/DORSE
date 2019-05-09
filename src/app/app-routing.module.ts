@@ -11,6 +11,7 @@ import { ApartmentComponent } from './components/apartment/apartment.component';
 import { RoomComponent } from './components/room/room.component';
 import { ThingComponent } from './components/thing/thing.component';
 import { RoomDetailsComponent } from './components/room/room-details/room-details.component';
+import { ApartmentDetailsComponent } from './components/apartment/apartment-details/apartment-details.component';
 
 
 const routes: Routes = [
@@ -26,7 +27,7 @@ const routes: Routes = [
     { path: 'rooms', component: RoomComponent},
     { path: 'things', component: ThingComponent},
     { path: 'room-details/:id', component: RoomDetailsComponent},
-
+    { path: 'apartment-details/:id', component: ApartmentDetailsComponent}
     ];
 
 
