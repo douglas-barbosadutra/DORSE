@@ -10,12 +10,10 @@ import { TutorDashboardComponent } from './components/dashboard/tutor-dashboard/
 import { ApartmentComponent } from './components/apartment/apartment.component';
 import { RoomComponent } from './components/room/room.component';
 import { ThingComponent } from './components/thing/thing.component';
-<<<<<<< Updated upstream
 import { RoomDetailsComponent } from './components/room/room-details/room-details.component';
 import { ApartmentDetailsComponent } from './components/apartment/apartment-details/apartment-details.component';
-=======
 import { ThingDetailsComponent } from './components/thing/thing-details/thing-details.component';
->>>>>>> Stashed changes
+
 
 
 const routes: Routes = [
@@ -30,12 +28,10 @@ const routes: Routes = [
     { path: 'apartments', component: ApartmentComponent},
     { path: 'rooms', component: RoomComponent},
     { path: 'things', component: ThingComponent},
-<<<<<<< Updated upstream
     { path: 'room-details/:id', component: RoomDetailsComponent},
-    { path: 'apartment-details/:id', component: ApartmentDetailsComponent}
-=======
+    { path: 'apartment-details/:id', component: ApartmentDetailsComponent},
     { path: 'thing-details/:id', component: ThingDetailsComponent},
->>>>>>> Stashed changes
+
     ];
 
 
