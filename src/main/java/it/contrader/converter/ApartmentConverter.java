@@ -34,7 +34,8 @@ public class ApartmentConverter extends AbstractConverter<Apartment, ApartmentDT
 		if(apartment!=null) {
 			apartmentDTO.setId(apartment.getId());
 			apartmentDTO.setAddress(apartment.getAddress());
-			apartmentDTO.setTutorDTO(tutorConverter.toDTO(apartment.getTutor()));
+			//TOFIX
+			//apartmentDTO.setTutorDTO(tutorConverter.toDTO(apartment.getTutor()));
 		}
 		return apartmentDTO;
 	}
