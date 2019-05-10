@@ -23,7 +23,7 @@ public abstract class AbstractController <Entity, DTO>{
 	}
 	
 	@PostMapping("/getallby")
-	public List<DTO> getAllBy(Object o){
+	public List<DTO> getAllBy(@RequestBody Object o){
 		return service.getAllBy(o);		
 	}
 	
