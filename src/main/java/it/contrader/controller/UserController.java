@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.contrader.dto.LoginDTO;
 import it.contrader.dto.OperatorDTO;
 import it.contrader.dto.SuperuserDTO;
 import it.contrader.dto.TutorDTO;
@@ -35,17 +36,28 @@ public class UserController extends AbstractController<User, UserDTO>{
 	private TutorService tutorService;
 	
 	@PostMapping(value = "/login")
-	public UserDTO login(
-			@RequestParam (value = "username") String username,
-			@RequestParam (value = "password") String password
-			) {
-		UserDTO userdto = userService.findByUsernameAndPassword(username, password);
-		return userdto;
+	public UserDTO login( @RequestBody LoginDTO loginDTO ) {
+		UserDTO userdto = userService.findByUsernameAndPassword(loginDTO.getUsername(), loginDTO.getPassword());
+		UserType userType = userdto.getUserType();
+		switch(userType){
+		case SUPERUSER:
+			SuperuserDTO superuser = (SuperuserDTO) userdto.cast();
+			return superuser;
+		case OPERATOR:
+			OperatorDTO operator = (OperatorDTO) userdto.cast();
+			return operator;
+		case TUTOR:
+			TutorDTO tutor = (TutorDTO)  userdto.cast();
+			return tutor;
+		default: break;
+		}
+	return null;
 
 	}
 	
-	@PostMapping(value = "/register")
-	public UserDTO register(@RequestBody UserDTO userDTO) {
+	@Override
+	@PostMapping(value = "/insert")
+	public UserDTO insert(@RequestBody UserDTO userDTO) {
 		UserType userType = userDTO.getUserType();
 		
 		switch(userType) {
