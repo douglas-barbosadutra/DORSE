@@ -11,9 +11,9 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
 
-  login(username: string, password: string): Observable<UserDTO> {
+  login(username: string, password: string): Observable<any> {
     const params = new HttpParams().set('username', username).set('password', password);
-    return this.http.post<UserDTO>('http://localhost:8080/user/login', params);
+    return this.http.post<any>('http://localhost:8080/user/login', params);
   }
 
   register(userDTO: UserDTO): Observable<UserDTO> {

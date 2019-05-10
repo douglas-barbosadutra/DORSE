@@ -20,18 +20,18 @@
         constructor(private userService: UserService) { }
 
         ngOnInit() {
-        this.getUsers();
+        this.getAll();
         }
 
-    getUsers(): void {
-        this.userService.getUsers()
+    getAll(): void {
+        this.userService.getAll()
         .subscribe(users => this.users = users);
     }
 
     // Subscribe execute getUser() as soon as delete gets a response
     delete(id: number ) {
         this.userService.delete(id).subscribe(
-            () => this.getUsers()
+            () => this.getAll()
         );
     }
 

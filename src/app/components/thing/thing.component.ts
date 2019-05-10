@@ -15,27 +15,27 @@
     constructor(private thingService: ThingService) { }
 
     ngOnInit() {
-        this.getThings();
+        this.getAll();
         this.thing = new ThingDTO();
     }
 
 
-    getThings(): void {
-        this.thingService.getThings()
+    getAll(): void {
+        this.thingService.getAll()
         .subscribe(things => this.things = things);
     }
 
     // Subscribe execute getUser() as soon as delete gets a response
     delete(id: number ) {
         this.thingService.delete(id).subscribe(
-            () => this.getThings()
+            () => this.getAll()
         );
     }
 
     insert(description: string): void {
         this.thing.description = description;
         this.thingService.insert(this.thing)
-        .subscribe(thing => this.getThings());
+        .subscribe(thing => this.getAll());
     }
 
     }

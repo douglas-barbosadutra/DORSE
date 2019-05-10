@@ -10,26 +10,26 @@ import { Location } from '@angular/common';
   styleUrls: ['./apartment-details.component.css']
 })
 export class ApartmentDetailsComponent implements OnInit {
-    
+
   @Input() apartment: ApartmentDTO;
 
   constructor(private route: ActivatedRoute, private apartmentService: ApartmentService, private location: Location) {
-      
+
   }
 
   ngOnInit() {
-      this.getApartment();
+      this.read();
   }
-  
-  getApartment(): void {
+
+  read(): void {
       const id = +this.route.snapshot.paramMap.get('id');
-      this.apartmentService.getApartment(id).subscribe(apartment => this.apartment = apartment);
+      this.apartmentService.read(id).subscribe(apartment => this.apartment = apartment);
   }
-  
-  save(): void {
+
+  update(): void {
       this.apartmentService.update(this.apartment).subscribe(() => this.goBack());
   }
-  
+
   goBack(): void {
       this.location.back();
   }

@@ -13,7 +13,7 @@
     })
     export class ThingDetailsComponent implements OnInit {
 
-   
+
         @Input() thing: ThingDTO;
     constructor(
   private route: ActivatedRoute,
@@ -22,13 +22,13 @@
 ) {}
 
     ngOnInit(): void {
-        this.getThing();
+        this.read();
 
     }
 
-     getThing(): void {
+     read(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.thingService.getThing(id)
+    this.thingService.read(id)
     .subscribe(thing => this.thing = thing);
     }
 
@@ -36,7 +36,7 @@
         this.location.back();
     }
 
-    save(): void {
+    update(): void {
         this.thingService.update(this.thing)
         .subscribe(() => this.goBack());
     }

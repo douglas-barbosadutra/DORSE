@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 import { UserDTO } from '../../dto/userdto';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-registration',
@@ -11,14 +11,14 @@ import { UserDTO } from '../../dto/userdto';
 export class RegistrationComponent implements OnInit {
 
     userDTO: UserDTO;
-    constructor(private loginService: LoginService, private router: Router) { }
+    constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
-      this.userDTO = new UserDTO();
   }
 
   register(): void {
-      this.loginService.register(this.userDTO).subscribe((response) => {
+      this.userDTO = new UserDTO();
+      this.userService.insert(this.userDTO).subscribe((response) => {
       if (response != null) {
          this.router.navigateByUrl('/login');
       }

@@ -5,14 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
-  "name": "Launch Chrome DORSEAngular on Angular CLI Server",
-  "type": "chrome",
-  "request": "launch",
-  "url": "http://localhost:4200/#",
-  "webRoot": "${workspaceFolder}",
-  "port": 9223
-}
-,
+            "name": "Launch Chrome DORSEAngular on Angular CLI Server",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:4200/#",
+            "webRoot": "${workspaceFolder}",
+            "port": 9255
+        },
         {
             "name": "Launch Chrome DORSEAngular on Angular CLI Server (1)",
             "type": "chrome",
@@ -35,6 +34,29 @@
             "request": "launch",
             "url": "http://localhost:4200/#",
             "webRoot": "${workspaceFolder}",
+            "port": 9291
+        },
+        {
+            "name": "Launch Chrome Angular on Angular CLI Server",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:4200/#",
+            "webRoot": "${workspaceFolder}",
+            "port": 9299
+        }
+    ]
+}{
+    "name": "Launch Chrome DORSEAngular on Angular CLI Server (2)",
+    "type": "chrome",
+    "request": "launch",
+    "url": "http://localhost:4200/#",
+    "webRoot": "${workspaceFolder}",
+    "port": 9226
+}
+]
+}
+}
+}            "webRoot": "${workspaceFolder}",
             "port": 9291
         },
         {

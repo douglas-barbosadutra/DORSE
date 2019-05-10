@@ -1,29 +1,25 @@
 import { Injectable } from '@angular/core';
 import { UserDTO } from 'src/app/dto/userdto';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { AbstractService } from './abstractservice';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { LoginDTO } from '../dto/logindto';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
 
-    constructor(private http: HttpClient) { }
+export class UserService extends AbstractService<UserDTO> {
 
-    /* GET all users from the server */
-    getUsers(): Observable<UserDTO[]> {
-        return this.http.get<UserDTO[]>('http://localhost:8080/user/getall');
+    constructor(shttp: HttpClient) {
+        super(shttp);
+        this.type = 'user';
     }
 
-    /* GET user from the server depending on id parameter */
-    getUser(id: number): Observable<UserDTO> {
-        return this.http.get<UserDTO>('http://localhost:8080/user/read?id=' + id);
-    }
 
-    /* DELETE user from the server depending on id parameter */
-    delete(id: number): Observable<any> {
-        return this.http.delete('http://localhost:8080/user/delete?id=' + id);
-    }
+    login(loginDTO: LoginDTO): Observable<any> {
+        return this.http.post<any>('http://localhost:8080/user/login', loginDTO);
+  }
 
 }
 

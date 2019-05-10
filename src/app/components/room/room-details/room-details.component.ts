@@ -17,13 +17,13 @@ export class RoomDetailsComponent implements OnInit {
               private location: Location) { }
 
   ngOnInit(): void {
-       this.getRoom();
-       
+       this.read();
+
   }
 
-  getRoom(): void {
+  read(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.roomService.getRoom(id).subscribe(room => this.room = room);
+    this.roomService.read(id).subscribe(room => this.room = room);
 }
   goBack(): void {
     this.location.back();
@@ -31,7 +31,7 @@ export class RoomDetailsComponent implements OnInit {
   }
 
 
-  save(): void {
+  update(): void {
     this.roomService.update(this.room).subscribe(() => this.goBack());
 
   }

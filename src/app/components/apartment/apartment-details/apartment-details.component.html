@@ -9,8 +9,11 @@
 <tr>
     <td>Address </td><td> <input [(ngModel)]= "apartment.address"/> </td>
 </tr>
+<tr>
+    <td>Tutor </td><td> {{this.apartment.tutorDTO.name}} </td>
+</tr>
 </table>
 
   <button (click)="goBack()">go back</button>
-  <button (click)="save()">save</button>
+  <button (click)="update()">save</button>
 </div>

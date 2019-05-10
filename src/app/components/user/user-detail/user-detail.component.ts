@@ -19,12 +19,12 @@
 ) {}
 
    ngOnInit(): void {
-  this.getHero();
+  this.read();
 }
 
-    getHero(): void {
+    read(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.userService.getUser(id)
+    this.userService.read(id)
     .subscribe(user => this.user = user);
     }
 

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
+import { LoginDTO } from 'src/app/dto/logindto';
 
 @Component({
   selector: 'app-login',
@@ -10,22 +11,27 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+    loginDTO: LoginDTO;
 
-  constructor(private loginService: LoginService, private router: Router) { }
+
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
 
   }
 
     login(f: NgForm): void {
-        this.loginService.login(f.value.username, f.value.password).subscribe((response) => {
-        if (response != null) {
+        this.loginDTO = new LoginDTO(f.value.username, f.value.password);
+        this.userService.login(this.loginDTO).subscribe((user) => {
+        if (user != null) {
             // TOFIX
-            if (response.userType.toString() === 'SUPERUSER') {
+            localStorage.setItem('currentuser', JSON.stringify(user));
+            console.log(localStorage.getItem('currentuser'));
+            if (user.userType.toString() === 'SUPERUSER') {
                 this.router.navigateByUrl('/superuser-dashboard');
-            } else if (response.userType.toString() === 'OPERATOR') {
+            } else if (user.userType.toString() === 'OPERATOR') {
                 this.router.navigateByUrl('/operator-dashboard');
-            } else if (response.userType.toString() === 'TUTOR') {
+            } else if (user.userType.toString() === 'TUTOR') {
                 this.router.navigateByUrl('/tutor-dashboard');
             }
         }

@@ -15,21 +15,22 @@ export class ApartmentComponent implements OnInit {
   constructor(private apartmentService: ApartmentService) { }
 
   ngOnInit() {
-      this.getApartments();
+      this.getAll();
   }
 
-  getApartments(): void {
+  getAll(): void {
       this.apartmentService.getAll().subscribe(apartments => this.apartments = apartments);
   }
 
   delete(id: number ) {
-      this.apartmentService.delete(id).subscribe(apartment => this.getApartments());
+      this.apartmentService.delete(id).subscribe(apartment => this.getAll());
   }
-  
+
   insert(address: string): void {
       this.apartment = new ApartmentDTO();
       this.apartment.address = address;
-      this.apartmentService.insert(this.apartment).subscribe(apartment => this.getApartments());
+      this.apartment.tutorDTO = JSON.parse(localStorage.getItem('currentuser'));
+      this.apartmentService.insert(this.apartment).subscribe(apartment => this.getAll());
   }
 
 }

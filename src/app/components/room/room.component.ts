@@ -12,32 +12,27 @@ import { RoomService } from 'src/app/services/room.service';
 
         rooms: RoomDTO[];
         roomtoinsert: RoomDTO;
-         selectedRoom: RoomDTO;
-
-       onSelect(room: RoomDTO): void {
-            this.selectedRoom = room;
-        }
 
         constructor(private roomService: RoomService) { }
 
          ngOnInit() {
-             this.getRooms();
+             this.getAll();
              this.roomtoinsert = new RoomDTO();
         }
-// tslint:disable-next-line: one-line
-        getRooms(){
-            this.roomService.getRooms().subscribe(rooms => this.rooms = rooms);
+
+        getAll(){
+            this.roomService.getAll().subscribe(rooms => this.rooms = rooms);
         }
 
         delete(id: number ) {
         console.log('room.ts ok');
-        this.roomService.delete(id).subscribe(room => this.getRooms());
+        this.roomService.delete(id).subscribe(room => this.getAll());
 
     }
 
     insert(newroom: string): void {
         this.roomtoinsert.description = newroom;
-        this.roomService.insert(this.roomtoinsert).subscribe(room => this.getRooms());
+        this.roomService.insert(this.roomtoinsert).subscribe(room => this.getAll());
 
     }
 }
