@@ -22,6 +22,11 @@ public abstract class AbstractController <Entity, DTO>{
 		return service.getAll();		
 	}
 	
+	@PostMapping("/getallby")
+	public List<DTO> getAllBy(Object o){
+		return service.getAllBy(o);		
+	}
+	
 	@DeleteMapping("/delete")
 	public void delete(@RequestParam("id") long id) {
 		service.delete(id);
