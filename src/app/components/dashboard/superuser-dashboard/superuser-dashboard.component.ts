@@ -14,10 +14,10 @@ export class SuperuserDashboardComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.getUsers();
+    this.getAll();
   }
 
-  getUsers(): void {
-    this.userService.getUsers().subscribe(users => this.users = users);
+  getAll(): void {
+    this.userService.getAll().subscribe(users => this.users = users);
   }
 }
