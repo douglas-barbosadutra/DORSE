@@ -2,6 +2,7 @@
 import { AbstractService } from 'src/app/services/abstractservice';
 
 export abstract class AbstractComponent<DTO> {
+    route: any;
 
   constructor(public service: AbstractService<DTO>) {
    }
@@ -34,4 +35,12 @@ export abstract class AbstractComponent<DTO> {
     insert() {
         this.service.insert(this.insdto).subscribe(insdto => this.getAllBy());
     }
+    update(): void {
+      this.service.update(this.dto).subscribe(() => this.read() );
+  }
+   read(): DTO {
+      const id = +this.route.snapshot.paramMap.get('id');
+      this.service.read(id).subscribe(dto => this.dto = dto);
+      return this.dto;
+  }
 }

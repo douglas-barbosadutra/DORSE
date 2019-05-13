@@ -42,7 +42,7 @@
             "request": "launch",
             "url": "http://localhost:4200/#",
             "webRoot": "${workspaceFolder}",
-            "port": 9299
+            "port": 9208
         },
         {
             "name": "Launch Chrome DORSEAngular on Angular CLI Server (4)",

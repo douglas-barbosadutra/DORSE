@@ -26,6 +26,7 @@ import { ThingDetailsComponent } from './components/thing/thing-details/thing-de
 import { ItemComponent } from './components/item/item.component';
 import { ItemDetailsComponent } from './components/item/item-details/item-details.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
+import { TestuserDashboardComponent } from './components/dashboard/testuser-dashboard/testuser-dashboard.component';
 
 
 
@@ -54,6 +55,7 @@ import { NotificationsComponent } from './components/notifications/notifications
     ItemComponent,
     ItemDetailsComponent,
     NotificationsComponent,
+    TestuserDashboardComponent,
   ],
   imports: [
     BrowserModule,
