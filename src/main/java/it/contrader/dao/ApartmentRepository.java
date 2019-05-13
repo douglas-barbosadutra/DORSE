@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import it.contrader.model.Apartment;
 import it.contrader.model.Client;
-import it.contrader.service.MyRepository;
+import it.contrader.dao.MyRepository;
 
 @Repository
 @Transactional

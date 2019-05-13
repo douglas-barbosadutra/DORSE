@@ -8,6 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 import it.contrader.converter.Converter;
+import it.contrader.dao.MyRepository;
 
 @Service
 public abstract class AbstractService<Entity,DTO> implements ServiceDTO<Entity,DTO> {

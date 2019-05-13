@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import it.contrader.model.Superuser;
 import it.contrader.model.Testuser;
-import it.contrader.service.MyRepository;
+import it.contrader.dao.MyRepository;
 
 @Repository
 @Transactional

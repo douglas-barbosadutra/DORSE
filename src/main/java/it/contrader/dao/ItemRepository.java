@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import it.contrader.model.Client;
 import it.contrader.model.Item;
-import it.contrader.service.MyRepository;
+import it.contrader.dao.MyRepository;
 
 @Repository
 @Transactional
