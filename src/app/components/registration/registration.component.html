@@ -1,6 +1,5 @@
 
 <form class="register" >
-
 	<label for="Username">Username</label> 
 	<input type="text" name="username" [(ngModel)]="userDTO.username">
 	<br><br>
@@ -35,5 +34,5 @@
 	<option value="TUTOR">Tutor</option>
     </select>
     <br><br>
-	<button type="submit" (click)="register(userDTO)">Register</button>
+	<button type="submit" (click)="register()">Register</button>
 </form>

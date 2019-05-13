@@ -14,13 +14,13 @@ export class RegistrationComponent implements OnInit {
     constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
+    this.userDTO = new UserDTO();
   }
 
   register(): void {
-      this.userDTO = new UserDTO();
-      this.userService.insert(this.userDTO).subscribe((response) => {
-      if (response != null) {
-         this.router.navigateByUrl('/login');
+    this.userService.insert(this.userDTO).subscribe((response) => {
+    if (response != null) {
+    this.router.navigateByUrl('/login');
       }
       });
 }

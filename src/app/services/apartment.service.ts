@@ -9,8 +9,8 @@ import { AbstractService } from './abstractservice';
 
 export class ApartmentService extends AbstractService<ApartmentDTO> {
 
-      constructor(shttp: HttpClient) {
-        super(shttp);
+      constructor(http: HttpClient) {
+        super(http);
         this.type = 'apartment';
     }
 }

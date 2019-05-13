@@ -1,13 +1,10 @@
-<input #newthing/>
-<button (click)="insert(newthing.value)">Insert</button>
-
-
-
-  <li *ngFor="let thing of things">
-    <a routerLink="/thing-details/{{thing.id}}">
-      <span>{{thing.id}}</span> {{thing.description}}
+   <app-tutor-navbar></app-tutor-navbar>
+   
+  <li *ngFor="let dto of dtolist">
+    <a routerLink="/thing-details/{{dto.id}}">
+      <span>{{dto.id}}</span> {{dto.description}}
     </a>
-    <button type="submit" (click)="delete(thing.id)">
+    <button type="submit" (click)="delete(dto.id)">
       delete
     </button>
   </li>

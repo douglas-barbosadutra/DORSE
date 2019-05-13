@@ -1,36 +1,27 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApartmentDTO } from 'src/app/dto/apartmentdto';
 import { ApartmentService } from 'src/app/services/apartment.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { AbstractDetailsComponent } from '../../abstract/abstract-details/abstract-details.component';
+import { RoomDTO } from 'src/app/dto/roomdto';
 
 @Component({
   selector: 'app-apartment-details',
   templateUrl: './apartment-details.component.html',
   styleUrls: ['./apartment-details.component.css']
 })
-export class ApartmentDetailsComponent implements OnInit {
+export class ApartmentDetailsComponent extends AbstractDetailsComponent<ApartmentDTO, RoomDTO> implements OnInit {
 
-  @Input() apartment: ApartmentDTO;
 
-  constructor(private route: ActivatedRoute, private apartmentService: ApartmentService, private location: Location) {
+    constructor( route: ActivatedRoute, service: ApartmentService, location: Location) {
+      super(route, service, location);
+    }
 
-  }
+    ngOnInit() {
+        this.dto = new ApartmentDTO();
+        this.subdto = new RoomDTO();
+        this.dto = this.read();
+    }
 
-  ngOnInit() {
-      this.read();
-  }
-
-  read(): void {
-      const id = +this.route.snapshot.paramMap.get('id');
-      this.apartmentService.read(id).subscribe(apartment => this.apartment = apartment);
-  }
-
-  update(): void {
-      this.apartmentService.update(this.apartment).subscribe(() => this.goBack());
-  }
-
-  goBack(): void {
-      this.location.back();
-  }
 }

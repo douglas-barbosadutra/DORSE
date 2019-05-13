@@ -1,4 +1,4 @@
-table {
+/* table {
   border-collapse: collapse;
   width: 100%;
   background-color: white;
@@ -25,4 +25,4 @@ tr:nth-child(even){background-color: #f0f0f0}
 .left{
 
     text-align: right;
-}
+} */

@@ -10,26 +10,28 @@ export abstract class AbstractService<DTO> implements Service<DTO> {
 
     }
 
-    getAllBy(o: object): Observable<DTO[]> {
-        return this.http.post<DTO[]>('http://localhost:8080/' + this.type + '/getallby', o);
-  }
-      getAll(): Observable<DTO[]> {
-      return this.http.get<DTO[]>('http://localhost:8080/' + this.type + '/getall');
-  }
+    getAllBy(id: number): Observable<DTO[]> {
+        return this.http.get<DTO[]>('http://localhost:8080/' + this.type + '/getallby?id=' + id);
+    }
+    getAll(): Observable<DTO[]> {
+        return this.http.get<DTO[]>('http://localhost:8080/' + this.type + '/getall');
+    }
 
-  read(id: number): Observable<DTO> {
-      return this.http.get<DTO>('http://localhost:8080/' + this.type + '/read?id=' + id);
-  }
+    read(id: number): Observable<DTO> {
+        return this.http.get<DTO>('http://localhost:8080/' + this.type + '/read?id=' + id);
+    }
 
-  delete(id: number): Observable<any> {
-      return this.http.delete('http://localhost:8080/' + this.type + '/delete?id=' + id);
-  }
+    delete(id: number): Observable<any> {
+        return this.http.delete('http://localhost:8080/' + this.type + '/delete?id=' + id);
+    }
 
-  insert(apartment: DTO): Observable<any> {
-      return this.http.post('http://localhost:8080/' + this.type + '/insert', apartment);
-  }
+    insert(dto: DTO): Observable<any> {
+        return this.http.post('http://localhost:8080/' + this.type + '/insert', dto);
+    }
 
-  update(apartment: DTO): Observable<any> {
-      return this.http.put('http://localhost:8080/' + this.type + '/update', apartment);
-  }
+    update(dto: DTO): Observable<any> {
+        return this.http.put('http://localhost:8080/' + this.type + '/update', dto);
+
+    }
+
 }

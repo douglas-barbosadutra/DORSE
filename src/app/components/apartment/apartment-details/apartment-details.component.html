@@ -1,19 +1,27 @@
-<div>
-
+<div *ngIf="dto">
 <table>
-<th class="left">{{apartment.address | uppercase}}'S </th><th class="right">DETAILS</th>
+<th class="left">{{dto.address | uppercase}}'S </th><th class="right">DETAILS</th>
 
 <tr>
-    <td>Id </td><td>{{apartment.id}}</td>
+    <td>Id </td><td>{{dto.id}}</td>
 </tr>
 <tr>
-    <td>Address </td><td> <input [(ngModel)]= "apartment.address"/> </td>
-</tr>
-<tr>
-    <td>Tutor </td><td> {{this.apartment.tutorDTO.name}} </td>
+    <td>Address </td><td> <input [(ngModel)]= "dto.address"/> </td>
 </tr>
 </table>
+<br>
 
+Rooms of {{dto.address}}
+<br>
+ <label>Insert Room
+   <input [(ngModel)]="subdto.description"/>
+   </label>
+   <br>
+ <li *ngFor="let room of dto.roomsDTO">
+    <a routerLink="/room-details/{{room.id}}">
+      <span>{{room.id}}</span> {{room.description}}
+    </a>
+ </li>
   <button (click)="goBack()">go back</button>
   <button (click)="update()">save</button>
 </div>

@@ -1,44 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { ApartmentDTO } from '../../dto/apartmentdto';
 import { ApartmentService } from '../../services/apartment.service';
-import { TutorDTO } from 'src/app/dto/tutordto';
+import { AbstractComponent } from '../abstract/abstract.component';
+import { interval } from 'rxjs';
+import { startWith, switchMap } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-apartment',
   templateUrl: './apartment.component.html',
   styleUrls: ['./apartment.component.css']
 })
-export class ApartmentComponent implements OnInit {
+export class ApartmentComponent extends AbstractComponent<ApartmentDTO> implements OnInit {
 
-  apartments: ApartmentDTO[];
-  apartment: ApartmentDTO;
+    constructor(service: ApartmentService) {
+        super(service);
+    }
 
-  constructor(private apartmentService: ApartmentService) { }
-
-  ngOnInit() {
-      this.getAllBy(JSON.parse(localStorage.getItem('currentuser')));
-  }
-
-  getAll(): void {
-      this.apartmentService.getAll().subscribe(apartments => this.apartments = apartments);
-  }
-
-  getAllBy(tutorDTO: TutorDTO) {
-       this.apartmentService.getAllBy(tutorDTO).subscribe(apartments => this.apartments = apartments);
-
-  }
-
-
-
-  delete(id: number ) {
-      this.apartmentService.delete(id).subscribe(apartment => this.getAllBy(JSON.parse(localStorage.getItem('currentuser'))));
-  }
-
-  insert(address: string): void {
-      this.apartment = new ApartmentDTO();
-      this.apartment.address = address;
-      this.apartment.tutorDTO = JSON.parse(localStorage.getItem('currentuser'));
-      this.apartmentService.insert(this.apartment).subscribe(apartment => this.getAllBy(JSON.parse(localStorage.getItem('currentuser'))));
-  }
+    ngOnInit() {
+        this.currentEntity = 'currentUser';
+        this.dtolist = this.getAllBy();
+        this.insdto = new ApartmentDTO();
+        this.dto = new ApartmentDTO();
+        this.insdto.tutorDTO = JSON.parse(localStorage.getItem(this.currentEntity));
+    }
 
 }

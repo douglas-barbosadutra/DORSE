@@ -43,6 +43,78 @@
             "url": "http://localhost:4200/#",
             "webRoot": "${workspaceFolder}",
             "port": 9299
+        },
+        {
+            "name": "Launch Chrome DORSEAngular on Angular CLI Server (4)",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:4200/#",
+            "webRoot": "${workspaceFolder}",
+            "port": 9240
+        },
+        {
+            "name": "Launch Chrome DORSEAngular on Angular CLI Server (5)",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:4200/#",
+            "webRoot": "${workspaceFolder}",
+            "port": 9222
+        },
+        {
+            "name": "Launch Chrome DORSEAngular on Angular CLI Server (6)",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:4200/#",
+            "webRoot": "${workspaceFolder}",
+            "port": 9295
+        },
+        {
+            "name": "Launch Chrome DORSEAngular on Angular CLI Server (7)",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:4200/#",
+            "webRoot": "${workspaceFolder}",
+            "port": 9272
+        },
+        {
+            "name": "Launch Chrome DORSEAngular on Angular CLI Server (8)",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:4200/#",
+            "webRoot": "${workspaceFolder}",
+            "port": 9283
+        },
+        {
+            "name": "Launch Chrome DORSEAngular on Angular CLI Server (9)",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:4200/#",
+            "webRoot": "${workspaceFolder}",
+            "port": 9251
+        },
+        {
+            "name": "Launch Chrome DORSEAngular on Angular CLI Server (10)",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:4200/#",
+            "webRoot": "${workspaceFolder}",
+            "port": 9271
+        },
+        {
+            "name": "Launch Chrome DORSEAngular on Angular CLI Server (11)",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:4200/#",
+            "webRoot": "${workspaceFolder}",
+            "port": 9299
+        },
+        {
+            "name": "Launch Chrome DORSEAngular on Angular CLI Server (12)",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:4200/#",
+            "webRoot": "${workspaceFolder}",
+            "port": 9202
         }
     ]
 }{
@@ -57,24 +129,326 @@
 }
 }
 }            "webRoot": "${workspaceFolder}",
-            "port": 9291
-        },
-        {
-            "name": "Launch Chrome Angular on Angular CLI Server",
-            "type": "chrome",
-            "request": "launch",
-            "url": "http://localhost:4200/#",
-            "webRoot": "${workspaceFolder}",
-            "port": 9299
-        }
-    ]
+"port": 9291
+},
+{
+"name": "Launch Chrome Angular on Angular CLI Server",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9299
+}
+]
 }{
-    "name": "Launch Chrome DORSEAngular on Angular CLI Server (2)",
-    "type": "chrome",
-    "request": "launch",
-    "url": "http://localhost:4200/#",
-    "webRoot": "${workspaceFolder}",
-    "port": 9226
+"name": "Launch Chrome DORSEAngular on Angular CLI Server (2)",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9226
+}
+]
+}
+}type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9226
+}
+]
+}
+}
+},
+{
+"name": "Launch Chrome DORSEAngular on Angular CLI Server (3)",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9291
+},
+{
+"name": "Launch Chrome Angular on Angular CLI Server",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9299
+},
+{
+"name": "Launch Chrome DORSEAngular on Angular CLI Server (4)",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9240
+},
+{
+"name": "Launch Chrome DORSEAngular on Angular CLI Server (5)",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9222
+},
+{
+"name": "Launch Chrome DORSEAngular on Angular CLI Server (6)",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9295
+},
+{
+"name": "Launch Chrome DORSEAngular on Angular CLI Server (7)",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9272
+}
+]
+}{
+"name": "Launch Chrome DORSEAngular on Angular CLI Server (2)",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9226
+}
+]
+}
+}
+}            "webRoot": "${workspaceFolder}",
+"port": 9291
+},
+{
+"name": "Launch Chrome Angular on Angular CLI Server",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9299
+}
+]
+}{
+"name": "Launch Chrome DORSEAngular on Angular CLI Server (2)",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9226
+}
+]
+}
+}type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9226
+}
+]
+}
+}            "url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9226
+},
+{
+"name": "Launch Chrome DORSEAngular on Angular CLI Server (3)",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9291
+},
+{
+"name": "Launch Chrome Angular on Angular CLI Server",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9299
+},
+{
+"name": "Launch Chrome DORSEAngular on Angular CLI Server (4)",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9240
+},
+{
+"name": "Launch Chrome DORSEAngular on Angular CLI Server (5)",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9222
+},
+{
+"name": "Launch Chrome DORSEAngular on Angular CLI Server (6)",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9295
+},
+{
+"name": "Launch Chrome DORSEAngular on Angular CLI Server (7)",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9272
+},
+{
+"name": "Launch Chrome DORSEAngular on Angular CLI Server (8)",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9283
+},
+{
+"name": "Launch Chrome DORSEAngular on Angular CLI Server (9)",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9251
+},
+{
+"name": "Launch Chrome DORSEAngular on Angular CLI Server (10)",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9271
+}
+]
+}{
+"name": "Launch Chrome DORSEAngular on Angular CLI Server (2)",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9226
+}
+]
+}
+}
+}            "webRoot": "${workspaceFolder}",
+"port": 9291
+},
+{
+"name": "Launch Chrome Angular on Angular CLI Server",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9299
+}
+]
+}{
+"name": "Launch Chrome DORSEAngular on Angular CLI Server (2)",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9226
+}
+]
+}
+}type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9226
+}
+]
+}
+}
+},
+{
+"name": "Launch Chrome DORSEAngular on Angular CLI Server (3)",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9291
+},
+{
+"name": "Launch Chrome Angular on Angular CLI Server",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9299
+},
+{
+"name": "Launch Chrome DORSEAngular on Angular CLI Server (4)",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9240
+},
+{
+"name": "Launch Chrome DORSEAngular on Angular CLI Server (5)",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9222
+},
+{
+"name": "Launch Chrome DORSEAngular on Angular CLI Server (6)",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9295
+},
+{
+"name": "Launch Chrome DORSEAngular on Angular CLI Server (7)",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9272
+}
+]
+}{
+"name": "Launch Chrome DORSEAngular on Angular CLI Server (2)",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9226
+}
+]
+}
+}
+}            "webRoot": "${workspaceFolder}",
+"port": 9291
+},
+{
+"name": "Launch Chrome Angular on Angular CLI Server",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9299
+}
+]
+}{
+"name": "Launch Chrome DORSEAngular on Angular CLI Server (2)",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:4200/#",
+"webRoot": "${workspaceFolder}",
+"port": 9226
 }
 ]
 }

@@ -10,4 +10,5 @@ export class ApartmentDTO {
     roomsDTO: RoomDTO[];
 
     tutorDTO: TutorDTO;
+
 }

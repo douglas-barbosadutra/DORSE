@@ -13,6 +13,8 @@ import { ThingComponent } from './components/thing/thing.component';
 import { RoomDetailsComponent } from './components/room/room-details/room-details.component';
 import { ApartmentDetailsComponent } from './components/apartment/apartment-details/apartment-details.component';
 import { ThingDetailsComponent } from './components/thing/thing-details/thing-details.component';
+import { ItemComponent } from './components/item/item.component';
+import { ItemDetailsComponent } from './components/item/item-details/item-details.component';
 
 
 
@@ -31,7 +33,8 @@ const routes: Routes = [
     { path: 'room-details/:id', component: RoomDetailsComponent},
     { path: 'apartment-details/:id', component: ApartmentDetailsComponent},
     { path: 'thing-details/:id', component: ThingDetailsComponent},
-
+    { path: 'items', component: ItemComponent},
+    { path: 'item-details/:id', component: ItemDetailsComponent},
     ];
 
 

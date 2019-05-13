@@ -23,6 +23,9 @@ import { SuperuserNavbarComponent } from './components/navbar/superuser-navbar/s
 import { ApartmentDetailsComponent } from './components/apartment/apartment-details/apartment-details.component';
 import { ThingComponent } from './components/thing/thing.component';
 import { ThingDetailsComponent } from './components/thing/thing-details/thing-details.component';
+import { ItemComponent } from './components/item/item.component';
+import { ItemDetailsComponent } from './components/item/item-details/item-details.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
 
 
 
@@ -47,8 +50,10 @@ import { ThingDetailsComponent } from './components/thing/thing-details/thing-de
     OperatorNavbarComponent,
     SuperuserNavbarComponent,
     ThingComponent,
-    ThingDetailsComponent
-
+    ThingDetailsComponent,
+    ItemComponent,
+    ItemDetailsComponent,
+    NotificationsComponent,
   ],
   imports: [
     BrowserModule,

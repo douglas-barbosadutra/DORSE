@@ -25,8 +25,7 @@ export class LoginComponent implements OnInit {
         this.userService.login(this.loginDTO).subscribe((user) => {
         if (user != null) {
             // TOFIX
-            localStorage.setItem('currentuser', JSON.stringify(user));
-            console.log(localStorage.getItem('currentuser'));
+            localStorage.setItem('currentUser', JSON.stringify(user));
             if (user.userType.toString() === 'SUPERUSER') {
                 this.router.navigateByUrl('/superuser-dashboard');
             } else if (user.userType.toString() === 'OPERATOR') {
