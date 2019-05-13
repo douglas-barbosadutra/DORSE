@@ -8,9 +8,5 @@ import it.contrader.model.Tutor;
 
 @Service
 public class TutorService extends AbstractService<Tutor,TutorDTO> {
-	
-	@Override
-	public List<TutorDTO> getAllBy(Object o) {
-		return null;
-	}
+
 }

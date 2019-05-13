@@ -25,7 +25,8 @@ public class User {
 	public enum UserType {
 		SUPERUSER,
 		OPERATOR,
-		TUTOR
+		TUTOR,
+		TESTUSER
 	}
 
 	@Id

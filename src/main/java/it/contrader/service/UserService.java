@@ -9,13 +9,8 @@ import it.contrader.model.User;
 
 @Service
 public class UserService extends AbstractService<User,UserDTO> {
-	
-	@Override
-	public List<UserDTO> getAllBy(Object o) {
-		return null;
-	}
 
 	public UserDTO findByUsernameAndPassword(String username, String password) {
-		return converter.toDTO(((UserRepository)crudRepository).findByUsernameAndPassword(username, password));
+		return converter.toDTO(((UserRepository)myRepository).findByUsernameAndPassword(username, password));
 	}
 }

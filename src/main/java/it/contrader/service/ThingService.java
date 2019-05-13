@@ -12,8 +12,4 @@ import it.contrader.model.Thing;
 @Service
 public class ThingService extends AbstractService<Thing,ThingDTO> {
 	
-	@Override
-	public List<ThingDTO> getAllBy(Object o) {
-		return converter.toDTOList(((ThingRepository)crudRepository).findByRoom_id(((Room)o).getId()));
-	}
 }

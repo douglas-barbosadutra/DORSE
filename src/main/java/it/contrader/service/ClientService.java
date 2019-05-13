@@ -10,9 +10,5 @@ import it.contrader.model.Tutor;
 
 @Service
 public class ClientService extends AbstractService<Client, ClientDTO> {
-	
-	@Override
-	public List<ClientDTO> getAllBy(Object o) {
-		return converter.toDTOList(((ClientRepository)crudRepository).findByTutor_id(((Tutor)o).getId()));
-	}
+
 }

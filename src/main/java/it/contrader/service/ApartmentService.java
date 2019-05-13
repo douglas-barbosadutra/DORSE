@@ -9,9 +9,5 @@ import it.contrader.model.Tutor;
 
 @Service
 public class ApartmentService extends AbstractService<Apartment, ApartmentDTO> {
-	
-	@Override
-	public List<ApartmentDTO> getAllBy(Object o) {
-		return converter.toDTOList(((ApartmentRepository)crudRepository).findByTutor_id(((Tutor)o).getId()));
-	}
+
 }

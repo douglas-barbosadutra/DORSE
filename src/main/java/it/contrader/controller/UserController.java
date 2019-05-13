@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 import it.contrader.dto.LoginDTO;
 import it.contrader.dto.OperatorDTO;
 import it.contrader.dto.SuperuserDTO;
+import it.contrader.dto.TestuserDTO;
 import it.contrader.dto.TutorDTO;
 import it.contrader.dto.UserDTO;
 import it.contrader.model.User;
 import it.contrader.model.User.UserType;
 import it.contrader.service.OperatorService;
 import it.contrader.service.SuperuserService;
+import it.contrader.service.TestuserService;
 import it.contrader.service.TutorService;
 import it.contrader.service.UserService;
 
@@ -49,6 +51,9 @@ public class UserController extends AbstractController<User, UserDTO>{
 		case TUTOR:
 			TutorDTO tutor = (TutorDTO)  userdto.cast();
 			return tutor;
+		case TESTUSER:
+			TestuserDTO testuser = (TestuserDTO)  userdto.cast();
+			return testuser;
 		default: break;
 		}
 	return null;

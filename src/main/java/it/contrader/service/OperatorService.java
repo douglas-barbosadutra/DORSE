@@ -8,9 +8,5 @@ import it.contrader.model.Operator;
 
 @Service
 public class OperatorService extends AbstractService<Operator,OperatorDTO> {
-
-	@Override
-	public List<OperatorDTO> getAllBy(Object o) {
-		return null;
-	}
+	
 }

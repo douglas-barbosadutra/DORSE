@@ -13,18 +13,28 @@ import it.contrader.converter.Converter;
 public abstract class AbstractService<Entity,DTO> implements ServiceDTO<Entity,DTO> {
 	
 	@Autowired
-	protected CrudRepository<Entity,Long> crudRepository;
+	protected MyRepository<Entity,Long> myRepository;
 	@Autowired
 	protected Converter<Entity,DTO> converter;
 	
 	@Override
 	public Entity insert(DTO dto) {
-		return crudRepository.save(converter.toEntity(dto));
+		return myRepository.save(converter.toEntity(dto));
 	}
 
 	@Override
 	public List<DTO> getAll() {
-		Iterable<Entity> iter = crudRepository.findAll();
+		Iterable<Entity> iter = myRepository.findAll();
+		List<DTO> list = new ArrayList<>();
+		for (Entity item : iter) {
+	        list.add(converter.toDTO(item));
+	    }
+		return list;
+	}
+	
+	@Override
+	public List<DTO> getAllBy(long id) {
+		List<Entity> iter = myRepository.findAllBy(id);
 		List<DTO> list = new ArrayList<>();
 		for (Entity item : iter) {
 	        list.add(converter.toDTO(item));
@@ -34,16 +44,16 @@ public abstract class AbstractService<Entity,DTO> implements ServiceDTO<Entity,D
 
 	@Override
 	public DTO read(long id) {
-		return converter.toDTO(crudRepository.findById(id).get());
+		return converter.toDTO(myRepository.findById(id).get());
 	}
 
 	@Override
 	public Entity update(DTO dto) {
-		return crudRepository.save(converter.toEntity(dto));
+		return myRepository.save(converter.toEntity(dto));
 	}
 
 	@Override
 	public void delete(long id) {
-		crudRepository.deleteById(id);
+		myRepository.deleteById(id);
 	}
 }

@@ -8,7 +8,7 @@ public interface ServiceDTO<Entity,DTO> {
 	
 	public List<DTO> getAll();
 	
-	public List<DTO> getAllBy(Object o);
+	public List<DTO> getAllBy(long id);
 
 	public DTO read(long id);
 	
