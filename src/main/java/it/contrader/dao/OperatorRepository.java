@@ -17,6 +17,6 @@ public interface OperatorRepository extends MyRepository<Operator, Long>{
 
 	// TODO This should be not necessary
 	@Override
-	@Query("SELECT e FROM #{#entityName} e")
+	@Query(value = "SELECT * FROM #{#entityName} e", nativeQuery = true)
 	List<Operator> findAllBy(Long id);
 }

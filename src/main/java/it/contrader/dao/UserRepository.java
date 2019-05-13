@@ -18,7 +18,7 @@ public interface UserRepository extends MyRepository<User, Long>{
 	
 	// TODO This should be not necessary
 	@Override
-	@Query("SELECT e FROM #{#entityName} e")
+	@Query(value = "SELECT * FROM #{#entityName} e", nativeQuery = true)
 	List<User> findAllBy(Long id);
 	
 	User findByUsernameAndPassword(String username, String password);

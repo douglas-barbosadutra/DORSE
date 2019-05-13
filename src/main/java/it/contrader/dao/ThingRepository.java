@@ -17,6 +17,6 @@ import it.contrader.dao.MyRepository;
 public interface ThingRepository extends MyRepository<Thing, Long> {
 
 	@Override
-	@Query("SELECT e FROM #{#entityName} e WHERE e.room = ?1")
+	@Query(value = "SELECT * FROM #{#entityName} e WHERE e.room_id = ?1", nativeQuery = true)
 	List<Thing> findAllBy(Long id);
 }

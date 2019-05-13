@@ -17,6 +17,6 @@ public interface SuperuserRepository extends MyRepository<Superuser, Long> {
 
 	// TODO This should be not necessary
 	@Override
-	@Query("SELECT e FROM #{#entityName} e")
+	@Query(value = "SELECT * FROM #{#entityName}", nativeQuery = true)
 	List<Superuser> findAllBy(Long id);
 }

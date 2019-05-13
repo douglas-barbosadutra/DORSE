@@ -18,6 +18,6 @@ public interface TutorRepository extends MyRepository<Tutor, Long> {
 
 	// TODO This should be not necessary
 	@Override
-	@Query("SELECT e FROM #{#entityName} e")
+	@Query(value = "SELECT * FROM #{#entityName} e", nativeQuery = true)
 	List<Tutor>findAllBy(Long id);
 }

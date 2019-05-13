@@ -18,6 +18,6 @@ public interface TestuserRepository extends MyRepository<Testuser, Long> {
 
 	// TODO This should be not necessary
 	@Override
-	@Query("SELECT e FROM #{#entityName} e")
+	@Query(value = "SELECT * FROM #{#entityName} e", nativeQuery = true)
 	List<Testuser> findAllBy(Long id);
 }

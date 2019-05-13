@@ -15,6 +15,6 @@ import it.contrader.dao.MyRepository;
 public interface ClientRepository extends MyRepository<Client, Long> {
 	
 	@Override
-	@Query("SELECT e FROM #{#entityName} e WHERE e.tutor = ?1")
+	@Query(value = "SELECT * FROM #{#entityName} e WHERE e.tutor_id = ?1", nativeQuery = true)
 	List<Client> findAllBy(Long id);
 }
