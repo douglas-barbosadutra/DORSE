@@ -22,6 +22,7 @@ public abstract class AbstractController <Entity, DTO>{
 		return service.getAll();		
 	}
 	
+	//GETS all entities with the same id of an other entity
 	@GetMapping("/getallby")
 	public List<DTO> getAllBy(@RequestParam("id") long id){
 		return service.getAllBy(id);		

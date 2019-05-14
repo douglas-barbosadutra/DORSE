@@ -1,10 +1,9 @@
 package it.contrader.service;
 
 import java.util.ArrayList;
-import java.util.List;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 import it.contrader.converter.Converter;
@@ -33,6 +32,7 @@ public abstract class AbstractService<Entity,DTO> implements ServiceDTO<Entity,D
 		return list;
 	}
 	
+	//GETS all entities depending on id of a parameter, see (Entity)Repository
 	@Override
 	public List<DTO> getAllBy(long id) {
 		List<Entity> iter = myRepository.findAllBy(id);

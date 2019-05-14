@@ -10,5 +10,6 @@ import it.contrader.model.Room;
 @RequestMapping("/room")
 @CrossOrigin(origins = "http://localhost:4200")
 public class RoomController extends AbstractController<Room, RoomDTO> {
-
+	
+	//ALL crud methods in AbstractController
 }

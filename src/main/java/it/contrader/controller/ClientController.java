@@ -13,4 +13,5 @@ import it.contrader.model.Client;
 @CrossOrigin(origins = "http://localhost:4200")
 public class ClientController extends AbstractController<Client, ClientDTO> {
 	
+	//ALL crud methods in AbstractController
 }

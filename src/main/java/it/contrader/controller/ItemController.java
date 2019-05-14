@@ -11,5 +11,7 @@ import it.contrader.model.Item;
 @RequestMapping("/item")
 @CrossOrigin(origins = "http://localhost:4200")
 public class ItemController extends AbstractController<Item, ItemDTO> {
+	
+	//ALL crud methods in AbstractController
 }
 

@@ -12,4 +12,5 @@ import it.contrader.model.Apartment;
 @CrossOrigin(origins = "http://localhost:4200")
 public class ApartmentController extends AbstractController<Apartment, ApartmentDTO> {
 
+	//ALL crud methods in AbstractController
 }

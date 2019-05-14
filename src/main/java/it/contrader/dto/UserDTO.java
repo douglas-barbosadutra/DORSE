@@ -48,6 +48,9 @@ public class UserDTO {
 		case TUTOR:
 			userDTO = new TutorDTO();
 			break;
+		case TESTUSER: 
+			userDTO = new TestuserDTO();
+			break;
 		default:
 			userDTO = null;
 		}

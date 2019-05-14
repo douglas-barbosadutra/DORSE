@@ -9,8 +9,6 @@ import it.contrader.model.Room;
 public class RoomConverter extends AbstractConverter<Room, RoomDTO> {
 	
 	@Autowired
-	private ThingConverter thingConverter;
-	@Autowired
 	private ApartmentConverter apartmentConverter;
 	
 	public Room toEntity(RoomDTO roomDTO) {
@@ -18,9 +16,7 @@ public class RoomConverter extends AbstractConverter<Room, RoomDTO> {
 		if(roomDTO!=null) {
 			room.setId(roomDTO.getId());
 			room.setDescription(roomDTO.getDescription());
-			//TOFIX
-			//room.setThings(thingConverter.toEntityList(roomDTO.getThingsDTO()));
-			//room.setApartment(apartmentConverter.toEntity(roomDTO.getApartmentDTO()));
+			room.setApartment(apartmentConverter.toEntity(roomDTO.getApartmentDTO()));
 		}
 		return room;
 	}
@@ -30,9 +26,7 @@ public class RoomConverter extends AbstractConverter<Room, RoomDTO> {
 		if(room!=null) {
 			roomDTO.setId(room.getId());
 			roomDTO.setDescription(room.getDescription());
-			//TOFIX
-			//roomDTO.setThingsDTO(thingConverter.toDTOList(room.getThings()));
-			//roomDTO.setApartmentDTO(apartmentConverter.toDTO(room.getApartment()));
+			roomDTO.setApartmentDTO(apartmentConverter.toDTO(room.getApartment()));
 			
 		}
 		return roomDTO;

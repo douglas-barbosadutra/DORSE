@@ -1,10 +1,7 @@
 package it.contrader.converter;
 
 import org.springframework.stereotype.Component;
-
-import it.contrader.dto.SuperuserDTO;
 import it.contrader.dto.TestuserDTO;
-import it.contrader.model.Superuser;
 import it.contrader.model.Testuser;
 
 @Component

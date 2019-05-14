@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 @Component
 public abstract class AbstractConverter<Entity,DTO> implements Converter<Entity,DTO> {
 
+	
+	//Common List converter
 	public List<Entity> toEntityList (List<DTO> listDTO) {
 		
 		List<Entity> list = new ArrayList<Entity>();
@@ -21,6 +23,7 @@ public abstract class AbstractConverter<Entity,DTO> implements Converter<Entity,
 		return list;
 	}
 	
+	//Common List converter
 	public List<DTO> toDTOList (List<Entity> listEntity) {
 		List<DTO> list = new ArrayList<DTO>();
 

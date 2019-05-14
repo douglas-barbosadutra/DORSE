@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.contrader.dto.LoginDTO;
@@ -18,7 +17,6 @@ import it.contrader.model.User;
 import it.contrader.model.User.UserType;
 import it.contrader.service.OperatorService;
 import it.contrader.service.SuperuserService;
-import it.contrader.service.TestuserService;
 import it.contrader.service.TutorService;
 import it.contrader.service.UserService;
 
@@ -37,6 +35,7 @@ public class UserController extends AbstractController<User, UserDTO>{
 	@Autowired
 	private TutorService tutorService;
 	
+	//POST Angular a different DTO depending on UserType
 	@PostMapping(value = "/login")
 	public UserDTO login( @RequestBody LoginDTO loginDTO ) {
 		UserDTO userdto = userService.findByUsernameAndPassword(loginDTO.getUsername(), loginDTO.getPassword());
@@ -60,6 +59,7 @@ public class UserController extends AbstractController<User, UserDTO>{
 
 	}
 	
+	//INSERT a different DTO depending on UserType
 	@Override
 	@PostMapping(value = "/insert")
 	public UserDTO insert(@RequestBody UserDTO userDTO) {

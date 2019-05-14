@@ -13,4 +13,6 @@ import it.contrader.model.Thing;
 @RequestMapping("/thing")
 @CrossOrigin(origins = "http://localhost:4200")
 public class ThingController extends AbstractController<Thing, ThingDTO>{
+	
+	//ALL crud methods in AbstractController
 }
