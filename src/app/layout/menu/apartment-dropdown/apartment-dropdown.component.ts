@@ -52,7 +52,6 @@ export class ApartmentDropdownComponent implements OnInit {
   onSelect(apartment: ApartmentDTO) {
       this.selectedapt = apartment;
       localStorage.setItem('currentApartment', JSON.stringify(apartment));
-      console.log(localStorage.getItem('currentApartment'));
   }
 
   getAllBy(): ApartmentDTO[] {

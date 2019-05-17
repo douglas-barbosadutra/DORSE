@@ -1,13 +1,15 @@
 <div class="sidenav">
     <button class="dropdown-btn" (click)="pippo()" >Apartments</button>
+
+        
     <div class="dropdown-container">
+<input [(ngModel)]="insapartment.address"/>
+        <button type="submit" class="btn btn-primary" (click)="insert()">Insert</button> 
 
         <div *ngFor="let apartment of apartments">
-            <a [routerLink]="['/tutor-dashboard/apartment', apartment.id]" (click)="onSelect(apartment)">{{apartment.address}}</a>
+            <a [routerLink]="['/tutor-dashboard/apartment', apartment.id]" (click)="onSelect(apartment)" (dblclick)="onSelect(null)">{{apartment.address}}</a>
             <app-room-dropdown *ngIf="apartment===selectedapt" [apartment]="selectedapt"></app-room-dropdown>
+            
         </div>
-
-        <input [(ngModel)]="insapartment.address"/>
-        <button type="submit" class="btn btn-primary" (click)="insert()">Insert</button> 
     </div>
 </div>

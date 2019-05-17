@@ -64,4 +64,6 @@ export class RoomDropdownComponent implements OnInit {
  insert() {
         this.roomService.insert(this.insroom).subscribe(() => this.getAllBy());
     }
+
+
 }

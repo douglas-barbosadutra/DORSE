@@ -18,7 +18,7 @@ text-align: center;
 
 
 /* Fixed sidenav, full height */
-.sidenav {
+.sidenav, .menu {
   height: 50%;
   position: relative;
   z-index: 1;
@@ -30,7 +30,7 @@ text-align: center;
 }
 
 /* Style the sidenav links and the dropdown button */
-.sidenav a, .dropdown-btn {
+.sidenav a, .dropdown-btn{
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 20px;
@@ -45,12 +45,12 @@ text-align: center;
 }
 
 /* On mouse-over */
-.sidenav a:hover, .dropdown-btn:hover {
+.sidenav a:hover, .dropdown-btn:hover .menu a:hover {
   color: #f3f3f3;
 }
 
 /* Main content */
-.main {
+.main .menu {
   margin-left: 200px; /* Same as the width of the sidenav */
   font-size: 20px; /* Increased text to enable scrolling */
   padding: 0px 10px;
@@ -63,7 +63,7 @@ text-align: center;
 }
 
 /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
-.dropdown-container {
+.dropdown-container .menu {
   display: none;
   padding-left: 8px;
 }
