@@ -36,7 +36,7 @@ export class ApartmentDropdownComponent implements OnInit {
     pippo() {
         this.array = Array.from(this.dropdown);
         for (const element of this.array) {
-            element.addEventListener('click', function() {
+            element.addEventListener('', function() {
                 this.classList.toggle('active');
                 const dropdownContent = this.nextElementSibling;
                 if (dropdownContent.style.display === 'block') {

@@ -2,15 +2,15 @@
 // Hover to view descriptions of existing attributes.
 // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "Launch Chrome DoserAngular on Angular CLI Server",
-      "type": "chrome",
-      "request": "launch",
-      "url": "http://localhost:4200/#",
-      "webRoot": "${workspaceFolder}",
-      "port": 9283
-    }
-  ]
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Chrome DoserAngular on Angular CLI Server",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:4200/#",
+            "webRoot": "${workspaceFolder}",
+            "port": 9246
+        }
+    ]
 }
