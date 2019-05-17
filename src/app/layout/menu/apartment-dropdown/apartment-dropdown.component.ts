@@ -15,7 +15,7 @@ export class ApartmentDropdownComponent implements OnInit {
     insapartment: ApartmentDTO;
     id: number;
     route: ActivatedRoute;
-    dropdown: HTMLCollectionOf<Element>  = document.getElementsByClassName('dropdown-btn');
+    dropdown: HTMLCollectionOf<Element>;
     array = new Array<Element>();
     selectedapt: ApartmentDTO;
 
@@ -33,19 +33,19 @@ export class ApartmentDropdownComponent implements OnInit {
   }
 
     pippo() {
-        this.array = Array.from(this.dropdown);
-        for (const element of this.array) {
-            element.addEventListener('', function() {
-                this.classList.toggle('active');
-                const dropdownContent = this.nextElementSibling;
-                if (dropdownContent.style.display === 'block') {
+         this.dropdown = document.getElementsByClassName('dropdown-btn');
+         this.array = Array.from(this.dropdown);
+         for (const element of this.array) {
+             element.addEventListener('', function() {
+                 this.classList.toggle('active');
+                 const dropdownContent = this.nextElementSibling;
+                 if (dropdownContent.style.display === 'block') {
                     dropdownContent.style.display = 'none';
                 } else {
                     dropdownContent.style.display = 'block';
                 }
             });
         }
-        this.route.params.subscribe(() => this.getAllBy());
     }
 
 

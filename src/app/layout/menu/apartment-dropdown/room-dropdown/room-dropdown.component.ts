@@ -53,7 +53,6 @@ export class RoomDropdownComponent implements OnInit {
 
 
   onSelect(room: RoomDTO) {
-      localStorage.setItem('currentApartment', JSON.stringify(room));
   }
 
   getAllBy(): RoomDTO[] {
