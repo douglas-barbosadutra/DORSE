@@ -1,0 +1,16 @@
+<p>
+<div class="sidenav">
+    <button class="dropdown-btn" (mouseover)="pippo()" >Apartments 
+  </button>
+  <div class="dropdown-container">
+       <div class="card card-body">
+           <div *ngFor="let apartment of apartments">
+            <a  [routerLink]="['/tutor-dashboard/apartment', apartment.id]" 
+                (click)="onSelect(apartment)">{{apartment.address}}</a>
+                      <input [(ngModel)]="insapartment.address"/>   
+            <br>
+            <button type="submit" class="btn btn-primary" (click)="insert()">Insert</button> 
+        </div>
+   
+  </div>
+</div>

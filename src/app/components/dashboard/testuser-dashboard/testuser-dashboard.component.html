@@ -1,9 +1,0 @@
-   <app-tutor-navbar></app-tutor-navbar>
-     <li *ngFor="let dto of dtolist">
-    <a routerLink="/item-details/{{dto.id}}">
-      <span>{{dto.id}}</span> {{dto.description}}
-    </a>
-    <button type="submit" (click)="delete(dto.id)">
-      delete
-    </button>
-  </li>

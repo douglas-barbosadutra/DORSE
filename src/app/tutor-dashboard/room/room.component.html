@@ -1,0 +1,13 @@
+<div *ngIf="room">
+<table>
+<th>{{room.description | uppercase}}'S </th><th>DETAILS</th>
+
+<tr>
+    <td>Id </td><td>{{room.id}}</td>
+</tr>
+<tr>
+    <td>Description </td><td> <input [(ngModel)]= "room.description"/> </td>
+</tr>
+</table>
+    <button type="submit" class="btn btn-primary" (click)="update()">Save</button> 
+    <button type="submit" class="btn btn-primary" (click)="delete()">Delete</button>

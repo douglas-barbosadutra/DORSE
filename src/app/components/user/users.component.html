@@ -1,9 +1,0 @@
-
-  <li *ngFor="let user of users">
-    <a routerLink="/detail/{{user.id}}">
-      <span>{{user.id}}</span> {{user.username}}
-    </a>
-    <button type="submit" (click)="delete(user.id)">
-      delete
-    </button>
-  </li>

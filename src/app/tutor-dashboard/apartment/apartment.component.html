@@ -1,0 +1,13 @@
+<div *ngIf="apartment">
+<table>
+<th>{{apartment.address | uppercase}}'S </th><th>DETAILS</th>
+
+<tr>
+    <td>Id </td><td>{{apartment.id}}</td>
+</tr>
+<tr>
+    <td>Address </td><td> <input [(ngModel)]= "apartment.address"/> </td>
+</tr>
+</table>
+    <button type="submit" class="btn btn-primary" (click)="update()">Save</button> 
+    <button type="submit" class="btn btn-primary" (click)="delete()">Delete</button>
