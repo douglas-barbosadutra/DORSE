@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-room-dropdown',
   templateUrl: './room-dropdown.component.html',
-  styleUrls: ['../menu.component.css']
+  styleUrls: ['../../menu.component.css']
 })
 export class RoomDropdownComponent implements OnInit {
 

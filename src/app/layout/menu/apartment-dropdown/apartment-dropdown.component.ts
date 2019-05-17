@@ -30,7 +30,6 @@ export class ApartmentDropdownComponent implements OnInit {
       this.insapartment = new ApartmentDTO();
       this.insapartment.tutorDTO = JSON.parse(localStorage.getItem('currentUser'));
       this.route.params.subscribe(() => this.getAllBy());
-      this.pippo();
   }
 
     pippo() {

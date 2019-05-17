@@ -1,0 +1,7 @@
+
+         <div *ngFor="let room of rooms">
+            <a  [routerLink]="['/tutor-dashboard/room', room.id]" (click)="onSelect(room)">{{room.description}}</a>
+                </div>
+            <input [(ngModel)]="insroom.description"/>
+            <button type="submit" class="btn btn-primary" (click)="insert()">Insert</button> 
+

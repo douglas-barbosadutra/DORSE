@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MenuComponent } from './menu/menu.component';
 import { ApartmentDropdownComponent } from './menu/apartment-dropdown/apartment-dropdown.component';
-import { RoomDropdownComponent } from './menu/room-dropdown/room-dropdown.component';
+import { RoomDropdownComponent } from './menu/apartment-dropdown/room-dropdown/room-dropdown.component';
 
 @NgModule({
     declarations: [

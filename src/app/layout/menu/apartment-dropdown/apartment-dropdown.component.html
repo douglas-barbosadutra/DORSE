@@ -4,6 +4,7 @@
 
         <div *ngFor="let apartment of apartments">
             <a [routerLink]="['/tutor-dashboard/apartment', apartment.id]" (click)="onSelect(apartment)">{{apartment.address}}</a>
+            <app-room-dropdown *ngIf="apartment===selectedapt" [apartment]="selectedapt"></app-room-dropdown>
         </div>
 
         <input [(ngModel)]="insapartment.address"/>
