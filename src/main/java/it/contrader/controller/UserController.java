@@ -1,5 +1,6 @@
 package it.contrader.controller;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,6 +35,8 @@ public class UserController extends AbstractController<User, UserDTO>{
 	private OperatorService operatorService;
 	@Autowired
 	private TutorService tutorService;
+	@Autowired
+	protected ModelMapper modelMapper;
 	
 	//POST Angular a different DTO depending on UserType
 	@PostMapping(value = "/login")
@@ -42,21 +45,16 @@ public class UserController extends AbstractController<User, UserDTO>{
 		UserType userType = userdto.getUserType();
 		switch(userType){
 		case SUPERUSER:
-			SuperuserDTO superuser = (SuperuserDTO) userdto.cast();
-			return superuser;
+			return modelMapper.map(userdto, SuperuserDTO.class);
 		case OPERATOR:
-			OperatorDTO operator = (OperatorDTO) userdto.cast();
-			return operator;
+			return modelMapper.map(userdto, OperatorDTO.class);
 		case TUTOR:
-			TutorDTO tutor = (TutorDTO)  userdto.cast();
-			return tutor;
+			return modelMapper.map(userdto, TutorDTO.class);
 		case TESTUSER:
-			TestuserDTO testuser = (TestuserDTO)  userdto.cast();
-			return testuser;
-		default: break;
+			return modelMapper.map(userdto, TestuserDTO.class);
+		default:
+			return null;
 		}
-	return null;
-
 	}
 	
 	//INSERT a different DTO depending on UserType
@@ -67,15 +65,16 @@ public class UserController extends AbstractController<User, UserDTO>{
 		
 		switch(userType) {
 		case SUPERUSER:
-			superuserService.insert((SuperuserDTO)userDTO.cast());
+			superuserService.insert(modelMapper.map(userDTO, SuperuserDTO.class));
 			break;
 		case OPERATOR:
-			operatorService.insert((OperatorDTO)userDTO.cast());
+			operatorService.insert(modelMapper.map(userDTO, OperatorDTO.class));
 			break;
 		case TUTOR:
-			tutorService.insert((TutorDTO)userDTO.cast());
+			tutorService.insert(modelMapper.map(userDTO, TutorDTO.class));
 			break;
 		default:
+			break;
 		}
 		
 		return userDTO;

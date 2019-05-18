@@ -23,12 +23,14 @@ public abstract class AbstractConverter<Entity,DTO> implements Converter<Entity,
 	@Autowired
 	protected ModelMapper modelMapper;
 	
+	@Override
 	@SuppressWarnings("unchecked")
 	public Entity toEntity(DTO dto) {
 		Entity entity = (Entity) modelMapper.map(dto, ReflectionUtils.getClassDeclaredInSuperClassGeneric(this, 0));
 		return entity;
 	}
 	
+	@Override
 	@SuppressWarnings("unchecked")
 	public DTO toDTO(Entity entity) {
 		DTO dto = (DTO) modelMapper.map(entity, ReflectionUtils.getClassDeclaredInSuperClassGeneric(this, 1));
