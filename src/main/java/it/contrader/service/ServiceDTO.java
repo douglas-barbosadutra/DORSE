@@ -1,12 +1,10 @@
 package it.contrader.service;
 
-import java.util.List;
-
 public interface ServiceDTO<Entity,DTO> {
 	
-	public List<DTO> getAll();
+	public Iterable<DTO> getAll();
 	
-	public List<DTO> getAllBy(long id);
+	public Iterable<DTO> getAllBy(long id);
 
 	public DTO read(long id);
 	

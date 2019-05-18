@@ -1,7 +1,5 @@
 package it.contrader.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,13 +16,13 @@ public abstract class AbstractController <Entity, DTO>{
 	private ServiceDTO<Entity, DTO> service;
 	
 	@GetMapping("/getall")
-	public List<DTO> getAll(){
+	public Iterable<DTO> getAll(){
 		return service.getAll();		
 	}
 	
 	//GETS all entities with the same id of an other entity
 	@GetMapping("/getallby")
-	public List<DTO> getAllBy(@RequestParam("id") long id){
+	public Iterable<DTO> getAllBy(@RequestParam("id") long id){
 		return service.getAllBy(id);		
 	}
 	

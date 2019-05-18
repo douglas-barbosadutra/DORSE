@@ -1,7 +1,6 @@
 package it.contrader.service;
 
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -14,7 +13,7 @@ public class EventService extends AbstractService<Event,EventDTO> {
 
 	//ALL crud methods in AbstractService
 	
-	public List<EventDTO> findAllByItemAndDate(Long id, Date date){
+	public Iterable<EventDTO> findAllByItemAndDate(Long id, Date date){
 		return converter.toDTOList(((EventRepository)myRepository).findAllByItemAndDate(id, date));
 	}
 }

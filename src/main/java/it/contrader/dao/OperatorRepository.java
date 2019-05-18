@@ -1,6 +1,5 @@
 package it.contrader.dao;
 
-import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -14,5 +13,5 @@ public interface OperatorRepository extends MyRepository<Operator, Long>{
 	// TODO This should be not necessary
 	@Override
 	@Query(value = "SELECT * FROM #{#entityName} e", nativeQuery = true)
-	List<Operator> findAllBy(Long id);
+	Iterable<Operator> findAllBy(Long id);
 }

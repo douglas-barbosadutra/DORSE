@@ -1,8 +1,6 @@
 package it.contrader.converter;
 
 import java.lang.reflect.Type;
-import java.util.List;
-
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.modelmapper.convention.MatchingStrategies;
@@ -38,16 +36,16 @@ public abstract class AbstractConverter<Entity,DTO> implements Converter<Entity,
 	}
 	
 	@Override
-	public List<DTO> toDTOList(List<Entity> listEntity) {
-		Type listType = new TypeToken<List<DTO>>(){}.getType();
-		List<DTO> listDTO = modelMapper.map(listEntity, listType);
-		return listDTO;
+	public Iterable<DTO> toDTOList(Iterable<Entity> iterEntity) {
+		Type listType = new TypeToken<Iterable<DTO>>(){}.getType();
+		Iterable<DTO> iterDTO = modelMapper.map(iterEntity, listType);
+		return iterDTO;
 	}
 
 	@Override
-	public List<Entity> toEntityList(List<DTO> listDTO) {
-		Type listType = new TypeToken<List<Entity>>(){}.getType();
-		List<Entity> listEntity = modelMapper.map(listDTO, listType);
-		return listEntity;
+	public Iterable<Entity> toEntityList(Iterable<DTO> iterDTO) {
+		Type listType = new TypeToken<Iterable<Entity>>(){}.getType();
+		Iterable<Entity> iterEntity = modelMapper.map(iterDTO, listType);
+		return iterEntity;
 	}
 }

@@ -1,6 +1,5 @@
 package it.contrader.dao;
 
-import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -14,5 +13,5 @@ public interface ClientRepository extends MyRepository<Client, Long> {
 	//Custom QUERY, gets all clients depending on tutor_id
 	@Override
 	@Query(value = "SELECT * FROM #{#entityName} e WHERE e.tutor_id = ?1", nativeQuery = true)
-	List<Client> findAllBy(Long id);
+	Iterable<Client> findAllBy(Long id);
 }

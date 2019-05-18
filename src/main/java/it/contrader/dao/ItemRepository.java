@@ -1,6 +1,5 @@
 package it.contrader.dao;
 
-import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -14,5 +13,5 @@ public interface ItemRepository extends MyRepository<Item, Long> {
 	//Custom QUERY, gets all items depending on thing_id
 	@Override
 	@Query(value = "SELECT * FROM #{#entityName} e WHERE e.thing_id = ?1", nativeQuery = true)
-	List<Item> findAllBy(Long id);
+	Iterable<Item> findAllBy(Long id);
 }

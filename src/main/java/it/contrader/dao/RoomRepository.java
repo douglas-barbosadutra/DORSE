@@ -1,7 +1,5 @@
 package it.contrader.dao;
 
-import java.util.List;
-
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.Query;
@@ -17,5 +15,5 @@ public interface RoomRepository extends MyRepository<Room, Long> {
 	//Custom QUERY, gets all rooms depending on apartment_id
 	@Override
 	@Query(value = "SELECT * FROM #{#entityName} e WHERE e.apartment_id = ?1", nativeQuery = true)
-	List<Room> findAllBy(Long id);
+	Iterable<Room> findAllBy(Long id);
 }

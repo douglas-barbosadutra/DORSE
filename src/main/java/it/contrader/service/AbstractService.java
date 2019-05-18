@@ -1,8 +1,5 @@
 package it.contrader.service;
 
-import java.util.ArrayList;
-
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import it.contrader.converter.Converter;
@@ -21,24 +18,14 @@ public abstract class AbstractService<Entity,DTO> implements ServiceDTO<Entity,D
 	}
 
 	@Override
-	public List<DTO> getAll() {
-		Iterable<Entity> iter = myRepository.findAll();
-		List<DTO> list = new ArrayList<>();
-		for (Entity item : iter) {
-	        list.add(converter.toDTO(item));
-	    }
-		return list;
+	public Iterable<DTO> getAll() {
+		return converter.toDTOList(myRepository.findAll());
 	}
 	
 	//GETS all entities depending on id of a parameter, see (Entity)Repository
 	@Override
-	public List<DTO> getAllBy(long id) {
-		List<Entity> iter = myRepository.findAllBy(id);
-		List<DTO> list = new ArrayList<>();
-		for (Entity item : iter) {
-	        list.add(converter.toDTO(item));
-	    }
-		return list;
+	public Iterable<DTO> getAllBy(long id) {
+		return converter.toDTOList(myRepository.findAllBy(id));
 	}
 
 	@Override
