@@ -1,36 +1,51 @@
 package it.contrader.converter;
 
-import java.util.ArrayList;
+import java.lang.reflect.Type;
 import java.util.List;
-import org.springframework.stereotype.Component;
 
-@Component
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
+import org.modelmapper.convention.MatchingStrategies;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+
+import it.contrader.utils.ReflectionUtils;
+
 public abstract class AbstractConverter<Entity,DTO> implements Converter<Entity,DTO> {
 	
-	//Common List converter
-	public List<Entity> toEntityList (List<DTO> listDTO) {
-		
-		List<Entity> list = new ArrayList<Entity>();
+	@Bean
+	public ModelMapper modelMapper() {
+	    ModelMapper modelMapper = new ModelMapper();
+	    modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
+	    return modelMapper;
+	}
 
-		if(listDTO != null) {
-			for (DTO dto:listDTO) {
-				Entity entity = toEntity(dto);
-				list.add(entity);
-			}
-		}
-		return list;
+	@Autowired
+	protected ModelMapper modelMapper;
+	
+	@SuppressWarnings("unchecked")
+	public Entity toEntity(DTO dto) {
+		Entity entity = (Entity) modelMapper.map(dto, ReflectionUtils.getClassDeclaredInSuperClassGeneric(this, 0));
+		return entity;
 	}
 	
-	//Common List converter
-	public List<DTO> toDTOList (List<Entity> listEntity) {
-		List<DTO> list = new ArrayList<DTO>();
+	@SuppressWarnings("unchecked")
+	public DTO toDTO(Entity entity) {
+		DTO dto = (DTO) modelMapper.map(entity, ReflectionUtils.getClassDeclaredInSuperClassGeneric(this, 1));
+		return dto;
+	}
+	
+	@Override
+	public List<DTO> toDTOList(List<Entity> listEntity) {
+		Type listType = new TypeToken<List<DTO>>(){}.getType();
+		List<DTO> listDTO = modelMapper.map(listEntity, listType);
+		return listDTO;
+	}
 
-		if(listEntity != null) {
-			for (Entity entity:listEntity) {
-				DTO dto = toDTO(entity);
-				list.add(dto);
-			}
-		}
-		return list;
+	@Override
+	public List<Entity> toEntityList(List<DTO> listDTO) {
+		Type listType = new TypeToken<List<Entity>>(){}.getType();
+		List<Entity> listEntity = modelMapper.map(listDTO, listType);
+		return listEntity;
 	}
 }

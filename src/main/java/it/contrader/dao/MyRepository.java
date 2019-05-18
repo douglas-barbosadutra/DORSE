@@ -4,7 +4,6 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 
-
 @NoRepositoryBean
 public interface MyRepository<Entity, ID> extends CrudRepository<Entity, ID> {
 

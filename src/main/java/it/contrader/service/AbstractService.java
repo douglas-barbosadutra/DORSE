@@ -4,12 +4,10 @@ import java.util.ArrayList;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import it.contrader.converter.Converter;
 import it.contrader.dao.MyRepository;
 
-@Service
 public abstract class AbstractService<Entity,DTO> implements ServiceDTO<Entity,DTO> {
 	
 	@Autowired
