@@ -1,6 +1,6 @@
 package it.contrader.model;
 
-import java.sql.Time;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +23,7 @@ public class Event {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	private Time time;
+	private Date date;
 	
 	@ManyToOne
 	@JoinColumn(name = "item_id")

@@ -19,7 +19,7 @@ public class EventConverter extends AbstractConverter<Event, EventDTO> {
 		Event event = new Event();
 		if (eventDTO != null) {
 			event.setId(eventDTO.getId());
-			event.setTime(eventDTO.getTime());
+			event.setDate(eventDTO.getDate());
 			event.setItem(itemConverter.toEntity(eventDTO.getItemDTO()));
 		}
 		return event;
@@ -30,7 +30,7 @@ public class EventConverter extends AbstractConverter<Event, EventDTO> {
 		EventDTO eventDTO = new EventDTO();
 		if (event != null) {
 			eventDTO.setId(event.getId());
-			eventDTO.setTime(event.getTime());
+			eventDTO.setDate(event.getDate());
 			eventDTO.setItemDTO(itemConverter.toDTO(event.getItem()));
 		}
 		return eventDTO;

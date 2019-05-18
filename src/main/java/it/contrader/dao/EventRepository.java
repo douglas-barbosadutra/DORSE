@@ -1,5 +1,6 @@
 package it.contrader.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -17,4 +18,8 @@ public interface EventRepository extends MyRepository<Event, Long> {
 	@Override
 	@Query(value = "SELECT * FROM #{#entityName} e WHERE e.item_id = ?1", nativeQuery = true)
 	List<Event> findAllBy(Long id);
+	
+	//Find all events by item and day
+	@Query(value = "SELECT * FROM #{#entityName} e WHERE e.item_id = ?1 AND CONVERT(DATETIME, FLOOR(CONVERT(FLOAT, date))) = CONVERT(DATETIME, FLOOR(CONVERT(FLOAT, ?2))", nativeQuery = true)
+	List<Event> findAllByItemAndDate(Long id, Date date);
 }
