@@ -19,13 +19,13 @@ public abstract class AbstractService<Entity,DTO> implements ServiceDTO<Entity,D
 
 	@Override
 	public Iterable<DTO> getAll() {
-		return converter.toDTOList(myRepository.findAll());
+		return converter.toDTO(myRepository.findAll());
 	}
 	
 	//GETS all entities depending on id of a parameter, see (Entity)Repository
 	@Override
 	public Iterable<DTO> getAllBy(long id) {
-		return converter.toDTOList(myRepository.findAllBy(id));
+		return converter.toDTO(myRepository.findAllBy(id));
 	}
 
 	@Override

@@ -36,14 +36,14 @@ public abstract class AbstractConverter<Entity,DTO> implements Converter<Entity,
 	}
 	
 	@Override
-	public Iterable<DTO> toDTOList(Iterable<Entity> iterEntity) {
+	public Iterable<DTO> toDTO(Iterable<Entity> iterEntity) {
 		Type listType = new TypeToken<Iterable<DTO>>(){}.getType();
 		Iterable<DTO> iterDTO = modelMapper.map(iterEntity, listType);
 		return iterDTO;
 	}
 
 	@Override
-	public Iterable<Entity> toEntityList(Iterable<DTO> iterDTO) {
+	public Iterable<Entity> toEntity(Iterable<DTO> iterDTO) {
 		Type listType = new TypeToken<Iterable<Entity>>(){}.getType();
 		Iterable<Entity> iterEntity = modelMapper.map(iterDTO, listType);
 		return iterEntity;

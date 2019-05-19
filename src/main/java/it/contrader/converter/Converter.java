@@ -6,7 +6,7 @@ public interface Converter<Entity,DTO> {
 	
 	public DTO toDTO(Entity entity);
 	
-	public Iterable<DTO> toDTOList(Iterable<Entity> listEntity);
+	public Iterable<DTO> toDTO(Iterable<Entity> iterEntity);
 	
-	public Iterable<Entity> toEntityList(Iterable<DTO> listDTO);
+	public Iterable<Entity> toEntity(Iterable<DTO> iterDTO);
 }
