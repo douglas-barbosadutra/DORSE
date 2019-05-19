@@ -14,6 +14,6 @@ public class EventService extends AbstractService<Event,EventDTO> {
 	//ALL crud methods in AbstractService
 	
 	public Iterable<EventDTO> findAllByItemAndDate(Long id, Date date){
-		return converter.toDTO(((EventRepository)myRepository).findAllByItemAndDate(id, date));
+		return mapper.toDTO(((EventRepository)myRepository).findAllByItemAndDate(id, date));
 	}
 }

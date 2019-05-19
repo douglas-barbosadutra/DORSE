@@ -15,5 +15,5 @@ public class EventDTO {
 	
 	private Date date;
 	
-	private ItemDTO itemDTO;
+	private ItemDTO item;
 }

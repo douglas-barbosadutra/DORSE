@@ -17,5 +17,5 @@ public class ItemDTO {
 	
 	private boolean status;
 	
-	private ThingDTO thingDTO;
+	private ThingDTO thing;
 }

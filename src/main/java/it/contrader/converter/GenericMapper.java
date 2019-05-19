@@ -1,6 +1,6 @@
 package it.contrader.converter;
 
-public interface Converter<Entity,DTO> {
+public interface GenericMapper<Entity, DTO> {
 
 	public Entity toEntity(DTO dto);
 	

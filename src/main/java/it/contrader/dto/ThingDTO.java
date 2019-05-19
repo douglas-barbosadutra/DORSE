@@ -14,6 +14,6 @@ public class ThingDTO {
 	
 	private String description;
 	
-	private List<ItemDTO> itemsDTO;
+	private List<ItemDTO> items;
 	
 }

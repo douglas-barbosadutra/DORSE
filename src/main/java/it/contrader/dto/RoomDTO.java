@@ -14,7 +14,7 @@ public class RoomDTO {
 
 	private String description;
 	
-	private List<ThingDTO> thingsDTO;
+	private List<ThingDTO> things;
 	
 	private ApartmentDTO apartmentDTO;
 }

@@ -14,8 +14,8 @@ public class ApartmentDTO {
 
 	private String address;
 	
-	private List<RoomDTO> roomsDTO;
+	private List<RoomDTO> rooms;
 	
-	private TutorDTO tutorDTO;
+	private TutorDTO tutor;
 	
 }
