@@ -6,14 +6,14 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-item',
-  templateUrl: './item.component.html',
-  styleUrls: ['./item.component.css']
+  selector: 'app-item-dropdown',
+  templateUrl: './item-dropdown.component.html',
+  styleUrls: ['../../menu.component.css']
 })
-export class ItemComponent implements OnInit {
+export class ItemDropdownComponent implements OnInit {
 
     @Input() thing: ThingDTO;
-    item: ItemDTO;
+    items: ItemDTO[];
     itemService: ItemService;
     route: ActivatedRoute;
     location: Location;
@@ -25,16 +25,16 @@ export class ItemComponent implements OnInit {
         this.location = location;
     }
   ngOnInit() {
-      this.item = new ItemDTO();
-      this.item = this.read();
-      this.route.params.subscribe(() => this.item = this.read());
+      this.items = new Array<ItemDTO>();
+      this.items = this.getAllBy();
+      console.log(this.items);
+      this.route.params.subscribe(() => this.items = this.getAllBy());
 
   }
 
-  read(): ItemDTO {
-    this.id = +this.route.snapshot.paramMap.get('id');
-    this. itemService.read(this.id).subscribe( item => this.item =  item);
-    return this.item;
-  }
-
+  getAllBy(): ItemDTO[] {
+        this.id = this.thing.id;
+        this. itemService.getAllBy(this.id).subscribe( items => this. items =  items);
+        return this.items;
+    }
 }

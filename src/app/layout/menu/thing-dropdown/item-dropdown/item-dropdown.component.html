@@ -1,0 +1,5 @@
+<a [routerLink]="['/tutor-dashboard/thing', thing.id]">Thing Details</a>
+
+<div *ngFor="let item of items">
+    <a [routerLink]="['/tutor-dashboard/item', item.id]">{{item.description}}</a>
+</div>

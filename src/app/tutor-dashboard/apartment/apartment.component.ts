@@ -4,6 +4,9 @@ import { ApartmentService } from '../../services/apartment.service';
 import { RoomDTO } from 'src/app/dto/roomdto';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { ClientService } from 'src/app/services/client.service';
+import { ClientDTO } from 'src/app/dto/clientdto';
+import { RoomService } from 'src/app/services/room.service';
 
 
 @Component({
@@ -14,23 +17,34 @@ import { Location } from '@angular/common';
 export class ApartmentComponent implements OnInit {
 
     apartment = new ApartmentDTO();
-    room = new RoomDTO();
+    room: RoomDTO;
     route: ActivatedRoute;
     apartmentService: ApartmentService;
     location: Location;
+    clientService: ClientService;
+    clients: ClientDTO[];
+    roomService: RoomService;
+    rooms: RoomDTO[];
 
-    constructor( route: ActivatedRoute, apartmentService: ApartmentService, location: Location) {
+    constructor( route: ActivatedRoute, apartmentService: ApartmentService,
+                 clientService: ClientService, roomService: RoomService, location: Location) {
         this.apartmentService = apartmentService;
         this.route = route;
         this.location = location;
+        this.clientService = clientService;
+        this.roomService = roomService;
     }
 
     ngOnInit() {
+        this.room = new RoomDTO();
         if ( +this.route.snapshot.paramMap.get('id') !== 0) {
             this.read();
         }
         this.route.params.subscribe(
         (params) => this.read());
+        this.clients = new Array<ClientDTO>();
+        this.getAllBy();
+        this.getAllRoomsBy();
     }
 
      update(): void {
@@ -47,10 +61,22 @@ export class ApartmentComponent implements OnInit {
       return this.apartment;
   }
 
- delete() {
+    delete() {
         this.apartmentService.delete(this.apartment.id).subscribe(() => this.location.back());
         this.location.back();
     }
 
+    getAllBy() {
+        this.clientService.getAllBy(+this.route.snapshot.paramMap.get('id')).subscribe(clients => this.clients = clients)
+    }
+
+    getAllRoomsBy() {
+        this.roomService.getAllBy(+this.route.snapshot.paramMap.get('id')).subscribe(rooms => this.rooms = rooms);
+    }
+
+    insert() {
+        this.room.apartmentDTO = this.apartment;
+        this.roomService.insert(this.room).subscribe(() => this.getAllRoomsBy());
+    }
 
 }

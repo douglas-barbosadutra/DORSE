@@ -1,8 +1,10 @@
 
-         <div *ngFor="let room of rooms">
-            <a  [routerLink]="['/tutor-dashboard/room', room.id]" (click)="onSelect(room)">{{room.description}}</a>
-                </div>
-            <input [(ngModel)]="insroom.description"/>
-            
-            <button type="submit" class="btn btn-primary" (click)="insert()">Insert</button> 
+<a [routerLink]="['/tutor-dashboard/apartment', apartment.id]">Apartment Details</a>
 
+<ngb-accordion [closeOthers]="true" *ngFor="let room of rooms" (click)="select(room)" >
+  <ngb-panel title="{{room.description}}">
+   <ng-template ngbPanelContent >
+       <app-thing-dropdown *ngIf="selectedroom===room" [room]="selectedroom"></app-thing-dropdown>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>

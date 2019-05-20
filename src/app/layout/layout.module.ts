@@ -6,10 +6,12 @@ import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MenuComponent } from './menu/menu.component';
+import { ThingDropdownComponent } from './menu/thing-dropdown/thing-dropdown.component';
+import { ItemDropdownComponent } from './menu/thing-dropdown/item-dropdown/item-dropdown.component';
 import { ApartmentDropdownComponent } from './menu/apartment-dropdown/apartment-dropdown.component';
 import { RoomDropdownComponent } from './menu/apartment-dropdown/room-dropdown/room-dropdown.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     declarations: [
@@ -19,7 +21,9 @@ import { RoomDropdownComponent } from './menu/apartment-dropdown/room-dropdown/r
         NavbarComponent,
         MenuComponent,
         ApartmentDropdownComponent,
-        RoomDropdownComponent
+        RoomDropdownComponent,
+        ThingDropdownComponent,
+        ItemDropdownComponent
     ],
 
     imports: [

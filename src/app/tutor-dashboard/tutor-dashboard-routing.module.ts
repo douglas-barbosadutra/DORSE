@@ -13,8 +13,8 @@ const routes: Routes = [
                 { path: '', component: TutorDashboardComponent },
                 { path: 'apartment/:id', component: ApartmentComponent },
                 { path: 'room/:id', component: RoomComponent },
-                { path: 'thing:id', component: ThingComponent },
-                { path: 'item:id', component: ItemComponent },
+                { path: 'thing/:id', component: ThingComponent },
+                { path: 'item/:id', component: ItemComponent },
         ]},
     ];
 

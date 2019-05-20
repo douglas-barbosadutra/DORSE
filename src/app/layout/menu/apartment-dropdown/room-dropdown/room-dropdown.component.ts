@@ -17,9 +17,7 @@ export class RoomDropdownComponent implements OnInit {
     insroom: RoomDTO;
     id: number;
     route: ActivatedRoute;
-    dropdown: HTMLCollectionOf<Element>  = document.getElementsByClassName('dropdown-btn');
-    array = new Array<Element>();
-
+    selectedroom: RoomDTO;
 
     constructor(roomService: RoomService, route: ActivatedRoute) {
         this. roomService =  roomService;
@@ -30,33 +28,11 @@ export class RoomDropdownComponent implements OnInit {
       this.rooms = this.getAllBy();
       this.insroom = new RoomDTO();
       this.insroom.apartmentDTO = this.apartment;
-      this.route.params.subscribe(
-        () => this.rooms = this.getAllBy());
-      this.pippo();
-  }
-
-      pippo() {
-        this.array = Array.from(this.dropdown);
-        for (const element of this.array) {
-            element.addEventListener('click', function() {
-                this.classList.toggle('active');
-                const dropdownContent = this.nextElementSibling;
-                if (dropdownContent.style.display === 'block') {
-                    dropdownContent.style.display = 'none';
-                } else {
-                    dropdownContent.style.display = 'block';
-                }
-            });
-        }
-        this.route.params.subscribe(() => this.getAllBy());
-    }
-
-
-  onSelect(room: RoomDTO) {
+      this.route.params.subscribe(() => this.rooms = this.getAllBy());
   }
 
   getAllBy(): RoomDTO[] {
-        this.id = JSON.parse(localStorage.getItem('currentApartment')).id;
+        this.id = this.apartment.id;
         this. roomService.getAllBy(this.id).subscribe( rooms => this. rooms =  rooms);
         return this. rooms;
     }
@@ -65,5 +41,9 @@ export class RoomDropdownComponent implements OnInit {
         this.roomService.insert(this.insroom).subscribe(() => this.getAllBy());
     }
 
+    select(room: RoomDTO) {
+        this.selectedroom = room;
+        localStorage.setItem('currentRoom', JSON.stringify(room));
+    }
 
 }

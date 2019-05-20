@@ -3,6 +3,7 @@ import { RoomDTO } from 'src/app/dto/roomdto';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { RoomService } from 'src/app/services/room.service';
+import { ThingDTO } from 'src/app/dto/thingdto';
 
 @Component({
   selector: 'app-room',
@@ -15,6 +16,7 @@ export class RoomComponent implements OnInit {
     route: ActivatedRoute;
     roomService: RoomService;
     location: Location;
+    thing: ThingDTO;
 
     constructor( route: ActivatedRoute, roomService: RoomService, location: Location) {
         this.roomService = roomService;
@@ -43,9 +45,9 @@ export class RoomComponent implements OnInit {
       this.roomService.read(id).subscribe(room => this.room = room);
       return this.room;
   }
-
- delete() {
+   delete() {
         this.roomService.delete(this.room.id).subscribe(() => this.location.back());
         this.location.back();
     }
+
 }

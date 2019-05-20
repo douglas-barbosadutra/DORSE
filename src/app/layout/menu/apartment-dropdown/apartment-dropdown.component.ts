@@ -15,8 +15,6 @@ export class ApartmentDropdownComponent implements OnInit {
     insapartment: ApartmentDTO;
     id: number;
     route: ActivatedRoute;
-    dropdown: HTMLCollectionOf<Element>;
-    array = new Array<Element>();
     selectedapt: ApartmentDTO;
 
     constructor(apartmentService: ApartmentService, route: ActivatedRoute) {
@@ -28,30 +26,14 @@ export class ApartmentDropdownComponent implements OnInit {
  ngOnInit() {
       this.apartments = this.getAllBy();
       this.insapartment = new ApartmentDTO();
+      this.selectedapt = new ApartmentDTO();
       this.insapartment.tutorDTO = JSON.parse(localStorage.getItem('currentUser'));
       this.route.params.subscribe(() => this.getAllBy());
   }
 
-    pippo() {
-         this.dropdown = document.getElementsByClassName('dropdown-btn');
-         this.array = Array.from(this.dropdown);
-         for (const element of this.array) {
-             element.addEventListener('', function() {
-                 this.classList.toggle('active');
-                 const dropdownContent = this.nextElementSibling;
-                 if (dropdownContent.style.display === 'block') {
-                    dropdownContent.style.display = 'none';
-                } else {
-                    dropdownContent.style.display = 'block';
-                }
-            });
-        }
-    }
 
-
-  onSelect(apartment: ApartmentDTO) {
-      this.selectedapt = apartment;
-      localStorage.setItem('currentApartment', JSON.stringify(apartment));
+  select(apartment: ApartmentDTO) {
+        this.selectedapt = apartment;
   }
 
   getAllBy(): ApartmentDTO[] {
