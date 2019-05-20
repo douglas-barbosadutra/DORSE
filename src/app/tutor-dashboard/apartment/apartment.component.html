@@ -1,27 +1,40 @@
 <div *ngIf="apartment">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 style="text-align: center">{{apartment.address | uppercase}}</h2>
+            </div>
+        </div>   
 
-{{apartment.address | uppercase}}:
-<br>
+        <div class="row">
+            <div class="col-md-6">
+                Apartment's address: <input [(ngModel)]= "apartment.address"/> 
+                <button type="submit" class="btn btn-primary" (click)="update()">Save</button> 
+            </div>
+            <div class="col-md-6">
+                Delete this apartment
+                <button type="submit" class="btn btn-primary" (click)="delete()">Delete</button>
+            </div>
+        </div>
 
-    Address: <input [(ngModel)]= "apartment.address"/>
+        <div class="row mt-5">
+            <div class="col-md-6">
+               <h5>Rooms in this apartment:</h5>
+                <ul *ngFor="let room of rooms">
+                    {{room.description}}
+                </ul>
+                <h6>Insert a new room:</h6> 
+                <input [(ngModel)]="room.description"/>
+                <button type="submit" class="btn btn-primary" (click)="insert()">Insert</button>
+            </div>
+            <div class="col-md-6">
+                <h5>Clients in this apartment:</h5>
+                <ul *ngFor="let client of clients">
+                    <li>{{client.name}} {{client.surname}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 
-<button type="submit" class="btn btn-primary" (click)="update()">Save</button> 
-<br>
-<br>
-Delete this apartment
-<button type="submit" class="btn btn-primary" (click)="delete()">Delete</button>
-<br>
-<br>
-Clients in this apartment:
-<ul *ngFor="let client of clients">
-    <li>{{client.name}} {{client.surname}}</li>
-</ul>
-<br>
-<br>
-Rooms in this apartment:
-<ul *ngFor="let room of rooms">
-    {{room.description}}
-</ul>
-<br>
-Insert a new room: <input [(ngModel)]="room.description"/>
-        <button type="submit" class="btn btn-primary" (click)="insert()">Insert</button>
+

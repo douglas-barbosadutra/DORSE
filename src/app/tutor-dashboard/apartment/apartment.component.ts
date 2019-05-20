@@ -67,7 +67,7 @@ export class ApartmentComponent implements OnInit {
     }
 
     getAllBy() {
-        this.clientService.getAllBy(+this.route.snapshot.paramMap.get('id')).subscribe(clients => this.clients = clients)
+        this.clientService.getAllBy(+this.route.snapshot.paramMap.get('id')).subscribe(clients => this.clients = clients);
     }
 
     getAllRoomsBy() {
