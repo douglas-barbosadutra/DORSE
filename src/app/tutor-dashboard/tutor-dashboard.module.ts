@@ -9,6 +9,7 @@ import { ThingComponent } from './thing/thing.component';
 import { ItemComponent } from './item/item.component';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ClientComponent } from './client/client.component';
 
 
 
@@ -20,6 +21,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         RoomComponent,
         ThingComponent,
         ItemComponent,
+        ClientComponent,
     ],
 
     imports: [
