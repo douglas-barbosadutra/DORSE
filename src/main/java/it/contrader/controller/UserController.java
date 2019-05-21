@@ -2,6 +2,7 @@ package it.contrader.controller;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,6 +39,11 @@ public class UserController extends AbstractController<User, UserDTO>{
 	private TutorService tutorService;
 	@Autowired
 	protected ModelMapper modelMapper;
+	
+	@Bean
+	public ModelMapper modelMapper() {
+		return new ModelMapper();
+	}
 	
 	//POST Angular a different DTO depending on UserType
 	@PostMapping(value = "/login")

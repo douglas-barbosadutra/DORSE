@@ -1,12 +1,14 @@
 package it.contrader.converter;
 
+import org.mapstruct.Context;
+
 public interface GenericMapper<Entity, DTO> {
 
-	public Entity toEntity(DTO dto);
+	public Entity toEntity(DTO dto, @Context CycleAvoidingMappingContext context);
 	
-	public DTO toDTO(Entity entity);
+	public DTO toDTO(Entity entity, @Context CycleAvoidingMappingContext context);
 	
-	public Iterable<DTO> toDTO(Iterable<Entity> iterEntity);
+	public Iterable<DTO> toDTO(Iterable<Entity> iterEntity, @Context CycleAvoidingMappingContext context);
 	
-	public Iterable<Entity> toEntity(Iterable<DTO> iterDTO);
+	public Iterable<Entity> toEntity(Iterable<DTO> iterDTO, @Context CycleAvoidingMappingContext context);
 }
