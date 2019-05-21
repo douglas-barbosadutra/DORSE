@@ -38,15 +38,9 @@ import org.mapstruct.TargetType;
 public class CycleAvoidingMappingContext {
     private Map<Object, Object> knownInstances = new IdentityHashMap<Object, Object>();
 
-    @BeforeMapping
+    @SuppressWarnings("unchecked")
+	@BeforeMapping
     public <T> T getMappedInstance(Object source, @TargetType Class<T> targetType) {
-    	if (knownInstances.containsKey(source)) {
-			try {
-				return targetType.newInstance();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-    	}
         return (T) knownInstances.get( source );
     }
 

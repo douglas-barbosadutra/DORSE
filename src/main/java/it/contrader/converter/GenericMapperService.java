@@ -21,6 +21,7 @@ import org.springframework.stereotype.Component;
  *
  */
 @Component
+@SuppressWarnings({"rawtypes", "unchecked"})
 public class GenericMapperService {
 
 	/**

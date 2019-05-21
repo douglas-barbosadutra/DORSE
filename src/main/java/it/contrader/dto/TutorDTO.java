@@ -2,6 +2,10 @@ package it.contrader.dto;
 
 import java.util.Date;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import it.contrader.model.User.UserType;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -10,6 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @EqualsAndHashCode(callSuper=false)
 @NoArgsConstructor
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class TutorDTO extends UserDTO {
 	
 	private List<ApartmentDTO> apartments;

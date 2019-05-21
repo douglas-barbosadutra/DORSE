@@ -1,6 +1,10 @@
 package it.contrader.dto;
 
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import it.contrader.model.Category;
 import it.contrader.model.User.UserType;
 import lombok.AllArgsConstructor;
@@ -12,6 +16,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper=false)
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class OperatorDTO extends UserDTO {
 	
 	public OperatorDTO(long id, String username, String password, UserType userType, String name, String surname, String email, String address, String telnumber, Date birthdate, String ccc, boolean paymentStatus, Category category, boolean availability) {

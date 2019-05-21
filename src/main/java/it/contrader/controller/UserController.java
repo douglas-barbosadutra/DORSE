@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import it.contrader.converter.GenericMapper;
 import it.contrader.dto.LoginDTO;
 import it.contrader.dto.OperatorDTO;
 import it.contrader.dto.SuperuserDTO;
@@ -22,7 +20,6 @@ import it.contrader.service.OperatorService;
 import it.contrader.service.SuperuserService;
 import it.contrader.service.TutorService;
 import it.contrader.service.UserService;
-
 
 @RestController
 @RequestMapping("/user")
