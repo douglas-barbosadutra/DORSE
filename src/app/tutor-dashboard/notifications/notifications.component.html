@@ -1,0 +1,9 @@
+<div *ngIf="smokestatus">
+The system has detected smoke in one of your apartments!
+</div>
+<div *ngIf="movementstatus">
+The system has detected suspect movements in one of your apartments!
+</div>
+<div *ngIf="!smokestatus && !movementstatus">
+No alerts.
+</div>

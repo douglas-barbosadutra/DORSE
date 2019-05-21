@@ -2,13 +2,15 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './login/registration/registration.component';
+import { TestuserDashboardComponent } from './testuser-dashboard/testuser-dashboard.component';
 
 
 
 const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full'},
     { path: 'login', component: LoginComponent},
-    { path: 'register', component: RegistrationComponent}
+    { path: 'register', component: RegistrationComponent},
+    { path: 'testuser-dashboard', component: TestuserDashboardComponent}
 ];
 export const routingModule: ModuleWithProviders = RouterModule.forRoot(routes);
 

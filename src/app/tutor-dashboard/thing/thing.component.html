@@ -1,3 +1,38 @@
-<input [(ngModel)]="insitem.description" style="margin-right: 5px"/>  
-<input [(ngModel)]="insitem.type" style="margin-right: 5px"/>  
-<button type="submit" class="btn btn-primary" (click)="insert()">Insert</button> 
+
+<div *ngIf="thing">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 style="text-align: center">{{thing.description | uppercase}}</h2>
+            </div>
+        </div>   
+
+        <div class="row">
+            <div class="col-md-6">
+                Thing's description: <input [(ngModel)]= "thing.description"/>
+                <button type="submit" class="btn btn-primary" (click)="update()">Save</button> 
+            </div>
+            <div class="col-md-6">
+                Delete this thing
+                <button type="submit" class="btn btn-primary" (click)="delete()">Delete</button>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-6">
+               <h5>Items in this thing:</h5>
+                <ul *ngFor="let item of items">
+                    {{item.description}}
+                </ul>
+            </div>
+            <div class="col-md-6" >
+                <h6>Insert a new item:</h6> 
+                Item Description: <input [(ngModel)]="item.description" style="margin-right: 5px"/>  
+                <br>
+                Item Type: <input [(ngModel)]="item.type" style="margin-right: 5px"/>  
+                <br>
+                <button type="submit" class="btn btn-primary" (click)="insert()">Insert</button> 
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,9 +1,9 @@
 <table>
-	<th>
-		<td>lunedi</td><td>martedi</td><td>mercoledi</td><td>giovedi</td><td>venerdi</td><td>sabato</td><td>domenica</td>
-	</th>
 	<tr>
-		<td>
-		</td>
-	</tr>
+	<th>Events</th><th>lunedi</th><th>martedi</th><th>mercoledi</th><th>giovedi</th><th>venerdi</th><th>sabato</th><th>domenica</th>
+    </tr>
+    <tr *ngFor="let row of eventCount">
+        <th>Item ?</th><td *ngFor="let event of row">{{event}}</td>
+    </tr>
 </table>
+

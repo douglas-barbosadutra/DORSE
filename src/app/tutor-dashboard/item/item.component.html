@@ -1,2 +1,29 @@
 
-    Item: {{item.description}}, status :{{!item.status}}
+<div *ngIf="item">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 style="text-align: center">{{item.description | uppercase}}</h2>
+            </div>
+        </div>   
+        <div class="row">
+            <div class="col-md-6">
+                Item's description: <input [(ngModel)]= "item.description" />
+                <br>
+                Item's type: <input [(ngModel)]= "item.type" />
+                <br>
+                <button type="submit" class="btn btn-primary" (click)="update()">Save</button> 
+                <br>
+                <h6>Item status: {{item.status | uppercase}}</h6>
+
+                
+            </div>
+            <div class="col-md-6">
+    
+                Delete this item
+                <button type="submit" class="btn btn-primary" (click)="delete()">Delete</button>
+            </div>
+        </div>
+    </div>
+
+

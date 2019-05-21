@@ -14,6 +14,7 @@ export class ItemComponent implements OnInit {
 
     @Input() thing: ThingDTO;
     item: ItemDTO;
+    items: ItemDTO[];
     itemService: ItemService;
     route: ActivatedRoute;
     location: Location;
@@ -37,4 +38,17 @@ export class ItemComponent implements OnInit {
     return this.item;
   }
 
+  update(): void {
+      this.itemService.update(this.item).subscribe(item => this.item = item );
+    }
+
+    getAllBy(): ItemDTO[] {
+        this.id = JSON.parse(localStorage.getItem('currentThing')).id;
+        this. itemService.getAllBy(this.id).subscribe( items => this. items =  items);
+        return this.items;
+    }
+
+    delete() {
+        this.itemService.delete(this.item.id).subscribe(() => this.location.back());
+    }
 }

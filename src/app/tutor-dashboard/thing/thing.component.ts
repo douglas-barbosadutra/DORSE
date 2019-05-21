@@ -16,13 +16,15 @@ export class ThingComponent implements OnInit {
 
     room: RoomDTO;
     things: ThingDTO[];
+    thing: ThingDTO;
     thingService: ThingService;
     itemService: ItemService;
     route: ActivatedRoute;
     location: Location;
     id: number;
     selectedthing: ThingDTO;
-    insitem: ItemDTO;
+    item: ItemDTO;
+    items: ItemDTO[];
 
   constructor( route: ActivatedRoute, thingService: ThingService, location: Location, itemService: ItemService) {
         this.thingService = thingService;
@@ -31,11 +33,10 @@ export class ThingComponent implements OnInit {
         this.location = location;
     }
   ngOnInit() {
-      this.insitem = new ItemDTO();
-      this.insitem.thingDTO = JSON.parse(localStorage.getItem('currentThing'));
+      this.item = new ItemDTO();
+      this.thing = this.read();
       this.things = new Array<ThingDTO>();
       this.things = this.getAllBy();
-      console.log(this.things);
       this.route.params.subscribe(() => this.things = this.getAllBy());
 
   }
@@ -46,11 +47,35 @@ export class ThingComponent implements OnInit {
         return this.things;
     }
 
+     update(): void {
+      this.thingService.update(this.thing).subscribe(thing => this.thing = thing );
+    }
+
+
     select(thing: ThingDTO) {
         this.selectedthing = thing;
     }
 
     insert() {
-        this.itemService.insert(this.insitem).subscribe();
+        this.item.thingDTO = JSON.parse(localStorage.getItem('currentThing'));
+        this.itemService.insert(this.item).subscribe(() => this.getAllItemsBy());
     }
+
+        getAllItemsBy() {
+        this.itemService.getAllBy(this.thing.id).subscribe(items => this.items = items);
+    }
+
+ delete() {
+        this.thingService.delete(this.thing.id).subscribe(() => this.location.back());
+    }
+
+    read(): ThingDTO {
+      const id = +this.route.snapshot.paramMap.get('id');
+      this.thingService.read(id).subscribe(thing => {
+          this.thing = thing;
+          this.getAllItemsBy();
+        });
+      return this.thing;
+  }
+
 }

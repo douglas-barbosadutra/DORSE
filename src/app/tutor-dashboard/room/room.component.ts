@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { RoomService } from 'src/app/services/room.service';
 import { ThingDTO } from 'src/app/dto/thingdto';
+import { ThingService } from 'src/app/services/thing.service';
 
 @Component({
   selector: 'app-room',
@@ -17,19 +18,22 @@ export class RoomComponent implements OnInit {
     roomService: RoomService;
     location: Location;
     thing: ThingDTO;
+    things: ThingDTO[];
 
-    constructor( route: ActivatedRoute, roomService: RoomService, location: Location) {
+    constructor( route: ActivatedRoute, roomService: RoomService, location: Location, private thingService: ThingService) {
         this.roomService = roomService;
         this.route = route;
         this.location = location;
     }
 
     ngOnInit() {
+        this.thing = new ThingDTO();
         if ( +this.route.snapshot.paramMap.get('id') !== 0) {
             this.read();
         }
         this.route.params.subscribe(
         (params) => this.read());
+        this.getAllThingsBy();
     }
 
      update(): void {
@@ -47,7 +51,15 @@ export class RoomComponent implements OnInit {
   }
    delete() {
         this.roomService.delete(this.room.id).subscribe(() => this.location.back());
-        this.location.back();
+    }
+
+        insert() {
+        this.thing.roomDTO = JSON.parse(localStorage.getItem('currentRoom'));
+        console.log(this.thing);
+        this.thingService.insert(this.thing).subscribe(() => this.getAllThingsBy());
+    }
+        getAllThingsBy() {
+        this.thingService.getAllBy(+this.route.snapshot.paramMap.get('id')).subscribe(things => this.things = things);
     }
 
 }

@@ -7,11 +7,13 @@ import { TutorDashboardModule } from './tutor-dashboard/tutor-dashboard.module';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginModule } from './login/login.module';
 import { FormsModule } from '@angular/forms';
+import { TestuserDashboardComponent } from './testuser-dashboard/testuser-dashboard.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TestuserDashboardComponent
   ],
   imports: [
     BrowserModule,

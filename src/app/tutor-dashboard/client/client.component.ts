@@ -34,6 +34,7 @@ export class ClientComponent implements OnInit {
     }
 
     getAllBy() {
+        
         this.apartmentService.getAllBy( JSON.parse(localStorage.getItem('currentUser')).id)
         .subscribe(apartments => this.apartments = apartments);
     }

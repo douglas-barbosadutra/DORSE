@@ -7,6 +7,7 @@ import { RoomComponent } from './room/room.component';
 import { ThingComponent } from './thing/thing.component';
 import { ItemComponent } from './item/item.component';
 import { ClientComponent } from './client/client.component';
+import { ReportComponent } from './report/report.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
                 { path: 'thing/:id', component: ThingComponent },
                 { path: 'item/:id', component: ItemComponent },
                 { path: 'client-registration', component: ClientComponent },
+                { path: 'event-report', component: ReportComponent }
         ]},
     ];
 

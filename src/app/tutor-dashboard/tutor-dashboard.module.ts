@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ClientComponent } from './client/client.component';
 import { ReportComponent } from './report/report.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 
 
@@ -23,6 +24,7 @@ import { ReportComponent } from './report/report.component';
         ItemComponent,
         ClientComponent,
         ReportComponent,
+        NotificationsComponent
     ],
 
     imports: [
