@@ -17,6 +17,7 @@ export class ReportComponent implements OnInit {
     items: ItemDTO[];
     eventCount: EventDTO[][][] = [];
     item: ItemDTO;
+    selectedevents: EventDTO[] = new Array<EventDTO>();
 
   constructor(private eventService: EventService, private itemService: ItemService) {
   }
@@ -55,5 +56,9 @@ export class ReportComponent implements OnInit {
                 });
             }
         }
+    }
+
+    select(events: EventDTO[]) {
+        this.selectedevents = events;
     }
 }

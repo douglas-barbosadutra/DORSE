@@ -17,7 +17,6 @@ export class EventService extends AbstractService<EventDTO> {
     }
 
     getAllByItemAndDate(id: number, date: Date): Observable<EventDTO[]> {
-        console.log(JSON.stringify(new DateDTO(id, date.toISOString())));
         return this.http.post<EventDTO[]>('http://localhost:8080/event/event', new DateDTO(id, date.toISOString()));
     }
 

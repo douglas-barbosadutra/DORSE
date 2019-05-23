@@ -11,6 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ClientComponent } from './client/client.component';
 import { ReportComponent } from './report/report.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { ReportDetailsComponent } from './report/report-details/report-details.component';
 
 
 
@@ -24,7 +25,8 @@ import { NotificationsComponent } from './notifications/notifications.component'
         ItemComponent,
         ClientComponent,
         ReportComponent,
-        NotificationsComponent
+        NotificationsComponent,
+        ReportDetailsComponent
     ],
 
     imports: [
