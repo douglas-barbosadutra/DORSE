@@ -28,7 +28,6 @@ export class ThingDropdownComponent implements OnInit {
   ngOnInit() {
       this.things = new Array<ThingDTO>();
       this.things = this.getAllBy();
-      console.log(this.things);
       this.route.params.subscribe(() => this.things = this.getAllBy());
 
   }

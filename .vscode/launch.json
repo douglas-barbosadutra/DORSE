@@ -83,6 +83,14 @@
             "url": "http://localhost:4200/#",
             "webRoot": "${workspaceFolder}",
             "port": 9299
+        },
+        {
+            "name": "Launch Chrome DoserAngular on Angular CLI Server (10)",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:4200/#",
+            "webRoot": "${workspaceFolder}",
+            "port": 9287
         }
     ]
 }
