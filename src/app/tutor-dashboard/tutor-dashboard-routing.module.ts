@@ -8,6 +8,7 @@ import { ThingComponent } from './thing/thing.component';
 import { ItemComponent } from './item/item.component';
 import { ClientComponent } from './client/client.component';
 import { ReportComponent } from './report/report.component';
+import { ContractConditionsComponent } from './contract-conditions/contract-conditions.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
                 { path: 'thing/:id', component: ThingComponent },
                 { path: 'item/:id', component: ItemComponent },
                 { path: 'client-registration', component: ClientComponent },
-                { path: 'event-report', component: ReportComponent }
+                { path: 'event-report', component: ReportComponent },
+                { path: 'contract-conditions', component: ContractConditionsComponent }
         ]},
     ];
 

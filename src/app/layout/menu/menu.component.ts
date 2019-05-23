@@ -22,4 +22,7 @@ getAllBy() {
     this.service.getAllBy(+JSON.parse(localStorage.getItem('currentUser')).id).subscribe(clients => this.clients = clients);
 }
 
+    logout() {
+        localStorage.clear();
+    }
 }

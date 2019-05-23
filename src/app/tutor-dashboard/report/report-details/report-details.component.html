@@ -2,6 +2,6 @@
 <h6>Events Details</h6>
 <ul *ngFor="let event of events">
     <li>
-       Date: {{event.date}},  Item: {{event.item.description}}
+       <span style="padding: 5px">{{event.date | date:'dd-MM-yyyy'}}</span><span style="padding: 5px">  Item: {{event.item.description}} </span>
     </li>
 </ul>
