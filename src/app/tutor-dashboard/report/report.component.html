@@ -1,9 +1,25 @@
-<table>
-	<tr>
-	<th>Events</th><th>lunedi</th><th>martedi</th><th>mercoledi</th><th>giovedi</th><th>venerdi</th><th>sabato</th><th>domenica</th>
-    </tr>
-    <tr *ngFor="let row of eventCount">
-        <th>Item ?</th><td *ngFor="let event of row">{{event}}</td>
-    </tr>
-</table>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <h6>Items</h6>
+            <table *ngFor="let item of items">
+                <tr>
+                    <td>{{item.description}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col md-10">
+            <table>
+	            <tr>
+	                <th>lunedi</th><th> martedi </th><th> mercoledi </th><th>giovedi</th><th>venerdi</th><th>sabato</th><th>domenica</th>
+                </tr>
+                <tr *ngFor="let row of eventCount">
+                    <td *ngFor="let event of row" style="text-align: center">{{event}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+
 

@@ -27,7 +27,7 @@ export class ApartmentDropdownComponent implements OnInit {
       this.apartments = this.getAllBy();
       this.insapartment = new ApartmentDTO();
       this.selectedapt = new ApartmentDTO();
-      this.insapartment.tutorDTO = JSON.parse(localStorage.getItem('currentUser'));
+      this.insapartment.tutor_id = +JSON.parse(localStorage.getItem('currentUser')).id;
       this.route.params.subscribe(() => this.getAllBy());
   }
 

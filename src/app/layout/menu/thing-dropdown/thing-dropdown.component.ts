@@ -34,7 +34,7 @@ export class ThingDropdownComponent implements OnInit {
   }
 
   getAllBy(): ThingDTO[] {
-        this.id = JSON.parse(localStorage.getItem('currentRoom')).id;
+        this.id = +JSON.parse(localStorage.getItem('currentRoom')).id;
         this. thingService.getAllBy(this.id).subscribe( things => this. things =  things);
         return this.things;
     }

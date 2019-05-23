@@ -10,6 +10,10 @@
 
                 <ngb-panel title="Clients">
                     <ng-template ngbPanelContent>
+                        <ul *ngFor="let client of clients">
+                            {{client.name}} {{client.surname}}
+                        </ul>
+                        
                          <a [routerLink]="['client-registration']" routerLinkActive="router-link-active" > Register a new client</a>
                     </ng-template>
                 </ngb-panel> 

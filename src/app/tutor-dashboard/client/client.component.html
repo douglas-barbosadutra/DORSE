@@ -30,7 +30,7 @@
                 </div>
                 <div class="form-group">
                     <label for="Apartment">Apartment</label> 
-	                <select  class="form-control" id= "Apartment" name="apartment" [(ngModel)]="clientDTO.apartmentDTO">
+	                <select  class="form-control" id= "Apartment" name="apartment" [(ngModel)]="clientDTO.apartment">
 	                    <option *ngFor="let apartment of apartments" [ngValue]="apartment">{{apartment.address}}</option>   
                     </select>
                 </div>

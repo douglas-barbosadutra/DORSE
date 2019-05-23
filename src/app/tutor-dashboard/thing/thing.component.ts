@@ -57,7 +57,7 @@ export class ThingComponent implements OnInit {
     }
 
     insert() {
-        this.item.thingDTO = JSON.parse(localStorage.getItem('currentThing'));
+        this.item.thing = JSON.parse(localStorage.getItem('currentThing'));
         this.itemService.insert(this.item).subscribe(() => this.getAllItemsBy());
     }
 

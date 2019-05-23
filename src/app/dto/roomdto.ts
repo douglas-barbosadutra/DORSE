@@ -6,6 +6,6 @@ export class RoomDTO {
 
     id: number;
     description: string;
-    apartmentDTO: ApartmentDTO;
-    thingsDTO: ThingDTO[];
+    apartment: ApartmentDTO;
+    things: ThingDTO[];
 }

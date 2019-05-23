@@ -25,16 +25,16 @@ export class RoomDropdownComponent implements OnInit {
     }
 
  ngOnInit() {
-      this.rooms = this.getAllBy();
+      this.getAllBy();
       this.insroom = new RoomDTO();
-      this.insroom.apartmentDTO = this.apartment;
-      this.route.params.subscribe(() => this.rooms = this.getAllBy());
+      this.insroom.apartment = this.apartment;
+      this.route.params.subscribe(() =>  this.getAllBy());
   }
 
-  getAllBy(): RoomDTO[] {
+  getAllBy() {
         this.id = this.apartment.id;
         this. roomService.getAllBy(this.id).subscribe( rooms => this. rooms =  rooms);
-        return this. rooms;
+
     }
 
  insert() {

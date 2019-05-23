@@ -17,16 +17,9 @@ export class EventService extends AbstractService<EventDTO> {
     }
 
     getAllByItemAndDate(id: number, date: Date): Observable<EventDTO[]> {
-          return this.http.post<EventDTO[]>('http://localhost:8080/event/event', new DateDTO(id, this.rightformat(date)));
+        console.log(JSON.stringify(new DateDTO(id, date.toISOString())));
+        return this.http.post<EventDTO[]>('http://localhost:8080/event/event', new DateDTO(id, date.toISOString()));
     }
 
-  rightformat(date: Date): string {
-  const yyyy: string = date.getFullYear().toString();
-  const mm: string = (date.getMonth() + 1).toString();
-  const dd: string  = date.getDate().toString();
-  const rightdate: string = yyyy + '-' + mm + '-' +  dd;
-  console.log(rightdate);
-  return rightdate;
-}
 }
 

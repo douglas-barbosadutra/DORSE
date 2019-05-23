@@ -3,7 +3,6 @@ import { UserDTO } from 'src/app/dto/userdto';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { AbstractService } from './abstractservice';
 import { Observable } from 'rxjs';
-import { LoginDTO } from '../dto/logindto';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +15,7 @@ export class UserService extends AbstractService<UserDTO> {
         this.type = 'user';
     }
 
-
-    login(loginDTO: LoginDTO): Observable<UserDTO> {
-        return this.http.post<any>('http://localhost:8080/user/login', loginDTO);
-  }
-
+    insert(userDTO: UserDTO): Observable<any> {
+        return this.http.post('http://localhost:8081/user/insert', userDTO);
+    }
 }
-

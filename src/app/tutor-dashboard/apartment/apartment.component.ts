@@ -61,9 +61,8 @@ export class ApartmentComponent implements OnInit {
       return this.apartment;
   }
 
-    delete() {
-        this.apartmentService.delete(this.apartment.id).subscribe(() => this.location.back());
-        this.location.back();
+    delete(id: number) {
+        this.apartmentService.delete(id).subscribe(() => this.location.back());
     }
 
     getAllBy() {
@@ -75,7 +74,7 @@ export class ApartmentComponent implements OnInit {
     }
 
     insert() {
-        this.room.apartmentDTO = this.apartment;
+        this.room.apartment = this.apartment;
         this.roomService.insert(this.room).subscribe(() => this.getAllRoomsBy());
     }
 

@@ -5,5 +5,5 @@ id: number;
 description: string;
 type: string;
 status: boolean;
-thingDTO: ThingDTO;
+thing: ThingDTO;
 }

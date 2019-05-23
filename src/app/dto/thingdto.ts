@@ -7,7 +7,7 @@ export class ThingDTO {
 
     description: string;
 
-    itemsDTO: ItemDTO[];
+    items: ItemDTO[];
 
-    roomDTO: RoomDTO;
+    room: RoomDTO;
 }

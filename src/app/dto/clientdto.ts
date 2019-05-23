@@ -1,5 +1,4 @@
 import { ApartmentDTO } from './apartmentdto';
-import { TutorDTO } from './tutordto';
 
 export class ClientDTO {
 
@@ -13,7 +12,8 @@ export class ClientDTO {
 
     telnumber: string ;
 
-    apartmentDTO: ApartmentDTO;
+    apartment: ApartmentDTO;
 
-    tutorDTO: TutorDTO;
+// tslint:disable-next-line: variable-name
+    tutor_id: number;
 }

@@ -32,7 +32,7 @@ export class RoomComponent implements OnInit {
             this.read();
         }
         this.route.params.subscribe(
-        (params) => this.read());
+        () => this.read());
         this.getAllThingsBy();
     }
 
@@ -54,7 +54,7 @@ export class RoomComponent implements OnInit {
     }
 
         insert() {
-        this.thing.roomDTO = JSON.parse(localStorage.getItem('currentRoom'));
+        this.thing.room = JSON.parse(localStorage.getItem('currentRoom'));
         console.log(this.thing);
         this.thingService.insert(this.thing).subscribe(() => this.getAllThingsBy());
     }

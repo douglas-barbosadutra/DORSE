@@ -1,5 +1,7 @@
 export class LoginDTO {
+
     username: string;
+
     password: string;
 
     constructor(username: string, password: string) {

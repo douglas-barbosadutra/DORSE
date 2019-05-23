@@ -11,6 +11,54 @@
             "url": "http://localhost:4200/#",
             "webRoot": "${workspaceFolder}",
             "port": 9253
+        },
+        {
+            "name": "Launch Chrome DoserAngular on Angular CLI Server (1)",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:4200/#",
+            "webRoot": "${workspaceFolder}",
+            "port": 9295
+        },
+        {
+            "name": "Launch Chrome DoserAngular on Angular CLI Server (2)",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:4200/#",
+            "webRoot": "${workspaceFolder}",
+            "port": 9218
+        },
+        {
+            "name": "Launch Chrome DoserAngular on Angular CLI Server (3)",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:4200/#",
+            "webRoot": "${workspaceFolder}",
+            "port": 9271
+        },
+        {
+            "name": "Launch Chrome DoserAngular on Angular CLI Server (4)",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:4200/#",
+            "webRoot": "${workspaceFolder}",
+            "port": 9203
+        },
+        {
+            "name": "Launch Chrome DoserAngular on Angular CLI Server (5)",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:4200/#",
+            "webRoot": "${workspaceFolder}",
+            "port": 9259
+        },
+        {
+            "name": "Launch Chrome DoserAngular on Angular CLI Server (6)",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:4200/#",
+            "webRoot": "${workspaceFolder}",
+            "port": 9224
         }
     ]
 }
@@ -26,7 +74,28 @@
 }
 }
 }
-}]
+}
+]
+}
+]
+}
+}
+}
+}
+}
+]
+}
+]
+}
+}
+}
+}
+]
+}
+}
+}
+}
+]
 }
 ]
 }

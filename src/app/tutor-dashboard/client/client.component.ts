@@ -25,7 +25,7 @@ export class ClientComponent implements OnInit {
 
 
    register(): void {
-    this.clientDTO.tutorDTO = JSON.parse(localStorage.getItem('currentUser'));
+    this.clientDTO.tutor_id = +JSON.parse(localStorage.getItem('currentUser')).id;
     this.clientService.insert(this.clientDTO).subscribe((response) => {
         if (response != null) {
             this.location.back();
@@ -34,8 +34,7 @@ export class ClientComponent implements OnInit {
     }
 
     getAllBy() {
-        
-        this.apartmentService.getAllBy( JSON.parse(localStorage.getItem('currentUser')).id)
+        this.apartmentService.getAllBy( +JSON.parse(localStorage.getItem('currentUser')).id)
         .subscribe(apartments => this.apartments = apartments);
     }
 }
