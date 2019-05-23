@@ -3,7 +3,8 @@ import { EventDTO } from 'src/app/dto/eventdto';
 import { EventService } from 'src/app/services/event.service';
 import { ItemDTO } from 'src/app/dto/itemdto';
 import { ItemService } from 'src/app/services/item.service';
-
+import {ViewChild, ElementRef} from '@angular/core';
+import * as XLSX from 'xlsx';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class ReportComponent implements OnInit {
     eventCount: EventDTO[][][] = [];
     item: ItemDTO;
     selectedevents: EventDTO[] = new Array<EventDTO>();
+    @ViewChild('table') table: ElementRef;
 
   constructor(private eventService: EventService, private itemService: ItemService) {
   }
@@ -60,5 +62,15 @@ export class ReportComponent implements OnInit {
 
     select(events: EventDTO[]) {
         this.selectedevents = events;
+    }
+
+    ExportToExcel() {
+      const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(this.table.nativeElement);
+      const wb: XLSX.WorkBook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+      /* save to file */
+      XLSX.writeFile(wb, 'SheetJS.xlsx');
+
     }
 }

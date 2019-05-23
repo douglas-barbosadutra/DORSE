@@ -1,25 +1,18 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-2">
-            <h6>Items</h6>
-            <table *ngFor="let item of items">
-                <tr>
-                    <td>{{item.description}}</td>
-                </tr>
-            </table>
-        </div>
-        <div class="col md-10">
-            <table>
+        <div class="col md-12">
+            <table #table>
 	            <tr>
-	                <th>lunedi</th><th> martedi </th><th> mercoledi </th><th>giovedi</th><th>venerdi</th><th>sabato</th><th>domenica</th>
+	                <th>Items</th><th>lunedi</th><th> martedi </th><th> mercoledi </th><th>giovedi</th><th>venerdi</th><th>sabato</th><th>domenica</th>
                 </tr>
-                <tr *ngFor="let row of eventCount">
-                    <td *ngFor="let events of row" style="text-align: center" (click)="select(events)">{{events.length}}</td>
+                <tr *ngFor="let row of eventCount; let i = index">
+                    <th>{{items[i].description}}</th><td *ngFor="let events of row" style="text-align: center" (click)="select(events)">{{events.length}}</td>
                 </tr>
             </table>
         </div>
     </div>
     <br>
+    <button type="submit" (click)="ExportToExcel()">Download in Excel</button>
     <br>
     <div class="row mt-10">
         <div class="col-md-2">
