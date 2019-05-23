@@ -14,7 +14,7 @@
 	                <th>lunedi</th><th> martedi </th><th> mercoledi </th><th>giovedi</th><th>venerdi</th><th>sabato</th><th>domenica</th>
                 </tr>
                 <tr *ngFor="let row of eventCount">
-                    <td *ngFor="let event of row" style="text-align: center">{{event}}</td>
+                    <td *ngFor="let event of row" style="text-align: center">{{event.length}}</td>
                 </tr>
             </table>
         </div>

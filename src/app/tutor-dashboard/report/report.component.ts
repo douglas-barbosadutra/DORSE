@@ -15,26 +15,18 @@ export class ReportComponent implements OnInit {
 
     events: EventDTO[];
     items: ItemDTO[];
-    eventCount: number[][] = [];
+    eventCount: EventDTO[][][] = [];
     item: ItemDTO;
 
   constructor(private eventService: EventService, private itemService: ItemService) {
   }
 
   ngOnInit() {
-      this.eventCount = new Array<Array<number>>();
+      this.eventCount = new Array<Array<EventDTO[]>>();
       this.items = new Array<ItemDTO>();
       this.events = new Array<EventDTO>();
       this.getAll();
-
-}
-
-  getAllByItemAndDate(id: number, date: Date) {
-     this.eventService.getAllByItemAndDate(id, date).subscribe(events => {
-         this.events = events;
-
-    });
-    }
+  }
 
   getAll() {
     this.itemService.getAll().subscribe(items => {
@@ -50,7 +42,7 @@ export class ReportComponent implements OnInit {
 
         // tslint:disable-next-line: prefer-for-of
         for (let i = 0; i < this.items.length; i++) {
-            const array = new Array<number>();
+            const array = new Array<EventDTO[]>();
             this.eventCount.push(array);
             this.item = this.items[i];
             for (let j = 0; j < 7; j++) {
@@ -59,7 +51,7 @@ export class ReportComponent implements OnInit {
                 date.setDate(n - ( ( w - j ) ) + 1 );
                 this.eventService.getAllByItemAndDate(this.item.id, date).subscribe(events => {
                 this.events = events;
-                array.push(this.events.length);
+                array.push(this.events);
                 });
             }
         }
