@@ -8,12 +8,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginModule } from './login/login.module';
 import { FormsModule } from '@angular/forms';
 import { TestuserDashboardComponent } from './testuser-dashboard/testuser-dashboard.component';
+import { SuperuserDashboardComponent } from './superuser-dashboard/superuser-dashboard.component';
+import { UserDetailsComponent } from './superuser-dashboard/user-details/user-details.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestuserDashboardComponent
+    TestuserDashboardComponent,
+    SuperuserDashboardComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
