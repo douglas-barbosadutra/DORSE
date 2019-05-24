@@ -12,6 +12,7 @@ export class ThingService extends AbstractService<ThingDTO> {
     constructor(shttp: HttpClient) {
         super(shttp);
         this.type = 'thing';
+        this.port = '8080';
     }
 
 }

@@ -10,10 +10,10 @@ import { DateDTO } from '../dto/datedto';
 })
 export class EventService extends AbstractService<EventDTO> {
 
-    type = 'event';
-
     constructor(http: HttpClient) {
         super(http);
+        this.type = 'event';
+        this.port = '8080';
     }
 
     getAllByItemAndDate(id: number, date: Date): Observable<EventDTO[]> {

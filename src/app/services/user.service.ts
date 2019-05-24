@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UserDTO } from 'src/app/dto/userdto';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { AbstractService } from './abstractservice';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +9,10 @@ import { Observable } from 'rxjs';
 
 export class UserService extends AbstractService<UserDTO> {
 
-    constructor(shttp: HttpClient) {
-        super(shttp);
+    constructor(http: HttpClient) {
+        super(http);
         this.type = 'user';
+        this.port = '8081';
     }
 
-    insert(userDTO: UserDTO): Observable<any> {
-        return this.http.post('http://localhost:8081/user/insert', userDTO);
-    }
 }

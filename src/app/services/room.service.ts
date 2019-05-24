@@ -13,6 +13,7 @@ export class RoomService extends AbstractService<RoomDTO> {
     constructor(shttp: HttpClient) {
         super(shttp);
         this.type = 'room';
+        this.port = '8080';
     }
 }
 

@@ -1,10 +1,10 @@
-
+import { Location } from '@angular/common';
 import { AbstractService } from 'src/app/services/abstractservice';
 
 export abstract class AbstractComponent<DTO> {
     route: any;
 
-  constructor(public service: AbstractService<DTO>) {
+  constructor(public service: AbstractService<DTO>, public location: Location) {
    }
 
     dtolist: DTO[];
@@ -43,5 +43,9 @@ export abstract class AbstractComponent<DTO> {
   }
     update(dto: DTO): void {
     this.service.update(dto).subscribe(dto => this.dto = dto);
+  }
+
+  goBack(): void {
+      this.location.back();
   }
 }

@@ -9,9 +9,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ItemService extends AbstractService<ItemDTO> {
 
-    type = 'item';
-
   constructor(http: HttpClient) {
       super(http);
+      this.type = 'item';
+      this.port = '8080';
   }
 }

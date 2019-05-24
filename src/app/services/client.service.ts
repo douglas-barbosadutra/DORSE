@@ -11,5 +11,6 @@ export class ClientService extends AbstractService<ClientDTO> {
 constructor(http: HttpClient) {
         super(http);
         this.type = 'client';
+        this.port = '8080';
     }
 }
