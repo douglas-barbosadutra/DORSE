@@ -3,7 +3,8 @@ package it.contrader.dto;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.AllArgsConstructor;
@@ -13,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id", scope=RoomDTO.class)
 public class RoomDTO {
 
 	private long id;
@@ -22,6 +23,6 @@ public class RoomDTO {
 	
 	private List<ThingDTO> things;
 	
-	@JsonIdentityReference(alwaysAsId = true)
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private ApartmentDTO apartment;
 }

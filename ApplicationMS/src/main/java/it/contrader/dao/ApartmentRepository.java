@@ -12,6 +12,6 @@ public interface ApartmentRepository extends MyRepository<Apartment, Long> {
 	
 	//Custom QUERY, gets all apartments depending on tutor_id
 	@Override
-	@Query(value = "SELECT * FROM #{#entityName} e WHERE e.tutor_id = ?1", nativeQuery = true)
+	@Query(value = "SELECT * FROM apartment e WHERE e.tutor_id = ?1", nativeQuery = true)
 	Iterable<Apartment> findAllBy(Long id);
 }

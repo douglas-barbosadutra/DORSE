@@ -1,7 +1,8 @@
 package it.contrader.dto;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.AllArgsConstructor;
@@ -11,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id", scope=ItemDTO.class)
 public class ItemDTO {
 	
 	private long id;
@@ -22,6 +23,6 @@ public class ItemDTO {
 	
 	private boolean status;
 	
-	@JsonIdentityReference(alwaysAsId = true)
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private ThingDTO thing;
 }

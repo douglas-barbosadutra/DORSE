@@ -12,6 +12,6 @@ public interface ClientRepository extends MyRepository<Client, Long> {
 	
 	//Custom QUERY, gets all clients depending on tutor_id
 	@Override
-	@Query(value = "SELECT * FROM #{#entityName} e WHERE e.tutor_id = ?1", nativeQuery = true)
+	@Query(value = "SELECT * FROM client e WHERE e.tutor_id = ?1", nativeQuery = true)
 	Iterable<Client> findAllBy(Long id);
 }

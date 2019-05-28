@@ -12,6 +12,6 @@ public interface ItemRepository extends MyRepository<Item, Long> {
 	
 	//Custom QUERY, gets all items depending on thing_id
 	@Override
-	@Query(value = "SELECT * FROM #{#entityName} e WHERE e.thing_id = ?1", nativeQuery = true)
+	@Query(value = "SELECT * FROM item e WHERE e.thing_id = ?1", nativeQuery = true)
 	Iterable<Item> findAllBy(Long id);
 }
