@@ -10,6 +10,7 @@ import { ClientService } from 'src/app/services/client.service';
 export class MenuComponent implements OnInit {
 
     clients: ClientDTO[];
+    isCollapsed = false;
   constructor(private service: ClientService) {
   }
 
@@ -18,11 +19,27 @@ export class MenuComponent implements OnInit {
       this.getAllBy();
   }
 
-getAllBy() {
-    this.service.getAllBy(+JSON.parse(localStorage.getItem('currentUser')).id).subscribe(clients => this.clients = clients);
-}
+    getAllBy() {
+        this.service.getAllBy(+JSON.parse(localStorage.getItem('currentUser')).id).subscribe(clients => this.clients = clients);
+    }
 
     logout() {
         localStorage.clear();
+    }
+
+     openNav() {
+     document.getElementById('mySidenav').style.width = '100%';
+     document.getElementById('main').style.marginLeft = '95%';
+     }
+
+     closeNav() {
+     document.getElementById('mySidenav').style.width = '0';
+     document.getElementById('main').style.marginLeft = '0';
+     }
+
+    collapse() {
+        if (this.isCollapsed === false) {
+            this.isCollapsed = true;
+        } else { this.isCollapsed = false; }
     }
 }

@@ -7,7 +7,6 @@ import { RoomComponent } from './room/room.component';
 import { ThingComponent } from './thing/thing.component';
 import { ItemComponent } from './item/item.component';
 import { FormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ClientComponent } from './client/client.component';
 import { ReportComponent } from './report/report.component';
 import { NotificationsComponent } from './notifications/notifications.component';
@@ -35,7 +34,6 @@ import { ContractConditionsComponent } from './contract-conditions/contract-cond
         CommonModule,
         TutorDashboardRoutingModule,
         FormsModule,
-        NgbModule
     ],
 
     exports: [

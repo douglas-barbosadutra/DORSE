@@ -1,35 +1,38 @@
-<title>Login DoSer</title>
+<body>
 
-<div class="container">
-    <div class="row mt-5">
-        <div class="col-lg-12" style="text-align: center">
-           <img src="../../assets/DoserLogo.svg" alt="logo" style="width: 20%">
-        </div>
-    </div>
+<div class="container-fluid">
     <div class="row">
-        <div class="col-lg-4">
+
+        <div class="col-md-7">
+            <img src="../../assets/doserlogin.png" alt="logo">
+        </div>
+        <div class="col-md-1">
 
         </div>
-            <div class="col-lg-4">
-		        <form #f="ngForm">
-                    <div class="form-group">
-				        <label for="user">Username: </label>
-				        <input class="form-control" type="text" id="user" name="username" placeholder="Insert username" ngModel>
-                    </div>
 
-                    <div class="form-group">
-				        <label for="pass">Password: </label>
-				        <input class="form-control" type="password" id="pass" name="password" placeholder="Insert password" ngModel>
-                    </div>
+        <div class="col-md-3">
 
-                    <button type="submit" class="btn btn-primary" (click)="login(f)">Login</button>
-                </form>
-                <a [routerLink]="['/register']" routerLinkActive="router-link-active" >Register here!</a>
-            </div>
-        <div class="col-lg-4">
+		    <form #f="ngForm">
+                <p>Please insert username and password to Login or Sign Up</p>
+                <div class="form-group">
+				    <input class="form-control" type="text" id="user" name="username" placeholder="Username" ngModel>
+                </div>
 
-        </div>        
+                <div class="form-group">
+				    <input class="form-control" type="password" id="pass" name="password" placeholder="Password" ngModel>
+                </div>
+                <button type="submit" class="login" (click)="login(f)">Login</button>
+                <button type="submit" class="login" (click)="login(f)">Sign Up</button>
+                 <img class="img2" src="../../assets/doserlogin2.png" alt="logo">
+
+            </form>
+        </div>  
+
+        <div class="col-md-1">
+
+        </div> 
+
     </div>
 </div>
-
+</body>
 

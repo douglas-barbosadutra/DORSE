@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ApartmentDropdownComponent implements OnInit {
 
+    isCollapsed = false;
     apartmentService: ApartmentService;
     apartments: ApartmentDTO[];
     insapartment: ApartmentDTO;
@@ -45,4 +46,11 @@ export class ApartmentDropdownComponent implements OnInit {
  insert() {
         this.apartmentService.insert(this.insapartment).subscribe(() => this.getAllBy());
     }
+
+        collapse() {
+        if (this.isCollapsed === false) {
+            this.isCollapsed = true;
+        } else { this.isCollapsed = false; }
+    }
+
 }

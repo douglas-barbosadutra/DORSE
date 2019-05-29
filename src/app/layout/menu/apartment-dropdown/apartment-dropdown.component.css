@@ -1,0 +1,8 @@
+.menubtn{
+    width: 100%;
+   text-align: left;
+    background-color: #334247;
+    color: #f1f1f1;
+    padding-left: inherit!;
+    border: none;
+}

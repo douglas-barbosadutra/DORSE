@@ -1,0 +1,58 @@
+body{
+    background-color: #27d8ca;
+}
+
+form{
+    margin-top:270px;
+    width: 100%;
+    border-radius:0;
+    border-color: #27d8ca;
+}
+
+img{
+    position: inherit;
+    width:86%;
+}
+
+input, input:hover, input::selection,input:checked{
+    border: 0;
+    background-color: #27d8ca;
+    border-radius: 0;
+    color: white;
+    border-bottom: 1px solid white;
+    margin: 0px;
+    
+}
+
+input::placeholder{
+        color: white;
+}
+.form-control{
+    border: none;
+    background-color: #27d8ca;
+    color: white;
+    border-bottom: 1px solid white;
+}
+
+.login{
+    width:48%;
+    margin:1%;
+    border: none;
+    background-color: #27d8ca;
+    color: white;
+    border: 1px solid white;
+    border-radius: 2px;
+    padding-top: 10px;
+    padding-right: auto;
+    padding-bottom: 10px;
+    padding-left: auto;
+}
+
+p{
+    font-size: 70%;
+    color: white;
+}
+
+.img2{
+    width: 100%;
+}

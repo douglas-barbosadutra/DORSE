@@ -10,7 +10,6 @@ import { ThingDropdownComponent } from './menu/thing-dropdown/thing-dropdown.com
 import { ItemDropdownComponent } from './menu/thing-dropdown/item-dropdown/item-dropdown.component';
 import { ApartmentDropdownComponent } from './menu/apartment-dropdown/apartment-dropdown.component';
 import { RoomDropdownComponent } from './menu/apartment-dropdown/room-dropdown/room-dropdown.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     declarations: [
@@ -28,7 +27,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         CommonModule,
         RouterModule,
         FormsModule,
-        NgbModule
     ],
 
 })

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../services/item.service';
 import { AbstractComponent } from '../abstract/abstract.component';
 import { ItemDTO } from '../dto/itemdto';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-testuser-dashboard',
@@ -11,8 +12,8 @@ import { ItemDTO } from '../dto/itemdto';
 export class TestuserDashboardComponent extends AbstractComponent<ItemDTO> implements OnInit {
 
 
-constructor(service: ItemService) {
-      super(service);
+constructor(service: ItemService, location: Location) {
+      super(service, location);
   }
 
   ngOnInit() {
