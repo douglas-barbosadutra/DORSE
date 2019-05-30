@@ -8,7 +8,7 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'app-thing-dropdown',
   templateUrl: './thing-dropdown.component.html',
-  styleUrls: ['../menu.component.css']
+  styleUrls: ['./thing-dropdown.component.css']
 })
 export class ThingDropdownComponent implements OnInit {
 
@@ -19,6 +19,7 @@ export class ThingDropdownComponent implements OnInit {
     location: Location;
     id: number;
     selectedthing: ThingDTO;
+    isCollapsed = false;
 
   constructor( route: ActivatedRoute, thingService: ThingService, location: Location) {
         this.thingService = thingService;
@@ -41,5 +42,11 @@ export class ThingDropdownComponent implements OnInit {
     select(thing: ThingDTO) {
         localStorage.setItem('currentThing', JSON.stringify(thing));
         this.selectedthing = thing;
+    }
+
+    collapse() {
+        if (this.isCollapsed === false) {
+            this.isCollapsed = true;
+        } else { this.isCollapsed = false; }
     }
 }

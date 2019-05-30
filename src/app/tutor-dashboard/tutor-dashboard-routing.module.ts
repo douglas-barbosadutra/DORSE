@@ -11,6 +11,8 @@ import { ReportComponent } from './report/report.component';
 import { ContractConditionsComponent } from './contract-conditions/contract-conditions.component';
 
 
+
+
 const routes: Routes = [
             { path: 'tutor-dashboard', component: MainLayoutComponent, children: [
                 { path: '', component: TutorDashboardComponent },
@@ -18,7 +20,7 @@ const routes: Routes = [
                 { path: 'room/:id', component: RoomComponent },
                 { path: 'thing/:id', component: ThingComponent },
                 { path: 'item/:id', component: ItemComponent },
-                { path: 'client-registration', component: ClientComponent },
+                { path: 'register-client', component: ClientComponent },
                 { path: 'event-report', component: ReportComponent },
                 { path: 'contract-conditions', component: ContractConditionsComponent }
         ]},

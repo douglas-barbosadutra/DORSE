@@ -1,9 +1,17 @@
-<!-- <a [routerLink]="['/tutor-dashboard/room', room.id]">Room Details</a>
+<div *ngFor="let thing of things" >
 
-<ngb-accordion [closeOthers]="true" *ngFor="let thing of things" (click)="select(thing)" >
-  <ngb-panel title="{{thing.description}}">
-   <ng-template ngbPanelContent >
-       <app-item-dropdown *ngIf="selectedthing===thing" [thing]="selectedthing"></app-item-dropdown>
-    </ng-template>
-  </ngb-panel>
-</ngb-accordion> -->
+    <button class="menubtn" (click)="collapse(); select(thing)" data-toggle="collapsebtn" data-target="#thing">
+           <i class="fas fa-angle-right" *ngIf="!isCollapsed || selectedthing!==thing " style="padding-right:5px"></i>
+        <i class="fas fa-angle-down" *ngIf="isCollapsed && selectedthing===thing" style="padding-right:5px"></i>{{thing.description}}
+        <a [routerLink]="['/tutor-dashboard/thing', thing.id]">
+        <i class="fas fa-eye" style="float: right"></i>
+        </a>
+    </button>
+
+    <div class="collapsebtn" id="thing" *ngIf="isCollapsed">
+        <div>
+            <app-item-dropdown [thing]="selectedthing" *ngIf="selectedthing === thing"></app-item-dropdown>
+        </div>
+    </div>
+</div>
+

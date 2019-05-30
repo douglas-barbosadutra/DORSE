@@ -8,7 +8,9 @@ import { UserDetailsComponent } from './superuser-dashboard/user-details/user-de
 
 
 
+
 const routes: Routes = [
+
     { path: '', redirectTo: '/login', pathMatch: 'full'},
     { path: 'login', component: LoginComponent},
     { path: 'register', component: RegistrationComponent},

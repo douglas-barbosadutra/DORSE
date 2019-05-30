@@ -1,35 +1,70 @@
 
 <div *ngIf="room">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2 style="text-align: center">{{room.description | uppercase}}</h2>
-            </div>
-        </div>   
 
-        <div class="row">
-            <div class="col-md-6">
-                Room's description: <input [(ngModel)]= "room.description"/>
-                <button type="submit" class="btn btn-primary" (click)="update()">Save</button> 
-            </div>
-            <div class="col-md-6">
-                Delete this room
-                <button type="submit" class="btn btn-primary" (click)="delete()">Delete</button>
-            </div>
-        </div>
+    
 
-        <div class="row mt-5">
-            <div class="col-md-6">
-               <h5>Things in this room:</h5>
-                <ul *ngFor="let thing of things">
-                    {{thing.description}}
-                </ul>
+            <div class="container">
+                <div class="row">
+                        <div class="col-md-4 col-sm-6 mt-4">
+                        <div class="card mb-3">
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
+                                        <img class="card-img" src="../../assets/ImmagineStan.png" alt="Card image cap">
+                                </div>
+                                <div class="col-md-8">
+                                        <div class="card-body">
+                                                <h5 class="card-title"><input style="width: 10rem" [(ngModel)]= "room.description"/></h5>
+                                                <button type="submit" class="btn btn-primary" (click)="update()">Save</button>
+                                                <button type="submit" class="btn btn-primary" (click)="delete(room.id)">Delete</button>
+                                        </div>
+            
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            
+            
+                    <div class="container">
+                            <div class="row">
+            
+                         <div class="col-md-4 col-sm-6 mt-4" *ngFor="let thing of things">
+            
+                        <div class="card mb-3">
+                                <div class="row no-gutters">
+                                    <div class="col-md-4">
+                                            <img class="card-img" src="../../assets/ImmagineStan.png" alt="Card image cap">
+                                    </div>
+                                    <div class="col-md-8">
+                                            <div class="card-body">
+                                                    <h5 class="card-title">{{thing.description}}</h5>
+                                                    
+                                            </div>
+                
+                                    </div>
+                                </div>
+                                
+                            </div>
+            
+                        </div>
+            
+            
+            
+            
+                    
+                    </div>
+                </div>
+            
                 <h6>Insert a new thing:</h6> 
-                <input [(ngModel)]="thing.description"/>
-                <button type="submit" class="btn btn-primary" (click)="insert()">Insert</button>
-            </div>
-            <div class="col-md-6">
-            </div>
-        </div>
-    </div>
+                            <input [(ngModel)]="thing.description"/>
+                            <button type="submit" class="btn btn-primary" (click)="insert()">Insert</button>
+            
+                        </div>
+            
+            
+
+                        
+
+
 </div>

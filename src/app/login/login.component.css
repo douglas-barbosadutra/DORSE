@@ -14,14 +14,13 @@ img{
     width:86%;
 }
 
-input, input:hover, input::selection,input:checked{
+input, input:hover, input::selection, input:checked, input:focus{
     border: 0;
     background-color: #27d8ca;
     border-radius: 0;
     color: white;
     border-bottom: 1px solid white;
-    margin: 0px;
-    
+    margin: 0px; 
 }
 
 input::placeholder{

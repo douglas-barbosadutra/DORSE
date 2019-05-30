@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-room-dropdown',
   templateUrl: './room-dropdown.component.html',
-  styleUrls: ['../../menu.component.css']
+  styleUrls: ['./room-dropdown.component.css']
 })
 export class RoomDropdownComponent implements OnInit {
 
@@ -18,6 +18,7 @@ export class RoomDropdownComponent implements OnInit {
     id: number;
     route: ActivatedRoute;
     selectedroom: RoomDTO;
+    isCollapsed = false;
 
     constructor(roomService: RoomService, route: ActivatedRoute) {
         this. roomService =  roomService;
@@ -46,4 +47,27 @@ export class RoomDropdownComponent implements OnInit {
         localStorage.setItem('currentRoom', JSON.stringify(room));
     }
 
+     collapse() {
+        if (this.isCollapsed === false) {
+            this.isCollapsed = true;
+        } else { this.isCollapsed = false; }
+    }
+
+    // openMenu() {
+    //     document.getElementById('thingMenu').style.width = '550%';
+    //     document.getElementById('thingMenu').style.zIndex = '20';
+    // }
+
+    // closeMenu() {
+    //     document.getElementById('thingMenu').style.marginLeft = '100%';
+    // }
+    // openNav() {
+    // document.getElementById('mySidenav').style.width = '250px';
+    // document.getElementById('main').style.marginLeft = '250px';
+    // }
+
+    // closeNav() {
+    // document.getElementById('mySidenav').style.width = '0';
+    // document.getElementById('main').style.marginLeft = '0';
+    // }
 }

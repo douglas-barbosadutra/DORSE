@@ -20,13 +20,13 @@ constructor(service: ItemService, location: Location) {
     this.getAll();
   }
 
-  setfalse(item: ItemDTO) {
+    setfalse(item: ItemDTO) {
       item.status = false;
       this.service.update(item).subscribe(() => this.getAll());
-  }
-settrue(item: ItemDTO) {
+    }
+    settrue(item: ItemDTO) {
       item.status = true;
       this.service.update(item).subscribe(() => this.getAll());
-  }
+    }
 
 }

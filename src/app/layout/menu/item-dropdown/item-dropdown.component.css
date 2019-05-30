@@ -1,12 +1,11 @@
 
-
 .menubtn{
     width: 100%;
     text-align: left;
-    background-color: #445a60;
+    background-color: #4b646b;
     color: #f1f1f1;
     border: none;
-    padding-left: 80px;
+    padding-left: 70px;
     padding-top: 10px;
     padding-bottom: 10px;
 }
@@ -16,9 +15,4 @@
 }
 .menubtn:focus {
     color: #27d8ca;
-}
-
-a{
-    text-decoration: none;
-    color: white;
 }

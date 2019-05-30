@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientDTO } from 'src/app/dto/clientdto';
 import { ClientService } from 'src/app/services/client.service';
+import { TutorDTO } from 'src/app/dto/tutordto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -9,14 +11,19 @@ import { ClientService } from 'src/app/services/client.service';
 })
 export class MenuComponent implements OnInit {
 
+    user: TutorDTO;
     clients: ClientDTO[];
     isCollapsed = false;
-  constructor(private service: ClientService) {
+    isClientCollapsed = false;
+    isAccountCollapsed = false;
+
+  constructor(private service: ClientService, private router: Router) {
   }
 
   ngOnInit() {
       this.clients = new Array<ClientDTO>();
       this.getAllBy();
+      this.user = JSON.parse(localStorage.getItem('currentUser'));
   }
 
     getAllBy() {
@@ -25,21 +32,25 @@ export class MenuComponent implements OnInit {
 
     logout() {
         localStorage.clear();
+        this.router.navigateByUrl('');
     }
 
-     openNav() {
-     document.getElementById('mySidenav').style.width = '100%';
-     document.getElementById('main').style.marginLeft = '95%';
-     }
-
-     closeNav() {
-     document.getElementById('mySidenav').style.width = '0';
-     document.getElementById('main').style.marginLeft = '0';
-     }
 
     collapse() {
         if (this.isCollapsed === false) {
             this.isCollapsed = true;
         } else { this.isCollapsed = false; }
+    }
+
+    clientcollapse() {
+        if (this.isClientCollapsed === false) {
+            this.isClientCollapsed = true;
+        } else { this.isClientCollapsed = false; }
+    }
+
+    accountcollapse() {
+        if (this.isAccountCollapsed === false) {
+            this.isAccountCollapsed = true;
+        } else { this.isAccountCollapsed = false; }
     }
 }
