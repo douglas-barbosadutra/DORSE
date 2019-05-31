@@ -12,6 +12,7 @@ import { ReportComponent } from './report/report.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ReportDetailsComponent } from './report/report-details/report-details.component';
 import { ContractConditionsComponent } from './contract-conditions/contract-conditions.component';
+import { WorkInProgressComponent } from './work-in-progress/work-in-progress.component';
 
 
 
@@ -27,7 +28,8 @@ import { ContractConditionsComponent } from './contract-conditions/contract-cond
         ReportComponent,
         NotificationsComponent,
         ReportDetailsComponent,
-        ContractConditionsComponent
+        ContractConditionsComponent,
+        WorkInProgressComponent
     ],
 
     imports: [

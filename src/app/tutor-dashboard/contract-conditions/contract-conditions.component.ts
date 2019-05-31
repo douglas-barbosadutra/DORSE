@@ -30,7 +30,7 @@ export class ContractConditionsComponent implements OnInit {
       elementHandlers: specialElementHandlers
     });
 
-    doc.save('contract' + '.pdf');
+    doc.save('DoSerContract' + '.pdf');
   }
 }
 

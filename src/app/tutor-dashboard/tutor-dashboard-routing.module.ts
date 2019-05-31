@@ -9,6 +9,7 @@ import { ItemComponent } from './item/item.component';
 import { ClientComponent } from './client/client.component';
 import { ReportComponent } from './report/report.component';
 import { ContractConditionsComponent } from './contract-conditions/contract-conditions.component';
+import { WorkInProgressComponent } from './work-in-progress/work-in-progress.component';
 
 
 
@@ -22,7 +23,8 @@ const routes: Routes = [
                 { path: 'item/:id', component: ItemComponent },
                 { path: 'register-client', component: ClientComponent },
                 { path: 'event-report', component: ReportComponent },
-                { path: 'contract-conditions', component: ContractConditionsComponent }
+                { path: 'contract-conditions', component: ContractConditionsComponent },
+                { path: 'wip/:id', component: WorkInProgressComponent}
         ]},
     ];
 

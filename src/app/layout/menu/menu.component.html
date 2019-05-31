@@ -1,15 +1,9 @@
-<head>
-    <title>Doser</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-</head>
 
 
-<div class="container-fluid">
+<body>
     <div class="row">
         <div class="col-md-12">
             <div class="sidenav">
-
-                <p> {{user.name}} {{user.surname}}</p>
 
                 <button class="menubtn">
                     <a [routerLink]="['/tutor-dashboard']" > <i class="fas fa-home" style="margin-right: 10px"> </i> Dashboard </a> 
@@ -20,12 +14,12 @@
                 </button>
                 <div class="collapsebtn" id="account" *ngIf="isAccountCollapsed">
                      <button  class="menubtn" style="background-color: #334247; padding-left: 40px" >
-                         <i class="fas fa-user-edit"  style="margin-right: 15px"></i> Edit Profile
+                       <a [routerLink]="['/tutor-dashboard/wip', 1]" > <i class="fas fa-user-edit"  style="margin-right: 15px"></i> Edit Profile</a> 
                     </button>
                     <button  class="menubtn" style="background-color: #334247; padding-left: 40px">
-                        <a [routerLink]="['/tutor-dashboard/contract-conditions']" > 
-                            <i class="fas fa-file-alt"  style="margin-right: 15px"></i>Contract Conditions
-                        </a>
+                      
+                            <a [routerLink]="['/tutor-dashboard/contract-conditions']" ><i class="fas fa-file-alt"  style="margin-right: 15px"></i>Contract Conditions</a> 
+                
                     </button>
 
                 </div>
@@ -36,7 +30,7 @@
                 
                 <div class="collapsebtn" id="apartment" *ngIf="isCollapsed">
                     <button class="menubtn">
-                    <a [routerLink]="['/tutor-dashboard']" > <i class="fas fa-edit" style="margin-right: 10px"> </i> Manage Apartments </a> 
+                    <a [routerLink]="['/tutor-dashboard/wip', 1]" > <i class="fas fa-edit" style="margin-right: 10px"> </i> Manage Apartments </a> 
                     </button>
                     <app-apartment-dropdown></app-apartment-dropdown>
                 </div>
@@ -45,22 +39,22 @@
                     <i class="fas fa-users"  style="margin-right: 15px"></i> Clients
                 </button>
                     <button  class="menubtn" id="client" *ngIf="isClientCollapsed" style="background-color: #334247; padding-left: 40px">
-                        <i class="fas fa-user-cog"  style="margin-right: 15px"></i> Manage Clients
+                        <a [routerLink]="['/tutor-dashboard/wip', 1]" ><i class="fas fa-user-cog"  style="margin-right: 15px"></i> Manage Clients</a>
                     </button>
                     <button  class="menubtn" id="client" *ngIf="isClientCollapsed" style="background-color: #334247; padding-left: 40px">
-                        <a [routerLink]="['/tutor-dashboard/register-client']" routerLinkActive="router-link-active" ><i class="fas fa-user-plus"  style="margin-right: 15px"></i> Add a new CLient</a>
+                         <a [routerLink]="['/tutor-dashboard/register-client']" ><i class="fas fa-user-plus"  style="margin-right: 15px"></i> Add a new CLient</a>
                     </button>
 
                     <button  class="menubtn">
-                        <a [routerLink]="['/tutor-dashboard/event-report']" routerLinkActive="router-link-active" ><i class="fas fa-chart-line"  style="margin-right: 15px"></i> Events </a>
+                         <a [routerLink]="['/tutor-dashboard/event-report']" ><i class="fas fa-chart-line"  style="margin-right: 15px"></i> Events </a>
                     </button>
 
                 <button type="button" class="menubtn">
-                    <i class="fas fa-user-md" style="margin-right: 15px"></i> Operators
+                     <a [routerLink]="['/tutor-dashboard/wip', 1]" ><i class="fas fa-user-md" style="margin-right: 15px"></i> Operators</a>
                 </button>
 
                 <button type="button" class="menubtn">
-                    <i class="fas fa-calendar-alt" style="margin-right: 15px"></i> Appointments
+                    <a [routerLink]="['/tutor-dashboard/wip', 1]" ><i class="fas fa-calendar-alt" style="margin-right: 15px"></i> Appointments</a>
                 </button>
 
                   <button  class="menubtn" (click)="logout()">
@@ -70,4 +64,4 @@
             </div>
         </div>
     </div>
-</div>
+</body>

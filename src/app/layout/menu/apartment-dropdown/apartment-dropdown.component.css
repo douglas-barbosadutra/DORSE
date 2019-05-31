@@ -10,7 +10,6 @@
 }
 
  button:hover, button:focus, a:hover {
-    border: none;
     background-color: #27d8ca;
 }
 

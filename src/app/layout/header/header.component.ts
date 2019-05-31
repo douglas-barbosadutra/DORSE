@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TutorDTO } from 'src/app/dto/tutordto';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+    user: TutorDTO;
+
   constructor() { }
 
   ngOnInit() {
+      this.user = JSON.parse(localStorage.getItem('currentUser'));
   }
 
 }
