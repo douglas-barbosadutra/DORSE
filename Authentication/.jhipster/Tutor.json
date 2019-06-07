@@ -1,0 +1,14 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [],
+    "changelogDate": "20190607140237",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceImpl",
+    "entityTableName": "tutor",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no",
+    "microserviceName": "Authentication"
+}

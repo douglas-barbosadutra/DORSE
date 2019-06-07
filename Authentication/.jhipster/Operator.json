@@ -1,0 +1,23 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "availability",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "cathegory",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20190607140150",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceImpl",
+    "entityTableName": "operator",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no",
+    "microserviceName": "Authentication"
+}

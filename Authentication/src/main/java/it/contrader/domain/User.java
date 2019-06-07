@@ -18,6 +18,7 @@ import it.contrader.domain.enumeration.UserType;
 @Entity
 @Table(name = "user")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;

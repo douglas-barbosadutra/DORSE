@@ -2,6 +2,10 @@ package it.contrader.service.dto;
 
 import java.time.LocalDate;
 import javax.validation.constraints.*;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import java.io.Serializable;
 import java.util.Objects;
 import it.contrader.domain.enumeration.UserType;
@@ -9,6 +13,7 @@ import it.contrader.domain.enumeration.UserType;
 /**
  * A DTO for the User entity.
  */
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class UserDTO implements Serializable {
 
     private Long id;
