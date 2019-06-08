@@ -58,6 +58,8 @@ public class ApartmentResourceIntTest {
     @Autowired
     private ApartmentMapper apartmentMapper;
     
+    @Autowired
+    private ApartmentResource apartmentResource;
 
     @Autowired
     private ApartmentService apartmentService;
@@ -81,7 +83,7 @@ public class ApartmentResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final ApartmentResource apartmentResource = new ApartmentResource(apartmentService);
+
         this.restApartmentMockMvc = MockMvcBuilders.standaloneSetup(apartmentResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
