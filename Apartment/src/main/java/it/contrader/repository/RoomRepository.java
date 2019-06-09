@@ -18,6 +18,6 @@ public interface RoomRepository extends MyRepository<Room, Long> {
 	
 	//Custom QUERY, gets all apartments depending on tutor_id
 	@Override
-	@Query(value = "SELECT * FROM room e WHERE e.apartment = ?1", nativeQuery = true)
+	@Query(value = "SELECT * FROM room e WHERE e.apartment_id = ?1", nativeQuery = true)
 	List<Room> findAllBy(Long id);
 }

@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.*;
  * REST controller for managing Apartment.
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/apartment")
 public class ApartmentResource extends AbstractResource<ApartmentDTO> {
 	
-    private static final String ENTITY_NAME = "apartment";
-
 }
