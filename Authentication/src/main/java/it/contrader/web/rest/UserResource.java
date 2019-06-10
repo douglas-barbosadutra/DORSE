@@ -4,6 +4,7 @@ import com.codahale.metrics.annotation.Timed;
 import it.contrader.service.UserService;
 import it.contrader.web.rest.errors.BadRequestAlertException;
 import it.contrader.web.rest.util.HeaderUtil;
+import it.contrader.service.dto.LoginDTO;
 import it.contrader.service.dto.UserDTO;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -21,6 +22,7 @@ import java.util.Optional;
 /**
  * REST controller for managing User.
  */
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api")
 public class UserResource {
@@ -115,5 +117,12 @@ public class UserResource {
         log.debug("REST request to delete User : {}", id);
         userService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    }
+    
+    @PostMapping("/login")
+    @Timed
+    public ResponseEntity<UserDTO> login(@Valid @RequestBody LoginDTO loginDTO){
+    	Optional<UserDTO> loggedUser = userService.findByUsernameAndPassword(loginDTO.getUsername(), loginDTO.getPassword());
+    	return ResponseUtil.wrapOrNotFound(loggedUser);
     }
 }

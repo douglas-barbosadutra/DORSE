@@ -86,4 +86,10 @@ public class UserServiceImpl implements UserService {
         log.debug("Request to delete User : {}", id);
         userRepository.deleteById(id);
     }
+
+	@Override
+	public Optional<UserDTO> findByUsernameAndPassword(String username, String password) {
+		return userRepository.findByUsernameAndPassword(username, password)
+				.map(userMapper::toDto);
+	}
 }

@@ -1,6 +1,5 @@
 package it.contrader.service.dto;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 /**

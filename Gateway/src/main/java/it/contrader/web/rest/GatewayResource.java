@@ -18,6 +18,7 @@ import com.codahale.metrics.annotation.Timed;
 /**
  * REST controller for managing Gateway configuration.
  */
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/gateway")
 public class GatewayResource {

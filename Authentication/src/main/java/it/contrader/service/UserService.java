@@ -40,4 +40,6 @@ public interface UserService {
      * @param id the id of the entity
      */
     void delete(Long id);
+    
+    Optional<UserDTO> findByUsernameAndPassword(String username, String password);
 }
