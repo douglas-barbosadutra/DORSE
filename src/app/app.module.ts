@@ -10,6 +10,9 @@ import { FormsModule } from '@angular/forms';
 import { TestuserDashboardComponent } from './testuser-dashboard/testuser-dashboard.component';
 import { SuperuserDashboardComponent } from './superuser-dashboard/superuser-dashboard.component';
 import { UserDetailsComponent } from './superuser-dashboard/user-details/user-details.component';
+import { Notification1Component } from './superuser-dashboard/notification1/notification1.component';
+import { UsernotpaymentComponent } from './superuser-dashboard/usernotpayment/usernotpayment.component';
+
 
 
 @NgModule({
@@ -17,7 +20,10 @@ import { UserDetailsComponent } from './superuser-dashboard/user-details/user-de
     AppComponent,
     TestuserDashboardComponent,
     SuperuserDashboardComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    Notification1Component,
+    UsernotpaymentComponent,
+    
   ],
   imports: [
     BrowserModule,
