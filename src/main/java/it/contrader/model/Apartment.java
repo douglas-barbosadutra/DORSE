@@ -1,6 +1,7 @@
 package it.contrader.model;
 
 import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,7 +34,7 @@ public class Apartment {
 	private List<Room> rooms;
 	
 	@ManyToOne
-	@JoinColumn(name = "tutor_id")
+	@JoinColumn
 	private Tutor tutor;
 	
 	@OneToMany (mappedBy = "apartment")

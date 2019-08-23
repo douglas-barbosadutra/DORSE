@@ -3,13 +3,10 @@ package it.contrader.model;
 import java.util.List;
 
 import javax.persistence.Entity;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.Lob;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -28,18 +25,24 @@ public class Item {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
-	private String description;
-	
-	private String type;
-	
-	private boolean status;
-	
-	@OneToMany (mappedBy = "item")
-	private List<Event> events;
-	
-	@ManyToOne
-	@JoinColumn(name = "thing_id")
-	private Thing thing;
+    private String link;
+    
+    private boolean editable;
+    
+    private String type;
+    
+    private String name;
+    
+    private String label;
+    
+    private String state;
+    
+    @Lob
+    private List<String> tags;
+    
+    @Lob
+    private List<String> groupNames;
+
 }

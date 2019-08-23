@@ -1,7 +1,5 @@
 package it.contrader.dto;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -18,7 +16,5 @@ public class ThingDTO {
 	private long id;
 	
 	private String description;
-	
-	private List<ItemDTO> items;
 	
 }
